@@ -1,130 +1,519 @@
-import { motion } from "framer-motion";
-import { ArrowRight, Check, Phone } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ArrowRight, Check, Phone, ChevronDown, Star, Quote } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import { servicesData } from "@/data/serviceData";
 
-const serviceData: Record<string, { title: string; accent: string; subtitle: string; desc: string; features: string[]; price: string }> = {
-  laser: {
-    title: "Permanent Laser",
-    accent: "Hair Removal",
-    subtitle: "USFDA CLEARED · SAFE FOR ALL SKIN TYPES",
-    desc: "Experience Delhi NCR's most trusted laser hair removal. Our advanced Diode Laser technology is specifically calibrated for Indian skin tones, delivering permanent hair reduction with zero downtime.",
-    features: ["Advanced 808nm Diode Laser", "Safe for Fitzpatrick I-VI", "Full Face & Body treatments", "6-8 sessions for permanent results", "Zero downtime", "Free consultation & patch test"],
-    price: "Starting from ₹1,999 per session",
-  },
-  coolsculpting: {
-    title: "CoolSculpting®",
-    accent: "Fat Freezing",
-    subtitle: "FDA-CLEARED NON-SURGICAL BODY CONTOURING",
-    desc: "The world's #1 non-invasive fat reduction treatment. CoolSculpting® uses patented cryolipolysis technology to freeze and permanently eliminate stubborn fat cells — no surgery, no needles, no downtime.",
-    features: ["27% fat reduction per session", "9 treatable body areas", "DualSculpting capability", "FDA-cleared technology", "No surgery or needles", "Permanent fat cell elimination"],
-    price: "Starting from ₹15,000 per area",
-  },
-  skin: {
-    title: "Advanced Skin",
-    accent: "Treatments",
-    subtitle: "CLINICAL SKINCARE EXCELLENCE",
-    desc: "From HydraFacials to chemical peels, LED therapy to skin boosters — our clinical-grade skin treatments address every concern with precision and care.",
-    features: ["HydraFacial", "Chemical Peels", "LED Light Therapy", "Skin Boosters & Mesotherapy", "Vampire Facial (PRP)", "Pigmentation correction"],
-    price: "Starting from ₹2,499",
-  },
-  botox: {
-    title: "Natural-Looking",
-    accent: "Botox & Fillers",
-    subtitle: "ALLERGAN CERTIFIED · GENUINE PRODUCTS ONLY",
-    desc: "Subtle, natural-looking results administered by certified aesthetic physicians. We exclusively use genuine Allergan Botox and premium dermal fillers.",
-    features: ["Genuine Allergan Botox", "Juvederm & Restylane fillers", "Forehead & Crow's Feet", "Lip & Cheek enhancement", "Jawline contouring", "Certified physicians only"],
-    price: "Starting from ₹8,000",
-  },
-  microdermabrasion: {
-    title: "Reveal Radiant",
-    accent: "Skin",
-    subtitle: "ADVANCED SKIN RENEWAL TECHNOLOGY",
-    desc: "Gently exfoliate and rejuvenate your skin with our advanced microdermabrasion treatments. Reduce fine lines, sun damage, and uneven texture for a radiant, youthful glow.",
-    features: ["Diamond-tip technology", "Fine line reduction", "Sun damage repair", "Acne scar improvement", "Improved skin texture", "Course packages available"],
-    price: "Starting from ₹1,999",
-  },
-  bridal: {
-    title: "Your Most",
-    accent: "Beautiful Day",
-    subtitle: "COMPLETE LUXURY BRIDAL PACKAGES",
-    desc: "Comprehensive pre-bridal treatments combining laser, skincare, spa, and salon services into a complete wedding transformation journey starting 6 months before your special day.",
-    features: ["6-month prep programs", "Complete skin transformation", "Laser hair removal", "HD & Airbrush makeup", "Spa & wellness packages", "Bridesmaids packages"],
-    price: "Starting from ₹25,000",
-  },
-  spa: {
-    title: "Indulge in",
-    accent: "Complete Wellness",
-    subtitle: "THERAPEUTIC SPA TREATMENTS",
-    desc: "Experience complete relaxation with our therapeutic spa treatments. From Swedish massage to detox wraps, rejuvenate your body and mind in our serene spa sanctuary.",
-    features: ["Swedish & Deep Tissue Massage", "Aromatherapy", "Hot Stone Therapy", "Body Wraps & Scrubs", "Couple Spa packages", "Detox treatments"],
-    price: "Starting from ₹1,499",
-  },
-  salon: {
-    title: "Expert Beauty",
-    accent: "Services",
-    subtitle: "PREMIUM SALON EXPERIENCE",
-    desc: "Expert hair, nail, makeup, and grooming services delivered with the same clinical precision and luxury experience that defines Empathy Laser Clinic.",
-    features: ["Hair Styling & Colour", "Keratin Treatments", "Manicure & Pedicure", "Professional Makeup", "Waxing & Threading", "Nail Art & Gel Nails"],
-    price: "Starting from ₹499",
-  },
-};
+interface ServicePageProps {
+  service: string;
+}
 
-const ServicePage = ({ service }: { service: string }) => {
-  const data = serviceData[service];
+const ServicePage = ({ service }: ServicePageProps) => {
+  const data = servicesData[service];
+  const [openFaq, setOpenFaq] = useState<number | null>(0);
+
   if (!data) return null;
 
   return (
-    <div className="pt-28">
-      {/* Hero */}
-      <section className="py-24 bg-secondary">
-        <div className="container mx-auto px-6">
-          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} className="max-w-3xl">
-            <p className="eyebrow mb-4">{data.subtitle}</p>
-            <h1 className="font-serif text-5xl md:text-7xl text-foreground leading-[0.95] mb-2">{data.title}</h1>
-            <h1 className="font-serif text-5xl md:text-7xl italic text-primary leading-[0.95] mb-8">{data.accent}</h1>
-            <p className="text-lg text-muted-foreground leading-relaxed mb-8 max-w-2xl">{data.desc}</p>
-            <div className="flex flex-wrap gap-4">
-              <Link to="/contact" className="gold-shimmer text-primary-foreground px-8 py-3.5 text-sm font-sans uppercase tracking-[0.15em] rounded-full inline-flex items-center gap-2">
-                Book Free Consultation <ArrowRight size={16} />
-              </Link>
-              <a href="tel:+919811157787" className="border border-border text-foreground px-8 py-3.5 text-sm font-sans uppercase tracking-[0.15em] rounded-full inline-flex items-center gap-2 hover:border-primary hover:text-primary transition-colors">
-                <Phone size={16} /> Call Now
-              </a>
-            </div>
-          </motion.div>
+    <div className="pt-20">
+      {/* Hero Section */}
+      <section className="relative min-h-[90vh] flex items-center overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <img
+            src={data.heroImage}
+            alt={data.title + " " + data.accent}
+            className="w-full h-full object-cover"
+          />
+          <div className={`absolute inset-0 bg-gradient-to-r ${data.heroOverlay}`} />
+          {/* Decorative elements */}
+          <div className="absolute top-20 right-20 w-72 h-72 bg-primary/10 rounded-full blur-3xl" />
+          <div className="absolute bottom-20 left-20 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+        </div>
+
+        {/* Content */}
+        <div className="relative z-10 container mx-auto px-6 py-24">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              {/* Badge */}
+              <div className="inline-flex items-center gap-2 bg-primary/20 backdrop-blur-sm border border-primary/30 rounded-full px-4 py-2 mb-6">
+                <data.icon size={14} className="text-primary" />
+                <span className="text-xs font-sans uppercase tracking-[0.2em] text-primary">{data.badge}</span>
+              </div>
+
+              {/* Headline */}
+              <h1 className="font-serif text-5xl md:text-7xl text-foreground leading-[0.95] mb-2">
+                {data.title}
+              </h1>
+              <h1 className="font-serif text-5xl md:text-7xl italic text-primary leading-[0.95] mb-6">
+                {data.accent}
+              </h1>
+
+              {/* Subtitle */}
+              <p className="font-sans text-xs uppercase tracking-[0.25em] text-foreground/60 mb-6">
+                {data.subtitle}
+              </p>
+
+              {/* Description */}
+              <p className="text-foreground/80 text-lg max-w-xl mb-8 leading-relaxed">
+                {data.description}
+              </p>
+
+              {/* CTAs */}
+              <div className="flex flex-wrap gap-4">
+                <Link
+                  to="/contact"
+                  className="gold-shimmer text-primary-foreground px-8 py-4 text-sm font-sans uppercase tracking-[0.15em] rounded-full inline-flex items-center gap-2 hover:scale-105 transition-transform"
+                >
+                  Book Free Consultation <ArrowRight size={16} />
+                </Link>
+                <a
+                  href="tel:+919811157787"
+                  className="border border-foreground/30 backdrop-blur-sm text-foreground px-8 py-4 text-sm font-sans uppercase tracking-[0.15em] rounded-full inline-flex items-center gap-2 hover:border-primary hover:text-primary transition-colors"
+                >
+                  <Phone size={16} /> Call Now
+                </a>
+              </div>
+
+              {/* Quick Stats */}
+              <div className="grid grid-cols-4 gap-4 mt-12 pt-8 border-t border-foreground/10">
+                {data.stats.map((stat, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.3 + i * 0.1 }}
+                    className="text-center"
+                  >
+                    <p className="font-serif text-2xl md:text-3xl text-primary">{stat.value}</p>
+                    <p className="text-xs uppercase tracking-[0.15em] text-foreground/60 mt-1">{stat.label}</p>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* Hero Image Card */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="hidden lg:block"
+            >
+              <div className="relative">
+                <div className="aspect-[3/4] rounded-2xl overflow-hidden border border-foreground/10 shadow-2xl">
+                  <img
+                    src={data.secondaryImage}
+                    alt={data.title}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                {/* Floating card */}
+                <div className="absolute -bottom-6 -left-6 bg-card/90 backdrop-blur-md border border-border rounded-xl p-6 shadow-xl max-w-xs">
+                  <p className="font-serif text-2xl text-primary mb-2">{data.pricing[0]?.price}</p>
+                  <p className="text-sm text-muted-foreground">Starting price</p>
+                </div>
+                {/* Decorative frame */}
+                <div className="absolute -top-4 -right-4 w-full h-full border-2 border-primary/20 rounded-2xl -z-10" />
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* Features */}
-      <section className="py-24 bg-background">
+      {/* About Section */}
+      <section className="py-24 bg-secondary">
         <div className="container mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-16">
-            <div>
-              <h2 className="font-serif text-3xl md:text-4xl text-foreground mb-6">What's <em className="text-primary">Included</em></h2>
-              <ul className="space-y-4">
-                {data.features.map((f, i) => (
-                  <motion.li key={i} initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="flex items-center gap-3 text-foreground/80">
-                    <Check size={16} className="text-primary flex-shrink-0" /> {f}
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+            >
+              <p className="eyebrow mb-4">About This Treatment</p>
+              <h2 className="font-serif text-4xl md:text-5xl text-foreground mb-6">
+                Why Choose <em className="text-primary">{data.title} {data.accent}</em>?
+              </h2>
+              <p className="text-muted-foreground text-lg leading-relaxed mb-8">
+                {data.longDescription}
+              </p>
+              <ul className="space-y-3">
+                {data.whyChooseUs.slice(0, 4).map((item, i) => (
+                  <motion.li
+                    key={i}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.1 }}
+                    className="flex items-start gap-3 text-foreground/80"
+                  >
+                    <Check size={18} className="text-primary flex-shrink-0 mt-1" />
+                    <span>{item}</span>
                   </motion.li>
                 ))}
               </ul>
-              <p className="mt-8 font-serif text-2xl text-primary">{data.price}</p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="relative"
+            >
+              <div className="aspect-[4/3] rounded-2xl overflow-hidden">
+                <img
+                  src={data.processImage}
+                  alt={`${data.title} treatment`}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              {/* Accent elements */}
+              <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-primary/20 rounded-full blur-2xl" />
+              <div className="absolute top-4 left-4 w-16 h-16 border-t-2 border-l-2 border-primary/40" />
+              <div className="absolute bottom-4 right-4 w-16 h-16 border-b-2 border-r-2 border-primary/40" />
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Benefits Section */}
+      <section className="py-24 bg-background">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <p className="eyebrow mb-4">Benefits</p>
+            <h2 className="font-serif text-4xl md:text-5xl text-foreground">
+              Why Clients <em className="text-primary">Love</em> This Treatment
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {data.benefits.map((benefit, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="group p-8 bg-card rounded-2xl border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5"
+              >
+                <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
+                  <benefit.icon size={24} className="text-primary" />
+                </div>
+                <h3 className="font-serif text-xl text-foreground mb-3">{benefit.title}</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed">{benefit.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Process Section */}
+      <section className="py-24 bg-secondary">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <p className="eyebrow mb-4">How It Works</p>
+            <h2 className="font-serif text-4xl md:text-5xl text-foreground">
+              Your Journey to <em className="text-primary">Results</em>
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-4 gap-8">
+            {data.processSteps.map((step, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.15 }}
+                className="relative"
+              >
+                {/* Connector line */}
+                {i < data.processSteps.length - 1 && (
+                  <div className="hidden md:block absolute top-8 left-[60%] w-full h-[2px] bg-gradient-to-r from-primary/40 to-transparent" />
+                )}
+                
+                <div className="relative z-10">
+                  <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mb-6 shadow-lg shadow-primary/30">
+                    <span className="font-serif text-xl text-primary-foreground">{step.number}</span>
+                  </div>
+                  <h3 className="font-serif text-xl text-foreground mb-3">{step.title}</h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed">{step.description}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Treatment Areas Section */}
+      <section className="py-24 bg-background">
+        <div className="container mx-auto px-6">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div>
+              <p className="eyebrow mb-4">Treatment Options</p>
+              <h2 className="font-serif text-4xl md:text-5xl text-foreground mb-8">
+                Areas We <em className="text-primary">Treat</em>
+              </h2>
+              
+              <div className="space-y-4">
+                {data.treatmentAreas.map((area, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.1 }}
+                    className="flex items-center justify-between p-5 bg-card rounded-xl border border-border hover:border-primary/40 transition-all group"
+                  >
+                    <div>
+                      <h4 className="font-semibold text-foreground group-hover:text-primary transition-colors">{area.name}</h4>
+                      <p className="text-sm text-muted-foreground mt-1">{area.description}</p>
+                    </div>
+                    {area.duration && (
+                      <span className="text-xs bg-primary/10 text-primary px-3 py-1.5 rounded-full whitespace-nowrap">
+                        {area.duration}
+                      </span>
+                    )}
+                  </motion.div>
+                ))}
+              </div>
             </div>
-            <div className="bg-secondary rounded-lg aspect-[4/3] flex items-center justify-center">
-              <p className="text-muted-foreground text-sm">Treatment imagery</p>
+
+            {/* Gallery Grid */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="grid grid-cols-2 gap-4"
+            >
+              {data.galleryImages.map((img, i) => (
+                <div
+                  key={i}
+                  className={`rounded-xl overflow-hidden ${i === 0 ? 'col-span-2 aspect-video' : 'aspect-square'}`}
+                >
+                  <img
+                    src={img}
+                    alt={`${data.title} gallery ${i + 1}`}
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+              ))}
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing Section */}
+      <section className="py-24 bg-secondary">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <p className="eyebrow mb-4">Transparent Pricing</p>
+            <h2 className="font-serif text-4xl md:text-5xl text-foreground">
+              Investment in <em className="text-primary">Yourself</em>
+            </h2>
+            <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
+              No hidden costs. No surprises. Just exceptional results at transparent prices.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            {data.pricing.map((tier, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.15 }}
+                className={`relative p-8 rounded-2xl border ${
+                  tier.popular
+                    ? 'bg-card border-primary shadow-xl shadow-primary/10'
+                    : 'bg-card border-border'
+                }`}
+              >
+                {tier.popular && (
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground text-xs px-4 py-1.5 rounded-full uppercase tracking-wider">
+                    Most Popular
+                  </div>
+                )}
+                
+                <h3 className="font-serif text-2xl text-foreground mb-2">{tier.name}</h3>
+                <p className="text-sm text-muted-foreground mb-6">{tier.description}</p>
+                
+                <div className="mb-6">
+                  <span className="font-serif text-4xl text-primary">{tier.price}</span>
+                </div>
+
+                <ul className="space-y-3 mb-8">
+                  {tier.features.map((feature, j) => (
+                    <li key={j} className="flex items-start gap-3 text-sm text-foreground/80">
+                      <Check size={16} className="text-primary flex-shrink-0 mt-0.5" />
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <Link
+                  to="/contact"
+                  className={`w-full py-3.5 rounded-full text-sm font-sans uppercase tracking-[0.1em] inline-flex items-center justify-center gap-2 transition-all ${
+                    tier.popular
+                      ? 'gold-shimmer text-primary-foreground hover:scale-105'
+                      : 'border border-border text-foreground hover:border-primary hover:text-primary'
+                  }`}
+                >
+                  Book Now <ArrowRight size={14} />
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="py-24 bg-background">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <p className="eyebrow mb-4">Success Stories</p>
+            <h2 className="font-serif text-4xl md:text-5xl text-foreground">
+              What Our <em className="text-primary">Clients</em> Say
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {data.testimonials.map((testimonial, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="p-8 bg-card rounded-2xl border border-border relative"
+              >
+                <Quote size={40} className="text-primary/10 absolute top-6 right-6" />
+                
+                {/* Stars */}
+                <div className="flex gap-1 mb-4">
+                  {[...Array(testimonial.rating)].map((_, j) => (
+                    <Star key={j} size={16} className="text-primary fill-primary" />
+                  ))}
+                </div>
+
+                <p className="text-foreground/80 mb-6 italic leading-relaxed">"{testimonial.text}"</p>
+
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center">
+                    <span className="font-serif text-primary text-lg">{testimonial.name[0]}</span>
+                  </div>
+                  <div>
+                    <p className="font-semibold text-foreground">{testimonial.name}</p>
+                    <p className="text-xs text-muted-foreground">{testimonial.treatment}</p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-24 bg-secondary">
+        <div className="container mx-auto px-6">
+          <div className="grid lg:grid-cols-2 gap-16">
+            <div>
+              <p className="eyebrow mb-4">Common Questions</p>
+              <h2 className="font-serif text-4xl md:text-5xl text-foreground mb-6">
+                Frequently Asked <em className="text-primary">Questions</em>
+              </h2>
+              <p className="text-muted-foreground mb-8">
+                Have questions? We've got answers. If you don't find what you're looking for, feel free to contact us.
+              </p>
+              <Link
+                to="/contact"
+                className="border border-border text-foreground px-6 py-3 text-sm font-sans uppercase tracking-[0.1em] rounded-full inline-flex items-center gap-2 hover:border-primary hover:text-primary transition-colors"
+              >
+                Contact Us <ArrowRight size={14} />
+              </Link>
+            </div>
+
+            <div className="space-y-4">
+              {data.faqs.map((faq, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  className="border border-border rounded-xl overflow-hidden bg-card"
+                >
+                  <button
+                    onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                    className="w-full p-5 flex items-center justify-between text-left hover:bg-secondary/50 transition-colors"
+                  >
+                    <span className="font-medium text-foreground pr-4">{faq.question}</span>
+                    <ChevronDown
+                      size={20}
+                      className={`text-primary flex-shrink-0 transition-transform ${openFaq === i ? 'rotate-180' : ''}`}
+                    />
+                  </button>
+                  <AnimatePresence>
+                    {openFaq === i && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="overflow-hidden"
+                      >
+                        <div className="px-5 pb-5 text-muted-foreground text-sm leading-relaxed">
+                          {faq.answer}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </motion.div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-16 bg-primary">
-        <div className="container mx-auto px-6 text-center">
-          <h2 className="font-serif text-3xl md:text-4xl text-primary-foreground mb-4">Ready to Begin Your Journey?</h2>
-          <p className="text-primary-foreground/70 mb-8">Book your free consultation today. Call 9811157787.</p>
-          <Link to="/contact" className="bg-primary-foreground text-primary px-8 py-3.5 text-sm font-sans uppercase tracking-[0.15em] rounded-full inline-flex items-center gap-2 hover:scale-105 transition-transform">
-            Book Now <ArrowRight size={16} />
-          </Link>
+      {/* Final CTA Section */}
+      <section className="py-24 relative overflow-hidden">
+        {/* Background */}
+        <div className="absolute inset-0 bg-primary" />
+        <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary to-primary/80" />
+        <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-72 h-72 bg-black/10 rounded-full blur-3xl" />
+        
+        <div className="relative z-10 container mx-auto px-6 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="font-serif text-4xl md:text-6xl text-primary-foreground mb-4">
+              Ready to Begin Your Journey?
+            </h2>
+            <p className="text-primary-foreground/80 text-lg mb-8 max-w-2xl mx-auto">
+              Book your free consultation today and take the first step towards {data.tagline.toLowerCase()}.
+            </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <Link
+                to="/contact"
+                className="bg-primary-foreground text-primary px-8 py-4 text-sm font-sans uppercase tracking-[0.15em] rounded-full inline-flex items-center gap-2 hover:scale-105 transition-transform shadow-lg"
+              >
+                Book Free Consultation <ArrowRight size={16} />
+              </Link>
+              <a
+                href="tel:+919811157787"
+                className="border-2 border-primary-foreground/30 text-primary-foreground px-8 py-4 text-sm font-sans uppercase tracking-[0.15em] rounded-full inline-flex items-center gap-2 hover:border-primary-foreground hover:bg-primary-foreground/10 transition-all"
+              >
+                <Phone size={16} /> Call 9811157787
+              </a>
+            </div>
+          </motion.div>
         </div>
       </section>
     </div>
