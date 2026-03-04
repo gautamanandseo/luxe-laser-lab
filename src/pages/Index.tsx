@@ -1,13 +1,30 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import HeroSlider from "@/components/home/HeroSlider";
+import Marquee from "@/components/home/Marquee";
+import StatsBar from "@/components/home/StatsBar";
+import ServicesSection from "@/components/home/ServicesSection";
+import CoolSculptingSection from "@/components/home/CoolSculptingSection";
+import TechnologySection from "@/components/home/TechnologySection";
+import ProcessSection from "@/components/home/ProcessSection";
+import TestimonialsSection from "@/components/home/TestimonialsSection";
+import CertificationsStrip from "@/components/home/CertificationsStrip";
+import FAQSection from "@/components/home/FAQSection";
+import BookingSection from "@/components/home/BookingSection";
 
 const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
-    </div>
+    <>
+      <HeroSlider />
+      <Marquee />
+      <StatsBar />
+      <ServicesSection />
+      <CoolSculptingSection />
+      <TechnologySection />
+      <ProcessSection />
+      <TestimonialsSection />
+      <CertificationsStrip />
+      <FAQSection />
+      <BookingSection />
+    </>
   );
 };
 
