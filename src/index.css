@@ -166,4 +166,211 @@
   .text-balance {
     text-wrap: balance;
   }
+
+  /* Service page premium effects */
+  .service-card-hover {
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .service-card-hover:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px hsl(var(--gold) / 0.15);
+  }
+
+  /* Premium gradient text */
+  .gradient-text {
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--gold-light)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Advanced hover for service cards */
+  .service-feature {
+    transition: all 0.3s ease;
+    position: relative;
+  }
+  .service-feature::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, hsl(var(--gold) / 0.1), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: inherit;
+  }
+  .service-feature:hover::before {
+    opacity: 1;
+  }
+
+  /* Gallery item hover effect */
+  .gallery-item {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .gallery-item::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, hsl(var(--primary) / 0.2), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .gallery-item:hover {
+    transform: scale(1.02);
+  }
+  .gallery-item:hover::after {
+    opacity: 1;
+  }
+
+  /* Premium button animations */
+  .premium-btn {
+    position: relative;
+    overflow: hidden;
+  }
+  .premium-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, hsl(var(--primary) / 0.3), transparent);
+    transition: left 0.5s ease;
+  }
+  .premium-btn:hover::before {
+    left: 100%;
+  }
+
+  /* Testimonial card effects */
+  .testimonial-card {
+    position: relative;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .testimonial-card::before {
+    content: '"';
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    font-size: 3rem;
+    opacity: 0.1;
+    color: hsl(var(--primary));
+    transition: opacity 0.3s ease;
+  }
+  .testimonial-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px hsl(var(--gold) / 0.1);
+  }
+  .testimonial-card:hover::before {
+    opacity: 0.15;
+  }
+
+  /* Process step animations */
+  .process-step {
+    position: relative;
+  }
+  .process-step::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 0;
+    background: linear-gradient(180deg, hsl(var(--primary)), transparent);
+    left: 50%;
+    top: 100%;
+    transition: height 0.6s ease;
+  }
+  .process-step:hover::after {
+    height: 40px;
+  }
+
+  /* Fade in animation for sections */
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Slide in animations */
+  @keyframes slide-in-right {
+    from {
+      opacity: 0;
+      transform: translateX(-50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slide-in-left {
+    from {
+      opacity: 0;
+      transform: translateX(50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  /* Enhanced image placeholder styling */
+  .image-placeholder {
+    background: linear-gradient(135deg, hsl(var(--secondary)), hsl(var(--secondary) / 0.7));
+    position: relative;
+    overflow: hidden;
+  }
+  .image-placeholder::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      hsl(var(--primary) / 0.1),
+      transparent
+    );
+    animation: shimmer-placeholder 2s infinite;
+  }
+
+  @keyframes shimmer-placeholder {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+
+  /* Glassmorphism for cards */
+  .glass-card {
+    background: hsl(var(--background) / 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid hsl(var(--border) / 0.5);
+  }
+
+  /* Accent border animation */
+  .accent-border {
+    position: relative;
+    border: 1px solid hsl(var(--border));
+    transition: all 0.3s ease;
+  }
+  .accent-border:hover {
+    border-color: hsl(var(--primary));
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.2);
+  }
+
+  /* Premium stat animation */
+  .stat-number {
+    position: relative;
+    display: inline-block;
+    animation: count-up 0.6s ease-out;
+  }
+
+  /* Hover glow for badges */
+  .badge-glow:hover {
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
+    transform: scale(1.05);
+    transition: all 0.3s ease;
+  }
 }
