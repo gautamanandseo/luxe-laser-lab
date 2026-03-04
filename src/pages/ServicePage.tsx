@@ -10,13 +10,14 @@ interface ServiceDataType {
   subtitle: string;
   desc: string;
   longDesc: string;
+  heroImage: string;
   features: string[];
   benefits: { title: string; desc: string; icon: string }[];
   price: string;
   process: { step: number; title: string; desc: string }[];
   faqs: { q: string; a: string }[];
   testimonials: { name: string; role: string; text: string; rating: number }[];
-  gallery: { title: string; desc: string }[];
+  gallery: { title: string; desc: string; image: string }[];
   highlights: { icon: string; title: string; value: string; desc: string }[];
 }
 
@@ -27,6 +28,7 @@ const serviceData: Record<string, ServiceDataType> = {
     subtitle: "USFDA CLEARED · SAFE FOR ALL SKIN TYPES",
     desc: "Experience Delhi NCR's most trusted laser hair removal with advanced Diode Laser technology specifically calibrated for Indian skin tones.",
     longDesc: "Our FDA-approved 808nm Diode Laser represents the pinnacle of hair removal technology. Specifically calibrated for Indian skin types (Fitzpatrick I-VI), it delivers permanent hair reduction without the risks of IPL or outdated technologies. Each session uses advanced cooling technology to ensure absolute comfort while precision targets hair follicles at the root.",
+    heroImage: "https://images.pexels.com/photos/29021129/pexels-photo-29021129.jpeg",
     features: [
       "Advanced 808nm Diode Laser",
       "Safe for Fitzpatrick I-VI",
@@ -123,12 +125,12 @@ const serviceData: Record<string, ServiceDataType> = {
       },
     ],
     gallery: [
-      { title: "Full Leg Treatment", desc: "From thigh to toe" },
-      { title: "Underarm & Bikini", desc: "Sensitive areas handled with care" },
-      { title: "Face & Upper Lip", desc: "Precision facial hair removal" },
-      { title: "Back & Shoulders", desc: "Complete body transformation" },
-      { title: "Before Treatment", desc: "Starting your journey" },
-      { title: "After 6 Sessions", desc: "Permanent smooth skin" },
+      { title: "Full Leg Treatment", desc: "From thigh to toe", image: "https://images.pexels.com/photos/29021129/pexels-photo-29021129.jpeg" },
+      { title: "Underarm & Bikini", desc: "Sensitive areas handled with care", image: "https://images.pexels.com/photos/29021129/pexels-photo-29021129.jpeg" },
+      { title: "Face & Upper Lip", desc: "Precision facial hair removal", image: "https://images.pexels.com/photos/3738348/pexels-photo-3738348.jpeg" },
+      { title: "Back & Shoulders", desc: "Complete body transformation", image: "https://images.pexels.com/photos/29021129/pexels-photo-29021129.jpeg" },
+      { title: "Before Treatment", desc: "Starting your journey", image: "https://images.pexels.com/photos/35869868/pexels-photo-35869868.jpeg" },
+      { title: "After 6 Sessions", desc: "Permanent smooth skin", image: "https://images.pexels.com/photos/35869868/pexels-photo-35869868.jpeg" },
     ],
     highlights: [
       { icon: "🎯", title: "Success Rate", value: "92%", desc: "Permanent hair reduction achieved" },
@@ -143,6 +145,7 @@ const serviceData: Record<string, ServiceDataType> = {
     subtitle: "FDA-CLEARED NON-SURGICAL BODY CONTOURING",
     desc: "The world's #1 non-invasive fat reduction treatment using patented cryolipolysis technology to freeze and permanently eliminate stubborn fat cells.",
     longDesc: "CoolSculpting® is the only FDA-cleared, non-surgical fat reduction procedure that uses controlled cooling to eliminate stubborn fat cells. With zero downtime and no injections or invasive procedures, it's perfect for those looking to enhance their body contours without surgery.",
+    heroImage: "https://images.pexels.com/photos/5659008/pexels-photo-5659008.jpeg",
     features: [
       "27% fat reduction per session",
       "9 treatable body areas",
@@ -239,12 +242,12 @@ const serviceData: Record<string, ServiceDataType> = {
       },
     ],
     gallery: [
-      { title: "Abdominal Contouring", desc: "Reduce belly fat" },
-      { title: "Love Handle Removal", desc: "Side flank reduction" },
-      { title: "Inner Thigh Sculpting", desc: "Thigh toning" },
-      { title: "Arm Definition", desc: "Arm fat reduction" },
-      { title: "Before Sculpting", desc: "Starting consultation" },
-      { title: "After 3 Months", desc: "Visible transformation" },
+      { title: "Abdominal Contouring", desc: "Reduce belly fat", image: "https://images.pexels.com/photos/5659008/pexels-photo-5659008.jpeg" },
+      { title: "Love Handle Removal", desc: "Side flank reduction", image: "https://images.pexels.com/photos/5659008/pexels-photo-5659008.jpeg" },
+      { title: "Inner Thigh Sculpting", desc: "Thigh toning", image: "https://images.pexels.com/photos/5659008/pexels-photo-5659008.jpeg" },
+      { title: "Arm Definition", desc: "Arm fat reduction", image: "https://images.pexels.com/photos/5659008/pexels-photo-5659008.jpeg" },
+      { title: "Before Sculpting", desc: "Starting consultation", image: "https://images.pexels.com/photos/35869868/pexels-photo-35869868.jpeg" },
+      { title: "After 3 Months", desc: "Visible transformation", image: "https://images.pexels.com/photos/35869868/pexels-photo-35869868.jpeg" },
     ],
     highlights: [
       { icon: "🏥", title: "FDA Approval", value: "Since 2010", desc: "Gold standard treatment" },
@@ -259,6 +262,7 @@ const serviceData: Record<string, ServiceDataType> = {
     subtitle: "CLINICAL SKINCARE EXCELLENCE",
     desc: "From HydraFacials to chemical peels and LED therapy, our clinical-grade treatments address every skin concern with precision.",
     longDesc: "Our comprehensive skin treatment portfolio combines the latest technologies and proven methodologies to address acne, pigmentation, aging, and texture issues. Each treatment is customized to your unique skin profile for maximum efficacy.",
+    heroImage: "https://images.pexels.com/photos/7446680/pexels-photo-7446680.jpeg",
     features: [
       "HydraFacial with Vortex Technology",
       "Professional Chemical Peels",
@@ -355,12 +359,12 @@ const serviceData: Record<string, ServiceDataType> = {
       },
     ],
     gallery: [
-      { title: "HydraFacial", desc: "Instant hydration & glow" },
-      { title: "Chemical Peel", desc: "Deep skin renewal" },
-      { title: "LED Therapy", desc: "Light-based healing" },
-      { title: "Skin Boosters", desc: "Radiance enhancement" },
-      { title: "Before Treatment", desc: "Starting journey" },
-      { title: "After Course", desc: "Transformed skin" },
+      { title: "HydraFacial", desc: "Instant hydration & glow", image: "https://images.pexels.com/photos/7446680/pexels-photo-7446680.jpeg" },
+      { title: "Chemical Peel", desc: "Deep skin renewal", image: "https://images.pexels.com/photos/3738348/pexels-photo-3738348.jpeg" },
+      { title: "LED Therapy", desc: "Light-based healing", image: "https://images.pexels.com/photos/7446680/pexels-photo-7446680.jpeg" },
+      { title: "Skin Boosters", desc: "Radiance enhancement", image: "https://images.pexels.com/photos/3738348/pexels-photo-3738348.jpeg" },
+      { title: "Before Treatment", desc: "Starting journey", image: "https://images.pexels.com/photos/35869868/pexels-photo-35869868.jpeg" },
+      { title: "After Course", desc: "Transformed skin", image: "https://images.pexels.com/photos/35869868/pexels-photo-35869868.jpeg" },
     ],
     highlights: [
       { icon: "💧", title: "Hydration Level", value: "80%+", desc: "Increased skin hydration" },
@@ -375,6 +379,7 @@ const serviceData: Record<string, ServiceDataType> = {
     subtitle: "ALLERGAN CERTIFIED · GENUINE PRODUCTS ONLY",
     desc: "Subtle, natural-looking results administered by certified aesthetic physicians using genuine Allergan products exclusively.",
     longDesc: "Enhance your natural beauty with our Allergan-certified Botox and premium dermal fillers. Our certified physicians specialize in creating subtle, proportionate results that enhance your features while maintaining your unique expression.",
+    heroImage: "https://images.pexels.com/photos/3738348/pexels-photo-3738348.jpeg",
     features: [
       "Genuine Allergan Botox",
       "Juvederm & Restylane fillers",
@@ -471,12 +476,12 @@ const serviceData: Record<string, ServiceDataType> = {
       },
     ],
     gallery: [
-      { title: "Forehead Botox", desc: "Smooth expression lines" },
-      { title: "Crow's Feet", desc: "Eye area rejuvenation" },
-      { title: "Lip Enhancement", desc: "Volume and definition" },
-      { title: "Cheek Fillers", desc: "Lifted appearance" },
-      { title: "Before Treatment", desc: "Initial consultation" },
-      { title: "After Results", desc: "Radiant transformation" },
+      { title: "Forehead Botox", desc: "Smooth expression lines", image: "https://images.pexels.com/photos/3738348/pexels-photo-3738348.jpeg" },
+      { title: "Crow's Feet", desc: "Eye area rejuvenation", image: "https://images.pexels.com/photos/3738348/pexels-photo-3738348.jpeg" },
+      { title: "Lip Enhancement", desc: "Volume and definition", image: "https://images.pexels.com/photos/7446680/pexels-photo-7446680.jpeg" },
+      { title: "Cheek Fillers", desc: "Lifted appearance", image: "https://images.pexels.com/photos/35869868/pexels-photo-35869868.jpeg" },
+      { title: "Before Treatment", desc: "Initial consultation", image: "https://images.pexels.com/photos/35869868/pexels-photo-35869868.jpeg" },
+      { title: "After Results", desc: "Radiant transformation", image: "https://images.pexels.com/photos/35869868/pexels-photo-35869868.jpeg" },
     ],
     highlights: [
       { icon: "✅", title: "Certification", value: "Allergan", desc: "Official partner" },
@@ -491,6 +496,7 @@ const serviceData: Record<string, ServiceDataType> = {
     subtitle: "ADVANCED SKIN RENEWAL TECHNOLOGY",
     desc: "Gently exfoliate and rejuvenate your skin with advanced microdermabrasion. Reduce fine lines, sun damage, and uneven texture.",
     longDesc: "Microdermabrasion is a non-invasive mechanical exfoliation technique using diamond-tip technology to gently remove the outer layer of dead skin cells, revealing fresh, radiant skin beneath. Perfect for texture improvement and anti-aging.",
+    heroImage: "https://images.pexels.com/photos/3738348/pexels-photo-3738348.jpeg",
     features: [
       "Diamond-tip technology",
       "Fine line reduction",
@@ -587,12 +593,12 @@ const serviceData: Record<string, ServiceDataType> = {
       },
     ],
     gallery: [
-      { title: "Facial Microdermabrasion", desc: "Full face treatment" },
-      { title: "Scar Reduction", desc: "Acne scar improvement" },
-      { title: "Texture Refinement", desc: "Pore minimization" },
-      { title: "Sun Damage Repair", desc: "Pigmentation treatment" },
-      { title: "Before Session", desc: "Starting skin" },
-      { title: "After Course", desc: "Refined radiant skin" },
+      { title: "Facial Microdermabrasion", desc: "Full face treatment", image: "https://images.pexels.com/photos/3738348/pexels-photo-3738348.jpeg" },
+      { title: "Scar Reduction", desc: "Acne scar improvement", image: "https://images.pexels.com/photos/7446680/pexels-photo-7446680.jpeg" },
+      { title: "Texture Refinement", desc: "Pore minimization", image: "https://images.pexels.com/photos/35869868/pexels-photo-35869868.jpeg" },
+      { title: "Sun Damage Repair", desc: "Pigmentation treatment", image: "https://images.pexels.com/photos/3738348/pexels-photo-3738348.jpeg" },
+      { title: "Before Session", desc: "Starting skin", image: "https://images.pexels.com/photos/35869868/pexels-photo-35869868.jpeg" },
+      { title: "After Course", desc: "Refined radiant skin", image: "https://images.pexels.com/photos/35869868/pexels-photo-35869868.jpeg" },
     ],
     highlights: [
       { icon: "💎", title: "Technology", value: "Diamond-tip", desc: "Advanced exfoliation" },
@@ -607,6 +613,7 @@ const serviceData: Record<string, ServiceDataType> = {
     subtitle: "COMPLETE LUXURY BRIDAL PACKAGES",
     desc: "Comprehensive pre-bridal transformation combining laser, skincare, spa, and salon services into a complete wedding journey.",
     longDesc: "Your wedding day is one of the most important moments of your life. Our comprehensive 6-month bridal packages ensure you look and feel absolutely radiant. From laser hair removal to skin treatments, spa services to professional makeup, we handle every detail.",
+    heroImage: "https://images.pexels.com/photos/16931169/pexels-photo-16931169.jpeg",
     features: [
       "6-month prep programs",
       "Complete skin transformation",
@@ -703,12 +710,12 @@ const serviceData: Record<string, ServiceDataType> = {
       },
     ],
     gallery: [
-      { title: "Pre-Bridal Consultation", desc: "Customized plan creation" },
-      { title: "Laser Hair Removal", desc: "Silky smooth skin" },
-      { title: "Bridal Skin Treatment", desc: "Radiant complexion" },
-      { title: "Body Contouring", desc: "Figure enhancement" },
-      { title: "Makeup Trial", desc: "HD & airbrush application" },
-      { title: "Wedding Ready", desc: "Radiant bride" },
+      { title: "Pre-Bridal Consultation", desc: "Customized plan creation", image: "https://images.pexels.com/photos/16931169/pexels-photo-16931169.jpeg" },
+      { title: "Laser Hair Removal", desc: "Silky smooth skin", image: "https://images.pexels.com/photos/29021129/pexels-photo-29021129.jpeg" },
+      { title: "Bridal Skin Treatment", desc: "Radiant complexion", image: "https://images.pexels.com/photos/3738348/pexels-photo-3738348.jpeg" },
+      { title: "Body Contouring", desc: "Figure enhancement", image: "https://images.pexels.com/photos/16931169/pexels-photo-16931169.jpeg" },
+      { title: "Makeup Trial", desc: "HD & airbrush application", image: "https://images.pexels.com/photos/7440054/pexels-photo-7440054.jpeg" },
+      { title: "Wedding Ready", desc: "Radiant bride", image: "https://images.pexels.com/photos/16931169/pexels-photo-16931169.jpeg" },
     ],
     highlights: [
       { icon: "📅", title: "Timeline", value: "6 months", desc: "Comprehensive prep" },
@@ -723,6 +730,7 @@ const serviceData: Record<string, ServiceDataType> = {
     subtitle: "THERAPEUTIC SPA TREATMENTS",
     desc: "Experience complete relaxation with therapeutic spa treatments. From Swedish massage to detox wraps, rejuvenate body and mind.",
     longDesc: "Step into our serene spa sanctuary and experience therapeutic treatments designed to rejuvenate your body, relax your mind, and restore your spirit. Our expert therapists use premium products and proven techniques.",
+    heroImage: "https://images.pexels.com/photos/5659015/pexels-photo-5659015.jpeg",
     features: [
       "Swedish & Deep Tissue Massage",
       "Aromatherapy",
@@ -819,12 +827,12 @@ const serviceData: Record<string, ServiceDataType> = {
       },
     ],
     gallery: [
-      { title: "Swedish Massage", desc: "Relaxing full body" },
-      { title: "Deep Tissue", desc: "Therapeutic muscle work" },
-      { title: "Hot Stone Therapy", desc: "Warmth and relaxation" },
-      { title: "Aromatherapy", desc: "Sensory wellness" },
-      { title: "Body Scrub", desc: "Skin exfoliation" },
-      { title: "Detox Wrap", desc: "Complete rejuvenation" },
+      { title: "Swedish Massage", desc: "Relaxing full body", image: "https://images.pexels.com/photos/5659015/pexels-photo-5659015.jpeg" },
+      { title: "Deep Tissue", desc: "Therapeutic muscle work", image: "https://images.pexels.com/photos/5659008/pexels-photo-5659008.jpeg" },
+      { title: "Hot Stone Therapy", desc: "Warmth and relaxation", image: "https://images.pexels.com/photos/5659015/pexels-photo-5659015.jpeg" },
+      { title: "Aromatherapy", desc: "Sensory wellness", image: "https://images.pexels.com/photos/5659008/pexels-photo-5659008.jpeg" },
+      { title: "Body Scrub", desc: "Skin exfoliation", image: "https://images.pexels.com/photos/5659015/pexels-photo-5659015.jpeg" },
+      { title: "Detox Wrap", desc: "Complete rejuvenation", image: "https://images.pexels.com/photos/5659008/pexels-photo-5659008.jpeg" },
     ],
     highlights: [
       { icon: "🧘", title: "Relaxation", value: "Complete", desc: "Full stress relief" },
@@ -839,6 +847,7 @@ const serviceData: Record<string, ServiceDataType> = {
     subtitle: "PREMIUM SALON EXPERIENCE",
     desc: "Expert hair, nail, makeup, and grooming services delivered with clinical precision and luxury experience.",
     longDesc: "From expert hair styling and coloring to professional makeup and premium nail services, our salon delivers salon-quality services with medical-grade standards. Perfect complement to your clinical beauty treatments.",
+    heroImage: "https://images.pexels.com/photos/7440054/pexels-photo-7440054.jpeg",
     features: [
       "Hair Styling & Colour",
       "Keratin Treatments",
@@ -935,12 +944,12 @@ const serviceData: Record<string, ServiceDataType> = {
       },
     ],
     gallery: [
-      { title: "Hair Styling", desc: "Expert styling expertise" },
-      { title: "Hair Coloring", desc: "Vibrant color expertise" },
-      { title: "Professional Makeup", desc: "Artistry & precision" },
-      { title: "Nail Art", desc: "Creative designs" },
-      { title: "Threading & Waxing", desc: "Precision hair removal" },
-      { title: "Complete Transformation", desc: "Head-to-toe beauty" },
+      { title: "Hair Styling", desc: "Expert styling expertise", image: "https://images.pexels.com/photos/7440054/pexels-photo-7440054.jpeg" },
+      { title: "Hair Coloring", desc: "Vibrant color expertise", image: "https://images.pexels.com/photos/7440054/pexels-photo-7440054.jpeg" },
+      { title: "Professional Makeup", desc: "Artistry & precision", image: "https://images.pexels.com/photos/7440054/pexels-photo-7440054.jpeg" },
+      { title: "Nail Art", desc: "Creative designs", image: "https://images.pexels.com/photos/7440054/pexels-photo-7440054.jpeg" },
+      { title: "Threading & Waxing", desc: "Precision hair removal", image: "https://images.pexels.com/photos/35869868/pexels-photo-35869868.jpeg" },
+      { title: "Complete Transformation", desc: "Head-to-toe beauty", image: "https://images.pexels.com/photos/7440054/pexels-photo-7440054.jpeg" },
     ],
     highlights: [
       { icon: "💇", title: "Stylists", value: "Expert trained", desc: "Years of experience" },
@@ -961,20 +970,31 @@ const ServicePage = ({ service }: { service: string }) => {
       {/* Hero Section */}
       <section className="py-24 bg-gradient-to-br from-secondary to-background">
         <div className="container mx-auto px-6">
-          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="max-w-3xl">
-            <p className="eyebrow mb-4">{data.subtitle}</p>
-            <h1 className="font-serif text-5xl md:text-7xl text-foreground leading-[0.95] mb-2">{data.title}</h1>
-            <h1 className="font-serif text-5xl md:text-7xl italic text-primary leading-[0.95] mb-8">{data.accent}</h1>
-            <p className="text-lg text-muted-foreground leading-relaxed mb-8 max-w-2xl">{data.longDesc}</p>
-            <div className="flex flex-wrap gap-4">
-              <Link to="/contact" className="premium-btn gold-shimmer text-primary-foreground px-8 py-3.5 text-sm font-sans uppercase tracking-[0.15em] rounded-full inline-flex items-center gap-2 hover:scale-105 transition-transform">
-                Book Free Consultation <ArrowRight size={16} />
-              </Link>
-              <a href="tel:+919811157787" className="accent-border text-foreground px-8 py-3.5 text-sm font-sans uppercase tracking-[0.15em] rounded-full inline-flex items-center gap-2">
-                <Phone size={16} /> Call Now
-              </a>
-            </div>
-          </motion.div>
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+              <p className="eyebrow mb-4">{data.subtitle}</p>
+              <h1 className="font-serif text-5xl md:text-7xl text-foreground leading-[0.95] mb-2">{data.title}</h1>
+              <h1 className="font-serif text-5xl md:text-7xl italic text-primary leading-[0.95] mb-8">{data.accent}</h1>
+              <p className="text-lg text-muted-foreground leading-relaxed mb-8">{data.longDesc}</p>
+              <div className="flex flex-wrap gap-4">
+                <Link to="/contact" className="premium-btn gold-shimmer text-primary-foreground px-8 py-3.5 text-sm font-sans uppercase tracking-[0.15em] rounded-full inline-flex items-center gap-2 hover:scale-105 transition-transform">
+                  Book Free Consultation <ArrowRight size={16} />
+                </Link>
+                <a href="tel:+919811157787" className="accent-border text-foreground px-8 py-3.5 text-sm font-sans uppercase tracking-[0.15em] rounded-full inline-flex items-center gap-2">
+                  <Phone size={16} /> Call Now
+                </a>
+              </div>
+            </motion.div>
+            <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6, delay: 0.2 }} className="relative">
+              <div className="rounded-lg overflow-hidden aspect-[3/4] relative group">
+                <img src={data.heroImage} alt={`${data.title} ${data.accent}`} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/40 to-transparent" />
+              </div>
+              {/* Decorative corners */}
+              <div className="absolute -top-4 -right-4 w-16 h-16 border-t-2 border-r-2 border-primary/40" />
+              <div className="absolute -bottom-4 -left-4 w-16 h-16 border-b-2 border-l-2 border-primary/40" />
+            </motion.div>
+          </div>
         </div>
       </section>
 
@@ -1078,11 +1098,9 @@ const ServicePage = ({ service }: { service: string }) => {
               </ul>
               <p className="mt-8 font-serif text-2xl text-primary">{data.price}</p>
             </div>
-            <div className="bg-secondary rounded-lg aspect-[4/3] flex items-center justify-center relative overflow-hidden">
+            <div className="rounded-lg aspect-[4/3] overflow-hidden relative group">
+              <img src={data.heroImage} alt="Treatment showcase" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
               <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent" />
-              <div className="flex items-center justify-center gap-4 text-muted-foreground text-center p-8">
-                <p className="text-sm">Premium treatment imagery showcasing results and professional environment</p>
-              </div>
             </div>
           </div>
         </div>
@@ -1101,10 +1119,11 @@ const ServicePage = ({ service }: { service: string }) => {
           <div className="grid md:grid-cols-3 gap-6">
             {data.gallery.map((g, i) => (
               <motion.div key={i} initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} onClick={() => setActiveGallery(i)} className={`gallery-item cursor-pointer rounded-lg overflow-hidden aspect-square relative group transition-all border border-border hover:border-primary ${activeGallery === i ? "md:col-span-2 md:row-span-2" : ""}`}>
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-primary/30 group-hover:from-primary/20 group-hover:to-primary/50 transition-all" />
-                <div className="h-full bg-gradient-to-br from-secondary via-background to-secondary flex flex-col items-center justify-center p-6 text-center">
-                  <h3 className="font-serif text-lg md:text-xl text-foreground mb-2 group-hover:text-primary transition-colors relative z-10">{g.title}</h3>
-                  <p className="text-xs md:text-sm text-muted-foreground relative z-10">{g.desc}</p>
+                <img src={g.image} alt={g.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent group-hover:from-primary/20 group-hover:via-transparent group-hover:to-transparent transition-all" />
+                <div className="absolute inset-0 flex flex-col items-center justify-end p-6 text-center">
+                  <h3 className="font-serif text-lg md:text-xl text-foreground mb-2 group-hover:text-primary-foreground transition-colors relative z-10">{g.title}</h3>
+                  <p className="text-xs md:text-sm text-muted-foreground group-hover:text-primary-foreground/80 relative z-10">{g.desc}</p>
                 </div>
               </motion.div>
             ))}
