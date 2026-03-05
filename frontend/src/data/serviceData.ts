@@ -88,8 +88,8 @@ export const servicesData: Record<string, ServiceData> = {
     tagline: "Experience Delhi NCR's most trusted laser hair removal",
     heroImage: "https://yspstvqinawnszuxdjhy.supabase.co/storage/v1/object/public/gallery-images/1770572844445-54z2sxh.jpg",
     heroOverlay: "from-background/95 via-background/70 to-background/30",
-    description: "Our advanced Diode Laser technology is specifically calibrated for Indian skin tones, delivering permanent hair reduction with zero downtime.",
-    longDescription: "Say goodbye to the endless cycle of waxing, shaving, and threading. Our state-of-the-art 808nm Diode Laser technology targets hair follicles at their root, disabling their ability to regrow. The result? Silky smooth skin that lasts a lifetime. Our FDA-cleared treatment is safe for all skin types, including the full range of Indian skin tones (Fitzpatrick I-VI).",
+    description: "Our advanced 808nm Diode Laser technology is specifically calibrated for Indian skin tones, delivering permanent hair reduction with zero downtime. FDA-cleared and trusted by thousands.",
+    longDescription: "Say goodbye to the endless cycle of waxing, shaving, and threading. Our state-of-the-art 808nm Diode Laser technology targets hair follicles at their root, permanently disabling their ability to regrow. Experience silky smooth skin that lasts a lifetime. Safe for all skin types, including the full range of Indian skin tones. After 6-8 sessions spaced 4-6 weeks apart, enjoy 85-90% permanent hair reduction with minimal maintenance.",
     icon: Sparkles,
     badge: "USFDA Cleared",
     
@@ -119,9 +119,9 @@ export const servicesData: Record<string, ServiceData> = {
     ],
     
     pricing: [
-      { name: "Single Area", price: "₹1,999", description: "Perfect for trying out", features: ["Any single small area", "Free consultation", "Patch test included", "Aftercare kit"] },
-      { name: "Full Face", price: "₹3,499", description: "Complete facial hair removal", features: ["Upper lip + Chin + Sideburns", "6-session package available", "Free touch-ups", "Premium aftercare"], popular: true },
-      { name: "Full Body", price: "₹12,999", description: "Head to toe transformation", features: ["All body areas included", "Priority scheduling", "Dedicated therapist", "Complimentary spa session"] },
+      { name: "Single Area", price: "Contact for Quote", description: "Perfect for trying out", features: ["Any single small area", "Free consultation", "Patch test included", "Aftercare kit"] },
+      { name: "Full Face", price: "Contact for Quote", description: "Complete facial hair removal", features: ["Upper lip + Chin + Sideburns", "6-session package available", "Free touch-ups", "Premium aftercare"], popular: true },
+      { name: "Full Body", price: "Contact for Quote", description: "Head to toe transformation", features: ["All body areas included", "Priority scheduling", "Dedicated therapist", "Complimentary spa session"] },
     ],
     
     faqs: [
@@ -173,8 +173,8 @@ export const servicesData: Record<string, ServiceData> = {
     tagline: "Freeze away stubborn fat — permanently",
     heroImage: "https://yspstvqinawnszuxdjhy.supabase.co/storage/v1/object/public/gallery-images/1769536099287-1ztzqc4.png",
     heroOverlay: "from-[hsl(210,60%,5%)]/95 via-[hsl(210,60%,5%)]/70 to-transparent",
-    description: "The world's #1 non-invasive fat reduction treatment uses patented cryolipolysis technology to freeze and permanently eliminate stubborn fat cells.",
-    longDescription: "CoolSculpting® is the revolutionary fat-freezing treatment that targets and eliminates stubborn fat cells that resist diet and exercise. Using patented cryolipolysis technology, we precisely cool fat cells to trigger their natural death, which your body then eliminates naturally over time. The result? A sculpted, contoured body without surgery, needles, or downtime.",
+    description: "The world's #1 FDA-cleared non-invasive fat reduction treatment uses patented cryolipolysis to permanently freeze and eliminate stubborn fat cells.",
+    longDescription: "CoolSculpting® is the revolutionary fat-freezing treatment that targets and eliminates stubborn fat cells that resist diet and exercise. Using patented cryolipolysis technology, we precisely cool fat cells to 4°C to trigger natural cell death (apoptosis), which your body then naturally eliminates over 8-12 weeks. Enjoy a permanently sculpted, contoured body without surgery, needles, or downtime. With our DualSculpting capability, treat two areas simultaneously.",
     icon: Snowflake,
     badge: "FDA-Cleared",
     
@@ -204,9 +204,9 @@ export const servicesData: Record<string, ServiceData> = {
     ],
     
     pricing: [
-      { name: "Single Area", price: "₹15,000", description: "Treat one problem area", features: ["One applicator session", "Body assessment", "Progress tracking", "Aftercare guidance"] },
-      { name: "DualSculpting", price: "₹25,000", description: "Two areas, one session", features: ["Two areas simultaneously", "50% time savings", "Comprehensive assessment", "Dedicated specialist"], popular: true },
-      { name: "Full Transformation", price: "₹75,000", description: "Complete body contouring", features: ["Up to 6 areas", "Multiple sessions included", "VIP scheduling", "Complimentary maintenance"] },
+      { name: "Single Area", price: "Contact for Quote", description: "Treat one problem area", features: ["One applicator session", "Body assessment", "Progress tracking", "Aftercare guidance"] },
+      { name: "DualSculpting", price: "Contact for Quote", description: "Two areas, one session", features: ["Two areas simultaneously", "50% time savings", "Comprehensive assessment", "Dedicated specialist"], popular: true },
+      { name: "Full Transformation", price: "Contact for Quote", description: "Complete body contouring", features: ["Up to 6 areas", "Multiple sessions included", "VIP scheduling", "Complimentary maintenance"] },
     ],
     
     faqs: [
@@ -258,8 +258,8 @@ export const servicesData: Record<string, ServiceData> = {
     tagline: "Transform your skin with medical-grade treatments",
     heroImage: "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=1920&q=80",
     heroOverlay: "from-[hsl(150,40%,4%)]/95 via-[hsl(150,40%,4%)]/70 to-transparent",
-    description: "From HydraFacials to chemical peels, LED therapy to skin boosters — our clinical-grade skin treatments address every concern with precision and care.",
-    longDescription: "Your skin tells your story. Let us help you write a beautiful one. Our advanced skin treatments combine cutting-edge technology with proven clinical techniques to address every skin concern — from acne and pigmentation to aging and dullness. Each treatment is customized to your unique skin type and goals.",
+    description: "Comprehensive clinical skin treatments including HydraFacials, chemical peels, LED therapy, and skin boosters addressing acne, pigmentation, aging, and dullness.",
+    longDescription: "Your skin tells your story. Let us help you write a beautiful one. Our advanced skin treatments combine cutting-edge technology with proven clinical techniques to address every skin concern — from stubborn acne and melasma to fine lines and dullness. Each treatment is customized to your unique skin type and concerns. See visible results from your first session, with progressive improvement over time.",
     icon: Sun,
     badge: "Clinical Grade",
     
@@ -289,9 +289,9 @@ export const servicesData: Record<string, ServiceData> = {
     ],
     
     pricing: [
-      { name: "Express Glow", price: "₹2,499", description: "Quick radiance boost", features: ["Basic HydraFacial", "LED therapy add-on", "Hydrating mask", "Sunscreen application"] },
-      { name: "Signature Facial", price: "₹4,999", description: "Complete skin transformation", features: ["Full HydraFacial", "Chemical peel", "LED therapy", "Custom serum infusion"], popular: true },
-      { name: "Premium Package", price: "₹15,999", description: "4-session transformation", features: ["4 customized sessions", "Skin analysis included", "Home care kit", "Progress tracking"] },
+      { name: "Express Glow", price: "Contact for Quote", description: "Quick radiance boost", features: ["Basic HydraFacial", "LED therapy add-on", "Hydrating mask", "Sunscreen application"] },
+      { name: "Signature Facial", price: "Contact for Quote", description: "Complete skin transformation", features: ["Full HydraFacial", "Chemical peel", "LED therapy", "Custom serum infusion"], popular: true },
+      { name: "Premium Package", price: "Contact for Quote", description: "4-session transformation", features: ["4 customized sessions", "Skin analysis included", "Home care kit", "Progress tracking"] },
     ],
     
     faqs: [
@@ -343,8 +343,8 @@ export const servicesData: Record<string, ServiceData> = {
     tagline: "Enhance your beauty, not change it",
     heroImage: "https://yspstvqinawnszuxdjhy.supabase.co/storage/v1/object/public/gallery-images/1770711500404-ywt79g6.jpg",
     heroOverlay: "from-[hsl(280,40%,4%)]/95 via-[hsl(280,40%,4%)]/70 to-transparent",
-    description: "Subtle, natural-looking results administered by certified aesthetic physicians. We exclusively use genuine Allergan Botox and premium dermal fillers.",
-    longDescription: "The art of injectables lies in enhancement, not transformation. Our certified aesthetic physicians specialize in natural-looking results that refresh your appearance while maintaining your unique features. We use only genuine Allergan Botox and premium dermal fillers like Juvederm and Restylane.",
+    description: "Subtle, natural-looking results administered by certified aesthetic physicians. 100% genuine Allergan Botox and premium dermal fillers — no counterfeits.",
+    longDescription: "The art of injectables lies in enhancement, not transformation. Our Allergan-certified aesthetic physicians specialize in natural-looking results that refresh your appearance while maintaining your unique features and expressions. We use only 100% genuine Allergan Botox and premium dermal fillers like Juvederm and Restylane. Results appear in 3-7 days and last 3-4 months for Botox, 9-12 months for fillers.",
     icon: Syringe,
     badge: "Allergan Certified",
     
@@ -374,9 +374,9 @@ export const servicesData: Record<string, ServiceData> = {
     ],
     
     pricing: [
-      { name: "Botox - Single Area", price: "₹8,000", description: "Target one concern", features: ["One treatment area", "Genuine Allergan Botox", "Free consultation", "2-week follow-up"] },
-      { name: "Botox - Full Face", price: "₹18,000", description: "Complete refresh", features: ["Forehead + Frown + Crow's feet", "Natural, balanced results", "Physician administered", "Touch-up if needed"], popular: true },
-      { name: "Dermal Fillers", price: "₹25,000", description: "Per syringe", features: ["Premium Juvederm/Restylane", "Lips, cheeks, or jawline", "Results last 9-12 months", "Complimentary consultation"] },
+      { name: "Botox - Single Area", price: "Contact for Quote", description: "Target one concern", features: ["One treatment area", "Genuine Allergan Botox", "Free consultation", "2-week follow-up"] },
+      { name: "Botox - Full Face", price: "Contact for Quote", description: "Complete refresh", features: ["Forehead + Frown + Crow's feet", "Natural, balanced results", "Physician administered", "Touch-up if needed"], popular: true },
+      { name: "Dermal Fillers", price: "Contact for Quote", description: "Per syringe", features: ["Premium Juvederm/Restylane", "Lips, cheeks, or jawline", "Results last 9-12 months", "Complimentary consultation"] },
     ],
     
     faqs: [
@@ -428,8 +428,8 @@ export const servicesData: Record<string, ServiceData> = {
     tagline: "Unveil your skin's natural brilliance",
     heroImage: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=1920&q=80",
     heroOverlay: "from-[hsl(30,40%,4%)]/95 via-[hsl(30,40%,4%)]/70 to-transparent",
-    description: "Gently exfoliate and rejuvenate your skin with our advanced microdermabrasion treatments. Reduce fine lines, sun damage, and uneven texture for a radiant glow.",
-    longDescription: "Microdermabrasion is the gold standard in non-invasive skin resurfacing. Using diamond-tip technology, we gently remove the outermost layer of dead skin cells to reveal the fresh, youthful skin beneath. Perfect for addressing fine lines, sun damage, acne scars, and uneven texture.",
+    description: "Gentle yet effective exfoliation using diamond-tip technology to reveal fresh, radiant skin. Perfect for fine lines, sun damage, acne scars, and uneven texture.",
+    longDescription: "Microdermabrasion is the gold standard in non-invasive skin resurfacing for all skin types. Using advanced diamond-tip technology, we gently remove the outermost layer of dead skin cells to reveal the fresh, youthful skin beneath. Perfect for addressing fine lines, sun damage, acne scars, hyperpigmentation, and uneven texture. Stimulates natural collagen production for long-lasting improvements.",
     icon: Diamond,
     badge: "Skin Renewal",
     
@@ -459,9 +459,9 @@ export const servicesData: Record<string, ServiceData> = {
     ],
     
     pricing: [
-      { name: "Single Session", price: "₹1,999", description: "Try it out", features: ["Full face treatment", "Hydrating mask", "SPF application", "Aftercare guidance"] },
-      { name: "Course of 4", price: "₹6,999", description: "Best results", features: ["4 sessions", "Progressive improvement", "Custom intensity", "Home care kit included"], popular: true },
-      { name: "Premium Package", price: "₹12,999", description: "Complete transformation", features: ["8 sessions", "Face + Neck treatment", "LED therapy add-on", "Premium skincare kit"] },
+      { name: "Single Session", price: "Contact for Quote", description: "Try it out", features: ["Full face treatment", "Hydrating mask", "SPF application", "Aftercare guidance"] },
+      { name: "Course of 4", price: "Contact for Quote", description: "Best results", features: ["4 sessions", "Progressive improvement", "Custom intensity", "Home care kit included"], popular: true },
+      { name: "Premium Package", price: "Contact for Quote", description: "Complete transformation", features: ["8 sessions", "Face + Neck treatment", "LED therapy add-on", "Premium skincare kit"] },
     ],
     
     faqs: [
@@ -513,8 +513,8 @@ export const servicesData: Record<string, ServiceData> = {
     tagline: "Glow on your special day and beyond",
     heroImage: "https://images.pexels.com/photos/11742213/pexels-photo-11742213.jpeg?w=1920&q=80",
     heroOverlay: "from-[hsl(350,40%,4%)]/95 via-[hsl(350,40%,4%)]/70 to-transparent",
-    description: "Comprehensive pre-bridal treatments combining laser, skincare, spa, and salon services into a complete wedding transformation journey.",
-    longDescription: "Your wedding day deserves nothing less than perfection. Our luxury bridal packages are designed to transform you from the inside out, starting 6 months before your special day. We combine our best treatments — laser hair removal, skin rejuvenation, body contouring, and spa therapies — into a comprehensive bridal journey.",
+    description: "Comprehensive pre-bridal transformation combining laser hair removal, skin rejuvenation, body contouring, spa treatments, and professional makeup.",
+    longDescription: "Your wedding day deserves nothing less than perfection. Our luxury bridal packages transform you from the inside out, starting 6 months before your special day. We combine our best treatments — permanent laser hair removal, advanced skin treatments, CoolSculpting body contouring, rejuvenating spa therapies, and professional HD makeup — into a complete bridal beauty journey. Look and feel like your best self.",
     icon: Heart,
     badge: "Premium Packages",
     
@@ -544,9 +544,9 @@ export const servicesData: Record<string, ServiceData> = {
     ],
     
     pricing: [
-      { name: "Essential Bride", price: "₹25,000", description: "Core treatments", features: ["Full face laser (6 sessions)", "4 HydraFacials", "Bridal glow facial", "Pre-wedding spa session"] },
-      { name: "Radiant Bride", price: "₹75,000", description: "Complete transformation", features: ["Full body laser", "Monthly skin treatments", "CoolSculpting (2 areas)", "Spa package", "HD Bridal makeup"], popular: true },
-      { name: "Royal Bride", price: "₹1,50,000", description: "Ultimate luxury", features: ["Everything in Radiant", "Premium skincare kit", "Bridesmaids packages (2)", "VIP scheduling", "Dedicated bridal coordinator"] },
+      { name: "Essential Bride", price: "Contact for Quote", description: "Core treatments", features: ["Full face laser (6 sessions)", "4 HydraFacials", "Bridal glow facial", "Pre-wedding spa session"] },
+      { name: "Radiant Bride", price: "Contact for Quote", description: "Complete transformation", features: ["Full body laser", "Monthly skin treatments", "CoolSculpting (2 areas)", "Spa package", "HD Bridal makeup"], popular: true },
+      { name: "Royal Bride", price: "Contact for Quote", description: "Ultimate luxury", features: ["Everything in Radiant", "Premium skincare kit", "Bridesmaids packages (2)", "VIP scheduling", "Dedicated bridal coordinator"] },
     ],
     
     faqs: [
@@ -598,8 +598,8 @@ export const servicesData: Record<string, ServiceData> = {
     tagline: "Rejuvenate your body, refresh your mind",
     heroImage: "https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=1920&q=80",
     heroOverlay: "from-[hsl(180,40%,4%)]/95 via-[hsl(180,40%,4%)]/70 to-transparent",
-    description: "Experience complete relaxation with our therapeutic spa treatments. From Swedish massage to detox wraps, rejuvenate your body and mind.",
-    longDescription: "Step into our serene spa sanctuary and leave the world behind. Our therapeutic spa treatments are designed to melt away stress, ease muscle tension, and restore your natural balance. Every treatment is performed by certified therapists using premium products in our tranquil, ambient environment.",
+    description: "Therapeutic spa treatments from Swedish massage to detox wraps. Melt away stress, ease muscle tension, and restore your natural balance.",
+    longDescription: "Step into our serene spa sanctuary and leave the world behind. Our therapeutic spa treatments are designed to melt away stress, ease muscle tension, and restore your natural balance. From Swedish and deep tissue massage to hot stone therapy and detox wraps, every treatment is performed by certified therapists using premium aromatherapy products in our tranquil, ambient environment.",
     icon: Flower2,
     badge: "Wellness",
     
@@ -629,9 +629,9 @@ export const servicesData: Record<string, ServiceData> = {
     ],
     
     pricing: [
-      { name: "Express Escape", price: "₹1,499", description: "Quick relaxation", features: ["30-min back massage", "Scalp massage", "Aromatherapy", "Herbal tea"] },
-      { name: "Signature Spa", price: "₹3,999", description: "Complete relaxation", features: ["60-min full body massage", "Body scrub", "Head massage", "Post-spa refreshments"], popular: true },
-      { name: "Ultimate Indulgence", price: "₹7,999", description: "Half-day retreat", features: ["90-min massage", "Body wrap", "Facial", "Manicure/Pedicure", "Lunch included"] },
+      { name: "Express Escape", price: "Contact for Quote", description: "Quick relaxation", features: ["30-min back massage", "Scalp massage", "Aromatherapy", "Herbal tea"] },
+      { name: "Signature Spa", price: "Contact for Quote", description: "Complete relaxation", features: ["60-min full body massage", "Body scrub", "Head massage", "Post-spa refreshments"], popular: true },
+      { name: "Ultimate Indulgence", price: "Contact for Quote", description: "Half-day retreat", features: ["90-min massage", "Body wrap", "Facial", "Manicure/Pedicure", "Lunch included"] },
     ],
     
     faqs: [
@@ -683,8 +683,8 @@ export const servicesData: Record<string, ServiceData> = {
     tagline: "Where expertise meets elegance",
     heroImage: "https://images.pexels.com/photos/4783290/pexels-photo-4783290.jpeg?w=1920&q=80",
     heroOverlay: "from-[hsl(320,40%,4%)]/95 via-[hsl(320,40%,4%)]/70 to-transparent",
-    description: "Expert hair, nail, makeup, and grooming services delivered with clinical precision and luxury experience.",
-    longDescription: "Our premium salon brings the same level of excellence and attention to detail you expect from Empathy Laser Clinic to everyday beauty services. From precision haircuts to artistic nail designs, every service is performed by trained professionals using premium products.",
+    description: "Expert hair, nail, makeup, and grooming services with clinical precision and luxury. From precision cuts to artistic designs.",
+    longDescription: "Our premium salon brings the same level of excellence and attention to detail you expect from Empathy Laser Clinic to everyday beauty services. From precision haircuts and professional colouring to artistic nail designs and flawless makeup, every service is performed by trained professionals using premium products. Whether you need a quick groom or a complete transformation, we deliver results.",
     icon: Scissors,
     badge: "Expert Stylists",
     
@@ -714,9 +714,9 @@ export const servicesData: Record<string, ServiceData> = {
     ],
     
     pricing: [
-      { name: "Quick Groom", price: "₹499", description: "Essential touch-ups", features: ["Eyebrow threading", "Upper lip", "Basic facial cleanup", "Quick styling tips"] },
-      { name: "Pamper Session", price: "₹1,999", description: "Complete refresh", features: ["Haircut & styling", "Manicure OR Pedicure", "Eyebrow shaping", "Mini facial"], popular: true },
-      { name: "Total Makeover", price: "₹4,999", description: "Head to toe beauty", features: ["Haircut & colour", "Mani-Pedi combo", "Full waxing", "Party makeup"] },
+      { name: "Quick Groom", price: "Contact for Quote", description: "Essential touch-ups", features: ["Eyebrow threading", "Upper lip", "Basic facial cleanup", "Quick styling tips"] },
+      { name: "Pamper Session", price: "Contact for Quote", description: "Complete refresh", features: ["Haircut & styling", "Manicure OR Pedicure", "Eyebrow shaping", "Mini facial"], popular: true },
+      { name: "Total Makeover", price: "Contact for Quote", description: "Head to toe beauty", features: ["Haircut & colour", "Mani-Pedi combo", "Full waxing", "Party makeup"] },
     ],
     
     faqs: [

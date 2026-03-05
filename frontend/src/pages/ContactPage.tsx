@@ -7,7 +7,7 @@ const contactMethods = [
   { icon: Phone, title: "Call Us", value: "9811157787", subValue: "9811157784", href: "tel:+919811157787", color: "bg-green-500/10 text-green-500" },
   { icon: MessageCircle, title: "WhatsApp", value: "Quick Response", subValue: "Chat with us", href: "https://wa.me/919811157787", color: "bg-emerald-500/10 text-emerald-500" },
   { icon: Mail, title: "Email Us", value: "info@empathylaserclinic.com", subValue: "We reply within 24hrs", href: "mailto:info@empathylaserclinic.com", color: "bg-blue-500/10 text-blue-500" },
-  { icon: MapPin, title: "Visit Us", value: "Delhi NCR, India", subValue: "Get directions", href: "https://maps.app.goo.gl/DQ6ALz6CcUeS557f9", color: "bg-red-500/10 text-red-500" },
+  { icon: MapPin, title: "Visit Us", value: "Delhi NCR, India", subValue: "Get directions", href: "https://share.google/29sGDTys9LeyLnfd6", color: "bg-red-500/10 text-red-500" },
 ];
 
 const services = [
@@ -25,7 +25,7 @@ const services = [
 const faqs = [
   { q: "How do I book an appointment?", a: "You can book through our contact form, call us directly, or message us on WhatsApp. We'll confirm your appointment within 2 hours." },
   { q: "Is the consultation free?", a: "Yes! Your first consultation is completely free. We'll assess your needs and create a personalized treatment plan with no obligation." },
-  { q: "What are your clinic hours?", a: "Monday to Saturday: 10:00 AM - 7:00 PM. Sundays are by appointment only for special requests." },
+  { q: "What are your clinic hours?", a: "Monday: Closed. Tuesday - Sunday: 10:00 AM - 7:00 PM. Visit us any day from Tuesday onwards!" },
   { q: "Where are you located?", a: "We're conveniently located in Delhi NCR. Click on 'Get Directions' above for the exact location and navigation." },
 ];
 
@@ -134,23 +134,19 @@ const ContactPage = () => {
                 </div>
                 <div className="space-y-3">
                   <div className="flex justify-between items-center py-2 border-b border-border">
-                    <span className="text-foreground">Monday - Friday</span>
-                    <span className="text-primary font-medium">10:00 AM - 7:00 PM</span>
+                    <span className="text-foreground">Monday</span>
+                    <span className="text-red-500 font-medium">Closed</span>
                   </div>
                   <div className="flex justify-between items-center py-2 border-b border-border">
-                    <span className="text-foreground">Saturday</span>
+                    <span className="text-foreground">Tuesday - Sunday</span>
                     <span className="text-primary font-medium">10:00 AM - 7:00 PM</span>
-                  </div>
-                  <div className="flex justify-between items-center py-2">
-                    <span className="text-foreground">Sunday</span>
-                    <span className="text-muted-foreground">By Appointment</span>
                   </div>
                 </div>
               </motion.div>
 
               {/* Map */}
               <motion.a
-                href="https://maps.app.goo.gl/DQ6ALz6CcUeS557f9"
+                href="https://share.google/29sGDTys9LeyLnfd6"
                 target="_blank"
                 rel="noopener noreferrer"
                 initial={{ opacity: 0, y: 20 }}
