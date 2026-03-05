@@ -86,7 +86,7 @@ export const servicesData: Record<string, ServiceData> = {
     accent: "Hair Removal",
     subtitle: "USFDA CLEARED · SAFE FOR ALL SKIN TYPES",
     tagline: "Experience Delhi NCR's most trusted laser hair removal",
-    heroImage: "https://images.unsplash.com/photo-1700760933574-9f0f4ea9aa3b?w=1920&q=80",
+    heroImage: "https://yspstvqinawnszuxdjhy.supabase.co/storage/v1/object/public/gallery-images/1770572844445-54z2sxh.jpg",
     heroOverlay: "from-background/95 via-background/70 to-background/30",
     description: "Our advanced Diode Laser technology is specifically calibrated for Indian skin tones, delivering permanent hair reduction with zero downtime.",
     longDescription: "Say goodbye to the endless cycle of waxing, shaving, and threading. Our state-of-the-art 808nm Diode Laser technology targets hair follicles at their root, disabling their ability to regrow. The result? Silky smooth skin that lasts a lifetime. Our FDA-cleared treatment is safe for all skin types, including the full range of Indian skin tones (Fitzpatrick I-VI).",
