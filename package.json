@@ -4,10 +4,11 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "cd frontend && npm install && npm run start",
+    "dev": "cd frontend && npm install && npx vite --host 0.0.0.0 --port 8080",
     "build": "cd frontend && npm install && npm run build",
     "build:dev": "cd frontend && npm install && npm run build:dev",
     "preview": "cd frontend && npm run preview",
-    "test": "cd frontend && npm run test"
+    "test": "cd frontend && npm run test",
+    "start": "cd frontend && npm install && npx vite --host 0.0.0.0 --port 8080"
   }
 }
