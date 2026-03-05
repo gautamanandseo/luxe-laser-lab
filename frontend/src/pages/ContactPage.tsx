@@ -25,7 +25,7 @@ const services = [
 const faqs = [
   { q: "How do I book an appointment?", a: "You can book through our contact form, call us directly, or message us on WhatsApp. We'll confirm your appointment within 2 hours." },
   { q: "Is the consultation free?", a: "Yes! Your first consultation is completely free. We'll assess your needs and create a personalized treatment plan with no obligation." },
-  { q: "What are your clinic hours?", a: "Monday to Sunday: 9:00 AM - 7:30 PM. We're open every day for your convenience." },
+  { q: "What are your clinic hours?", a: "Monday: Closed. Tuesday - Sunday: 10:00 AM - 7:00 PM. Visit us any day from Tuesday onwards!" },
   { q: "Where are you located?", a: "We're conveniently located in Delhi NCR. Click on 'Get Directions' above for the exact location and navigation." },
 ];
 
@@ -134,12 +134,12 @@ const ContactPage = () => {
                 </div>
                 <div className="space-y-3">
                   <div className="flex justify-between items-center py-2 border-b border-border">
-                    <span className="text-foreground">Monday - Saturday</span>
-                    <span className="text-primary font-medium">9:00 AM - 7:30 PM</span>
+                    <span className="text-foreground">Monday</span>
+                    <span className="text-red-500 font-medium">Closed</span>
                   </div>
-                  <div className="flex justify-between items-center py-2">
-                    <span className="text-foreground">Sunday</span>
-                    <span className="text-primary font-medium">9:00 AM - 7:30 PM</span>
+                  <div className="flex justify-between items-center py-2 border-b border-border">
+                    <span className="text-foreground">Tuesday - Sunday</span>
+                    <span className="text-primary font-medium">10:00 AM - 7:00 PM</span>
                   </div>
                 </div>
               </motion.div>
