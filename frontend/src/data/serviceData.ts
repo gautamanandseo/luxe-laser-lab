@@ -133,10 +133,10 @@ export const servicesData: Record<string, ServiceData> = {
     ],
     
     galleryImages: [
-      "https://images.unsplash.com/photo-1700760933574-9f0f4ea9aa3b?w=800&q=80",
-      "https://images.unsplash.com/photo-1700760933941-3a06a28fbf47?w=800&q=80",
-      "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=800&q=80",
-      "https://images.unsplash.com/photo-1595871151608-bc7abd1caca3?w=800&q=80",
+      "https://yspstvqinawnszuxdjhy.supabase.co/storage/v1/object/public/gallery-images/1770572844445-54z2sxh.jpg",
+      "https://yspstvqinawnszuxdjhy.supabase.co/storage/v1/object/public/gallery-images/1769536078267-epk3faf.png",
+      "https://yspstvqinawnszuxdjhy.supabase.co/storage/v1/object/public/gallery-images/1769501926134_8d1rt_images89jpg.jpg",
+      "https://yspstvqinawnszuxdjhy.supabase.co/storage/v1/object/public/gallery-images/1769501925889_k94q0_LaserHairRemova.jpg",
     ],
     
     secondaryImage: "https://images.unsplash.com/photo-1700760933941-3a06a28fbf47?w=1200&q=80",
