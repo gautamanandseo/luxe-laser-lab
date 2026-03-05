@@ -2,6 +2,11 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Check, Sparkles, Snowflake, Sun, Heart, Flower2, Scissors, Syringe, Diamond } from "lucide-react";
 import { Link } from "react-router-dom";
+import serviceLaser from "@/assets/service-laser.png";
+import serviceCoolsculpting from "@/assets/service-coolsculpting.png";
+import serviceAcne from "@/assets/service-acne.png";
+import serviceSkinResurfacing from "@/assets/service-skin-resurfacing.jpg";
+import serviceBotox from "@/assets/service-botox.jpg";
 
 const tabs = [
   {
@@ -14,6 +19,7 @@ const tabs = [
     features: ["Safe for all Indian skin types", "Advanced Diode Laser Technology", "Zero downtime", "Permanent hair reduction", "Full body treatments available"],
     price: "Starting from ₹1,999",
     link: "/laser-hair-removal",
+    image: serviceLaser,
   },
   {
     id: "cool",
@@ -25,6 +31,7 @@ const tabs = [
     features: ["27% fat reduction per session", "9 treatable body areas", "Non-surgical & non-invasive", "FDA-cleared technology", "Permanent fat cell elimination"],
     price: "Starting from ₹15,000",
     link: "/coolsculpting",
+    image: serviceCoolsculpting,
   },
   {
     id: "skin",
@@ -36,6 +43,7 @@ const tabs = [
     features: ["HydraFacial & LED Therapy", "Chemical Peels", "Skin Boosters", "Pigmentation correction", "Anti-aging treatments"],
     price: "Starting from ₹2,499",
     link: "/skin-treatments",
+    image: serviceAcne,
   },
   {
     id: "bridal",
@@ -47,6 +55,7 @@ const tabs = [
     features: ["6-month prep programs", "Complete skin transformation", "Hair removal packages", "HD & Airbrush makeup", "Bridesmaids packages"],
     price: "Starting from ₹25,000",
     link: "/bridal-packages",
+    image: serviceSkinResurfacing,
   },
   {
     id: "spa",
@@ -58,6 +67,7 @@ const tabs = [
     features: ["Swedish & Deep Tissue Massage", "Aromatherapy", "Body Wraps & Scrubs", "Hot Stone Therapy", "Couple Spa packages"],
     price: "Starting from ₹1,499",
     link: "/spa-services",
+    image: serviceSkinResurfacing,
   },
   {
     id: "salon",
@@ -69,6 +79,7 @@ const tabs = [
     features: ["Hair Styling & Colour", "Keratin Treatments", "Manicure & Pedicure", "Professional Makeup", "Waxing & Threading"],
     price: "Starting from ₹499",
     link: "/salon-services",
+    image: serviceAcne,
   },
   {
     id: "botox",
@@ -80,6 +91,7 @@ const tabs = [
     features: ["Genuine Allergan products", "Certified physicians", "Forehead, Crow's Feet, Lip Flip", "Lip, Cheek & Jawline Fillers", "Natural-looking results"],
     price: "Starting from ₹8,000",
     link: "/botox-fillers",
+    image: serviceBotox,
   },
   {
     id: "micro",
@@ -91,6 +103,7 @@ const tabs = [
     features: ["Diamond-tip technology", "Fine line reduction", "Sun damage repair", "Improved skin texture", "Course packages available"],
     price: "Starting from ₹1,999",
     link: "/microdermabrasion",
+    image: serviceSkinResurfacing,
   },
 ];
 
@@ -137,16 +150,23 @@ const ServicesSection = () => {
           >
             {/* Visual */}
             <div className="relative">
-              <div className="aspect-[4/3] bg-secondary rounded-lg overflow-hidden relative">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <tab.icon size={120} className="text-primary/10" />
-                </div>
+              <div className="aspect-[4/3] bg-secondary rounded-2xl overflow-hidden relative group">
+                <img
+                  src={tab.image}
+                  alt={tab.title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
                 {/* Decorative frame corners */}
-                <div className="absolute top-4 left-4 w-12 h-12 border-t border-l border-primary/40" />
-                <div className="absolute bottom-4 right-4 w-12 h-12 border-b border-r border-primary/40" />
+                <div className="absolute top-4 left-4 w-12 h-12 border-t-2 border-l-2 border-primary/40" />
+                <div className="absolute bottom-4 right-4 w-12 h-12 border-b-2 border-r-2 border-primary/40" />
                 {/* Badge */}
-                <div className="absolute top-6 right-6 bg-primary/20 text-primary text-xs px-3 py-1 rounded-full font-sans uppercase tracking-wider">
+                <div className="absolute top-6 right-6 bg-primary/90 backdrop-blur-sm text-primary-foreground text-xs px-4 py-1.5 rounded-full font-sans uppercase tracking-wider">
                   {tab.badge}
+                </div>
+                {/* Floating icon */}
+                <div className="absolute bottom-6 left-6 w-14 h-14 bg-card/80 backdrop-blur-sm rounded-xl flex items-center justify-center border border-border">
+                  <tab.icon size={24} className="text-primary" />
                 </div>
               </div>
             </div>
