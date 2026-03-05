@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Phone, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import EmpathyLogo from "./EmpathyLogo";
 
 const services = [
   { name: "Laser Hair Removal", path: "/laser-hair-removal" },
@@ -60,9 +61,9 @@ const Navbar = () => {
 
       {/* Main Nav */}
       <nav className={`fixed top-[36px] left-0 right-0 z-50 transition-all duration-500 ${scrolled ? "glass border-b border-primary/20" : "bg-transparent"}`}>
-        <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-          <Link to="/" className="font-serif text-3xl text-primary tracking-wide">
-            Empathy
+        <div className="container mx-auto px-6 py-3 flex justify-between items-center">
+          <Link to="/" className="flex items-center">
+            <EmpathyLogo size="default" />
           </Link>
 
           {/* Desktop Links */}
@@ -87,12 +88,10 @@ const Navbar = () => {
                   </Link>
                 )}
 
-                {/* Active indicator */}
                 {location.pathname === link.path && (
                   <div className="absolute -bottom-1 left-0 right-0 h-px bg-primary" />
                 )}
 
-                {/* Mega dropdown */}
                 {link.hasDropdown && (
                   <div
                     onMouseEnter={() => setServicesOpen(true)}
@@ -133,6 +132,9 @@ const Navbar = () => {
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-40 bg-background/98 pt-28 px-6 overflow-y-auto"
           >
+            <div className="flex justify-center mb-8">
+              <EmpathyLogo size="large" />
+            </div>
             <div className="space-y-2">
               {navLinks.filter(l => !l.hasDropdown).map((link, i) => (
                 <motion.div key={link.name} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.1 }}>

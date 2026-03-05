@@ -1,5 +1,6 @@
-import { Phone, Mail, MapPin, Instagram, Facebook, Youtube, ArrowRight } from "lucide-react";
+import { Phone, Mail, MapPin, Instagram, Facebook, Youtube, ArrowRight, Twitter } from "lucide-react";
 import { Link } from "react-router-dom";
+import EmpathyLogo from "./EmpathyLogo";
 
 const services = [
   { name: "Laser Hair Removal", path: "/laser-hair-removal" },
@@ -20,6 +21,13 @@ const clinicLinks = [
   { name: "FAQ", path: "/#faq" },
 ];
 
+const socialLinks = [
+  { icon: Instagram, href: "https://www.instagram.com/empathylaserclinic/", label: "Instagram" },
+  { icon: Facebook, href: "https://www.facebook.com/empathylaserclinic", label: "Facebook" },
+  { icon: Youtube, href: "https://www.youtube.com/user/tourismdentalindia", label: "YouTube" },
+  { icon: Twitter, href: "https://twitter.com/delhilaser", label: "Twitter" },
+];
+
 const Footer = () => {
   return (
     <footer className="bg-secondary border-t border-border">
@@ -27,14 +35,14 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
           <div>
-            <h3 className="font-serif text-3xl text-primary mb-4">Empathy</h3>
+            <EmpathyLogo size="default" className="mb-4" />
             <p className="text-muted-foreground text-sm leading-relaxed mb-6">
               Where Clinical Precision Meets Luxury Experience. Delhi NCR's most trusted aesthetic clinic since 2009.
             </p>
-            <div className="flex gap-4">
-              {[Instagram, Facebook, Youtube].map((Icon, i) => (
-                <a key={i} href="#" className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary transition-colors">
-                  <Icon size={16} />
+            <div className="flex gap-3">
+              {socialLinks.map((social, i) => (
+                <a key={i} href={social.href} target="_blank" rel="noopener noreferrer" aria-label={social.label} className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary transition-colors">
+                  <social.icon size={16} />
                 </a>
               ))}
             </div>
