@@ -171,7 +171,7 @@ export const servicesData: Record<string, ServiceData> = {
     accent: "Fat Freezing",
     subtitle: "FDA-CLEARED NON-SURGICAL BODY CONTOURING",
     tagline: "Freeze away stubborn fat — permanently",
-    heroImage: "https://images.unsplash.com/photo-1731514721772-329626f84c8b?w=1920&q=80",
+    heroImage: "https://yspstvqinawnszuxdjhy.supabase.co/storage/v1/object/public/gallery-images/1769536099287-1ztzqc4.png",
     heroOverlay: "from-[hsl(210,60%,5%)]/95 via-[hsl(210,60%,5%)]/70 to-transparent",
     description: "The world's #1 non-invasive fat reduction treatment uses patented cryolipolysis technology to freeze and permanently eliminate stubborn fat cells.",
     longDescription: "CoolSculpting® is the revolutionary fat-freezing treatment that targets and eliminates stubborn fat cells that resist diet and exercise. Using patented cryolipolysis technology, we precisely cool fat cells to trigger their natural death, which your body then eliminates naturally over time. The result? A sculpted, contoured body without surgery, needles, or downtime.",
