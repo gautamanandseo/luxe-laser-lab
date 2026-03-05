@@ -1,0 +1,12 @@
+{
+  "name": "empathy-laser-clinic",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "cd frontend && npm run start",
+    "build": "cd frontend && npm run build",
+    "preview": "cd frontend && npm run preview",
+    "test": "cd frontend && npm run test"
+  }
+}
