@@ -341,7 +341,7 @@ export const servicesData: Record<string, ServiceData> = {
     accent: "Botox & Fillers",
     subtitle: "ALLERGAN CERTIFIED · GENUINE PRODUCTS ONLY",
     tagline: "Enhance your beauty, not change it",
-    heroImage: "https://images.pexels.com/photos/3762661/pexels-photo-3762661.jpeg?w=1920&q=80",
+    heroImage: "https://yspstvqinawnszuxdjhy.supabase.co/storage/v1/object/public/gallery-images/1770711500404-ywt79g6.jpg",
     heroOverlay: "from-[hsl(280,40%,4%)]/95 via-[hsl(280,40%,4%)]/70 to-transparent",
     description: "Subtle, natural-looking results administered by certified aesthetic physicians. We exclusively use genuine Allergan Botox and premium dermal fillers.",
     longDescription: "The art of injectables lies in enhancement, not transformation. Our certified aesthetic physicians specialize in natural-looking results that refresh your appearance while maintaining your unique features. We use only genuine Allergan Botox and premium dermal fillers like Juvederm and Restylane.",
