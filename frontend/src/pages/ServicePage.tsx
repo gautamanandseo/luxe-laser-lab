@@ -13,6 +13,7 @@ import heroBridalGen from "@/assets/hero-bridal-gen.jpg";
 import heroSpaGen from "@/assets/hero-spa-gen.jpg";
 import heroSalonGen from "@/assets/hero-salon-gen.jpg";
 import heroMicrodermGen from "@/assets/hero-microderm-gen.jpg";
+import heroResurfxGen from "@/assets/hero-resurfx-gen.jpg";
 
 // AI-generated service images
 import serviceLaserGen from "@/assets/service-laser-gen.jpg";
@@ -23,6 +24,7 @@ import serviceBridalGen from "@/assets/service-bridal-gen.jpg";
 import serviceSpaGen from "@/assets/service-spa-gen.jpg";
 import serviceSalonGen from "@/assets/service-salon-gen.jpg";
 import serviceMicrodermGen from "@/assets/service-microderm-gen.jpg";
+import serviceResurfxGen from "@/assets/service-resurfx-gen.jpg";
 
 const heroImages: Record<string, string> = {
   laser: heroLaserGen,
@@ -33,6 +35,7 @@ const heroImages: Record<string, string> = {
   spa: heroSpaGen,
   salon: heroSalonGen,
   microdermabrasion: heroMicrodermGen,
+  resurfx: heroResurfxGen,
 };
 
 const serviceImages: Record<string, string> = {
@@ -44,6 +47,7 @@ const serviceImages: Record<string, string> = {
   spa: serviceSpaGen,
   salon: serviceSalonGen,
   microdermabrasion: serviceMicrodermGen,
+  resurfx: serviceResurfxGen,
 };
 
 interface ServicePageProps {
