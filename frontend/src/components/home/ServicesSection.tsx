@@ -70,7 +70,7 @@ const tabs = [
     features: ["Swedish & Deep Tissue Massage", "Aromatherapy", "Body Wraps & Scrubs", "Hot Stone Therapy", "Couple Spa packages"],
     price: "Starting from ₹1,499",
     link: "/spa-services",
-    image: serviceSkinResurfacing,
+    image: serviceSpa,
   },
   {
     id: "salon",
