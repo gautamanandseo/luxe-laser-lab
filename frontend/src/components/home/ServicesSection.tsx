@@ -82,7 +82,7 @@ const tabs = [
     features: ["Hair Styling & Colour", "Keratin Treatments", "Manicure & Pedicure", "Professional Makeup", "Waxing & Threading"],
     price: "Starting from ₹499",
     link: "/salon-services",
-    image: serviceAcne,
+    image: serviceSalon,
   },
   {
     id: "botox",
