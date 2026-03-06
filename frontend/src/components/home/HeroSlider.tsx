@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronRight, ArrowRight, Shield } from "lucide-react";
+import { ChevronRight, ArrowRight, Shield, Zap } from "lucide-react";
 import { Link } from "react-router-dom";
 import heroLaser from "@/assets/hero-laser-gen.jpg";
 import heroCool from "@/assets/hero-coolsculpting-gen.jpg";
@@ -142,16 +142,18 @@ const HeroSlider = () => {
       </div>
 
       {/* Slide Controls */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex items-center gap-6">
-        <span className="text-sm font-sans text-primary">
-          {String(current + 1).padStart(2, "0")} <span className="text-foreground/30">/ {String(slides.length).padStart(2, "0")}</span>
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex items-center gap-8 bg-background/30 backdrop-blur-xl border border-white/10 rounded-full px-8 py-4">
+        <span className="text-sm font-sans text-primary font-medium">
+          {String(current + 1).padStart(2, "0")} <span className="text-foreground/40">/ {String(slides.length).padStart(2, "0")}</span>
         </span>
-        <div className="flex gap-2">
+        <div className="flex gap-3">
           {slides.map((_, i) => (
-            <button
+            <motion.button
               key={i}
               onClick={() => setCurrent(i)}
-              className={`h-1 rounded-full transition-all duration-500 ${i === current ? "w-10 bg-primary" : "w-4 bg-foreground/20"}`}
+              whileHover={{ scale: 1.2 }}
+              whileTap={{ scale: 0.95 }}
+              className={`rounded-full transition-all duration-500 ${i === current ? "w-10 h-2 bg-primary" : "w-2 h-2 bg-foreground/20 hover:bg-foreground/40"}`}
             />
           ))}
         </div>

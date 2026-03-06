@@ -31,8 +31,14 @@ const socialLinks = [
 
 const Footer = () => {
   return (
-    <footer className="bg-secondary border-t border-border">
-      <div className="container mx-auto px-6 py-16">
+    <footer className="bg-background/50 backdrop-blur-xl border-t border-white/10 relative overflow-hidden">
+      {/* Gradient Background Elements */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-0 right-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+      </div>
+
+      <div className="relative z-10 container mx-auto px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
           <div>
@@ -105,7 +111,8 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="border-t border-border">
+      {/* Bottom Bar */}
+      <div className="relative z-10 border-t border-white/10">
         <div className="container mx-auto px-6 py-6 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-xs text-muted-foreground">© {new Date().getFullYear()} Empathy Laser Clinic. All rights reserved.</p>
           <div className="flex gap-6">
