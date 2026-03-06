@@ -211,7 +211,7 @@ const ServicePage = ({ service }: ServicePageProps) => {
             >
               <div className="aspect-[4/3] rounded-2xl overflow-hidden">
                 <img
-                  src={data.processImage}
+                  src={processImg}
                   alt={`${data.title} treatment`}
                   className="w-full h-full object-cover"
                 />
