@@ -61,6 +61,7 @@ const BookingSection = () => {
                   <option>Laser Hair Removal</option>
                   <option>CoolSculpting®</option>
                   <option>Skin Treatments</option>
+                  <option>ResurFX™ Skin Resurfacing</option>
                   <option>Botox & Fillers</option>
                   <option>Microdermabrasion</option>
                   <option>Bridal Package</option>

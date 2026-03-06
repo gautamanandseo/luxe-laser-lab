@@ -6,6 +6,7 @@ const services = [
   { name: "Laser Hair Removal", path: "/laser-hair-removal" },
   { name: "CoolSculpting®", path: "/coolsculpting" },
   { name: "Skin Treatments", path: "/skin-treatments" },
+  { name: "ResurFX™ Resurfacing", path: "/resurfx" },
   { name: "Botox & Fillers", path: "/botox-fillers" },
   { name: "Microdermabrasion", path: "/microdermabrasion" },
   { name: "Bridal Packages", path: "/bridal-packages" },
