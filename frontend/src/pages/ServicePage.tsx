@@ -67,7 +67,7 @@ const ServicePage = ({ service }: ServicePageProps) => {
         {/* Background Image */}
         <div className="absolute inset-0">
           <img
-            src={data.heroImage}
+            src={heroImg}
             alt={data.title + " " + data.accent}
             className="w-full h-full object-cover"
           />
