@@ -25,10 +25,8 @@ const milestones = [
 ];
 
 const team = [
-  { name: "Dr. Priya Sharma", role: "Medical Director", specialty: "Aesthetic Medicine", image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&q=80" },
-  { name: "Dr. Rahul Verma", role: "Senior Dermatologist", specialty: "Skin Treatments", image: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&q=80" },
-  { name: "Anjali Kapoor", role: "Lead Aesthetician", specialty: "Laser & Body", image: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=400&q=80" },
-  { name: "Neha Singh", role: "Spa Director", specialty: "Wellness & Spa", image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&q=80" },
+  { name: "Dr. Jyoti Anand", role: "Director" },
+  { name: "Dr. Rajnish Anand", role: "Director" },
 ];
 
 const certifications = [
@@ -185,7 +183,7 @@ const AboutPage = () => (
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid md:grid-cols-2 gap-8 max-w-2xl mx-auto">
           {team.map((member, i) => (
             <motion.div
               key={i}
@@ -193,19 +191,10 @@ const AboutPage = () => (
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="group"
+              className="p-8 bg-card border border-border rounded-2xl text-center"
             >
-              <div className="relative aspect-[3/4] rounded-2xl overflow-hidden mb-4">
-                <img
-                  src={member.image}
-                  alt={member.name}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-              </div>
-              <h3 className="font-serif text-xl text-foreground">{member.name}</h3>
-              <p className="text-primary text-sm">{member.role}</p>
-              <p className="text-muted-foreground text-xs mt-1">{member.specialty}</p>
+              <h3 className="font-serif text-2xl text-foreground mb-2">{member.name}</h3>
+              <p className="text-primary text-lg font-medium">{member.role}</p>
             </motion.div>
           ))}
         </div>
