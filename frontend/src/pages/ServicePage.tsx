@@ -163,8 +163,8 @@ const ServicePage = ({ service }: ServicePageProps) => {
                 </div>
                 {/* Floating card */}
                 <div className="absolute -bottom-6 -left-6 bg-card/90 backdrop-blur-md border border-border rounded-xl p-6 shadow-xl max-w-xs">
-                  <p className="font-serif text-2xl text-primary mb-2">{data.pricing[0]?.price}</p>
-                  <p className="text-sm text-muted-foreground">Starting price</p>
+                  <p className="font-serif text-lg text-primary mb-1">Free Consultation</p>
+                  <p className="text-sm text-muted-foreground">Book to get a personalized quote</p>
                 </div>
                 {/* Decorative frame */}
                 <div className="absolute -top-4 -right-4 w-full h-full border-2 border-primary/20 rounded-2xl -z-10" />
