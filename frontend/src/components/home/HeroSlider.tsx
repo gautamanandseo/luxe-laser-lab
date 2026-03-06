@@ -2,10 +2,10 @@ import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronRight, ArrowRight, Shield } from "lucide-react";
 import { Link } from "react-router-dom";
-import heroLaser from "@/assets/hero-laser-original.jpg";
-import heroCool from "@/assets/hero-coolsculpting.jpg";
-import heroSkin from "@/assets/hero-skincare.jpg";
-import heroBridal from "@/assets/hero-bridal.jpg";
+import heroLaser from "@/assets/hero-laser-gen.jpg";
+import heroCool from "@/assets/hero-coolsculpting-gen.jpg";
+import heroSkin from "@/assets/hero-skin-gen.jpg";
+import heroBridal from "@/assets/hero-bridal-gen.jpg";
 
 const slides = [
   {

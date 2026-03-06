@@ -106,7 +106,7 @@ const tabs = [
     features: ["Diamond-tip technology", "Fine line reduction", "Sun damage repair", "Improved skin texture", "Course packages available"],
     price: "Starting from ₹1,999",
     link: "/microdermabrasion",
-    image: serviceSkinResurfacing,
+    image: serviceMicroderm,
   },
 ];
 
