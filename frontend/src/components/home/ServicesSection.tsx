@@ -46,7 +46,7 @@ const tabs = [
     features: ["HydraFacial & LED Therapy", "Chemical Peels", "Skin Boosters", "Pigmentation correction", "Anti-aging treatments"],
     price: "Starting from ₹2,499",
     link: "/skin-treatments",
-    image: serviceAcne,
+    image: serviceSkin,
   },
   {
     id: "bridal",
