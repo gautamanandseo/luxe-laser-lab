@@ -14,6 +14,7 @@ const services = [
   "Laser Hair Removal",
   "CoolSculpting®",
   "Skin Treatments",
+  "ResurFX™ Skin Resurfacing",
   "Botox & Fillers",
   "Microdermabrasion",
   "Bridal Packages",
