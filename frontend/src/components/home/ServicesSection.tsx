@@ -2,11 +2,14 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Check, Sparkles, Snowflake, Sun, Heart, Flower2, Scissors, Syringe, Diamond } from "lucide-react";
 import { Link } from "react-router-dom";
-import serviceLaser from "@/assets/service-laser.png";
-import serviceCoolsculpting from "@/assets/service-coolsculpting.png";
-import serviceAcne from "@/assets/service-acne.png";
-import serviceSkinResurfacing from "@/assets/service-skin-resurfacing.jpg";
-import serviceBotox from "@/assets/service-botox.jpg";
+import serviceLaser from "@/assets/service-laser-gen.jpg";
+import serviceCoolsculpting from "@/assets/service-cool-gen.jpg";
+import serviceSkin from "@/assets/service-skin-gen.jpg";
+import serviceBotox from "@/assets/service-botox-gen.jpg";
+import serviceBridal from "@/assets/service-bridal-gen.jpg";
+import serviceSpa from "@/assets/service-spa-gen.jpg";
+import serviceSalon from "@/assets/service-salon-gen.jpg";
+import serviceMicroderm from "@/assets/service-microderm-gen.jpg";
 
 const tabs = [
   {
