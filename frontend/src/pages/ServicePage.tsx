@@ -56,6 +56,10 @@ const ServicePage = ({ service }: ServicePageProps) => {
 
   if (!data) return null;
 
+  const heroImg = heroImages[service] || data.heroImage;
+  const secondaryImg = serviceImages[service] || data.secondaryImage;
+  const processImg = heroImages[service] || data.processImage;
+
   return (
     <div className="pt-20">
       {/* Hero Section */}
