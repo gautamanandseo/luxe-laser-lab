@@ -356,16 +356,16 @@ const ServicePage = ({ service }: ServicePageProps) => {
         </div>
       </section>
 
-      {/* Pricing Section */}
+      {/* Packages Section */}
       <section className="py-24 bg-secondary">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
-            <p className="eyebrow mb-4">Transparent Pricing</p>
+            <p className="eyebrow mb-4">Our Packages</p>
             <h2 className="font-serif text-4xl md:text-5xl text-foreground">
               Investment in <em className="text-primary">Yourself</em>
             </h2>
             <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
-              No hidden costs. No surprises. Just exceptional results at transparent prices.
+              Every treatment is customized to your needs. Contact us for a personalized quote tailored to your goals.
             </p>
           </div>
 
@@ -393,7 +393,7 @@ const ServicePage = ({ service }: ServicePageProps) => {
                 <p className="text-sm text-muted-foreground mb-6">{tier.description}</p>
                 
                 <div className="mb-6">
-                  <span className="font-serif text-4xl text-primary">{tier.price}</span>
+                  <span className="font-serif text-lg text-primary uppercase tracking-wider">Ask for Quote</span>
                 </div>
 
                 <ul className="space-y-3 mb-8">
@@ -413,7 +413,7 @@ const ServicePage = ({ service }: ServicePageProps) => {
                       : 'border border-border text-foreground hover:border-primary hover:text-primary'
                   }`}
                 >
-                  Book Now <ArrowRight size={14} />
+                  Get Quote <ArrowRight size={14} />
                 </Link>
               </motion.div>
             ))}

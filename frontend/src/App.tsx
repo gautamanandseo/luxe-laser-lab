@@ -29,6 +29,7 @@ const App = () => (
             <Route path="/laser-hair-removal" element={<ServicePage service="laser" />} />
             <Route path="/coolsculpting" element={<ServicePage service="coolsculpting" />} />
             <Route path="/skin-treatments" element={<ServicePage service="skin" />} />
+            <Route path="/resurfx" element={<ServicePage service="resurfx" />} />
             <Route path="/botox-fillers" element={<ServicePage service="botox" />} />
             <Route path="/microdermabrasion" element={<ServicePage service="microdermabrasion" />} />
             <Route path="/bridal-packages" element={<ServicePage service="bridal" />} />
