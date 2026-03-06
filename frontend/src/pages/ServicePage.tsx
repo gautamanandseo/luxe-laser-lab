@@ -152,7 +152,7 @@ const ServicePage = ({ service }: ServicePageProps) => {
               <div className="relative">
                 <div className="aspect-[3/4] rounded-2xl overflow-hidden border border-foreground/10 shadow-2xl">
                   <img
-                    src={data.secondaryImage}
+                    src={secondaryImg}
                     alt={data.title}
                     className="w-full h-full object-cover"
                   />
