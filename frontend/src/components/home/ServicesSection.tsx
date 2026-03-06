@@ -58,7 +58,7 @@ const tabs = [
     features: ["6-month prep programs", "Complete skin transformation", "Hair removal packages", "HD & Airbrush makeup", "Bridesmaids packages"],
     price: "Starting from ₹25,000",
     link: "/bridal-packages",
-    image: serviceSkinResurfacing,
+    image: serviceBridal,
   },
   {
     id: "spa",
