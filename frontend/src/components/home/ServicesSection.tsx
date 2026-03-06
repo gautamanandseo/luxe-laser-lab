@@ -2,11 +2,14 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Check, Sparkles, Snowflake, Sun, Heart, Flower2, Scissors, Syringe, Diamond } from "lucide-react";
 import { Link } from "react-router-dom";
-import serviceLaser from "@/assets/service-laser.png";
-import serviceCoolsculpting from "@/assets/service-coolsculpting.png";
-import serviceAcne from "@/assets/service-acne.png";
-import serviceSkinResurfacing from "@/assets/service-skin-resurfacing.jpg";
-import serviceBotox from "@/assets/service-botox.jpg";
+import serviceLaser from "@/assets/service-laser-gen.jpg";
+import serviceCoolsculpting from "@/assets/service-cool-gen.jpg";
+import serviceSkin from "@/assets/service-skin-gen.jpg";
+import serviceBotox from "@/assets/service-botox-gen.jpg";
+import serviceBridal from "@/assets/service-bridal-gen.jpg";
+import serviceSpa from "@/assets/service-spa-gen.jpg";
+import serviceSalon from "@/assets/service-salon-gen.jpg";
+import serviceMicroderm from "@/assets/service-microderm-gen.jpg";
 
 const tabs = [
   {
@@ -43,7 +46,7 @@ const tabs = [
     features: ["HydraFacial & LED Therapy", "Chemical Peels", "Skin Boosters", "Pigmentation correction", "Anti-aging treatments"],
     price: "Starting from ₹2,499",
     link: "/skin-treatments",
-    image: serviceAcne,
+    image: serviceSkin,
   },
   {
     id: "bridal",
@@ -55,7 +58,7 @@ const tabs = [
     features: ["6-month prep programs", "Complete skin transformation", "Hair removal packages", "HD & Airbrush makeup", "Bridesmaids packages"],
     price: "Starting from ₹25,000",
     link: "/bridal-packages",
-    image: serviceSkinResurfacing,
+    image: serviceBridal,
   },
   {
     id: "spa",
@@ -67,7 +70,7 @@ const tabs = [
     features: ["Swedish & Deep Tissue Massage", "Aromatherapy", "Body Wraps & Scrubs", "Hot Stone Therapy", "Couple Spa packages"],
     price: "Starting from ₹1,499",
     link: "/spa-services",
-    image: serviceSkinResurfacing,
+    image: serviceSpa,
   },
   {
     id: "salon",
@@ -79,7 +82,7 @@ const tabs = [
     features: ["Hair Styling & Colour", "Keratin Treatments", "Manicure & Pedicure", "Professional Makeup", "Waxing & Threading"],
     price: "Starting from ₹499",
     link: "/salon-services",
-    image: serviceAcne,
+    image: serviceSalon,
   },
   {
     id: "botox",
@@ -103,7 +106,7 @@ const tabs = [
     features: ["Diamond-tip technology", "Fine line reduction", "Sun damage repair", "Improved skin texture", "Course packages available"],
     price: "Starting from ₹1,999",
     link: "/microdermabrasion",
-    image: serviceSkinResurfacing,
+    image: serviceMicroderm,
   },
 ];
 

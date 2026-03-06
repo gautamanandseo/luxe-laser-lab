@@ -4,6 +4,48 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { servicesData } from "@/data/serviceData";
 
+// AI-generated hero images
+import heroLaserGen from "@/assets/hero-laser-gen.jpg";
+import heroCoolGen from "@/assets/hero-coolsculpting-gen.jpg";
+import heroSkinGen from "@/assets/hero-skin-gen.jpg";
+import heroBotoxGen from "@/assets/hero-botox-gen.jpg";
+import heroBridalGen from "@/assets/hero-bridal-gen.jpg";
+import heroSpaGen from "@/assets/hero-spa-gen.jpg";
+import heroSalonGen from "@/assets/hero-salon-gen.jpg";
+import heroMicrodermGen from "@/assets/hero-microderm-gen.jpg";
+
+// AI-generated service images
+import serviceLaserGen from "@/assets/service-laser-gen.jpg";
+import serviceCoolGen from "@/assets/service-cool-gen.jpg";
+import serviceSkinGen from "@/assets/service-skin-gen.jpg";
+import serviceBotoxGen from "@/assets/service-botox-gen.jpg";
+import serviceBridalGen from "@/assets/service-bridal-gen.jpg";
+import serviceSpaGen from "@/assets/service-spa-gen.jpg";
+import serviceSalonGen from "@/assets/service-salon-gen.jpg";
+import serviceMicrodermGen from "@/assets/service-microderm-gen.jpg";
+
+const heroImages: Record<string, string> = {
+  laser: heroLaserGen,
+  coolsculpting: heroCoolGen,
+  skin: heroSkinGen,
+  botox: heroBotoxGen,
+  bridal: heroBridalGen,
+  spa: heroSpaGen,
+  salon: heroSalonGen,
+  microdermabrasion: heroMicrodermGen,
+};
+
+const serviceImages: Record<string, string> = {
+  laser: serviceLaserGen,
+  coolsculpting: serviceCoolGen,
+  skin: serviceSkinGen,
+  botox: serviceBotoxGen,
+  bridal: serviceBridalGen,
+  spa: serviceSpaGen,
+  salon: serviceSalonGen,
+  microdermabrasion: serviceMicrodermGen,
+};
+
 interface ServicePageProps {
   service: string;
 }
@@ -14,6 +56,10 @@ const ServicePage = ({ service }: ServicePageProps) => {
 
   if (!data) return null;
 
+  const heroImg = heroImages[service] || data.heroImage;
+  const secondaryImg = serviceImages[service] || data.secondaryImage;
+  const processImg = heroImages[service] || data.processImage;
+
   return (
     <div className="pt-20">
       {/* Hero Section */}
@@ -21,7 +67,7 @@ const ServicePage = ({ service }: ServicePageProps) => {
         {/* Background Image */}
         <div className="absolute inset-0">
           <img
-            src={data.heroImage}
+            src={heroImg}
             alt={data.title + " " + data.accent}
             className="w-full h-full object-cover"
           />
@@ -106,7 +152,7 @@ const ServicePage = ({ service }: ServicePageProps) => {
               <div className="relative">
                 <div className="aspect-[3/4] rounded-2xl overflow-hidden border border-foreground/10 shadow-2xl">
                   <img
-                    src={data.secondaryImage}
+                    src={secondaryImg}
                     alt={data.title}
                     className="w-full h-full object-cover"
                   />
@@ -165,7 +211,7 @@ const ServicePage = ({ service }: ServicePageProps) => {
             >
               <div className="aspect-[4/3] rounded-2xl overflow-hidden">
                 <img
-                  src={data.processImage}
+                  src={processImg}
                   alt={`${data.title} treatment`}
                   className="w-full h-full object-cover"
                 />
