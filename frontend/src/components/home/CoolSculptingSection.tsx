@@ -113,10 +113,10 @@ const CoolSculptingSection = () => {
       <div className="container mx-auto px-6 relative z-10">
         <div className="text-center mb-16">
           <p className="eyebrow mb-4">Non-Surgical Fat Reduction</p>
-          <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-foreground">
+          <h2 className="section-heading">
             CoolSculpting® — <em className="holographic-text not-italic" style={{ fontStyle: "normal" }}>Choose</em> Your Area
           </h2>
-          <p className="text-muted-foreground mt-4 max-w-xl mx-auto text-sm md:text-base">
+          <p className="body-text mt-4 max-w-xl mx-auto">
             Select a treatment area to learn how CoolSculpting® Elite permanently freezes and eliminates stubborn fat cells.
           </p>
         </div>

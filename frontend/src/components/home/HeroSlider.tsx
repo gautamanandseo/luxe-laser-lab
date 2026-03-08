@@ -340,7 +340,7 @@ const HeroSlider = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.7, duration: 0.5 }}
-                className="text-foreground/70 text-base md:text-lg max-w-lg mb-8 font-light leading-relaxed"
+                className="body-text text-foreground/70 text-base md:text-lg max-w-lg mb-8"
               >
                 {slide.desc}
               </motion.p>
