@@ -202,10 +202,10 @@ const HeroSlider = () => {
 
               {/* Headline with letter animation */}
               <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl font-light text-foreground leading-[0.95] mb-2">
-                <AnimatedText text={slide.headline} className="" />
+                <AnimatedText text={slide.headline} className="" reduced={reduced} />
               </h1>
               <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl font-light italic leading-[0.95] mb-6">
-                <AnimatedText text={slide.accent} className="holographic-text" />
+                <AnimatedText text={slide.accent} className="holographic-text" reduced={reduced} />
               </h1>
 
               {/* Subtitle */}
