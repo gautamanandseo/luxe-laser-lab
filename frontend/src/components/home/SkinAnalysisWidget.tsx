@@ -1,5 +1,6 @@
 import { useState, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { supabase } from "@/integrations/supabase/client";
 import { Camera, X, Upload, Loader2, Sparkles, ArrowRight, Star, AlertCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 import ScrollReveal from "@/components/effects/ScrollReveal";
@@ -43,25 +44,19 @@ const SkinAnalysisWidget = () => {
     setError(null);
 
     try {
-      const resp = await fetch(
-        `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/skin-analysis`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
-          },
-          body: JSON.stringify({ imageBase64, concerns }),
-        }
-      );
+      const { data, error: fnError } = await supabase.functions.invoke("skin-analysis", {
+        body: { imageBase64, concerns },
+      });
 
-      if (!resp.ok) {
-        const errData = await resp.json().catch(() => ({}));
-        throw new Error(errData.error || `Analysis failed (${resp.status})`);
+      if (fnError) {
+        throw new Error(fnError.message || "Analysis failed");
       }
 
-      const data: AnalysisResult = await resp.json();
-      setResult(data);
+      if (data?.error) {
+        throw new Error(data.error);
+      }
+
+      setResult(data as AnalysisResult);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Analysis failed. Please try again.");
     } finally {
