@@ -200,6 +200,7 @@ const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
           </motion.div>
         ))}
       </motion.div>
+      )}
     </AnimatePresence>
   );
 };
