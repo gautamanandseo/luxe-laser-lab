@@ -15,7 +15,7 @@ const reasons = [
 ];
 
 const WhyChooseSection = () => (
-  <section className="py-28 bg-aurora-section relative overflow-hidden light-rays">
+  <section className="py-28 bg-velvet relative overflow-hidden light-rays vignette">
     <AuroraMesh intensity="medium" />
     <div className="absolute inset-0 grid-bg opacity-30" />
     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] radial-glow" />
