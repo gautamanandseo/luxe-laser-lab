@@ -56,10 +56,10 @@ const TechnologySection = () => {
         {/* Section Header */}
         <div className="text-center mb-20">
           <p className="eyebrow mb-4">Our Cutting-Edge Equipment</p>
-          <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-foreground">
+          <h2 className="section-heading">
             World-Class <em className="text-primary not-italic">Technology</em>
           </h2>
-          <p className="text-muted-foreground mt-4 max-w-3xl mx-auto">
+          <p className="body-text mt-4 max-w-3xl mx-auto">
             We invest in only the most advanced, USFDA-cleared equipment from globally renowned manufacturers — Lumenis and Alma Lasers. Every device is operated by certified specialists with 15+ years of experience.
           </p>
         </div>

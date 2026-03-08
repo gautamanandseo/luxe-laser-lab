@@ -79,10 +79,10 @@ const WeightLossSection = () => (
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h3 className="font-serif text-3xl md:text-4xl text-foreground mb-4">
-            Why Diets Fail — The <em className="text-primary">Science</em> Behind Stubborn Fat
+          <h3 className="card-heading text-3xl md:text-4xl mb-4">
+            Why Diets Fail — The <em className="text-primary" style={{ fontStyle: "italic" }}>Science</em> Behind Stubborn Fat
           </h3>
-          <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+          <p className="body-text max-w-2xl mx-auto">
             It's not a willpower problem — it's biology. Certain fat deposits are evolutionarily designed to resist diet and exercise.
           </p>
         </motion.div>

@@ -83,8 +83,8 @@ const SEOContentSection = () => (
         {seoBlocks.map((block, i) => (
           <ScrollReveal key={i} direction="up" delay={i * 0.05}>
             <div className="border border-border rounded-2xl p-8 bg-card/30 backdrop-blur-sm">
-              <h3 className="font-serif text-2xl text-foreground mb-4">{block.title}</h3>
-              <p className="text-muted-foreground leading-relaxed mb-6">{block.content}</p>
+              <h3 className="card-heading mb-4">{block.title}</h3>
+              <p className="body-text mb-6">{block.content}</p>
               <div className="flex flex-wrap gap-3">
                 {block.links.map((link, j) => (
                   <Link
