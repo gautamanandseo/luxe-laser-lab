@@ -19,9 +19,9 @@ const Index = () => {
       <Marquee />
       <StatsBar />
       <ServicesSection />
+      <WhyChooseSection />
       <CoolSculptingSection />
       <TechnologySection />
-      <WhyChooseSection />
       <ProcessSection />
       <TestimonialsSection />
       <GallerySection />
