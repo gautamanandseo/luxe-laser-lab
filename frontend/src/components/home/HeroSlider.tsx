@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronRight, ArrowRight, Shield } from "lucide-react";
+import { ChevronRight, ChevronLeft, ArrowRight, Shield, Pause, Play } from "lucide-react";
 import { Link } from "react-router-dom";
 import ParticleField from "@/components/effects/ParticleField";
 import AuroraMesh from "@/components/effects/AuroraMesh";
@@ -125,10 +125,13 @@ const AnimatedText = ({ text, className, reduced }: { text: string; className: s
   );
 };
 
+const SLIDE_DURATION = 6000;
+
 const HeroSlider = () => {
   const [current, setCurrent] = useState(0);
   const [paused, setPaused] = useState(false);
-  const reduced = useReducedMotion();
+  const [manualPause, setManualPause] = useState(false);
+  const [progress, setProgress] = useState(0);
   const [loadedImages, setLoadedImages] = useState<Record<number, string>>({ 0: heroLaser });
 
   useEffect(() => {
@@ -157,13 +160,39 @@ const HeroSlider = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  const next = useCallback(() => setCurrent(c => (c + 1) % slides.length), []);
+  const reduced = useReducedMotion();
+  const isPlaying = !paused && !manualPause;
 
+  const next = useCallback(() => {
+    setCurrent(c => (c + 1) % slides.length);
+    setProgress(0);
+  }, []);
+
+  const prev = useCallback(() => {
+    setCurrent(c => (c - 1 + slides.length) % slides.length);
+    setProgress(0);
+  }, []);
+
+  const togglePause = useCallback(() => {
+    setManualPause(p => !p);
+  }, []);
+
+  // Progress bar + auto-advance
   useEffect(() => {
-    if (paused) return;
-    const timer = setInterval(next, 5000);
+    if (!isPlaying) return;
+    const interval = 50;
+    const timer = setInterval(() => {
+      setProgress(p => {
+        const next = p + (interval / SLIDE_DURATION) * 100;
+        if (next >= 100) {
+          setCurrent(c => (c + 1) % slides.length);
+          return 0;
+        }
+        return next;
+      });
+    }, interval);
     return () => clearInterval(timer);
-  }, [paused, next]);
+  }, [isPlaying, current]);
 
   const slide = slides[current];
   const currentImage = loadedImages[current] || heroLaser;
@@ -173,6 +202,7 @@ const HeroSlider = () => {
       className="relative h-screen overflow-hidden scanlines"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
+      aria-label="Hero slideshow"
     >
       {/* Background Image with parallax-like zoom */}
       <AnimatePresence mode="wait">
@@ -334,26 +364,76 @@ const HeroSlider = () => {
         </div>
       </div>
 
+      {/* Progress Bar - full width */}
+      <div className="absolute bottom-[72px] left-0 right-0 z-20 h-[2px] bg-foreground/5">
+        <motion.div
+          className="h-full bg-primary shadow-[0_0_8px_hsl(38,45%,60%,0.5)]"
+          style={{ width: `${progress}%` }}
+          transition={{ duration: 0.05, ease: "linear" }}
+        />
+      </div>
+
       {/* Slide Controls - glassmorphism enhanced */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex items-center gap-8 bg-background/10 backdrop-blur-2xl border border-white/10 rounded-full px-8 py-4 shadow-[0_8px_32px_hsl(0,0%,0%,0.4),inset_0_1px_0_hsl(255,255%,255%,0.05)]">
-        <span className="text-sm font-sans text-primary font-medium tabular-nums">
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex items-center gap-4 md:gap-6 bg-background/10 backdrop-blur-2xl border border-white/10 rounded-full px-4 md:px-6 py-3 shadow-[0_8px_32px_hsl(0,0%,0%,0.4),inset_0_1px_0_hsl(255,255%,255%,0.05)]">
+        {/* Prev button */}
+        <motion.button
+          onClick={prev}
+          whileHover={{ scale: 1.15 }}
+          whileTap={{ scale: 0.9 }}
+          className="w-8 h-8 rounded-full border border-foreground/10 flex items-center justify-center text-foreground/60 hover:text-primary hover:border-primary/40 transition-colors"
+          aria-label="Previous slide"
+        >
+          <ChevronLeft size={16} />
+        </motion.button>
+
+        {/* Counter */}
+        <span className="text-sm font-sans text-primary font-medium tabular-nums min-w-[50px] text-center">
           {String(current + 1).padStart(2, "0")} <span className="text-foreground/40">/ {String(slides.length).padStart(2, "0")}</span>
         </span>
-        <div className="flex gap-3">
+
+        {/* Dot indicators */}
+        <div className="hidden md:flex gap-2">
           {slides.map((_, i) => (
             <motion.button
               key={i}
-              onClick={() => setCurrent(i)}
+              onClick={() => { setCurrent(i); setProgress(0); }}
               whileHover={{ scale: 1.3 }}
               whileTap={{ scale: 0.95 }}
               className={`rounded-full transition-all duration-500 ${
                 i === current
-                  ? "w-10 h-2 bg-primary shadow-[0_0_15px_hsl(38,45%,60%,0.6)]"
+                  ? "w-8 h-2 bg-primary shadow-[0_0_15px_hsl(38,45%,60%,0.6)]"
                   : "w-2 h-2 bg-foreground/20 hover:bg-foreground/40"
               }`}
+              aria-label={`Go to slide ${i + 1}`}
             />
           ))}
         </div>
+
+        {/* Play/Pause button */}
+        <motion.button
+          onClick={togglePause}
+          whileHover={{ scale: 1.15 }}
+          whileTap={{ scale: 0.9 }}
+          className={`w-8 h-8 rounded-full border flex items-center justify-center transition-all ${
+            manualPause
+              ? "border-primary/40 text-primary bg-primary/10"
+              : "border-foreground/10 text-foreground/60 hover:text-primary hover:border-primary/40"
+          }`}
+          aria-label={manualPause ? "Resume slideshow" : "Pause slideshow"}
+        >
+          {manualPause ? <Play size={14} /> : <Pause size={14} />}
+        </motion.button>
+
+        {/* Next button */}
+        <motion.button
+          onClick={next}
+          whileHover={{ scale: 1.15 }}
+          whileTap={{ scale: 0.9 }}
+          className="w-8 h-8 rounded-full border border-foreground/10 flex items-center justify-center text-foreground/60 hover:text-primary hover:border-primary/40 transition-colors"
+          aria-label="Next slide"
+        >
+          <ChevronRight size={16} />
+        </motion.button>
       </div>
     </section>
   );
