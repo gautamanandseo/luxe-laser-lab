@@ -29,7 +29,7 @@ const TestimonialsSection = () => {
   }, [next, current]);
 
   return (
-    <section id="testimonials" className="py-28 bg-aurora-section relative overflow-hidden light-rays">
+    <section id="testimonials" className="py-28 bg-velvet relative overflow-hidden light-rays vignette">
       <AuroraMesh intensity="medium" />
       <div className="absolute inset-0 grid-bg opacity-15" />
 
