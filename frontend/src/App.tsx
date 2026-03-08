@@ -105,6 +105,7 @@ const App = () => {
           </main>
           <Footer />
           <WhatsAppButton />
+          <StickyMobileCTA />
         </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>
