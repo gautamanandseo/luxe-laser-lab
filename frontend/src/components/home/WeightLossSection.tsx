@@ -43,10 +43,10 @@ const WeightLossSection = () => (
       {/* Header */}
       <div className="text-center mb-16">
         <p className="eyebrow mb-4">Weight Loss & Body Contouring Delhi</p>
-        <h2 className="font-serif text-4xl md:text-6xl text-foreground">
-          Delhi NCR's Premier <em className="text-primary">Weight Loss</em> Clinic
+        <h2 className="section-heading">
+          Delhi NCR's Premier <em className="text-primary" style={{ fontStyle: "italic" }}>Weight Loss</em> Clinic
         </h2>
-        <p className="text-muted-foreground mt-6 max-w-3xl mx-auto text-lg leading-relaxed">
+        <p className="body-text mt-6 max-w-3xl mx-auto text-base md:text-lg">
           Struggling with stubborn fat that won't budge despite diet and exercise? At Empathy Laser Clinic, Pitampura, Delhi, we offer clinically proven, non-surgical fat reduction using FDA-cleared CoolSculpting® Elite technology. Permanently eliminate fat cells — no surgery, no downtime, no compromises.
         </p>
       </div>
