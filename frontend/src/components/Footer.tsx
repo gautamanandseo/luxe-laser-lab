@@ -99,7 +99,7 @@ const Footer = () => {
               <a href="mailto:info@empathylaserclinic.com" className="flex items-center gap-3 text-sm text-muted-foreground hover:text-primary transition-colors">
                 <Mail size={14} className="text-primary" /> info@empathylaserclinic.com
               </a>
-              <a href="https://maps.app.goo.gl/DQ6ALz6CcUeS557f9" target="_blank" rel="noopener noreferrer" className="flex items-start gap-3 text-sm text-muted-foreground hover:text-primary transition-colors">
+              <a href="https://share.google/SClHKya8GwuCKc0hp" target="_blank" rel="noopener noreferrer" className="flex items-start gap-3 text-sm text-muted-foreground hover:text-primary transition-colors">
                 <MapPin size={14} className="text-primary mt-0.5" /> Delhi NCR, India
               </a>
             </div>
