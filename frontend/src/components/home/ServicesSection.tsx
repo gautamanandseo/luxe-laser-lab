@@ -144,7 +144,7 @@ const tabs = [
     desc: "Significantly reduce stretch marks with ResurFX™ fractional laser, microneedling with PRP, and medical-grade treatments. Effective on both new and old stretch marks.",
     features: ["ResurFX™ fractional laser", "Microneedling + PRP", "50-80% improvement", "New & old stretch marks", "Any body area"],
     link: "/stretch-marks",
-    image: serviceResurfx,
+    image: serviceStretchmarks,
   },
   {
     id: "tattooremoval",
