@@ -127,7 +127,6 @@ const App = () => {
           <main className="film-grain">
             <AnimatedRoutes />
           </main>
-          </main>
           <Footer />
           <WhatsAppButton />
           <StickyMobileCTA />
