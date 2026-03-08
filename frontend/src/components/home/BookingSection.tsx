@@ -78,12 +78,17 @@ const BookingSection = () => {
                   <option value="">Select Service Interest</option>
                   <option>Laser Hair Removal</option>
                   <option>CoolSculpting®</option>
+                  <option>Weight Loss</option>
                   <option>Skin Treatments</option>
                   <option>Acne & Scar Treatment</option>
                   <option>Skin Lightening</option>
                   <option>Anti-Ageing</option>
                   <option>HIFU Face Lift</option>
                   <option>Dark Circles</option>
+                  <option>Skin Tightening</option>
+                  <option>Stretch Marks</option>
+                  <option>Tattoo Removal</option>
+                  <option>Mole & Wart Removal</option>
                   <option>ResurFX™ Skin Resurfacing</option>
                   <option>Botox & Fillers</option>
                   <option>Microdermabrasion</option>
