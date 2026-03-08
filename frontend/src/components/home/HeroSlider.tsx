@@ -1,14 +1,12 @@
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronRight, ChevronLeft, ArrowRight, Shield, Pause, Play } from "lucide-react";
+import { ChevronRight, ChevronLeft, ArrowRight, Pause, Play } from "lucide-react";
 import { Link } from "react-router-dom";
 import ParticleField from "@/components/effects/ParticleField";
-import LiveViewerCounter from "@/components/LiveViewerCounter";
 import AuroraMesh from "@/components/effects/AuroraMesh";
 import { useReducedMotion } from "@/hooks/use-reduced-motion";
 import heroLaser from "@/assets/hero-laser-gen.jpg";
 
-// Lazy-load non-first-slide images
 const slides = [
   {
     tag: "USFDA Cleared · Lumenis LightSheer · Alma Soprano",
@@ -18,7 +16,7 @@ const slides = [
     desc: "Delhi NCR's most advanced laser hair removal with Lumenis LightSheer Desire & Alma Soprano ICE Platinum. Safe for all Indian skin types. Painless, permanent results.",
     cta1: { text: "Book Free Consultation", link: "/contact" },
     cta2: { text: "Explore Treatment", link: "/laser-hair-removal" },
-    overlay: "from-background/90 via-background/60 to-transparent",
+    overlay: "from-background/95 via-background/70 to-background/20",
   },
   {
     tag: "FDA-Cleared · #1 Weight Loss Solution",
@@ -28,7 +26,7 @@ const slides = [
     desc: "Freeze away stubborn fat with CoolSculpting® Elite — Delhi NCR's top non-surgical weight loss and body contouring solution. 27% fat reduction per session.",
     cta1: { text: "Book Body Assessment", link: "/contact" },
     cta2: { text: "Learn More", link: "/coolsculpting" },
-    overlay: "from-[hsl(210,60%,5%)/90] via-[hsl(210,60%,5%)/60] to-transparent",
+    overlay: "from-background/95 via-background/70 to-background/20",
   },
   {
     tag: "Allergan Certified · Natural Results",
@@ -38,7 +36,7 @@ const slides = [
     desc: "Natural-looking Botox & premium dermal fillers administered by certified aesthetic physicians in Delhi. Forehead lines, crow's feet, lip enhancement & jawline contouring.",
     cta1: { text: "Book Consultation", link: "/contact" },
     cta2: { text: "View Treatments", link: "/botox-fillers" },
-    overlay: "from-[hsl(280,30%,5%)/90] via-[hsl(280,30%,5%)/60] to-transparent",
+    overlay: "from-background/95 via-background/70 to-background/20",
   },
   {
     tag: "Advanced Skin Science",
@@ -48,7 +46,7 @@ const slides = [
     desc: "From HydraFacials to chemical peels, discover treatments crafted for your unique skin. Visible results from session one.",
     cta1: { text: "Book Skin Analysis", link: "/contact" },
     cta2: { text: "View Treatments", link: "/skin-treatments" },
-    overlay: "from-[hsl(150,40%,4%)/90] via-[hsl(150,40%,4%)/60] to-transparent",
+    overlay: "from-background/95 via-background/70 to-background/20",
   },
   {
     tag: "Non-Surgical · Zero Downtime",
@@ -58,7 +56,7 @@ const slides = [
     desc: "Transform your body without surgery. CoolSculpting® Elite, RF tightening, and targeted inch-loss programs — permanent fat cell elimination with zero downtime.",
     cta1: { text: "Free Body Assessment", link: "/contact" },
     cta2: { text: "Weight Loss Delhi", link: "/weight-loss-delhi" },
-    overlay: "from-[hsl(220,40%,5%)/90] via-[hsl(220,40%,5%)/60] to-transparent",
+    overlay: "from-background/95 via-background/70 to-background/20",
   },
   {
     tag: "PRP Therapy · FUE Transplant",
@@ -68,7 +66,7 @@ const slides = [
     desc: "Stop hair loss and regrow thicker hair with PRP therapy, mesotherapy, and FUE hair transplant in Delhi. Effective solutions for men and women.",
     cta1: { text: "Book Hair Analysis", link: "/contact" },
     cta2: { text: "Hair Treatments", link: "/hair-loss-treatment" },
-    overlay: "from-[hsl(30,50%,5%)/90] via-[hsl(30,50%,5%)/60] to-transparent",
+    overlay: "from-background/95 via-background/70 to-background/20",
   },
   {
     tag: "Complete Bridal Beauty",
@@ -78,7 +76,7 @@ const slides = [
     desc: "Comprehensive pre-bridal treatments from skincare to hair removal. Start your journey 6 months before your special day.",
     cta1: { text: "Bridal Consultation", link: "/contact" },
     cta2: { text: "View Packages", link: "/bridal-packages" },
-    overlay: "from-[hsl(350,40%,4%)/90] via-[hsl(350,40%,4%)/60] to-transparent",
+    overlay: "from-background/95 via-background/70 to-background/20",
   },
   {
     tag: "HydraFacial · LED Therapy · Oxygen Infusion",
@@ -88,43 +86,41 @@ const slides = [
     desc: "Signature HydraFacials, LED light therapy, oxygen infusion, and medical-grade peels — clinical facial treatments that deliver visible, lasting glow from session one.",
     cta1: { text: "Book Facial", link: "/contact" },
     cta2: { text: "Facial Treatments", link: "/facials" },
-    overlay: "from-[hsl(15,40%,5%)/90] via-[hsl(15,40%,5%)/60] to-transparent",
+    overlay: "from-background/95 via-background/70 to-background/20",
   },
 ];
 
-const letterVariants = {
-  hidden: { opacity: 0, y: 50, rotateX: -90 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    rotateX: 0,
-    transition: {
-      delay: 0.3 + i * 0.03,
-      duration: 0.6,
-      ease: [0.25, 0.46, 0.45, 0.94],
-    },
-  }),
-};
-
-const AnimatedText = ({ text, className, reduced }: { text: string; className: string; reduced?: boolean }) => {
+// Word-by-word stagger animation
+const WordReveal = ({ text, className, delay = 0, reduced }: { text: string; className: string; delay?: number; reduced?: boolean }) => {
   if (reduced) return <span className={className}>{text}</span>;
+  const words = text.split(" ");
   return (
-    <span className={className} style={{ display: "inline-flex", flexWrap: "wrap", perspective: "1000px" }}>
-      {text.split("").map((char, i) => (
+    <span className={className} style={{ display: "inline-flex", flexWrap: "wrap", gap: "0.25em" }}>
+      {words.map((word, i) => (
         <motion.span
           key={i}
-          custom={i}
-          variants={letterVariants}
-          initial="hidden"
-          animate="visible"
-          style={{ display: "inline-block", whiteSpace: char === " " ? "pre" : "normal" }}
+          initial={{ opacity: 0, y: 40, filter: "blur(8px)" }}
+          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{
+            delay: delay + i * 0.12,
+            duration: 0.7,
+            ease: [0.25, 0.46, 0.45, 0.94],
+          }}
+          style={{ display: "inline-block" }}
         >
-          {char}
+          {word}
         </motion.span>
       ))}
     </span>
   );
 };
+
+const trustIndicators = [
+  { label: "15,000+", sub: "Clients" },
+  { label: "Allergan", sub: "Certified" },
+  { label: "4.9★", sub: "Google" },
+  { label: "Since", sub: "2009" },
+];
 
 const SLIDE_DURATION = 6000;
 
@@ -178,7 +174,6 @@ const HeroSlider = () => {
     setManualPause(p => !p);
   }, []);
 
-  // Progress bar + auto-advance
   useEffect(() => {
     if (!isPlaying) return;
     const interval = 50;
@@ -200,252 +195,246 @@ const HeroSlider = () => {
 
   return (
     <section
-      className="relative h-screen overflow-hidden vignette"
+      className="relative h-screen overflow-hidden"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       aria-label="Hero slideshow"
     >
-      {/* Background Image with dramatic zoom */}
+      {/* Background Image */}
       <AnimatePresence mode="wait">
         <motion.div
           key={current}
-          initial={{ opacity: 0, scale: 1.25 }}
+          initial={{ opacity: 0, scale: 1.15 }}
           animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.92 }}
-          transition={{ duration: 2, ease: [0.25, 0.46, 0.45, 0.94] }}
+          exit={{ opacity: 0, scale: 0.95 }}
+          transition={{ duration: 1.8, ease: [0.25, 0.46, 0.45, 0.94] }}
           className="absolute inset-0"
         >
           <img
             src={currentImage}
             alt={slide.headline + " " + slide.accent}
-            className="w-full h-full object-cover animate-ken-burns"
+            className="w-full h-full object-cover"
+            style={{ animation: "ken-burns 20s ease-in-out infinite alternate" }}
             fetchPriority={current === 0 ? "high" : "auto"}
             decoding={current === 0 ? "sync" : "async"}
           />
+          {/* Gradient overlays for readability */}
           <div className={`absolute inset-0 bg-gradient-to-r ${slide.overlay}`} />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/40" />
-          {/* Cinematic letterbox bars — deeper */}
-          <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-background/70 to-transparent" />
-          <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-background via-background/85 to-transparent" />
-          {/* Extra cinematic depth overlay */}
-          <div className="absolute inset-0 bg-gradient-to-br from-background/30 via-transparent to-background/20" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/50" />
+          {/* Vignette */}
+          <div className="absolute inset-0" style={{
+            background: "radial-gradient(ellipse at center, transparent 40%, hsl(0 0% 3% / 0.6) 100%)"
+          }} />
         </motion.div>
       </AnimatePresence>
 
-      {/* Aurora mesh overlay for depth */}
-      <AuroraMesh intensity="subtle" className="z-[3] mix-blend-soft-light" />
+      {/* Subtle aurora */}
+      <AuroraMesh intensity="subtle" className="z-[3] mix-blend-soft-light opacity-40" />
 
-      {/* Particle overlay */}
-      <ParticleField count={25} className="z-[5]" />
+      {/* Particles — reduced count */}
+      <ParticleField count={15} className="z-[5]" />
 
-      {/* Floating geometric orbs */}
-      <motion.div
-        animate={{ y: [-20, 20, -20], x: [-10, 10, -10] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-1/4 right-[15%] w-32 h-32 rounded-full z-[4] hidden lg:block"
-        style={{
-          background: "radial-gradient(circle, hsl(38 45% 60% / 0.08), transparent 70%)",
-          border: "1px solid hsl(38 45% 60% / 0.1)",
-          backdropFilter: "blur(4px)",
-        }}
-      />
-      <motion.div
-        animate={{ y: [15, -25, 15], x: [5, -15, 5] }}
-        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute bottom-1/3 right-[25%] w-20 h-20 rounded-full z-[4] hidden lg:block"
-        style={{
-          background: "radial-gradient(circle, hsl(350 40% 50% / 0.06), transparent 70%)",
-          border: "1px solid hsl(350 40% 50% / 0.08)",
-          backdropFilter: "blur(2px)",
-        }}
-      />
-
-      {/* Decorative corner accents with glow */}
-      <div className="absolute top-8 left-8 w-24 h-24 z-10 hidden md:block">
-        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-primary/50 to-transparent" />
-        <div className="absolute top-0 left-0 w-px h-full bg-gradient-to-b from-primary/50 to-transparent" />
-        <div className="absolute top-0 left-0 w-2 h-2 bg-primary/60 rounded-full blur-sm" />
-      </div>
-      <div className="absolute top-8 right-8 w-24 h-24 z-10 hidden md:block">
-        <div className="absolute top-0 right-0 w-full h-px bg-gradient-to-l from-primary/50 to-transparent" />
-        <div className="absolute top-0 right-0 w-px h-full bg-gradient-to-b from-primary/50 to-transparent" />
-        <div className="absolute top-0 right-0 w-2 h-2 bg-primary/60 rounded-full blur-sm" />
-      </div>
-      <div className="absolute bottom-28 left-8 w-24 h-24 z-10 hidden md:block">
-        <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-primary/50 to-transparent" />
-        <div className="absolute bottom-0 left-0 w-px h-full bg-gradient-to-t from-primary/50 to-transparent" />
-        <div className="absolute bottom-0 left-0 w-2 h-2 bg-primary/60 rounded-full blur-sm" />
-      </div>
-      <div className="absolute bottom-28 right-8 w-24 h-24 z-10 hidden md:block">
-        <div className="absolute bottom-0 right-0 w-full h-px bg-gradient-to-l from-primary/50 to-transparent" />
-        <div className="absolute bottom-0 right-0 w-px h-full bg-gradient-to-t from-primary/50 to-transparent" />
-        <div className="absolute bottom-0 right-0 w-2 h-2 bg-primary/60 rounded-full blur-sm" />
-      </div>
-
-      {/* Side progress line */}
-      <div className="absolute left-8 top-1/4 bottom-1/4 w-px bg-white/5 z-10 hidden lg:block">
+      {/* Scroll indicator — right side gold line */}
+      <div className="absolute right-10 top-1/3 bottom-1/3 z-10 hidden lg:flex flex-col items-center">
+        <div className="relative w-px h-full bg-foreground/10">
+          <motion.div
+            className="w-full bg-primary origin-top"
+            initial={{ scaleY: 0 }}
+            animate={{ scaleY: 1 }}
+            transition={{ duration: SLIDE_DURATION / 1000, ease: "linear" }}
+            key={current}
+            style={{ height: "100%", transformOrigin: "top" }}
+          />
+        </div>
         <motion.div
-          className="w-full bg-primary"
-          initial={{ height: "0%" }}
-          animate={{ height: "100%" }}
-          transition={{ duration: 5, ease: "linear" }}
-          key={current}
-        />
-        <motion.div
-          className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3 h-3 bg-primary rounded-full"
-          animate={{ boxShadow: ["0 0 10px hsl(38 45% 60% / 0.5)", "0 0 25px hsl(38 45% 60% / 0.8)", "0 0 10px hsl(38 45% 60% / 0.5)"] }}
+          className="mt-3 w-2 h-2 rounded-full bg-primary"
+          animate={{
+            y: [0, 8, 0],
+            boxShadow: [
+              "0 0 8px hsl(38 45% 60% / 0.4)",
+              "0 0 20px hsl(38 45% 60% / 0.8)",
+              "0 0 8px hsl(38 45% 60% / 0.4)",
+            ],
+          }}
           transition={{ duration: 2, repeat: Infinity }}
-          style={{ bottom: 0 }}
-          key={`dot-${current}`}
         />
+        <motion.span
+          className="mt-4 text-[10px] font-sans uppercase tracking-[0.3em] text-foreground/40"
+          style={{ writingMode: "vertical-rl" }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.5 }}
+        >
+          Scroll
+        </motion.span>
       </div>
 
       {/* Content */}
       <div className="relative z-10 h-full flex items-center">
-        <div className="container mx-auto px-6">
+        <div className="container mx-auto px-6 lg:px-12">
           <AnimatePresence mode="wait">
             <motion.div
               key={current}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              exit={{ opacity: 0, y: -30, ...(reduced ? {} : { filter: "blur(10px)" }) }}
+              exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.5 }}
-              className="max-w-2xl"
+              className="max-w-3xl"
             >
-              {/* Tag */}
+              {/* Tag line */}
               <motion.div
-                initial={{ opacity: 0, x: -30 }}
+                initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: 0.1 }}
-                className="flex items-center gap-2 mb-6"
+                className="flex items-center gap-3 mb-8"
               >
-                <Shield size={14} className="text-primary" />
-                <span className="text-xs font-sans uppercase tracking-[0.25em] text-primary">{slide.tag}</span>
+                <div className="w-8 h-px bg-primary" />
+                <span className="text-[11px] font-sans uppercase tracking-[0.3em] text-primary/90">
+                  {slide.tag}
+                </span>
               </motion.div>
 
-              {/* Headline */}
-              <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light text-foreground leading-[1.08] mb-1 tracking-tight text-emboss">
-                <AnimatedText text={slide.headline} className="" reduced={reduced} />
+              {/* Headline — word-by-word reveal */}
+              <h1 className="font-serif font-light text-foreground leading-[1.05] tracking-tight mb-2"
+                style={{ fontSize: "clamp(2.5rem, 7vw, 6rem)" }}>
+                <WordReveal text={slide.headline} className="" delay={0.2} reduced={reduced} />
               </h1>
-              <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light italic leading-[1.08] mb-6 tracking-tight">
-                <AnimatedText text={slide.accent} className="holographic-text text-glow-strong" reduced={reduced} />
+              <h1 className="font-serif font-light italic leading-[1.05] tracking-tight mb-8"
+                style={{ fontSize: "clamp(2.5rem, 7vw, 6rem)" }}>
+                <WordReveal
+                  text={slide.accent}
+                  className="bg-gradient-to-r from-primary via-gold-light to-primary bg-clip-text text-transparent"
+                  delay={0.5}
+                  reduced={reduced}
+                />
               </h1>
 
               {/* Subtitle */}
               <motion.p
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6, duration: 0.5 }}
-                className="font-sans text-xs uppercase tracking-[0.3em] text-foreground/60 mb-4"
+                transition={{ delay: 0.8, duration: 0.5 }}
+                className="font-sans text-[11px] uppercase tracking-[0.35em] text-foreground/50 mb-5"
               >
                 {slide.subtitle}
               </motion.p>
 
               {/* Description */}
               <motion.p
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.7, duration: 0.5 }}
-                className="body-text text-foreground/70 text-base md:text-lg max-w-lg mb-8"
+                transition={{ delay: 0.9, duration: 0.5 }}
+                className="font-sans text-base md:text-lg text-foreground/70 max-w-xl mb-10 leading-relaxed"
               >
                 {slide.desc}
               </motion.p>
 
               {/* CTAs */}
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.8, duration: 0.5 }}
-                className="flex flex-wrap gap-4"
+                transition={{ delay: 1.0, duration: 0.5 }}
+                className="flex flex-wrap gap-5"
               >
-                <Link to={slide.cta1.link} className="gold-shimmer text-primary-foreground px-8 py-3.5 text-sm font-sans uppercase tracking-[0.15em] rounded-full inline-flex items-center gap-2 hover:scale-105 transition-transform hover:shadow-[0_0_30px_hsl(38,45%,60%,0.4)]">
-                  {slide.cta1.text} <ChevronRight size={16} />
+                <Link
+                  to={slide.cta1.link}
+                  className="group relative px-10 py-4 text-sm font-sans uppercase tracking-[0.2em] rounded-none overflow-hidden border border-primary bg-primary/10 text-foreground transition-all duration-500 hover:bg-primary hover:text-primary-foreground hover:shadow-[0_0_40px_hsl(38,45%,60%,0.3)]"
+                >
+                  <span className="relative z-10 flex items-center gap-2">
+                    {slide.cta1.text}
+                    <ChevronRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                  </span>
                 </Link>
-                <Link to={slide.cta2.link} className="btn-neon text-foreground px-8 py-3.5 text-sm font-sans uppercase tracking-[0.15em] rounded-full inline-flex items-center gap-2 hover:text-primary transition-colors">
-                  {slide.cta2.text} <ArrowRight size={16} />
+                <Link
+                  to={slide.cta2.link}
+                  className="group px-10 py-4 text-sm font-sans uppercase tracking-[0.2em] rounded-none border border-foreground/20 text-foreground/80 transition-all duration-500 hover:border-primary/60 hover:text-primary"
+                >
+                  <span className="flex items-center gap-2">
+                    {slide.cta2.text}
+                    <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                  </span>
                 </Link>
-              </motion.div>
-
-              {/* Live viewer counter */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1.2, duration: 0.5 }}
-                className="mt-6"
-              >
-                <LiveViewerCounter pageName="this treatment" />
               </motion.div>
             </motion.div>
           </AnimatePresence>
         </div>
       </div>
 
-      {/* Progress Bar - full width */}
-      <div className="absolute bottom-[72px] left-0 right-0 z-20 h-[2px] bg-foreground/5">
+      {/* Floating Trust Indicators — bottom-left area */}
+      <div className="absolute bottom-32 left-6 lg:left-12 z-20 hidden md:flex gap-6">
+        {trustIndicators.map((item, i) => (
+          <motion.div
+            key={item.label}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.4 + i * 0.15, duration: 0.6 }}
+            className="text-center"
+          >
+            <div className="text-lg font-serif text-primary font-semibold">{item.label}</div>
+            <div className="text-[10px] font-sans uppercase tracking-[0.25em] text-foreground/50">{item.sub}</div>
+          </motion.div>
+        ))}
+      </div>
+
+      {/* Progress Bar */}
+      <div className="absolute bottom-[68px] left-0 right-0 z-20 h-px bg-foreground/5">
         <motion.div
-          className="h-full bg-primary shadow-[0_0_8px_hsl(38,45%,60%,0.5)]"
+          className="h-full bg-gradient-to-r from-primary/60 via-primary to-primary/60"
           style={{ width: `${progress}%` }}
           transition={{ duration: 0.05, ease: "linear" }}
         />
       </div>
 
-      {/* Slide Controls - glassmorphism enhanced */}
-      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex items-center gap-4 md:gap-6 bg-background/10 backdrop-blur-2xl border border-white/10 rounded-full px-4 md:px-6 py-3 shadow-[0_8px_32px_hsl(0,0%,0%,0.4),inset_0_1px_0_hsl(255,255%,255%,0.05)]">
-        {/* Prev button */}
+      {/* Slide Controls */}
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex items-center gap-5 bg-background/20 backdrop-blur-2xl border border-foreground/[0.06] px-5 py-3">
         <motion.button
           onClick={prev}
-          whileHover={{ scale: 1.15 }}
+          whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
-          className="w-8 h-8 rounded-full border border-foreground/10 flex items-center justify-center text-foreground/60 hover:text-primary hover:border-primary/40 transition-colors"
+          className="w-8 h-8 flex items-center justify-center text-foreground/50 hover:text-primary transition-colors"
           aria-label="Previous slide"
         >
           <ChevronLeft size={16} />
         </motion.button>
 
-        {/* Counter */}
-        <span className="text-sm font-sans text-primary font-medium tabular-nums min-w-[50px] text-center">
-          {String(current + 1).padStart(2, "0")} <span className="text-foreground/40">/ {String(slides.length).padStart(2, "0")}</span>
+        <span className="text-sm font-sans text-foreground/60 tabular-nums min-w-[50px] text-center">
+          <span className="text-primary">{String(current + 1).padStart(2, "0")}</span>
+          <span className="mx-1 text-foreground/20">/</span>
+          {String(slides.length).padStart(2, "0")}
         </span>
 
-        {/* Dot indicators */}
-        <div className="hidden md:flex gap-2">
+        <div className="hidden md:flex gap-1.5">
           {slides.map((_, i) => (
-            <motion.button
+            <button
               key={i}
               onClick={() => { setCurrent(i); setProgress(0); }}
-              whileHover={{ scale: 1.3 }}
-              whileTap={{ scale: 0.95 }}
-              className={`rounded-full transition-all duration-500 ${
+              className={`transition-all duration-500 ${
                 i === current
-                  ? "w-8 h-2 bg-primary shadow-[0_0_15px_hsl(38,45%,60%,0.6)]"
-                  : "w-2 h-2 bg-foreground/20 hover:bg-foreground/40"
+                  ? "w-6 h-1 bg-primary"
+                  : "w-1.5 h-1 bg-foreground/15 hover:bg-foreground/30"
               }`}
               aria-label={`Go to slide ${i + 1}`}
             />
           ))}
         </div>
 
-        {/* Play/Pause button */}
         <motion.button
           onClick={togglePause}
-          whileHover={{ scale: 1.15 }}
+          whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
-          className={`w-8 h-8 rounded-full border flex items-center justify-center transition-all ${
-            manualPause
-              ? "border-primary/40 text-primary bg-primary/10"
-              : "border-foreground/10 text-foreground/60 hover:text-primary hover:border-primary/40"
+          className={`w-8 h-8 flex items-center justify-center transition-colors ${
+            manualPause ? "text-primary" : "text-foreground/50 hover:text-primary"
           }`}
-          aria-label={manualPause ? "Resume slideshow" : "Pause slideshow"}
+          aria-label={manualPause ? "Resume" : "Pause"}
         >
           {manualPause ? <Play size={14} /> : <Pause size={14} />}
         </motion.button>
 
-        {/* Next button */}
         <motion.button
           onClick={next}
-          whileHover={{ scale: 1.15 }}
+          whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
-          className="w-8 h-8 rounded-full border border-foreground/10 flex items-center justify-center text-foreground/60 hover:text-primary hover:border-primary/40 transition-colors"
+          className="w-8 h-8 flex items-center justify-center text-foreground/50 hover:text-primary transition-colors"
           aria-label="Next slide"
         >
           <ChevronRight size={16} />
