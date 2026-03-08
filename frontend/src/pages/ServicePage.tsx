@@ -10,10 +10,24 @@ import heroCoolNew from "@/assets/hero-cool-new.jpg";
 import heroSkinNew from "@/assets/hero-skin-new.jpg";
 import heroBotoxNew from "@/assets/hero-botox-new.jpg";
 import heroBridalNew from "@/assets/hero-bridal-new.jpg";
-import heroSpaNew from "@/assets/hero-spa-new.jpg";
 import heroSalonNew from "@/assets/hero-salon-new.jpg";
 import heroMicrodermNew from "@/assets/hero-microderm-new.jpg";
 import heroResurfxNew from "@/assets/hero-resurfx-new.jpg";
+
+// Service-specific images
+import serviceAcne from "@/assets/service-acne-gen.jpg";
+import serviceSkinlightening from "@/assets/service-skinlightening-gen.jpg";
+import serviceAntiageing from "@/assets/service-antiageing-gen.jpg";
+import serviceHifu from "@/assets/service-hifu-gen.jpg";
+import serviceDarkcircles from "@/assets/service-darkcircles-gen.jpg";
+import serviceSkintightening from "@/assets/service-skintightening-gen.jpg";
+import serviceStretchmarks from "@/assets/service-stretchmarks-gen.jpg";
+import serviceTattoo from "@/assets/service-tattoo-gen.jpg";
+import serviceMolewart from "@/assets/service-molewart-gen.jpg";
+import serviceHairloss from "@/assets/service-hairloss-gen.jpg";
+import serviceHairtransplant from "@/assets/service-hairtransplant-gen.jpg";
+import serviceBodycontouring from "@/assets/service-bodycontouring-gen.jpg";
+import serviceFacial from "@/assets/service-facial-gen.jpg";
 
 // Before/After result images
 import baCoolsculpting from "@/assets/ba-coolsculpting.jpg";
@@ -28,10 +42,23 @@ const heroImages: Record<string, string> = {
   skin: heroSkinNew,
   botox: heroBotoxNew,
   bridal: heroBridalNew,
-  spa: heroSpaNew,
+  facials: serviceFacial,
   salon: heroSalonNew,
   microdermabrasion: heroMicrodermNew,
   resurfx: heroResurfxNew,
+  acne: serviceAcne,
+  skinlightening: serviceSkinlightening,
+  antiageing: serviceAntiageing,
+  hifu: serviceHifu,
+  darkcircles: serviceDarkcircles,
+  skintightening: serviceSkintightening,
+  stretchmarks: serviceStretchmarks,
+  tattooremoval: serviceTattoo,
+  molewart: serviceMolewart,
+  hairloss: serviceHairloss,
+  hairtransplant: serviceHairtransplant,
+  bodycontouring: serviceBodycontouring,
+  weightloss: heroCoolNew,
 };
 
 // Use same high-quality images for secondary/service images
@@ -41,10 +68,23 @@ const serviceImages: Record<string, string> = {
   skin: heroSkinNew,
   botox: heroBotoxNew,
   bridal: heroBridalNew,
-  spa: heroSpaNew,
+  facials: serviceFacial,
   salon: heroSalonNew,
   microdermabrasion: heroMicrodermNew,
   resurfx: heroResurfxNew,
+  acne: serviceAcne,
+  skinlightening: serviceSkinlightening,
+  antiageing: serviceAntiageing,
+  hifu: serviceHifu,
+  darkcircles: serviceDarkcircles,
+  skintightening: serviceSkintightening,
+  stretchmarks: serviceStretchmarks,
+  tattooremoval: serviceTattoo,
+  molewart: serviceMolewart,
+  hairloss: serviceHairloss,
+  hairtransplant: serviceHairtransplant,
+  bodycontouring: serviceBodycontouring,
+  weightloss: heroCoolNew,
 };
 
 // Before/After images per service
