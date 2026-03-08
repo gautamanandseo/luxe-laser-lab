@@ -113,8 +113,8 @@ const beforeAfterImages: Record<string, { image: string; label: string }[]> = {
   ],
   coolsculpting: [
     { image: baCoolsculpting, label: "Abdomen — 2 Sessions" },
-    { image: baCoolsculpting, label: "Love Handles — 3 Sessions" },
-    { image: baCoolsculpting, label: "Double Chin — 2 Sessions" },
+    { image: baCoolsculptingChin, label: "Double Chin — 2 Sessions" },
+    { image: baBodycontouring2, label: "Body Contouring Results" },
   ],
   skin: [
     { image: baSkin, label: "Acne & Blemish Clearance" },
