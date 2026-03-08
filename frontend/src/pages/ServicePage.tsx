@@ -3,6 +3,10 @@ import { ArrowRight, Check, Phone, ChevronDown, Star, Quote, Info, Eye } from "l
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { servicesData } from "@/data/serviceData";
+import AuroraMesh from "@/components/effects/AuroraMesh";
+import Tilt3DCard from "@/components/effects/Tilt3DCard";
+import GlowDivider from "@/components/effects/GlowDivider";
+import ParticleField from "@/components/effects/ParticleField";
 
 // New high-quality hero images
 import heroLaserNew from "@/assets/hero-laser-new.jpg";
@@ -225,19 +229,14 @@ const ServicePage = ({ service }: ServicePageProps) => {
   return (
     <div className="pt-20">
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center overflow-hidden">
+      <section className="relative min-h-[90vh] flex items-center overflow-hidden scanlines">
         {/* Background Image */}
         <div className="absolute inset-0">
-          <img
-            src={heroImg}
-            alt={data.title + " " + data.accent}
-            className="w-full h-full object-cover"
-          />
+          <img src={heroImg} alt={data.title + " " + data.accent} className="w-full h-full object-cover" />
           <div className={`absolute inset-0 bg-gradient-to-r ${data.heroOverlay}`} />
-          {/* Decorative elements */}
-          <div className="absolute top-20 right-20 w-72 h-72 bg-primary/10 rounded-full blur-3xl" />
-          <div className="absolute bottom-20 left-20 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
         </div>
+        <AuroraMesh intensity="subtle" className="z-[2]" />
+        <ParticleField count={15} className="z-[3] opacity-25" />
 
         {/* Content */}
         <div className="relative z-10 container mx-auto px-6 py-24">
@@ -257,8 +256,8 @@ const ServicePage = ({ service }: ServicePageProps) => {
               <h1 className="font-serif text-5xl md:text-7xl text-foreground leading-[0.95] mb-2">
                 {data.title}
               </h1>
-              <h1 className="font-serif text-5xl md:text-7xl italic text-primary leading-[0.95] mb-6">
-                {data.accent}
+              <h1 className="font-serif text-5xl md:text-7xl italic leading-[0.95] mb-6">
+                <span className="holographic-text">{data.accent}</span>
               </h1>
 
               {/* Subtitle */}
@@ -332,8 +331,12 @@ const ServicePage = ({ service }: ServicePageProps) => {
         </div>
       </section>
 
+      <GlowDivider variant="gold" />
+
       {/* About Section */}
-      <section className="py-24 bg-secondary">
+      <section className="py-24 bg-secondary relative overflow-hidden">
+        <AuroraMesh intensity="subtle" />
+        <div className="absolute inset-0 grid-bg opacity-20" />
         <div className="container mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <motion.div
@@ -387,8 +390,11 @@ const ServicePage = ({ service }: ServicePageProps) => {
         </div>
       </section>
 
+      <GlowDivider variant="multi" />
+
       {/* Benefits Section */}
-      <section className="py-24 bg-background">
+      <section className="py-24 bg-background relative overflow-hidden">
+        <div className="absolute inset-0 grid-bg opacity-15" />
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <p className="eyebrow mb-4">Benefits</p>
@@ -399,19 +405,21 @@ const ServicePage = ({ service }: ServicePageProps) => {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {data.benefits.map((benefit, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="group p-8 bg-card rounded-2xl border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5"
-              >
-                <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
-                  <benefit.icon size={24} className="text-primary" />
-                </div>
-                <h3 className="font-serif text-xl text-foreground mb-3">{benefit.title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">{benefit.description}</p>
+              <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}>
+                <Tilt3DCard maxTilt={8} className="h-full">
+                  <div className="group p-8 bg-card/50 backdrop-blur-sm rounded-2xl border border-primary/10 hover:border-primary/40 transition-all duration-300 depth-shadow shimmer-sweep overflow-hidden relative h-full">
+                    <div className="absolute top-0 left-0 w-0 h-[2px] bg-gradient-to-r from-primary to-primary/0 group-hover:w-full transition-all duration-700" />
+                    <div className="relative z-10">
+                      <motion.div whileHover={{ rotate: 10, scale: 1.15 }}
+                        className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary/20 group-hover:shadow-[0_0_25px_hsl(38,45%,60%,0.3)] transition-all"
+                      >
+                        <benefit.icon size={24} className="text-primary" />
+                      </motion.div>
+                      <h3 className="font-serif text-xl text-foreground mb-3 group-hover:text-primary transition-colors">{benefit.title}</h3>
+                      <p className="text-muted-foreground text-sm leading-relaxed">{benefit.description}</p>
+                    </div>
+                  </div>
+                </Tilt3DCard>
               </motion.div>
             ))}
           </div>
