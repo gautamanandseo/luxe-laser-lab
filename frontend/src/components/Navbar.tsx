@@ -133,8 +133,9 @@ const Navbar = () => {
                       onMouseLeave={() => setServicesOpen(false)}
                     >
                       <motion.button
-                        whileHover={{ y: -1 }}
-                        className={`flex items-center gap-1.5 px-4 py-2 text-sm font-medium rounded-xl transition-all duration-300 relative group ${
+                        whileHover={{ y: -2, scale: 1.04 }}
+                        whileTap={{ scale: 0.97 }}
+                        className={`flex items-center gap-1.5 px-4 py-2 text-sm font-medium rounded-2xl transition-all duration-300 relative group ${
                           location.pathname.includes("service") || servicesOpen
                             ? "text-primary"
                             : "text-foreground/70 hover:text-foreground"
@@ -142,10 +143,14 @@ const Navbar = () => {
                       >
                         <span className="relative z-10">{link.name}</span>
                         <ChevronDown size={13} className={`relative z-10 transition-transform duration-300 ${servicesOpen ? "rotate-180" : ""}`} />
-                        {/* Hover bg pill */}
+                        {/* Apple 3D hover pill */}
                         <motion.div
-                          className="absolute inset-0 rounded-xl bg-primary/5 border border-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                          layoutId="nav-hover"
+                          className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-300"
+                          style={{
+                            background: 'linear-gradient(180deg, hsl(var(--primary) / 0.12) 0%, hsl(var(--primary) / 0.04) 100%)',
+                            boxShadow: '0 2px 8px hsl(var(--primary) / 0.1), inset 0 1px 0 hsl(0 0% 100% / 0.06)',
+                            border: '1px solid hsl(var(--primary) / 0.15)',
+                          }}
                         />
                       </motion.button>
 
