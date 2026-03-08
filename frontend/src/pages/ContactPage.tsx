@@ -288,7 +288,7 @@ const ContactPage = () => {
           <div className="flex flex-col md:flex-row items-center justify-between gap-8">
             <div>
               <h3 className="font-serif text-3xl text-primary-foreground mb-2">Prefer to call directly?</h3>
-              <p className="text-primary-foreground/70">Our team is available Mon-Sat, 10AM-7PM</p>
+              <p className="text-primary-foreground/70">Our team is available Tue-Sun, 10AM-7PM</p>
             </div>
             <div className="flex flex-wrap gap-4">
               <motion.a whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }} href="tel:+919811157787"

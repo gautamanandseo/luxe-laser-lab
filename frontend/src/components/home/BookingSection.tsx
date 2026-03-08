@@ -90,8 +90,8 @@ const BookingSection = () => {
                 <div className="p-4 bg-secondary/50 rounded-xl border border-primary/10">
                   <Clock size={16} className="text-primary mb-2" />
                   <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-1">Clinic Hours</p>
-                  <p className="text-sm text-foreground">Mon–Sat: 10 AM – 8 PM</p>
-                  <p className="text-sm text-foreground">Sunday: By Appointment</p>
+                  <p className="text-sm text-foreground">Monday: Closed</p>
+                  <p className="text-sm text-foreground">Tue–Sun: 10 AM – 7 PM</p>
                 </div>
               </div>
 

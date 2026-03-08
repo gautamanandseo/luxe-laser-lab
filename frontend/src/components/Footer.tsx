@@ -154,7 +154,7 @@ const Footer = () => {
                     <Clock size={12} className="text-primary" />
                     <p className="text-xs font-sans uppercase tracking-[0.2em] text-primary">Clinic Hours</p>
                   </div>
-                  <p className="text-sm text-muted-foreground">Mon – Sat: 10:00 AM – 7:00 PM</p>
+                  <p className="text-sm text-muted-foreground">Mon: Closed | Tue–Sun: 10:00 AM – 7:00 PM</p>
                   <p className="text-sm text-muted-foreground">Sunday: By Appointment</p>
                 </div>
               </div>
