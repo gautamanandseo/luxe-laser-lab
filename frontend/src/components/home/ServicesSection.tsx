@@ -56,7 +56,7 @@ const tabs = [
     desc: "Advanced dermatological treatments that target acne at its root and restore smooth, scar-free skin with clinical-grade technology including chemical peels, LED therapy, ResurFX™ laser, and microneedling with PRP.",
     features: ["Chemical peels & LED blue light therapy", "ResurFX™ fractional laser for scars", "Microneedling with PRP", "Calibrated for Indian skin types", "Long-term prevention protocols"],
     link: "/acne-treatment",
-    image: serviceSkin,
+    image: serviceAcne,
   },
   {
     id: "skinlightening",
@@ -67,7 +67,7 @@ const tabs = [
     desc: "Advanced clinical treatments to restore even-toned, luminous skin. We target melasma, dark patches, sun damage, and uneven skin tone safely for all Indian skin types.",
     features: ["Chemical peels & laser toning", "Melasma specialist protocol", "Glutathione & vitamin C infusions", "Professional de-tan treatments", "Indian skin-safe formulations"],
     link: "/skin-lightening",
-    image: serviceSkin,
+    image: serviceSkinlightening,
   },
   {
     id: "antiageing",
