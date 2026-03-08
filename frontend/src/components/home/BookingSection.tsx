@@ -79,12 +79,20 @@ const BookingSection = () => {
                   <option>Laser Hair Removal</option>
                   <option>CoolSculpting®</option>
                   <option>Skin Treatments</option>
+                  <option>Acne & Scar Treatment</option>
+                  <option>Skin Lightening</option>
+                  <option>Anti-Ageing</option>
+                  <option>HIFU Face Lift</option>
+                  <option>Dark Circles</option>
                   <option>ResurFX™ Skin Resurfacing</option>
                   <option>Botox & Fillers</option>
                   <option>Microdermabrasion</option>
                   <option>Bridal Package</option>
-                  <option>Spa Services</option>
+                  <option>Facials & HydraFacial</option>
                   <option>Salon Services</option>
+                  <option>Hair Loss & PRP</option>
+                  <option>Hair Transplant</option>
+                  <option>Body Contouring</option>
                 </select>
                 <input type="date" value={form.date} onChange={e => update("date", e.target.value)} className="w-full bg-muted border border-border rounded px-4 py-3 text-sm text-foreground focus:border-primary focus:outline-none transition-colors" />
                 <textarea placeholder="Your Message (optional)" rows={3} value={form.message} onChange={e => update("message", e.target.value)} className="w-full bg-muted border border-border rounded px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none transition-colors resize-none" />
