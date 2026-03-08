@@ -7,7 +7,7 @@ const contactMethods = [
   { icon: Phone, title: "Call Us", value: "9811157787", subValue: "9811157784", href: "tel:+919811157787", color: "bg-green-500/10 text-green-500" },
   { icon: MessageCircle, title: "WhatsApp", value: "Quick Response", subValue: "Chat with us", href: "https://wa.me/919811157787", color: "bg-emerald-500/10 text-emerald-500" },
   { icon: Mail, title: "Email Us", value: "info@empathylaserclinic.com", subValue: "We reply within 24hrs", href: "mailto:info@empathylaserclinic.com", color: "bg-blue-500/10 text-blue-500" },
-  { icon: MapPin, title: "Visit Us", value: "Delhi NCR, India", subValue: "Get directions", href: "https://maps.app.goo.gl/DQ6ALz6CcUeS557f9", color: "bg-red-500/10 text-red-500" },
+  { icon: MapPin, title: "Visit Us", value: "Pitampura, Delhi", subValue: "Get directions", href: "https://maps.app.goo.gl/pitampura-empathy", color: "bg-red-500/10 text-red-500" },
 ];
 
 const services = [
