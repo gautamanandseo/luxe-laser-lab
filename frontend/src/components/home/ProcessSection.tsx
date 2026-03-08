@@ -14,10 +14,10 @@ const steps = [
 
 const ProcessSection = () => {
   return (
-    <section className="py-24 bg-background relative overflow-hidden">
-      <AuroraMesh intensity="subtle" />
-      <ParticleField count={20} className="opacity-30" />
-      <div className="absolute inset-0 grid-bg opacity-30" />
+    <section className="py-28 bg-cosmic relative overflow-hidden light-rays">
+      <AuroraMesh intensity="medium" />
+      <ParticleField count={25} className="opacity-40" />
+      <div className="absolute inset-0 grid-bg opacity-20" />
 
       <div className="relative z-10 container mx-auto px-6">
         <ScrollReveal direction="up" className="text-center mb-16">
