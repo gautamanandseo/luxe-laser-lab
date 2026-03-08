@@ -50,6 +50,8 @@ import baMolewart from "@/assets/ba-molewart.jpg";
 import baHairtransplant from "@/assets/ba-hairtransplant.jpg";
 import baFacial from "@/assets/ba-facial.jpg";
 import baBotox2 from "@/assets/ba-botox2.jpg";
+import baCoolsculptingChin from "@/assets/ba-coolsculpting-chin.jpg";
+import baBodycontouring2 from "@/assets/ba-bodycontouring2.jpg";
 
 const heroImages: Record<string, string> = {
   laser: heroLaserNew,
