@@ -27,9 +27,12 @@ export default defineConfig(({ mode }) => ({
           'vendor-react': ['react', 'react-dom', 'react-router-dom'],
           'vendor-motion': ['framer-motion'],
           'vendor-query': ['@tanstack/react-query'],
+          'vendor-three': ['three', '@react-three/fiber', '@react-three/drei'],
         },
       },
     },
+    cssMinify: true,
+    target: 'es2020',
   },
   resolve: {
     alias: {
