@@ -1,6 +1,5 @@
 import { useState, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { supabase } from "@/integrations/supabase/client";
 import { Camera, X, Upload, Loader2, Sparkles, ArrowRight, Star, AlertCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 import ScrollReveal from "@/components/effects/ScrollReveal";
@@ -44,19 +43,26 @@ const SkinAnalysisWidget = () => {
     setError(null);
 
     try {
-      const { data, error: fnError } = await supabase.functions.invoke("skin-analysis", {
-        body: { imageBase64, concerns },
+      const projectId = import.meta.env.VITE_SUPABASE_PROJECT_ID || "qwyywhdadnbacvwrupbl";
+      const anonKey = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY || "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF3eXl3aGRhZG5iYWN2d3J1cGJsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI5ODkwOTQsImV4cCI6MjA4ODU2NTA5NH0.njgz7S7KsJyAN-GzKtUtQfShlBnbWBrocyyb2etS73I";
+      const url = `https://${projectId}.supabase.co/functions/v1/skin-analysis`;
+
+      const resp = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${anonKey}`,
+        },
+        body: JSON.stringify({ imageBase64, concerns }),
       });
 
-      if (fnError) {
-        throw new Error(fnError.message || "Analysis failed");
+      if (!resp.ok) {
+        const errData = await resp.json().catch(() => ({}));
+        throw new Error(errData.error || `Analysis failed (${resp.status})`);
       }
 
-      if (data?.error) {
-        throw new Error(data.error);
-      }
-
-      setResult(data as AnalysisResult);
+      const data: AnalysisResult = await resp.json();
+      setResult(data);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Analysis failed. Please try again.");
     } finally {
