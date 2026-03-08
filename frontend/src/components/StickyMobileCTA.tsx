@@ -27,14 +27,12 @@ const StickyMobileCTA = () => {
           transition={{ type: "spring", stiffness: 300, damping: 30 }}
           className="fixed bottom-0 left-0 right-0 z-50 lg:hidden"
         >
-          {/* Urgency strip */}
           <div className="bg-primary/90 backdrop-blur-sm text-center py-1.5 px-4">
             <p className="text-[10px] font-sans uppercase tracking-[0.15em] text-primary-foreground font-semibold">
               ✨ Limited Offer — Free Consultation + 20% Off First Session
             </p>
           </div>
 
-          {/* CTA buttons */}
           <div className="bg-background/95 backdrop-blur-xl border-t border-primary/20 px-4 py-3 flex items-center gap-2 shadow-[0_-8px_30px_hsl(0,0%,0%,0.5)]">
             <button
               onClick={() => setDismissed(true)}
@@ -59,9 +57,6 @@ const StickyMobileCTA = () => {
               className="flex-1 flex items-center justify-center gap-2 bg-card border border-primary/20 rounded-full py-2.5 text-foreground text-xs font-sans uppercase tracking-[0.1em] hover:border-primary/50 transition-colors"
             >
               <MessageCircle size={14} className="text-primary" />
-              WhatsApp
-            </a>
-              <MessageCircle size={14} className="text-green-500" />
               WhatsApp
             </a>
 
