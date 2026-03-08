@@ -272,18 +272,20 @@ const Navbar = () => {
             >
               <Link
                 to="/contact"
-                className="relative inline-flex items-center gap-2 text-sm font-medium px-6 py-2.5 rounded-full overflow-hidden group"
+                className="relative inline-flex items-center gap-2 text-sm font-medium px-6 py-2.5 rounded-2xl overflow-hidden group"
+                style={{
+                  background: 'linear-gradient(180deg, hsl(var(--primary)) 0%, hsl(var(--gold-dark)) 100%)',
+                  boxShadow: '0 1px 0 0 hsl(var(--gold-light) / 0.4) inset, 0 -1px 0 0 hsl(0 0% 0% / 0.2) inset, 0 4px 16px -4px hsl(var(--primary) / 0.4), 0 1px 3px hsl(0 0% 0% / 0.3)',
+                }}
               >
-                {/* Multi-layer button bg */}
-                <div className="absolute inset-0 bg-primary rounded-full" />
-                <div className="absolute inset-0 bg-gradient-to-b from-white/20 to-transparent rounded-full" />
-                <div className="absolute inset-[1px] bg-gradient-to-b from-primary via-primary to-primary/80 rounded-full" />
+                {/* Top highlight for 3D depth */}
+                <div className="absolute inset-x-0 top-0 h-[45%] bg-gradient-to-b from-white/20 to-transparent rounded-t-2xl" />
                 {/* Shine sweep */}
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 rounded-full" />
-                {/* Glow */}
-                <div className="absolute -inset-1 bg-primary/30 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <span className="relative z-10 text-primary-foreground">Book Consultation</span>
-                <Sparkles size={14} className="relative z-10 text-primary-foreground/70" />
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
+                {/* Glow on hover */}
+                <div className="absolute -inset-1 bg-primary/30 rounded-2xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <span className="relative z-10 text-primary-foreground font-semibold">Book Consultation</span>
+                <Sparkles size={14} className="relative z-10 text-primary-foreground/80" />
               </Link>
             </motion.div>
 
