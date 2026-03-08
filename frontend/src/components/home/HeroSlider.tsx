@@ -202,6 +202,7 @@ const HeroSlider = () => {
       className="relative h-screen overflow-hidden scanlines"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
+      aria-label="Hero slideshow"
     >
       {/* Background Image with parallax-like zoom */}
       <AnimatePresence mode="wait">
