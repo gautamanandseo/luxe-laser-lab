@@ -8,14 +8,6 @@ const steps = [
   { num: "04", title: "Results & Aftercare", desc: "See transformative results with dedicated aftercare guidance for lasting outcomes." },
 ];
 
-const whyChoose = [
-  { num: "01", title: "Certified Specialists", desc: "Board-certified physicians and trained technicians with years of aesthetic experience." },
-  { num: "02", title: "Genuine Technology", desc: "Only USFDA-cleared, CE-marked equipment. No imitations, no compromises." },
-  { num: "03", title: "All Skin Types", desc: "Treatments calibrated for Indian skin tones across all Fitzpatrick phototypes." },
-  { num: "04", title: "Zero Downtime", desc: "Return to your daily routine immediately after most treatments." },
-  { num: "05", title: "Compassionate Care", desc: "The 'Empathy' in our name reflects our commitment to your comfort and confidence." },
-  { num: "06", title: "Transparent Pricing", desc: "No hidden charges. Clear pricing with flexible payment plans available." },
-];
 
 const ProcessSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
