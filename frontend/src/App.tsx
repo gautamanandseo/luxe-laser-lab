@@ -124,8 +124,9 @@ const App = () => {
           <ScrollToTop />
           <ScrollProgress />
           <Navbar />
-          <main>
+          <main className="film-grain">
             <AnimatedRoutes />
+          </main>
           </main>
           <Footer />
           <WhatsAppButton />

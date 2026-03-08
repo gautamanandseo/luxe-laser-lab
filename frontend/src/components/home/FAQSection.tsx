@@ -89,7 +89,7 @@ const FAQSection = () => {
 
         {/* CTA */}
         <ScrollReveal direction="up" delay={0.2} className="text-center mt-14">
-          <div className="bg-card/40 backdrop-blur-sm border border-primary/10 rounded-2xl p-8 max-w-lg mx-auto">
+          <div className="obsidian-panel rounded-2xl p-8 max-w-lg mx-auto border-liquid-gold">
             <MessageCircle size={28} className="text-primary mx-auto mb-3" />
             <h4 className="font-serif text-xl text-foreground mb-2">Still have questions?</h4>
             <p className="text-sm text-muted-foreground mb-5">Our specialists are happy to answer any questions about treatments, costs, or your specific concerns.</p>

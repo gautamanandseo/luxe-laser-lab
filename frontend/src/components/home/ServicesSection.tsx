@@ -89,8 +89,8 @@ const ServicesSection = () => {
   const currentImage = imageCache[tab.id] || serviceLaser;
 
   return (
-    <section className="py-28 bg-cosmic relative overflow-hidden">
-      <div className="absolute inset-0 grid-bg opacity-15" />
+    <section className="py-28 bg-velvet relative overflow-hidden vignette">
+      <div className="absolute inset-0 grid-bg opacity-10" />
 
       <div className="relative z-10 container mx-auto px-6">
         <ScrollReveal direction="up" className="text-center mb-12">

@@ -32,7 +32,7 @@ const WhyChooseSection = () => (
         {reasons.map((r, i) => (
           <ScrollReveal key={i} direction="up" delay={i * 0.1}>
             <Tilt3DCard className="h-full" maxTilt={8}>
-              <div className="group relative p-8 bg-card/50 backdrop-blur-sm border border-primary/10 rounded-2xl overflow-hidden hover:border-primary/40 transition-all duration-500 h-full depth-shadow shimmer-sweep">
+              <div className="group relative p-8 obsidian-panel rounded-2xl overflow-hidden hover:border-primary/40 transition-all duration-500 h-full card-ultra shimmer-sweep border-liquid-gold">
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 radial-glow" />
                 <div className="absolute top-0 left-0 w-0 h-[2px] bg-gradient-to-r from-primary to-primary/0 group-hover:w-full transition-all duration-700" />
                 <div className="absolute bottom-0 right-0 w-0 h-[2px] bg-gradient-to-l from-primary to-primary/0 group-hover:w-full transition-all duration-700 delay-200" />

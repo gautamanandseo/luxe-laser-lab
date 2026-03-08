@@ -77,8 +77,9 @@ const TestimonialsSection = () => {
           </motion.div>
 
           {/* Glassmorphism card */}
-          <div className="relative bg-card/30 backdrop-blur-xl border border-primary/10 rounded-3xl p-10 md:p-14 depth-shadow overflow-hidden">
+          <div className="relative obsidian-panel rounded-3xl p-10 md:p-14 overflow-hidden border-liquid-gold">
             <div className="shimmer-sweep absolute inset-0 rounded-3xl" />
+            <div className="absolute inset-0 radial-glow opacity-30 rounded-3xl" />
 
             <AnimatePresence mode="wait">
               <motion.div

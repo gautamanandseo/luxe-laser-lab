@@ -102,7 +102,7 @@ const CoolSculptingSection = () => {
   const active = zones.find(z => z.id === activeZone)!;
 
   return (
-    <section className="py-28 bg-aurora-section relative overflow-hidden light-rays">
+    <section className="py-28 bg-velvet relative overflow-hidden light-rays vignette">
       <AuroraMesh intensity="medium" />
       <div className="absolute inset-0 grid-bg opacity-15" />
       <div className="absolute inset-0 opacity-5">

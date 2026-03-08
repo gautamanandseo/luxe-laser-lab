@@ -37,7 +37,7 @@ const AnimatedCounter = ({ target, suffix }: { target: number; suffix: string })
   }, [target]);
 
   return (
-    <div ref={ref} className="font-serif text-4xl md:text-5xl holographic-text inline-block drop-shadow-[0_0_20px_hsl(38,45%,60%,0.3)]">
+    <div ref={ref} className="font-serif text-5xl md:text-6xl holographic-text inline-block drop-shadow-[0_0_30px_hsl(38,45%,60%,0.4)] text-emboss">
       {count.toLocaleString()}{suffix}
     </div>
   );

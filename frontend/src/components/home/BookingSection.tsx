@@ -15,7 +15,7 @@ const BookingSection = () => {
 
   const update = (field: string, value: string) => setForm(f => ({ ...f, [field]: value }));
 
-  const inputClass = "w-full bg-muted/50 border border-primary/10 rounded-lg px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:shadow-[0_0_15px_hsl(38,45%,60%,0.1)] transition-all duration-300";
+  const inputClass = "w-full bg-muted/30 border border-primary/10 rounded-lg px-4 py-3.5 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary/50 focus:outline-none focus:shadow-[0_0_20px_hsl(38,45%,60%,0.15),0_0_0_3px_hsl(38,45%,60%,0.08)] transition-all duration-300 input-luxury";
 
   return (
     <section id="booking" className="py-28 bg-velvet relative overflow-hidden light-rays vignette diamond-dust">
