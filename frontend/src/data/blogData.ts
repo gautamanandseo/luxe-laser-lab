@@ -17,6 +17,7 @@ export const blogCategories = [
   "All",
   "Laser Hair Removal",
   "CoolSculpting",
+  "Weight Loss",
   "Skincare",
   "Botox & Fillers",
   "Bridal",
