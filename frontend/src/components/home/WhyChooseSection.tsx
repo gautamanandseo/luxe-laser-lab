@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Shield, Award, Users, Heart, Sparkles, Clock } from "lucide-react";
+import ScrollReveal from "@/components/effects/ScrollReveal";
 
 const reasons = [
   { num: "01", title: "Certified Specialists", desc: "Board-certified physicians and trained aestheticians with decades of combined experience.", icon: Award },
@@ -11,37 +12,44 @@ const reasons = [
 ];
 
 const WhyChooseSection = () => (
-  <section className="py-24 bg-background">
-    <div className="container mx-auto px-6">
-      <div className="text-center mb-16">
+  <section className="py-24 bg-background relative overflow-hidden">
+    {/* Background grid */}
+    <div className="absolute inset-0 grid-bg opacity-50" />
+    {/* Radial glow */}
+    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] radial-glow" />
+
+    <div className="relative z-10 container mx-auto px-6">
+      <ScrollReveal direction="up" className="text-center mb-16">
         <p className="eyebrow mb-4">The Empathy Difference</p>
         <h2 className="font-serif text-4xl md:text-6xl text-foreground">
-          Why Choose <em className="text-primary">Empathy</em>
+          Why Choose <em className="holographic-text" style={{ fontStyle: "italic" }}>Empathy</em>
         </h2>
-      </div>
+      </ScrollReveal>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {reasons.map((r, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.1 }}
-            className="group relative p-8 bg-card border border-border rounded-2xl overflow-hidden hover:border-primary/50 transition-all duration-500"
-          >
-            {/* Top border sweep animation on hover */}
-            <div className="absolute top-0 left-0 w-0 h-[2px] bg-primary group-hover:w-full transition-all duration-700" />
-            
-            <div className="flex items-start justify-between mb-6">
-              <span className="font-serif text-4xl text-primary/20 group-hover:text-primary/40 transition-colors">{r.num}</span>
-              <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                <r.icon size={22} className="text-primary" />
+          <ScrollReveal key={i} direction="up" delay={i * 0.1}>
+            <motion.div
+              whileHover={{ y: -8, transition: { duration: 0.3 } }}
+              className="group relative p-8 bg-card/50 backdrop-blur-sm border border-primary/10 rounded-2xl overflow-hidden hover:border-primary/40 transition-all duration-500 corner-accents"
+            >
+              {/* Hover glow */}
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 radial-glow" />
+              {/* Top border sweep */}
+              <div className="absolute top-0 left-0 w-0 h-[2px] bg-gradient-to-r from-primary to-primary/0 group-hover:w-full transition-all duration-700" />
+
+              <div className="relative z-10">
+                <div className="flex items-start justify-between mb-6">
+                  <span className="font-serif text-4xl text-primary/20 group-hover:text-primary/40 transition-colors">{r.num}</span>
+                  <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center group-hover:bg-primary/20 group-hover:shadow-[0_0_20px_hsl(38,45%,60%,0.2)] transition-all duration-500">
+                    <r.icon size={22} className="text-primary" />
+                  </div>
+                </div>
+                <h3 className="font-serif text-xl text-foreground mb-3 group-hover:text-primary transition-colors">{r.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{r.desc}</p>
               </div>
-            </div>
-            <h3 className="font-serif text-xl text-foreground mb-3 group-hover:text-primary transition-colors">{r.title}</h3>
-            <p className="text-sm text-muted-foreground leading-relaxed">{r.desc}</p>
-          </motion.div>
+            </motion.div>
+          </ScrollReveal>
         ))}
       </div>
     </div>

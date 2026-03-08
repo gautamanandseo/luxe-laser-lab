@@ -44,10 +44,7 @@ const Navbar = () => {
   const location = useLocation();
 
   useEffect(() => {
-    const onScroll = () => {
-      const isScrolled = window.scrollY > 50;
-      setScrolled(isScrolled);
-    };
+    const onScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -59,8 +56,16 @@ const Navbar = () => {
 
   return (
     <>
-      {/* Apple-like Premium Navigation */}
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? "bg-background/30 backdrop-blur-2xl border-b border-white/10" : "bg-transparent"}`}>
+      <motion.nav
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
+          scrolled
+            ? "bg-background/20 backdrop-blur-2xl border-b border-primary/10 shadow-[0_4px_30px_hsl(38,45%,60%,0.05)]"
+            : "bg-transparent"
+        }`}
+      >
         <div className="container mx-auto px-6 max-w-7xl">
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
@@ -79,39 +84,40 @@ const Navbar = () => {
                       onMouseLeave={() => setServicesOpen(false)}
                     >
                       <button
-                        className={`flex items-center gap-1.5 text-sm font-medium transition-colors ${
+                        className={`flex items-center gap-1.5 text-sm font-medium transition-colors relative group ${
                           location.pathname.includes("service") ? "text-primary" : "text-foreground/80 hover:text-foreground"
                         }`}
                       >
                         {link.name}
                         <ChevronDown size={14} className={`transition-transform duration-300 ${servicesOpen ? "rotate-180" : ""}`} />
+                        {/* Hover underline glow */}
+                        <span className="absolute -bottom-1 left-0 w-0 h-px bg-primary group-hover:w-full transition-all duration-300 shadow-[0_0_8px_hsl(38,45%,60%,0.5)]" />
                       </button>
 
-                      {/* Dropdown Menu */}
                       <AnimatePresence>
                         {servicesOpen && (
                           <motion.div
-                            initial={{ opacity: 0, y: -8 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -8 }}
-                            transition={{ duration: 0.2 }}
+                            initial={{ opacity: 0, y: -8, scale: 0.98 }}
+                            animate={{ opacity: 1, y: 0, scale: 1 }}
+                            exit={{ opacity: 0, y: -8, scale: 0.98 }}
+                            transition={{ duration: 0.25, ease: [0.25, 0.46, 0.45, 0.94] }}
                             className="absolute top-full left-0 pt-4"
                           >
-                            <div className="bg-background/80 backdrop-blur-2xl border border-white/10 rounded-2xl shadow-2xl p-2 min-w-[640px]">
+                            <div className="bg-background/80 backdrop-blur-2xl border border-primary/10 rounded-2xl shadow-2xl shadow-primary/5 p-2 min-w-[640px] grid-bg">
                               <div className="grid grid-cols-2 gap-x-2">
                                 {services.map((s, i) => (
                                   <motion.div
                                     key={s.path}
                                     initial={{ opacity: 0, x: -8 }}
                                     animate={{ opacity: 1, x: 0 }}
-                                    transition={{ delay: i * 0.05 }}
+                                    transition={{ delay: i * 0.02 }}
                                   >
                                     <Link
                                       to={s.path}
-                                      className="block px-4 py-3 text-sm text-foreground/80 hover:text-foreground hover:bg-white/5 rounded-lg transition-all duration-200 group"
+                                      className="block px-4 py-3 text-sm text-foreground/80 hover:text-foreground hover:bg-primary/5 rounded-lg transition-all duration-200 group"
                                     >
                                       <div className="flex items-center gap-3">
-                                        <div className="w-2 h-2 rounded-full bg-primary group-hover:scale-125 transition-transform" />
+                                        <div className="w-1.5 h-1.5 rounded-full bg-primary/50 group-hover:bg-primary group-hover:shadow-[0_0_8px_hsl(38,45%,60%,0.5)] transition-all" />
                                         <span>{s.name}</span>
                                       </div>
                                     </Link>
@@ -126,11 +132,14 @@ const Navbar = () => {
                   ) : (
                     <Link
                       to={link.path}
-                      className={`text-sm font-medium transition-colors ${
+                      className={`text-sm font-medium transition-colors relative group ${
                         location.pathname === link.path ? "text-primary" : "text-foreground/80 hover:text-foreground"
                       }`}
                     >
                       {link.name}
+                      <span className={`absolute -bottom-1 left-0 h-px bg-primary transition-all duration-300 shadow-[0_0_8px_hsl(38,45%,60%,0.5)] ${
+                        location.pathname === link.path ? "w-full" : "w-0 group-hover:w-full"
+                      }`} />
                     </Link>
                   )}
                 </div>
@@ -140,7 +149,7 @@ const Navbar = () => {
             {/* CTA Button */}
             <Link
               to="/contact"
-              className="hidden lg:inline-flex text-sm font-medium bg-primary text-primary-foreground px-6 py-2 rounded-full hover:shadow-lg hover:shadow-primary/30 transition-all duration-300 hover:scale-105"
+              className="hidden lg:inline-flex text-sm font-medium bg-primary text-primary-foreground px-6 py-2 rounded-full hover:shadow-[0_0_20px_hsl(38,45%,60%,0.4)] transition-all duration-300 hover:scale-105"
             >
               Book Consultation
             </Link>
@@ -154,26 +163,25 @@ const Navbar = () => {
             </button>
           </div>
         </div>
-      </nav>
+      </motion.nav>
 
       {/* Mobile Menu */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="fixed inset-0 top-16 z-40 bg-background/95 backdrop-blur-xl overflow-y-auto"
+            initial={{ opacity: 0, backdropFilter: "blur(0px)" }}
+            animate={{ opacity: 1, backdropFilter: "blur(20px)" }}
+            exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 top-16 z-40 bg-background/95 overflow-y-auto"
           >
             <div className="container mx-auto px-6 py-8 space-y-6">
-              {/* Main Links */}
               {navLinks.filter(l => !l.hasDropdown).map((link, i) => (
                 <motion.div
                   key={link.name}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.1 }}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: i * 0.08 }}
                 >
                   <Link
                     to={link.path}
@@ -184,12 +192,11 @@ const Navbar = () => {
                 </motion.div>
               ))}
 
-              {/* Services Section */}
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.15 }}
-                className="pt-6 border-t border-border"
+                className="pt-6 border-t border-primary/10"
               >
                 <p className="text-sm font-medium text-foreground/60 uppercase tracking-wider mb-4">Services</p>
                 <div className="space-y-2">
@@ -198,7 +205,7 @@ const Navbar = () => {
                       key={s.path}
                       initial={{ opacity: 0, x: -10 }}
                       animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.2 + i * 0.04 }}
+                      transition={{ delay: 0.2 + i * 0.03 }}
                     >
                       <Link
                         to={s.path}
@@ -211,7 +218,6 @@ const Navbar = () => {
                 </div>
               </motion.div>
 
-              {/* Mobile CTA */}
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -220,7 +226,7 @@ const Navbar = () => {
               >
                 <Link
                   to="/contact"
-                  className="block text-center bg-primary text-primary-foreground py-3 rounded-full font-medium hover:shadow-lg hover:shadow-primary/30 transition-all"
+                  className="block text-center bg-primary text-primary-foreground py-3 rounded-full font-medium hover:shadow-[0_0_20px_hsl(38,45%,60%,0.4)] transition-all"
                 >
                   Book Consultation
                 </Link>

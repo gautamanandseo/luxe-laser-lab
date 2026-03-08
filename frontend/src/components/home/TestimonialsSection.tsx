@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Star, ChevronLeft, ChevronRight } from "lucide-react";
+import { Star, ChevronLeft, ChevronRight, Quote } from "lucide-react";
+import ScrollReveal from "@/components/effects/ScrollReveal";
 
 const testimonials = [
   {
@@ -68,28 +69,42 @@ const TestimonialsSection = () => {
   const next = () => setCurrent(c => (c + 1) % testimonials.length);
 
   return (
-    <section id="testimonials" className="py-24 bg-background">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
+    <section id="testimonials" className="py-24 bg-background relative overflow-hidden">
+      {/* Background effects */}
+      <div className="absolute inset-0 radial-glow" />
+      <div className="absolute inset-0 grid-bg opacity-20" />
+
+      <div className="relative z-10 container mx-auto px-6">
+        <ScrollReveal direction="up" className="text-center mb-16">
           <p className="eyebrow mb-4">Client Stories</p>
           <h2 className="font-serif text-4xl md:text-6xl text-foreground">
-            What Our Clients <em className="text-primary">Say</em>
+            What Our Clients <em className="holographic-text" style={{ fontStyle: "italic" }}>Say</em>
           </h2>
-        </div>
+        </ScrollReveal>
 
         <div className="max-w-3xl mx-auto relative">
+          {/* Decorative quote */}
+          <Quote size={60} className="absolute -top-4 left-0 text-primary/10" />
+
           <AnimatePresence mode="wait">
             <motion.div
               key={current}
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -30 }}
-              transition={{ duration: 0.4 }}
+              initial={{ opacity: 0, x: 60, filter: "blur(8px)" }}
+              animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+              exit={{ opacity: 0, x: -60, filter: "blur(8px)" }}
+              transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
               className="text-center"
             >
               <div className="flex justify-center gap-1 mb-8">
                 {Array.from({ length: testimonials[current].rating }).map((_, i) => (
-                  <Star key={i} size={16} className="fill-primary text-primary" />
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, scale: 0 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: i * 0.1 }}
+                  >
+                    <Star size={16} className="fill-primary text-primary" />
+                  </motion.div>
                 ))}
               </div>
               <blockquote className="font-serif text-2xl md:text-3xl text-foreground/90 italic leading-relaxed mb-8">
@@ -102,17 +117,27 @@ const TestimonialsSection = () => {
 
           {/* Controls */}
           <div className="flex justify-center items-center gap-6 mt-12">
-            <button onClick={prev} className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:border-primary hover:text-primary transition-colors">
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={prev}
+              className="w-10 h-10 rounded-full border border-primary/20 flex items-center justify-center hover:border-primary hover:text-primary hover:shadow-[0_0_15px_hsl(38,45%,60%,0.2)] transition-all"
+            >
               <ChevronLeft size={18} />
-            </button>
+            </motion.button>
             <div className="flex gap-2">
               {testimonials.map((_, i) => (
-                <button key={i} onClick={() => setCurrent(i)} className={`h-1.5 rounded-full transition-all ${i === current ? "w-8 bg-primary" : "w-3 bg-foreground/20"}`} />
+                <button key={i} onClick={() => setCurrent(i)} className={`h-1.5 rounded-full transition-all duration-500 ${i === current ? "w-8 bg-primary shadow-[0_0_10px_hsl(38,45%,60%,0.4)]" : "w-3 bg-foreground/20"}`} />
               ))}
             </div>
-            <button onClick={next} className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:border-primary hover:text-primary transition-colors">
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={next}
+              className="w-10 h-10 rounded-full border border-primary/20 flex items-center justify-center hover:border-primary hover:text-primary hover:shadow-[0_0_15px_hsl(38,45%,60%,0.2)] transition-all"
+            >
               <ChevronRight size={18} />
-            </button>
+            </motion.button>
           </div>
         </div>
       </div>
