@@ -40,6 +40,18 @@ const App = () => (
             <Route path="/bridal-packages" element={<ServicePage service="bridal" />} />
             <Route path="/spa-services" element={<ServicePage service="spa" />} />
             <Route path="/salon-services" element={<ServicePage service="salon" />} />
+            <Route path="/acne-treatment" element={<ServicePage service="acne" />} />
+            <Route path="/skin-lightening" element={<ServicePage service="skinlightening" />} />
+            <Route path="/anti-ageing" element={<ServicePage service="antiageing" />} />
+            <Route path="/hifu-treatment" element={<ServicePage service="hifu" />} />
+            <Route path="/dark-circles" element={<ServicePage service="darkcircles" />} />
+            <Route path="/skin-tightening" element={<ServicePage service="skintightening" />} />
+            <Route path="/stretch-marks" element={<ServicePage service="stretchmarks" />} />
+            <Route path="/tattoo-removal" element={<ServicePage service="tattooremoval" />} />
+            <Route path="/mole-wart-removal" element={<ServicePage service="molewart" />} />
+            <Route path="/hair-loss-treatment" element={<ServicePage service="hairloss" />} />
+            <Route path="/hair-transplant" element={<ServicePage service="hairtransplant" />} />
+            <Route path="/body-contouring" element={<ServicePage service="bodycontouring" />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/blog" element={<BlogPage />} />
