@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Check, Scale, Target, Zap, Shield, TrendingDown, Clock, Heart, Users, Dumbbell, Apple, Activity } from "lucide-react";
+import { ArrowRight, Check, Scale, Target, Zap, Shield, TrendingDown, Clock, Heart, Users, Dumbbell, Apple, Activity, MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const benefits = [
