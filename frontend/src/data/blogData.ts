@@ -43,18 +43,24 @@ Laser hair removal changes this equation entirely.
 Waxing removes hair from the root by applying warm wax and pulling it off quickly. The hair grows back in 3-6 weeks, often thinner but always returning. Each session involves pain, potential ingrown hairs, and skin irritation.
 
 ### Laser Hair Removal
-Our 808nm Diode Laser targets the melanin in hair follicles, heating and destroying them at their root. Over 6-8 sessions, the follicles lose their ability to produce new hair — resulting in permanent hair reduction.
+At Empathy Laser Clinic Delhi, we use two world-leading laser systems:
+
+**Lumenis LightSheer Desire™** — The world's gold standard. Its 805nm diode laser with patented vacuum-assist technology reduces pain by up to 90% while increasing efficacy. The large spot size treats full legs in under 45 minutes.
+
+**Alma Soprano ICE Platinum™** — The most advanced pain-free option. Triple wavelengths (755+810+1064nm) with SHR IN-Motion™ technology deliver gradual heating while ICE™ cooling keeps you comfortable. Virtually zero pain, even on sensitive areas.
+
+Both target the melanin in hair follicles, heating and destroying them at their root. Over 6-8 sessions, the follicles lose their ability to produce new hair — resulting in permanent hair reduction.
 
 ## The Comparison
 
-| Factor | Laser | Waxing |
+| Factor | Laser (LightSheer/Soprano) | Waxing |
 |--------|-------|--------|
-| Pain Level | Mild (rubber band snap) | Moderate to High |
+| Pain Level | Minimal to None | Moderate to High |
 | Sessions Needed | 6-8 total | Every 3-4 weeks, forever |
 | Results | Permanent | Temporary (3-6 weeks) |
 | Ingrown Hairs | Eliminated | Common |
 | Skin Darkening | None | Possible over time |
-| Indian Skin Safe | ✅ Calibrated for all tones | ✅ But can cause irritation |
+| Indian Skin Safe | ✅ USFDA Cleared | ✅ But can cause irritation |
 
 ## Cost Analysis for Indian Consumers
 
@@ -67,13 +73,13 @@ Let's do the math:
 
 Indian skin tones (Fitzpatrick III-VI) have higher melanin content. Older laser technologies couldn't differentiate between hair melanin and skin melanin, leading to burns and discoloration.
 
-Our 808nm Diode Laser is specifically calibrated for Indian skin. The wavelength targets the hair follicle precisely while the integrated cooling system protects the surrounding skin.
+Our Lumenis LightSheer Desire (805nm) and Alma Soprano ICE Platinum (triple-wavelength) are specifically designed for darker skin tones. The LightSheer's vacuum-assist pulls skin closer for precise targeting, while the Soprano's gradual-heating SHR mode prevents the sudden energy spikes that cause discomfort on melanin-rich skin.
 
 ## The Verdict
 
 For long-term results, cost savings, and skin health — laser hair removal is the clear winner. Waxing has its place for quick fixes, but if you're looking for a permanent solution, laser is the way to go.
 
-**Ready to break free from the waxing cycle?** Book a free consultation at Empathy Laser Clinic to assess your skin and get a personalized treatment plan.`,
+**Ready to break free from the waxing cycle?** Book a free consultation at Empathy Laser Clinic Delhi to assess your skin and get a personalized treatment plan.`,
     category: "Laser Hair Removal",
     author: "Dr. Empathy Team",
     date: "2026-03-01",
