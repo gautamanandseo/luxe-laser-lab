@@ -360,6 +360,16 @@ const HeroSlider = () => {
                   {slide.cta2.text} <ArrowRight size={16} />
                 </Link>
               </motion.div>
+
+              {/* Live viewer counter */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1.2, duration: 0.5 }}
+                className="mt-6"
+              >
+                <LiveViewerCounter pageName="this treatment" />
+              </motion.div>
             </motion.div>
           </AnimatePresence>
         </div>
