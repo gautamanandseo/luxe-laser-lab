@@ -41,14 +41,12 @@ const CoolSculptingSection = () => {
 
   return (
     <section className="py-24 bg-secondary relative overflow-hidden">
-      {/* Subtle background pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-20 right-20 w-96 h-96 rounded-full bg-primary blur-[120px]" />
         <div className="absolute bottom-20 left-20 w-64 h-64 rounded-full bg-primary blur-[100px]" />
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
-        {/* Header */}
         <div className="text-center mb-16">
           <p className="eyebrow mb-4">Non-Surgical Fat Reduction</p>
           <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-foreground">
@@ -59,18 +57,16 @@ const CoolSculptingSection = () => {
           </p>
         </div>
 
-        {/* Main content: 2-column layout */}
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center max-w-6xl mx-auto">
-          
-          {/* Left: Body image with hotspots */}
           <div className="flex justify-center">
             <div className="relative w-full max-w-[320px] md:max-w-[360px]">
               <img
                 src={coolsculptingBody}
                 alt="CoolSculpting Treatment Areas — 9 FDA-cleared body zones"
+                loading="lazy"
+                decoding="async"
                 className="w-full h-auto"
               />
-              {/* Hotspots */}
               {zones.map(z => {
                 const pos = hotspotPositions[z.id];
                 const isActive = activeZone === z.id;
@@ -89,7 +85,6 @@ const CoolSculptingSection = () => {
                     {isActive && (
                       <span className="absolute inset-0 rounded-full bg-primary/40 animate-ping" style={{ animationDuration: '2s' }} />
                     )}
-                    {/* Tooltip on hover for non-active */}
                     {!isActive && (
                       <span className="absolute -top-8 left-1/2 -translate-x-1/2 bg-card text-foreground text-[10px] font-sans px-2 py-0.5 rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none border border-border">
                         {z.label}
@@ -101,9 +96,7 @@ const CoolSculptingSection = () => {
             </div>
           </div>
 
-          {/* Right: Treatment area selector + detail */}
           <div>
-            {/* Zone grid */}
             <div className="grid grid-cols-3 gap-2 mb-6">
               {zones.map(z => (
                 <button
@@ -133,7 +126,6 @@ const CoolSculptingSection = () => {
               ))}
             </div>
 
-            {/* Active zone detail card */}
             <AnimatePresence mode="wait">
               <motion.div
                 key={active.id}
@@ -195,7 +187,6 @@ const CoolSculptingSection = () => {
           </div>
         </div>
 
-        {/* Bottom stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-20 pt-10 border-t border-border max-w-4xl mx-auto">
           {stats.map((s, i) => (
             <motion.div
@@ -213,7 +204,6 @@ const CoolSculptingSection = () => {
           ))}
         </div>
 
-        {/* CTA */}
         <div className="text-center mt-12">
           <Link
             to="/coolsculpting"
