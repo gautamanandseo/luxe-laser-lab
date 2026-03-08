@@ -143,8 +143,9 @@ const BlogPage = () => {
                   <Link to={`/blog/${post.slug}`} className="group block h-full">
                     <article className="bg-card rounded-2xl border border-border overflow-hidden hover:border-primary/40 transition-all h-full flex flex-col">
                       <div className="aspect-video overflow-hidden">
-                        <img
+                        <BlogImage
                           src={post.image}
+                          category={post.category}
                           alt={post.title}
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                         />
