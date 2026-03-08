@@ -52,7 +52,7 @@ const FAQSection = () => {
         <div className="max-w-3xl mx-auto space-y-3">
           {faqs.map((faq, i) => (
             <ScrollReveal key={i} direction="up" delay={i * 0.03}>
-              <div className={`border rounded-xl overflow-hidden transition-all duration-300 ${open === i ? "border-primary/30 bg-card/50 backdrop-blur-sm depth-shadow" : "border-border bg-card/20 hover:border-primary/15"}`}>
+              <div className={`border rounded-xl overflow-hidden transition-all duration-500 ${open === i ? "border-primary/30 obsidian-panel" : "border-border/30 bg-card/10 hover:border-primary/15 hover:bg-card/20"}`}>
                 <button
                   onClick={() => setOpen(open === i ? null : i)}
                   className="w-full flex items-center justify-between p-5 text-left group"
