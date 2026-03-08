@@ -267,10 +267,10 @@ const AboutPage = () => (
               Where Clinical Precision Meets <em className="holographic-text" style={{ fontStyle: "italic" }}>Luxury Experience</em>
             </h2>
             <p className="text-muted-foreground leading-relaxed mb-6">
-              We believe that everyone deserves access to world-class aesthetic treatments in an environment that feels safe, luxurious, and genuinely caring.
+              We believe that everyone in Delhi NCR deserves access to world-class aesthetic treatments — from laser hair removal and CoolSculpting to Botox, skin treatments, and hair restoration — in an environment that feels safe, luxurious, and genuinely caring.
             </p>
             <p className="text-muted-foreground leading-relaxed mb-8">
-              Our mission is to deliver transformative results using only the most advanced, clinically proven technologies — while treating every client with the empathy and respect they deserve.
+              Our mission is to deliver transformative results using only the most advanced, clinically proven technologies — while treating every client from Pitampura, Rohini, Noida, Gurugram, and beyond with the empathy and respect they deserve.
             </p>
             <ul className="space-y-3">
               {["Personalized treatment plans for every client", "Only genuine, USFDA-cleared products", "Transparent pricing with no hidden costs", "Continuous investment in latest technology"].map((item, i) => (
