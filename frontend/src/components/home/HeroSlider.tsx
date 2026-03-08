@@ -125,10 +125,13 @@ const AnimatedText = ({ text, className, reduced }: { text: string; className: s
   );
 };
 
+const SLIDE_DURATION = 6000;
+
 const HeroSlider = () => {
   const [current, setCurrent] = useState(0);
   const [paused, setPaused] = useState(false);
-  const reduced = useReducedMotion();
+  const [manualPause, setManualPause] = useState(false);
+  const [progress, setProgress] = useState(0);
   const [loadedImages, setLoadedImages] = useState<Record<number, string>>({ 0: heroLaser });
 
   useEffect(() => {
