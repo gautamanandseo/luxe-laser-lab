@@ -95,7 +95,7 @@ const AnimatedText = ({ text, className, reduced }: { text: string; className: s
 
 const HeroSlider = () => {
   const [current, setCurrent] = useState(0);
-  const [paused, setPaused] = useState(false);
+  const reduced = useReducedMotion();
   const [loadedImages, setLoadedImages] = useState<Record<number, string>>({ 0: heroLaser });
 
   // Preload other slide images after first paint
