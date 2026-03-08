@@ -12,6 +12,7 @@ import GallerySection from "@/components/home/GallerySection";
 import CertificationsStrip from "@/components/home/CertificationsStrip";
 import FAQSection from "@/components/home/FAQSection";
 import BookingSection from "@/components/home/BookingSection";
+import GlowDivider from "@/components/effects/GlowDivider";
 
 const Index = () => {
   return (
@@ -19,16 +20,27 @@ const Index = () => {
       <HeroSlider />
       <Marquee />
       <StatsBar />
+      <GlowDivider variant="gold" />
       <ServicesSection />
+      <GlowDivider variant="multi" />
       <WhyChooseSection />
+      <GlowDivider variant="subtle" />
       <CoolSculptingSection />
+      <GlowDivider variant="gold" />
       <WeightLossSection />
+      <GlowDivider variant="multi" />
       <TechnologySection />
+      <GlowDivider variant="subtle" />
       <ProcessSection />
+      <GlowDivider variant="gold" />
       <TestimonialsSection />
+      <GlowDivider variant="multi" />
       <GallerySection />
+      <GlowDivider variant="subtle" />
       <CertificationsStrip />
+      <GlowDivider variant="gold" />
       <FAQSection />
+      <GlowDivider variant="multi" />
       <BookingSection />
     </>
   );

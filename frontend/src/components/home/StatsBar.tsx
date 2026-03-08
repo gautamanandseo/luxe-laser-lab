@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Star, MapPin } from "lucide-react";
 import { motion } from "framer-motion";
 import ScrollReveal from "@/components/effects/ScrollReveal";
+import AuroraMesh from "@/components/effects/AuroraMesh";
 
 const stats = [
   { value: 15, suffix: "+", label: "Years Experience" },
@@ -36,7 +37,7 @@ const AnimatedCounter = ({ target, suffix }: { target: number; suffix: string })
   }, [target]);
 
   return (
-    <div ref={ref} className="font-serif text-4xl md:text-5xl holographic-text inline-block">
+    <div ref={ref} className="font-serif text-4xl md:text-5xl holographic-text inline-block drop-shadow-[0_0_20px_hsl(38,45%,60%,0.3)]">
       {count.toLocaleString()}{suffix}
     </div>
   );
@@ -44,7 +45,7 @@ const AnimatedCounter = ({ target, suffix }: { target: number; suffix: string })
 
 const StatsBar = () => (
   <section className="bg-secondary relative overflow-hidden py-16">
-    {/* Grid background */}
+    <AuroraMesh intensity="subtle" />
     <div className="absolute inset-0 grid-bg opacity-30" />
 
     <div className="relative z-10 container mx-auto px-6">
@@ -54,18 +55,18 @@ const StatsBar = () => (
           href="https://www.google.com/maps/place/Empathy+Skin+%26+Laser+Hair+Removal+Clinic+Delhi+-+Coolsculpting+-+Skin+Treatments/@28.7013523,77.1246251,15z"
           target="_blank"
           rel="noopener noreferrer"
-          className="group flex items-center gap-4 bg-card/80 backdrop-blur-sm border border-primary/10 hover:border-primary/40 rounded-2xl px-6 py-4 transition-all hover:shadow-[0_0_30px_hsl(38,45%,60%,0.1)]"
+          className="group flex items-center gap-4 bg-card/80 backdrop-blur-sm border border-primary/10 hover:border-primary/40 rounded-2xl px-6 py-4 transition-all depth-shadow hover:shadow-[0_0_40px_hsl(38,45%,60%,0.15)]"
         >
-          <div className="flex items-center justify-center w-12 h-12 bg-primary/10 rounded-xl group-hover:shadow-[0_0_15px_hsl(38,45%,60%,0.2)] transition-all">
+          <div className="flex items-center justify-center w-12 h-12 bg-primary/10 rounded-xl group-hover:shadow-[0_0_20px_hsl(38,45%,60%,0.3)] transition-all">
             <MapPin size={22} className="text-primary" />
           </div>
           <div>
             <p className="text-xs font-sans uppercase tracking-[0.15em] text-muted-foreground mb-1">Rated on Google</p>
             <div className="flex items-center gap-2">
-              <span className="font-serif text-2xl text-foreground font-semibold">4.9</span>
+              <span className="font-serif text-2xl text-foreground font-semibold">{4.9}</span>
               <div className="flex gap-0.5">
                 {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} size={14} className="fill-primary text-primary" />
+                  <Star key={i} size={14} className="fill-primary text-primary drop-shadow-[0_0_4px_hsl(38,45%,60%,0.5)]" />
                 ))}
               </div>
               <span className="text-sm text-muted-foreground">860+ reviews</span>
@@ -78,10 +79,15 @@ const StatsBar = () => (
       <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-0 md:divide-x divide-primary/10">
         {stats.map((stat, i) => (
           <ScrollReveal key={i} direction="up" delay={i * 0.15}>
-            <div className="text-center px-4">
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              className="text-center px-4 relative"
+            >
+              {/* Glow behind counter */}
+              <div className="absolute inset-0 radial-glow opacity-0 hover:opacity-100 transition-opacity" />
               <AnimatedCounter target={stat.value} suffix={stat.suffix} />
               <p className="mt-2 text-xs font-sans uppercase tracking-[0.2em] text-muted-foreground">{stat.label}</p>
-            </div>
+            </motion.div>
           </ScrollReveal>
         ))}
       </div>
