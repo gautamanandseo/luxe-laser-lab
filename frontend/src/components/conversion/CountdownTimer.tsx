@@ -57,7 +57,7 @@ const CountdownTimer = () => {
           <div className="flex items-center gap-2">
             <Zap size={14} className="text-primary animate-pulse" />
             <span className="text-xs font-sans uppercase tracking-[0.15em] text-foreground">
-              Flash Offer — 20% Off All Treatments
+              Flash Offer — 10% Off All Treatments
             </span>
           </div>
 
