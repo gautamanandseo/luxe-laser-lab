@@ -1,5 +1,5 @@
 import { motion, type Variants } from "framer-motion";
-import type { ReactNode } from "react";
+import { forwardRef, type ReactNode } from "react";
 
 type Direction = "up" | "down" | "left" | "right" | "scale" | "none";
 
