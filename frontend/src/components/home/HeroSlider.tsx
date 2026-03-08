@@ -318,10 +318,10 @@ const HeroSlider = () => {
               </motion.div>
 
               {/* Headline */}
-              <h1 className="font-sans text-4xl md:text-6xl lg:text-7xl font-bold uppercase tracking-tight text-foreground leading-[1.05] mb-2 whitespace-nowrap">
+              <h1 className="font-sans text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold uppercase tracking-tight text-foreground leading-[1.1] mb-1">
                 <AnimatedText text={slide.headline} className="" reduced={reduced} />
               </h1>
-              <h1 className="font-sans text-4xl md:text-6xl lg:text-7xl font-bold uppercase tracking-tight italic leading-[1.05] mb-6 whitespace-nowrap">
+              <h1 className="font-sans text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold uppercase tracking-tight italic leading-[1.1] mb-6">
                 <AnimatedText text={slide.accent} className="holographic-text" reduced={reduced} />
               </h1>
 
