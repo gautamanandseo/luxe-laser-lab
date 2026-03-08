@@ -201,7 +201,8 @@ const beforeAfterImages: Record<string, { image: string; label: string }[]> = {
   ],
   weightloss: [
     { image: baCoolsculpting, label: "CoolSculpting® Body Contouring" },
-    { image: baCoolsculpting, label: "Post-Treatment Results" },
+    { image: baBodycontouring2, label: "Weight Loss Transformation" },
+    { image: baCoolsculptingChin, label: "Double Chin Reduction" },
   ],
   salon: [],
   spa: [],
