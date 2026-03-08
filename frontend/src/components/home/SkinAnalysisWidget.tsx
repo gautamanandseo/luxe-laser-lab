@@ -1,6 +1,5 @@
 import { useState, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { supabase } from "@/integrations/supabase/client";
 import { Camera, X, Upload, Loader2, Sparkles, ArrowRight, Star, AlertCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 import ScrollReveal from "@/components/effects/ScrollReveal";
