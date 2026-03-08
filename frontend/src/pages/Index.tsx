@@ -42,6 +42,8 @@ const Index = () => {
       <GlowDivider variant="gold" />
       <FAQSection />
       <GlowDivider variant="multi" />
+      <SEOContentSection />
+      <GlowDivider variant="gold" />
       <BookingSection />
     </>
   );
