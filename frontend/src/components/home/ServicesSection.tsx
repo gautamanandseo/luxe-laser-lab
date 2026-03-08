@@ -7,10 +7,22 @@ import serviceCoolsculpting from "@/assets/service-cool-gen.jpg";
 import serviceSkin from "@/assets/service-skin-gen.jpg";
 import serviceBotox from "@/assets/service-botox-gen.jpg";
 import serviceBridal from "@/assets/service-bridal-gen.jpg";
-import serviceSpa from "@/assets/service-spa-gen.jpg";
+import serviceFacial from "@/assets/service-facial-gen.jpg";
 import serviceSalon from "@/assets/service-salon-gen.jpg";
 import serviceMicroderm from "@/assets/service-microderm-gen.jpg";
 import serviceResurfx from "@/assets/service-resurfx-gen.jpg";
+import serviceAcne from "@/assets/service-acne-gen.jpg";
+import serviceSkinlightening from "@/assets/service-skinlightening-gen.jpg";
+import serviceAntiageing from "@/assets/service-antiageing-gen.jpg";
+import serviceHifu from "@/assets/service-hifu-gen.jpg";
+import serviceDarkcircles from "@/assets/service-darkcircles-gen.jpg";
+import serviceSkintightening from "@/assets/service-skintightening-gen.jpg";
+import serviceStretchmarks from "@/assets/service-stretchmarks-gen.jpg";
+import serviceTattoo from "@/assets/service-tattoo-gen.jpg";
+import serviceMolewart from "@/assets/service-molewart-gen.jpg";
+import serviceHairloss from "@/assets/service-hairloss-gen.jpg";
+import serviceHairtransplant from "@/assets/service-hairtransplant-gen.jpg";
+import serviceBodycontouring from "@/assets/service-bodycontouring-gen.jpg";
 
 const tabs = [
   {
