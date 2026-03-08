@@ -42,7 +42,7 @@ const ContactPage = () => {
       <section className="relative min-h-[50vh] flex items-center overflow-hidden">
         {/* Background */}
         <div className="absolute inset-0">
-          <img
+        <img
             src="https://images.unsplash.com/photo-1595871151608-bc7abd1caca3?w=1920&q=80"
             alt="Contact Empathy Laser Clinic"
             className="w-full h-full object-cover"
