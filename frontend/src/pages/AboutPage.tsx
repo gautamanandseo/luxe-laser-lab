@@ -236,7 +236,7 @@ const AboutPage = () => (
           >
             <div className="aspect-square rounded-2xl overflow-hidden relative">
               <img
-                src="https://images.unsplash.com/photo-1683408640631-2c99fff964d7?w=800&q=80"
+                src={galleryClinic1}
                 alt="Our Mission"
                 className="w-full h-full object-cover"
               />
