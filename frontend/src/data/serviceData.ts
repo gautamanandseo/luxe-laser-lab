@@ -26,6 +26,15 @@ export interface Testimonial {
   treatment: string;
 }
 
+export interface ComparisonItem {
+  method: string;
+  duration: string;
+  pain: string;
+  results: string;
+  cost: string;
+  recommended: boolean;
+}
+
 export interface ServiceData {
   id: string;
   title: string;
@@ -49,6 +58,8 @@ export interface ServiceData {
   stats: { value: string; label: string }[];
   testimonials: Testimonial[];
   whyChooseUs: string[];
+  comparison?: ComparisonItem[];
+  detailedSections?: { title: string; content: string; image?: string }[];
 }
 
 export const servicesData: Record<string, ServiceData> = {
@@ -60,31 +71,33 @@ export const servicesData: Record<string, ServiceData> = {
     tagline: "Experience Delhi NCR's most trusted laser hair removal",
     heroImage: "https://yspstvqinawnszuxdjhy.supabase.co/storage/v1/object/public/gallery-images/1770572844445-54z2sxh.jpg",
     heroOverlay: "from-background/95 via-background/70 to-background/30",
-    description: "Our advanced Diode Laser technology is specifically calibrated for Indian skin tones, delivering permanent hair reduction with zero downtime.",
-    longDescription: "Say goodbye to the endless cycle of waxing, shaving, and threading. Our state-of-the-art 808nm Diode Laser technology targets hair follicles at their root, disabling their ability to regrow. The result? Silky smooth skin that lasts a lifetime. Our FDA-cleared treatment is safe for all skin types, including the full range of Indian skin tones (Fitzpatrick I-VI).",
+    description: "Our advanced Diode Laser technology is specifically calibrated for Indian skin tones, delivering permanent hair reduction with zero downtime. Say goodbye to the endless cycle of waxing, shaving, and threading — forever.",
+    longDescription: "We've all been there: body hair maintenance can be a serious hassle. Whether you want smooth legs for the beach, perfectly groomed brows for a big event, or simply the confidence of silky skin every single day — laser hair removal is the ultimate solution. At Empathy Laser Clinic, our providers have years of experience performing laser hair removal treatments specifically calibrated for Indian skin tones (Fitzpatrick III-VI). We emphasize customized treatment plans and employ a multidisciplinary approach that targets hair follicles at their root using our advanced 808nm Diode Laser technology, disabling their ability to regrow permanently.",
     icon: Sparkles,
     badge: "USFDA Cleared",
     benefits: [
-      { title: "Permanent Results", description: "6-8 sessions for permanent hair reduction. No more recurring salon visits.", icon: CheckCircle },
-      { title: "All Skin Types", description: "Safe & effective for Fitzpatrick skin types I-VI, including Indian skin.", icon: Shield },
-      { title: "Zero Downtime", description: "Walk in during lunch, walk out ready for your evening plans.", icon: Clock },
-      { title: "Precision Technology", description: "Advanced 808nm Diode targets hair follicles without damaging skin.", icon: Target },
-      { title: "Full Body Coverage", description: "From face to full body — we treat all areas with equal expertise.", icon: Users },
-      { title: "Cost Effective", description: "Lifetime savings compared to years of waxing and threading.", icon: Award },
+      { title: "High Precision", description: "Unlike shaving and waxing, laser technology selectively targets dark, coarse hairs while leaving surrounding skin undamaged. Treats an area the size of a ₹10 coin every second.", icon: Target },
+      { title: "Quick Treatment", description: "Upper lip treated in under a minute. Full legs in 45-60 mins. Our advanced pulsed light delivers hundreds of light colors simultaneously for maximum efficiency.", icon: Clock },
+      { title: "Permanent Results", description: "Expect permanent hair loss after 6-8 sessions. It's a long-term solution that frees you from monthly salon visits, saving lakhs over your lifetime.", icon: CheckCircle },
+      { title: "All Indian Skin Types", description: "Specifically calibrated for the full range of Indian skin tones. Our 808nm wavelength is proven safe and effective for Fitzpatrick types III-VI.", icon: Shield },
+      { title: "Zero Downtime", description: "Walk in during lunch, walk out ready for your evening plans. No redness, no irritation, no waiting period.", icon: Zap },
+      { title: "Cost Effective", description: "Calculate what you spend on waxing annually (₹2,000-4,000/month × 12 = ₹24,000-48,000/year). Laser pays for itself within the first year.", icon: Award },
     ],
     processSteps: [
-      { number: "01", title: "Free Consultation", description: "Our experts assess your skin type, hair density, and create a personalized treatment plan." },
-      { number: "02", title: "Patch Test", description: "A complimentary patch test ensures your skin responds perfectly to the treatment." },
-      { number: "03", title: "Treatment Session", description: "Relax as our certified technicians perform the laser treatment with precision." },
-      { number: "04", title: "Post-Care", description: "Simple aftercare instructions and scheduling your next session for optimal results." },
+      { number: "01", title: "Free Consultation", description: "Our experts assess your skin type, hair density, growth cycle stage, and create a fully personalized treatment plan — all at no cost." },
+      { number: "02", title: "Patch Test", description: "A complimentary patch test ensures your skin responds perfectly. We calibrate the laser intensity specifically for your skin tone and hair type." },
+      { number: "03", title: "Treatment Session", description: "Relax as our certified technicians perform the laser treatment. Our advanced cooling system ensures maximum comfort throughout." },
+      { number: "04", title: "Post-Care & Follow-Up", description: "Simple aftercare instructions provided. Next session scheduled 4-6 weeks apart to catch the next hair growth cycle (anagen phase) for optimal results." },
     ],
     treatmentAreas: [
-      { name: "Full Face", description: "Upper lip, chin, sideburns, forehead", duration: "15-20 mins" },
-      { name: "Underarms", description: "Complete underarm area", duration: "10-15 mins" },
-      { name: "Full Arms", description: "Fingers to shoulders", duration: "30-40 mins" },
-      { name: "Full Legs", description: "Toes to thighs", duration: "45-60 mins" },
-      { name: "Bikini/Brazilian", description: "Standard or extended bikini line", duration: "20-30 mins" },
-      { name: "Full Body", description: "Complete body treatment package", duration: "2-3 hours" },
+      { name: "Full Face", description: "Upper lip, chin, sideburns, forehead — complete facial smoothness", duration: "15-20 mins" },
+      { name: "Underarms", description: "No more daily shaving or painful waxing — permanently smooth", duration: "10-15 mins" },
+      { name: "Full Arms", description: "Fingers to shoulders — silky smooth arms year-round", duration: "30-40 mins" },
+      { name: "Full Legs", description: "Toes to thighs — never worry about stubble again", duration: "45-60 mins" },
+      { name: "Bikini / Brazilian", description: "Standard or extended bikini line — done with precision and privacy", duration: "20-30 mins" },
+      { name: "Full Body", description: "Complete transformation package — head to toe freedom", duration: "2-3 hours" },
+      { name: "Back & Chest (Men)", description: "Popular with men — clean, well-groomed look", duration: "40-60 mins" },
+      { name: "Beard Shaping (Men)", description: "Precise neckline and cheek line definition", duration: "15-20 mins" },
     ],
     pricing: [
       { name: "Single Area", price: "Ask for Quote", description: "Perfect for trying out", features: ["Any single small area", "Free consultation", "Patch test included", "Aftercare kit"] },
@@ -92,11 +105,14 @@ export const servicesData: Record<string, ServiceData> = {
       { name: "Full Body", price: "Ask for Quote", description: "Head to toe transformation", features: ["All body areas included", "Priority scheduling", "Dedicated therapist", "Complimentary spa session"] },
     ],
     faqs: [
-      { question: "Is laser hair removal painful?", answer: "Most clients describe it as a mild snapping sensation, like a rubber band. Our advanced cooling system minimizes discomfort, making the treatment very tolerable." },
-      { question: "How many sessions will I need?", answer: "Typically 6-8 sessions spaced 4-6 weeks apart for permanent results. This varies based on hair type, color, and treatment area." },
-      { question: "Is it safe for Indian skin?", answer: "Absolutely! Our 808nm Diode Laser is specifically calibrated for Indian skin tones (Fitzpatrick III-VI) and is USFDA cleared for all skin types." },
-      { question: "What's the downtime?", answer: "Zero downtime! You can resume normal activities immediately. We recommend avoiding sun exposure and hot showers for 24-48 hours." },
-      { question: "Can I get laser during my period?", answer: "Yes, you can. However, skin may be more sensitive during this time. We recommend scheduling bikini/Brazilian treatments at other times for comfort." },
+      { question: "Is laser hair removal painful?", answer: "Most clients describe it as a mild snapping sensation, like a rubber band. Our advanced cooling system minimizes discomfort significantly. Many clients say it's far less painful than waxing!" },
+      { question: "How many sessions will I need?", answer: "Typically 6-8 sessions spaced 4-6 weeks apart for permanent results. This varies based on hair type, color, density, and hormonal factors. Multiple sessions are needed because hair grows in cycles, and the laser is most effective during the anagen (active growth) phase." },
+      { question: "Is it safe for Indian skin?", answer: "Absolutely! Our 808nm Diode Laser is specifically calibrated for Indian skin tones (Fitzpatrick III-VI) and is USFDA cleared for all skin types. We've successfully treated 15,000+ Indian clients." },
+      { question: "What's the downtime?", answer: "Zero downtime! You can resume normal activities immediately. We recommend avoiding sun exposure and hot showers for 24-48 hours post-treatment." },
+      { question: "Laser Hair Removal vs. Shaving — What's the difference?", answer: "Shaving cuts hair at the surface without affecting the follicle, so hair regrows stubbly within days. Laser targets the follicle itself to inhibit future growth permanently. After 6-8 sessions, most people are hair-free for life." },
+      { question: "Laser Hair Removal vs. Waxing — Which is better?", answer: "Waxing removes hair from the root but it regrows in 3-6 weeks. Laser hair removal can significantly reduce hair growth permanently over time, resulting in much longer-lasting results. Plus, no more ingrown hairs or skin darkening from waxing." },
+      { question: "Does laser hair removal last forever?", answer: "After completing a full treatment series (6-8 sessions), most people remain hair-free for years to permanently. If hair returns due to hormonal changes, it's typically finer and lighter, requiring only occasional maintenance." },
+      { question: "What should I do before getting laser hair removal?", answer: "Stop plucking and waxing at least 4 weeks before. Shave the area 24-48 hours before treatment. Avoid tanning and sun exposure. Inform us about any medications you're taking." },
     ],
     galleryImages: [
       "https://yspstvqinawnszuxdjhy.supabase.co/storage/v1/object/public/gallery-images/1770572844445-54z2sxh.jpg",
@@ -113,9 +129,10 @@ export const servicesData: Record<string, ServiceData> = {
       { value: "0", label: "Downtime" },
     ],
     testimonials: [
-      { name: "Priya M.", rating: 5, text: "After years of painful waxing, this was life-changing. Completely hair-free after 7 sessions!", treatment: "Full Body Laser" },
-      { name: "Anjali S.", rating: 5, text: "The staff made me so comfortable. Zero pain with the cooling system. Highly recommend!", treatment: "Full Face" },
-      { name: "Ritu K.", rating: 5, text: "Best investment I've made. No more monthly salon visits. My skin has never looked better.", treatment: "Underarms & Bikini" },
+      { name: "Priya M.", rating: 5, text: "After years of painful waxing, this was life-changing. Completely hair-free after 7 sessions! My skin has never been smoother.", treatment: "Full Body Laser" },
+      { name: "Anjali S.", rating: 5, text: "The staff made me so comfortable. Zero pain with the cooling system. I've been going for over a year and recommend it to everyone!", treatment: "Full Face" },
+      { name: "Ritu K.", rating: 5, text: "Best investment I've made. No more monthly ₹3,000 salon visits. My skin has never looked better and the confidence boost is incredible.", treatment: "Underarms & Bikini" },
+      { name: "Rahul T.", rating: 5, text: "As a man, I was hesitant. But the back and chest treatment was quick, professional, and the results speak for themselves.", treatment: "Back & Chest" },
     ],
     whyChooseUs: [
       "USFDA cleared equipment with proven safety record",
@@ -124,42 +141,62 @@ export const servicesData: Record<string, ServiceData> = {
       "Personalized treatment plans for every client",
       "Free consultation and patch test",
       "Premium aftercare products included",
+      "15,000+ successful treatments completed",
+      "Specifically calibrated for Indian skin tones",
+    ],
+    comparison: [
+      { method: "Laser Hair Removal", duration: "15-60 mins", pain: "Minimal (rubber band snap)", results: "Permanent after 6-8 sessions", cost: "One-time investment", recommended: true },
+      { method: "Waxing", duration: "30-90 mins", pain: "Moderate to High", results: "Regrows in 3-6 weeks", cost: "₹2,000-4,000/month recurring", recommended: false },
+      { method: "Shaving", duration: "10-30 mins", pain: "Low (risk of cuts)", results: "Regrows in 1-3 days", cost: "Ongoing razor costs", recommended: false },
+      { method: "Threading", duration: "15-30 mins", pain: "Moderate", results: "Regrows in 2-4 weeks", cost: "₹500-1,500/month recurring", recommended: false },
+    ],
+    detailedSections: [
+      {
+        title: "What Our Laser Actually Does",
+        content: "We use the highly effective 808nm Diode Laser system — the gold standard for hair removal. Unlike older technologies, our diode laser delivers concentrated light energy that is absorbed by melanin in the hair follicle. This energy converts to heat, destroying the follicle's ability to produce new hair growth. The surrounding skin remains completely unaffected thanks to our integrated sapphire cooling tip that maintains skin surface temperature. Each pulse treats hundreds of hairs simultaneously, making treatments fast and efficient."
+      },
+      {
+        title: "Why Multiple Sessions Are Needed",
+        content: "Hair grows in three phases: Anagen (active growth), Catagen (transition), and Telogen (resting). Laser is only effective during the Anagen phase when the hair is connected to the follicle. Since only 20-30% of your hair is in the Anagen phase at any given time, multiple sessions are needed to catch all hairs during their growth cycle. This is why we space sessions 4-6 weeks apart — to target a new batch of actively growing hairs each time."
+      },
     ],
   },
 
   coolsculpting: {
     id: "coolsculpting",
-    title: "CoolSculpting®",
+    title: "CoolSculpting® Elite",
     accent: "Fat Freezing",
-    subtitle: "FDA-CLEARED NON-SURGICAL BODY CONTOURING",
-    tagline: "Freeze away stubborn fat — permanently",
+    subtitle: "FDA-CLEARED · ADVANCED NON-SURGICAL BODY CONTOURING",
+    tagline: "Freeze away stubborn fat — permanently, without surgery",
     heroImage: "https://yspstvqinawnszuxdjhy.supabase.co/storage/v1/object/public/gallery-images/1769536099287-1ztzqc4.png",
     heroOverlay: "from-[hsl(210,60%,5%)]/95 via-[hsl(210,60%,5%)]/70 to-transparent",
-    description: "The world's #1 non-invasive fat reduction treatment uses patented cryolipolysis technology to freeze and permanently eliminate stubborn fat cells.",
-    longDescription: "CoolSculpting® is the revolutionary fat-freezing treatment that targets and eliminates stubborn fat cells that resist diet and exercise. Using patented cryolipolysis technology, we precisely cool fat cells to trigger their natural death, which your body then eliminates naturally over time. The result? A sculpted, contoured body without surgery, needles, or downtime.",
+    description: "Tired of diet and exercise not giving you the sculpted look you deserve? CoolSculpting Elite is the next generation of fat-freezing technology — clinically proven to target, freeze, and permanently eliminate stubborn fat cells without surgery, needles, or downtime.",
+    longDescription: "CoolSculpting Elite is the latest advancement in non-surgical fat reduction, offering enhanced results over the original CoolSculpting. Using advanced cryolipolysis technology, it precisely cools fat cells to -11°C, triggering their natural death while surrounding tissues remain completely unharmed. The Elite system features redesigned applicators that cover up to 18% more surface area, allowing for faster and more effective sessions. With dual applicators, two areas can be treated simultaneously — significantly reducing overall treatment time. Your body then naturally eliminates these dead fat cells over 2-3 months. The result? A sculpted, contoured body that looks natural because the fat reduction happens gradually.",
     icon: Snowflake,
-    badge: "FDA-Cleared",
+    badge: "FDA-Cleared Elite",
     benefits: [
-      { title: "27% Fat Reduction", description: "Clinically proven to reduce fat in treated areas by up to 27% per session.", icon: Target },
-      { title: "Non-Surgical", description: "No incisions, no anesthesia, no needles. Just science-backed fat elimination.", icon: Shield },
-      { title: "Permanent Results", description: "Frozen fat cells are gone forever. They don't regenerate or move elsewhere.", icon: CheckCircle },
-      { title: "Zero Downtime", description: "Return to work, gym, and life immediately after your session.", icon: Clock },
-      { title: "9 Treatment Areas", description: "From double chin to thighs — treat virtually any problem area.", icon: Users },
-      { title: "DualSculpting", description: "Treat two areas simultaneously for faster results.", icon: Zap },
+      { title: "Up to 27% Fat Reduction", description: "Clinically proven to reduce fat in treated areas by up to 27% per session. Results are visible and measurable.", icon: Target },
+      { title: "Completely Non-Invasive", description: "No needles. No incisions. No anesthesia. Just controlled cooling technology that works naturally with your body.", icon: Shield },
+      { title: "Permanent Fat Elimination", description: "Once fat cells are frozen and eliminated, they're gone forever. Adults don't produce new fat cells — results are permanent with stable weight.", icon: CheckCircle },
+      { title: "Zero Downtime", description: "Return to work, gym, and life immediately after your session. Most clients read, work on laptops, or nap during treatment.", icon: Clock },
+      { title: "Elite Dual Applicators", description: "Treat two areas simultaneously for faster, more comprehensive body sculpting. 18% more coverage per applicator than standard.", icon: Zap },
+      { title: "8+ Treatment Areas", description: "From double chin to thighs, abdomen to back fat — treat virtually any stubborn problem area on your body.", icon: Users },
     ],
     processSteps: [
-      { number: "01", title: "Body Assessment", description: "Our experts analyze your body composition and identify target areas for optimal results." },
-      { number: "02", title: "Custom Plan", description: "We create a personalized treatment plan based on your goals and body type." },
-      { number: "03", title: "Treatment", description: "Relax during the 35-60 minute session while the applicator freezes fat cells." },
-      { number: "04", title: "Natural Elimination", description: "Over 2-3 months, your body naturally processes and eliminates the dead fat cells." },
+      { number: "01", title: "Choose Your Target Area", description: "Select the area where stubborn fat hasn't responded to diet or exercise. Our experts confirm the best treatment plan based on your body goals." },
+      { number: "02", title: "Freeze the Fat", description: "The CoolSculpting Elite applicator delivers controlled cooling that freezes fat cells beneath the skin. Elite technology treats two areas simultaneously." },
+      { number: "03", title: "Resume Your Routine", description: "Once the 35-60 minute session is complete, return to work, errands, or daily activities right away. No surgery, no anesthesia, no downtime." },
+      { number: "04", title: "Watch Fat Disappear", description: "Over 2-3 months, your body naturally processes and eliminates the treated fat cells. Results appear gradual and natural." },
     ],
     treatmentAreas: [
-      { name: "Double Chin", description: "Eliminate submental fullness for a defined jawline", duration: "35 mins" },
-      { name: "Abdomen", description: "Target stubborn belly fat for a flatter midsection", duration: "60 mins" },
-      { name: "Love Handles", description: "Contour your flanks for a streamlined silhouette", duration: "35 mins" },
-      { name: "Inner Thighs", description: "Reduce thigh fat for proportional legs", duration: "35 mins" },
-      { name: "Upper Arms", description: "Sculpt and tone the upper arm area", duration: "35 mins" },
-      { name: "Bra/Back Fat", description: "Smooth bulges around the bra line", duration: "35 mins" },
+      { name: "Stomach & Abdomen", description: "Target stubborn belly fat for a flatter, toned midsection", duration: "60 mins" },
+      { name: "Love Handles & Flanks", description: "Contour your flanks for a streamlined silhouette", duration: "35 mins" },
+      { name: "Double Chin", description: "Eliminate submental fullness for a defined, sharp jawline", duration: "35 mins" },
+      { name: "Inner & Outer Thighs", description: "Reduce thigh fat for proportional, sculpted legs", duration: "35 mins" },
+      { name: "Upper Arms", description: "Sculpt and tone the upper arm area — no more 'bat wings'", duration: "35 mins" },
+      { name: "Back & Bra Bulge", description: "Smooth bulges around the bra line and upper/lower back", duration: "35 mins" },
+      { name: "Under Buttocks (Banana Roll)", description: "Define the crease between buttocks and thighs", duration: "35 mins" },
+      { name: "Male Chest", description: "Reduce pseudogynecomastia for a flatter, masculine chest", duration: "35 mins" },
     ],
     pricing: [
       { name: "Single Area", price: "Ask for Quote", description: "Treat one problem area", features: ["One applicator session", "Body assessment", "Progress tracking", "Aftercare guidance"] },
@@ -167,11 +204,14 @@ export const servicesData: Record<string, ServiceData> = {
       { name: "Full Transformation", price: "Ask for Quote", description: "Complete body contouring", features: ["Up to 6 areas", "Multiple sessions included", "VIP scheduling", "Complimentary maintenance"] },
     ],
     faqs: [
-      { question: "How does CoolSculpting work?", answer: "CoolSculpting uses cryolipolysis to freeze fat cells to -11°C. At this temperature, fat cells crystallize and die while surrounding tissues remain unharmed. Your body then naturally eliminates these dead cells over 2-3 months." },
-      { question: "Is the fat loss permanent?", answer: "Yes! Once fat cells are eliminated, they're gone forever. Adults don't produce new fat cells, so the results are permanent as long as you maintain a stable weight." },
-      { question: "How soon will I see results?", answer: "Initial results are visible in 3 weeks, with the most dramatic results appearing at 2-3 months as your body continues to flush out fat cells." },
-      { question: "Does it hurt?", answer: "You may feel intense cold, tingling, or mild cramping for the first 5-10 minutes. This subsides as the area becomes numb. Most clients read, work, or nap during treatment." },
-      { question: "Am I a good candidate?", answer: "CoolSculpting is ideal for people near their goal weight with stubborn fat pockets that resist diet and exercise. It's not a weight loss solution but a body contouring treatment." },
+      { question: "Does CoolSculpting Elite really work?", answer: "Yes! CoolSculpting Elite is a highly effective, FDA-cleared non-surgical fat reduction treatment. With improved applicators and dual treatment capability, Elite delivers more consistent results. Over 12 million treatments have been performed worldwide with proven results." },
+      { question: "How does it work?", answer: "CoolSculpting uses cryolipolysis to freeze fat cells to -11°C. At this temperature, fat cells crystallize and die while surrounding tissues remain unharmed. Your body then naturally eliminates these dead cells through your metabolic system over 2-3 months." },
+      { question: "Is the fat loss permanent?", answer: "Yes! Once fat cells are eliminated, they're gone forever. Adults don't produce new fat cells, so results are permanent as long as you maintain a stable weight and healthy lifestyle." },
+      { question: "How soon will I see results?", answer: "Some people notice changes as early as 3 weeks after treatment. The most dramatic results appear at 2-3 months as your body continues to flush out fat cells. Results look natural because the reduction happens gradually." },
+      { question: "Does it hurt?", answer: "You may feel intense cold, tingling, or mild cramping for the first 5-10 minutes. This subsides as the area becomes numb. Most clients read, work on their laptops, or nap during treatment." },
+      { question: "Am I a good candidate?", answer: "CoolSculpting is ideal for people near their goal weight with stubborn fat pockets that resist diet and exercise. It's not a weight loss solution but a body contouring treatment. A personalized consultation helps determine if it's right for you." },
+      { question: "Is there any downtime?", answer: "No! One of the biggest advantages is zero downtime. You can return to your normal activities — including the gym — right after treatment. Some mild redness, swelling, or tenderness may occur but resolves quickly." },
+      { question: "What makes CoolSculpting Elite different from standard CoolSculpting?", answer: "Elite features redesigned applicators with 18% more surface coverage, dual applicators for treating two areas simultaneously, improved cooling technology for more uniform results, and faster treatment times." },
     ],
     galleryImages: [
       "https://images.unsplash.com/photo-1731514721772-329626f84c8b?w=800&q=80",
@@ -183,22 +223,41 @@ export const servicesData: Record<string, ServiceData> = {
     processImage: "https://images.unsplash.com/photo-1762625570087-6d98fca29531?w=1200&q=80",
     stats: [
       { value: "27%", label: "Fat Reduction" },
-      { value: "8M+", label: "Treatments Worldwide" },
-      { value: "9", label: "Treatment Areas" },
+      { value: "12M+", label: "Treatments Worldwide" },
+      { value: "8+", label: "Treatment Areas" },
       { value: "0", label: "Downtime" },
     ],
     testimonials: [
-      { name: "Kavita R.", rating: 5, text: "Finally got rid of my stubborn belly fat that no amount of gym could fix. Worth every penny!", treatment: "Abdomen" },
-      { name: "Neha P.", rating: 5, text: "My love handles are completely gone after 2 sessions. The confidence boost is incredible.", treatment: "Love Handles" },
-      { name: "Sneha M.", rating: 5, text: "Non-surgical and actually works! I can finally wear sleeveless tops confidently.", treatment: "Upper Arms" },
+      { name: "Kavita R.", rating: 5, text: "Finally got rid of my stubborn belly fat that no amount of gym could fix. After 2 sessions my abdomen is visibly flatter. Worth every penny!", treatment: "Abdomen" },
+      { name: "Neha P.", rating: 5, text: "My love handles are completely gone after 2 sessions. The confidence boost is incredible — I can finally wear fitted kurtas without feeling self-conscious.", treatment: "Love Handles" },
+      { name: "Sneha M.", rating: 5, text: "Non-surgical and actually works! I treated my upper arms and can finally wear sleeveless tops confidently. The procedure was so comfortable I fell asleep!", treatment: "Upper Arms" },
+      { name: "Amit K.", rating: 5, text: "As a man, I was skeptical. But the results on my chest and love handles are remarkable. No surgery, no downtime — I went to the office right after.", treatment: "Male Chest & Flanks" },
     ],
     whyChooseUs: [
-      "Authentic CoolSculpting® machines — not imitations",
-      "Certified CoolSculpting specialists",
-      "DualSculpting capability for faster results",
-      "Comprehensive body assessment included",
-      "Proven track record with before/after results",
+      "Authentic CoolSculpting® Elite machines — not imitations",
+      "Certified CoolSculpting specialists with extensive training",
+      "DualSculpting capability for faster, comprehensive results",
+      "Comprehensive body assessment and customized treatment plan",
+      "18% more coverage with Elite applicators",
       "Comfortable, spa-like treatment environment",
+      "Proven track record with documented before/after results",
+      "Post-treatment follow-up and progress tracking",
+    ],
+    comparison: [
+      { method: "CoolSculpting Elite", duration: "35-60 mins/area", pain: "Minimal (cold sensation)", results: "Permanent fat elimination, 2-3 months to see full results", cost: "One-time investment per area", recommended: true },
+      { method: "Liposuction Surgery", duration: "1-3 hours + recovery", pain: "Surgical (anesthesia required)", results: "Immediate but 6-8 weeks recovery", cost: "Higher + hospital costs", recommended: false },
+      { method: "Diet & Exercise Alone", duration: "Ongoing daily effort", pain: "None", results: "Cannot spot-reduce specific areas", cost: "Gym membership + time", recommended: false },
+      { method: "Fat Dissolving Injections", duration: "15-30 mins", pain: "Moderate (multiple injections)", results: "Gradual, multiple sessions needed", cost: "Per-session recurring cost", recommended: false },
+    ],
+    detailedSections: [
+      {
+        title: "What Makes CoolSculpting Elite Superior",
+        content: "CoolSculpting Elite represents the next evolution of body contouring. The redesigned C-shaped applicators conform better to your body's natural curves, providing more uniform cooling and consistent results. With 18% more tissue contact than the original, each session treats more fat cells. The dual applicator system means we can treat both love handles, both arms, or both thighs simultaneously — cutting your treatment time in half while delivering superior results."
+      },
+      {
+        title: "The Science of Cryolipolysis",
+        content: "Fat cells are more sensitive to cold than other types of cells. CoolSculpting exploits this by cooling fat cells to a precise temperature that triggers apoptosis (natural cell death) without affecting skin, nerves, or muscle tissue. Over the following weeks, your body's lymphatic system naturally processes and permanently eliminates these dead fat cells. This is why results appear gradually — your body is doing the work of removing the fat cells naturally."
+      },
     ],
   },
 
@@ -211,7 +270,7 @@ export const servicesData: Record<string, ServiceData> = {
     heroImage: "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=1920&q=80",
     heroOverlay: "from-[hsl(150,40%,4%)]/95 via-[hsl(150,40%,4%)]/70 to-transparent",
     description: "From HydraFacials to chemical peels, LED therapy to skin boosters — our clinical-grade skin treatments address every concern with precision and care.",
-    longDescription: "Your skin tells your story. Let us help you write a beautiful one. Our advanced skin treatments combine cutting-edge technology with proven clinical techniques to address every skin concern — from acne and pigmentation to aging and dullness. Each treatment is customized to your unique skin type and goals.",
+    longDescription: "Your skin tells your story. Let us help you write a beautiful one. Our advanced skin treatments combine cutting-edge technology with proven clinical techniques to address every skin concern — from acne and pigmentation to aging and dullness. Each treatment is customized to your unique skin type and goals, with protocols specifically developed for Indian skin tones.",
     icon: Sun,
     badge: "Clinical Grade",
     benefits: [
@@ -393,9 +452,9 @@ export const servicesData: Record<string, ServiceData> = {
       { name: "Dermal Fillers", price: "Ask for Quote", description: "Per syringe", features: ["Premium Juvederm/Restylane", "Lips, cheeks, or jawline", "Results last 9-12 months", "Complimentary consultation"] },
     ],
     faqs: [
-      { question: "Will I look frozen or unnatural?", answer: "No! Our philosophy is 'less is more.' We aim for natural-looking results that soften lines while preserving your expressions. You'll look refreshed, not frozen." },
-      { question: "How long does Botox last?", answer: "Botox typically lasts 3-4 months. With regular treatments, many clients find results last longer over time as muscles become trained." },
-      { question: "Is the procedure painful?", answer: "Most clients describe it as a slight pinch. We use very fine needles and can apply numbing cream for sensitive areas. The discomfort is minimal and brief." },
+      { question: "Will I look frozen or unnatural?", answer: "No! Our philosophy is 'less is more.' We aim for natural-looking results that soften lines while preserving your expressions." },
+      { question: "How long does Botox last?", answer: "Botox typically lasts 3-4 months. With regular treatments, many clients find results last longer over time." },
+      { question: "Is the procedure painful?", answer: "Most clients describe it as a slight pinch. We use very fine needles and can apply numbing cream for sensitive areas." },
       { question: "When will I see results?", answer: "Botox takes 3-7 days to show full effect. Fillers show immediate results, though slight swelling may occur for 24-48 hours." },
       { question: "Are there any side effects?", answer: "Minor bruising or swelling may occur but typically resolves within a few days. Serious side effects are rare when performed by qualified physicians." },
     ],
@@ -470,8 +529,8 @@ export const servicesData: Record<string, ServiceData> = {
     faqs: [
       { question: "What does microdermabrasion feel like?", answer: "Most describe it as a gentle scratching or suction sensation. It's comfortable and relaxing — many clients even fall asleep during treatment!" },
       { question: "How many sessions do I need?", answer: "For general maintenance, monthly sessions work well. For specific concerns like scarring or pigmentation, a course of 4-6 sessions every 2 weeks is recommended." },
-      { question: "Is there any downtime?", answer: "No downtime at all! You may have mild redness for an hour or two, similar to a light workout flush. You can apply makeup immediately if needed." },
-      { question: "Can I combine it with other treatments?", answer: "Absolutely! Microdermabrasion pairs beautifully with chemical peels, LED therapy, and facials. We'll create a customized protocol for your needs." },
+      { question: "Is there any downtime?", answer: "No downtime at all! You may have mild redness for an hour or two, similar to a light workout flush." },
+      { question: "Can I combine it with other treatments?", answer: "Absolutely! Microdermabrasion pairs beautifully with chemical peels, LED therapy, and facials." },
       { question: "Is it safe for sensitive skin?", answer: "Yes, we adjust the intensity based on your skin sensitivity. Our diamond-tip technology is gentler than traditional crystal microdermabrasion." },
     ],
     galleryImages: [
@@ -543,11 +602,11 @@ export const servicesData: Record<string, ServiceData> = {
       { name: "Royal Bride", price: "Ask for Quote", description: "Ultimate luxury", features: ["Everything in Radiant", "Premium skincare kit", "Bridesmaids packages (2)", "VIP scheduling", "Dedicated bridal coordinator"] },
     ],
     faqs: [
-      { question: "When should I start my bridal prep?", answer: "Ideally 6 months before your wedding. This allows enough time for complete laser hair removal and gradual skin transformation. However, we have packages for shorter timelines too." },
+      { question: "When should I start my bridal prep?", answer: "Ideally 6 months before your wedding. This allows enough time for complete laser hair removal and gradual skin transformation." },
       { question: "Can I customize my package?", answer: "Absolutely! Every bride is unique. We'll create a personalized plan based on your specific concerns, timeline, and budget." },
       { question: "Do you offer packages for the bridal party?", answer: "Yes! We have special rates for bridesmaids and mothers. Many brides book group spa days as pre-wedding bonding activities." },
-      { question: "What if I have a skin reaction close to the wedding?", answer: "We schedule treatments carefully to allow recovery time. Your final facial will be 5-7 days before the wedding — enough time for maximum glow without risk." },
-      { question: "Is the makeup included in all packages?", answer: "HD Bridal Makeup is included in Radiant and Royal packages. For Essential, it can be added separately. We also offer makeup trials." },
+      { question: "What if I have a skin reaction close to the wedding?", answer: "We schedule treatments carefully. Your final facial will be 5-7 days before the wedding — enough time for maximum glow without risk." },
+      { question: "Is the makeup included in all packages?", answer: "HD Bridal Makeup is included in Radiant and Royal packages. For Essential, it can be added separately." },
     ],
     galleryImages: [
       "https://images.pexels.com/photos/11742213/pexels-photo-11742213.jpeg?w=800&q=80",
@@ -564,8 +623,8 @@ export const servicesData: Record<string, ServiceData> = {
       { value: "5★", label: "Reviews" },
     ],
     testimonials: [
-      { name: "Aisha K.", rating: 5, text: "Started my journey 6 months before and looked absolutely flawless on my wedding day. Best investment ever!", treatment: "Radiant Bride" },
-      { name: "Rhea M.", rating: 5, text: "The team made me feel like a princess. My skin glowed in every photo. Thank you Empathy!", treatment: "Royal Bride" },
+      { name: "Aisha K.", rating: 5, text: "Started my journey 6 months before and looked absolutely flawless on my wedding day!", treatment: "Radiant Bride" },
+      { name: "Rhea M.", rating: 5, text: "The team made me feel like a princess. My skin glowed in every photo!", treatment: "Royal Bride" },
       { name: "Simran P.", rating: 5, text: "My bridesmaids and I had the best spa day here. Perfect pre-wedding bonding!", treatment: "Group Package" },
     ],
     whyChooseUs: [
@@ -587,7 +646,7 @@ export const servicesData: Record<string, ServiceData> = {
     heroImage: "https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=1920&q=80",
     heroOverlay: "from-[hsl(180,40%,4%)]/95 via-[hsl(180,40%,4%)]/70 to-transparent",
     description: "Experience complete relaxation with our therapeutic spa treatments. From Swedish massage to detox wraps, rejuvenate your body and mind.",
-    longDescription: "Step into our serene spa sanctuary and leave the world behind. Our therapeutic spa treatments are designed to melt away stress, ease muscle tension, and restore your natural balance. Every treatment is performed by certified therapists using premium products in our tranquil, ambient environment.",
+    longDescription: "Step into our serene spa sanctuary and leave the world behind. Our therapeutic spa treatments are designed to melt away stress, ease muscle tension, and restore your natural balance. Every treatment is performed by certified therapists using premium products.",
     icon: Flower2,
     badge: "Wellness",
     benefits: [
@@ -618,11 +677,11 @@ export const servicesData: Record<string, ServiceData> = {
       { name: "Ultimate Indulgence", price: "Ask for Quote", description: "Half-day retreat", features: ["90-min massage", "Body wrap", "Facial", "Manicure/Pedicure", "Lunch included"] },
     ],
     faqs: [
-      { question: "What should I wear to the spa?", answer: "We provide robes, slippers, and disposable undergarments. You'll change into these upon arrival. Wear whatever is comfortable for your commute." },
-      { question: "How early should I arrive?", answer: "We recommend arriving 15-20 minutes early to complete paperwork and start relaxing in our lounge before your treatment." },
-      { question: "Can I request a specific therapist?", answer: "Absolutely! If you have a preferred therapist, let us know when booking. We'll do our best to accommodate your request." },
-      { question: "What if I have a health condition?", answer: "Please inform us of any health conditions, allergies, or pregnancy when booking. Our therapists will customize your treatment accordingly." },
-      { question: "Do you offer couple packages?", answer: "Yes! Our couple spa room allows you to enjoy treatments side-by-side. Perfect for anniversaries, date nights, or quality time with a friend." },
+      { question: "What should I wear to the spa?", answer: "We provide robes, slippers, and disposable undergarments. Wear whatever is comfortable for your commute." },
+      { question: "How early should I arrive?", answer: "We recommend arriving 15-20 minutes early to complete paperwork and start relaxing." },
+      { question: "Can I request a specific therapist?", answer: "Absolutely! Let us know when booking and we'll accommodate your preference." },
+      { question: "What if I have a health condition?", answer: "Please inform us of any health conditions, allergies, or pregnancy when booking." },
+      { question: "Do you offer couple packages?", answer: "Yes! Our couple spa room allows you to enjoy treatments side-by-side." },
     ],
     galleryImages: [
       "https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=800&q=80",
@@ -693,40 +752,38 @@ export const servicesData: Record<string, ServiceData> = {
       { name: "Total Makeover", price: "Ask for Quote", description: "Head to toe beauty", features: ["Haircut & colour", "Mani-Pedi combo", "Full waxing", "Party makeup"] },
     ],
     faqs: [
-      { question: "Do I need an appointment?", answer: "We recommend booking in advance, especially for colour treatments and weekends. However, we do accommodate walk-ins based on availability." },
-      { question: "What hair products do you use?", answer: "We use premium professional brands including L'Oreal Professional, Schwarzkopf, and Olaplex for all hair treatments." },
-      { question: "Do you offer hair consultations?", answer: "Yes! Free consultations are available for major changes like colour or chemical treatments. Book online or just walk in." },
-      { question: "Is your nail equipment sterilized?", answer: "Absolutely. We follow clinical-grade hygiene protocols. All metal tools are autoclaved, and single-use items are disposed of after each client." },
-      { question: "Can I get makeup for my event?", answer: "Yes! We offer makeup services for all occasions. For weddings and large events, we recommend booking at least 2 weeks in advance." },
+      { question: "Do I need an appointment?", answer: "We recommend booking in advance, especially for colour treatments and weekends. We do accommodate walk-ins based on availability." },
+      { question: "What hair products do you use?", answer: "We use premium professional brands including L'Oreal Professional, Schwarzkopf, and Olaplex." },
+      { question: "Can you match a hairstyle from a photo?", answer: "Yes! Bring reference images and our stylists will advise on how to best adapt the look for your hair type and face shape." },
+      { question: "How long does hair colour last?", answer: "Permanent colour lasts until it grows out (touch-ups every 4-6 weeks). Semi-permanent fades over 6-8 washes." },
+      { question: "Do you offer men's grooming?", answer: "Absolutely! We offer men's haircuts, beard grooming, facials, and grooming packages." },
     ],
     galleryImages: [
       "https://images.pexels.com/photos/4783290/pexels-photo-4783290.jpeg?w=800&q=80",
-      "https://images.unsplash.com/photo-1629380106682-6736d2c327ed?w=800&q=80",
-      "https://images.unsplash.com/photo-1595871151608-bc7abd1caca3?w=800&q=80",
-      "https://images.unsplash.com/photo-1644641815757-37b5d1520bd7?w=800&q=80",
+      "https://images.unsplash.com/photo-1643684391140-c5056cfd3436?w=800&q=80",
+      "https://images.unsplash.com/photo-1487412912498-0447578fcca8?w=800&q=80",
+      "https://images.unsplash.com/photo-1544717304-a2db4a7b16ee?w=800&q=80",
     ],
-    secondaryImage: "https://images.unsplash.com/photo-1629380106682-6736d2c327ed?w=1200&q=80",
-    processImage: "https://images.unsplash.com/photo-1595871151608-bc7abd1caca3?w=1200&q=80",
+    secondaryImage: "https://images.unsplash.com/photo-1643684391140-c5056cfd3436?w=1200&q=80",
+    processImage: "https://images.unsplash.com/photo-1487412912498-0447578fcca8?w=1200&q=80",
     stats: [
-      { value: "20K+", label: "Happy Clients" },
-      { value: "15+", label: "Expert Stylists" },
-      { value: "50+", label: "Services" },
-      { value: "100%", label: "Hygiene" },
+      { value: "10K+", label: "Happy Clients" },
+      { value: "15+", label: "Services" },
+      { value: "Premium", label: "Products Only" },
+      { value: "5★", label: "Rated" },
     ],
     testimonials: [
-      { name: "Tanya G.", rating: 5, text: "Best haircut I've ever had! The stylist really understood what I wanted.", treatment: "Haircut & Styling" },
-      { name: "Megha S.", rating: 5, text: "Love their gel manicures. Last for 3 weeks without chipping!", treatment: "Gel Manicure" },
-      { name: "Kritika P.", rating: 5, text: "Got my party makeup done here. So many compliments! Will definitely return.", treatment: "Party Makeup" },
+      { name: "Kriti S.", rating: 5, text: "Best haircut I've ever had in Delhi. The stylist really understood what I wanted.", treatment: "Haircut & Styling" },
+      { name: "Megha R.", rating: 5, text: "My balayage looks exactly like the celebrity photo I showed. Amazing skills!", treatment: "Hair Colour" },
+      { name: "Tanvi M.", rating: 5, text: "The gel pedicure lasted 3 weeks without chipping. Great products and service.", treatment: "Mani-Pedi" },
     ],
     whyChooseUs: [
-      "Expert stylists with 5+ years experience",
-      "Premium professional products only",
+      "Senior stylists with salon expertise",
+      "Premium professional product brands",
       "Clinical-grade hygiene standards",
-      "Complimentary consultations",
-      "Relaxed, luxurious ambiance",
-      "Personalized beauty recommendations",
+      "Comfortable, modern salon space",
+      "Trend-forward styling techniques",
+      "Men's and women's services available",
     ],
   },
 };
-
-export default servicesData;
