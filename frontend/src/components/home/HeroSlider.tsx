@@ -71,22 +71,27 @@ const letterVariants = {
   }),
 };
 
-const AnimatedText = ({ text, className }: { text: string; className: string }) => (
-  <span className={className} style={{ display: "inline-flex", flexWrap: "wrap", perspective: "1000px" }}>
-    {text.split("").map((char, i) => (
-      <motion.span
-        key={i}
-        custom={i}
-        variants={letterVariants}
-        initial="hidden"
-        animate="visible"
-        style={{ display: "inline-block", whiteSpace: char === " " ? "pre" : "normal" }}
-      >
-        {char}
-      </motion.span>
-    ))}
-  </span>
-);
+const AnimatedText = ({ text, className, reduced }: { text: string; className: string; reduced?: boolean }) => {
+  if (reduced) {
+    return <span className={className}>{text}</span>;
+  }
+  return (
+    <span className={className} style={{ display: "inline-flex", flexWrap: "wrap", perspective: "1000px" }}>
+      {text.split("").map((char, i) => (
+        <motion.span
+          key={i}
+          custom={i}
+          variants={letterVariants}
+          initial="hidden"
+          animate="visible"
+          style={{ display: "inline-block", whiteSpace: char === " " ? "pre" : "normal" }}
+        >
+          {char}
+        </motion.span>
+      ))}
+    </span>
+  );
+};
 
 const HeroSlider = () => {
   const [current, setCurrent] = useState(0);
