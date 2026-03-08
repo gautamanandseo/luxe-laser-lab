@@ -1,5 +1,5 @@
 import { motion, type Variants } from "framer-motion";
-import type { ReactNode } from "react";
+import { forwardRef, type ReactNode } from "react";
 
 type Direction = "up" | "down" | "left" | "right" | "scale" | "none";
 
@@ -47,7 +47,7 @@ const getVariants = (direction: Direction, distance: number): Variants => {
   return { hidden, visible };
 };
 
-const ScrollReveal = ({
+const ScrollReveal = forwardRef<HTMLDivElement, ScrollRevealProps>(({
   children,
   direction = "up",
   delay = 0,
@@ -55,11 +55,12 @@ const ScrollReveal = ({
   className = "",
   once = true,
   distance = 40,
-}: ScrollRevealProps) => {
+}, ref) => {
   const variants = getVariants(direction, distance);
 
   return (
     <motion.div
+      ref={ref}
       variants={variants}
       initial="hidden"
       whileInView="visible"
@@ -74,6 +75,8 @@ const ScrollReveal = ({
       {children}
     </motion.div>
   );
-};
+});
+
+ScrollReveal.displayName = "ScrollReveal";
 
 export default ScrollReveal;
