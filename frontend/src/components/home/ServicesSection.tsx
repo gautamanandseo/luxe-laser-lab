@@ -89,7 +89,7 @@ const tabs = [
     desc: "High-Intensity Focused Ultrasound delivers focused energy deep into the SMAS layer to lift, tighten, and contour — all without surgery, needles, or downtime.",
     features: ["Targets SMAS layer (same as surgical facelift)", "Natural collagen regeneration", "Zero downtime", "Results last 12-18 months", "Face, neck, jawline & body"],
     link: "/hifu-treatment",
-    image: serviceSkin,
+    image: serviceHifu,
   },
   {
     id: "darkcircles",
