@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight, Clock, Calendar, Tag, User } from "lucide-react";
 import { blogPosts } from "@/data/blogData";
 import { servicesData } from "@/data/serviceData";
+import BlogImage from "@/components/blog/BlogImage";
 
 const BlogPostPage = () => {
   const { slug } = useParams();
@@ -154,7 +155,7 @@ const BlogPostPage = () => {
       {/* Hero */}
       <section className="relative">
         <div className="aspect-[21/9] md:aspect-[3/1] overflow-hidden">
-          <img src={post.image} alt={post.title} className="w-full h-full object-cover" />
+          <BlogImage src={post.image} category={post.category} alt={post.title} loading="eager" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
         </div>
         <div className="absolute bottom-0 left-0 right-0">
@@ -289,8 +290,9 @@ const BlogPostPage = () => {
                 <Link key={related.id} to={`/blog/${related.slug}`} className="group">
                   <article className="bg-card rounded-2xl border border-border overflow-hidden hover:border-primary/40 transition-all">
                     <div className="aspect-video overflow-hidden">
-                      <img
+                      <BlogImage
                         src={related.image}
+                        category={related.category}
                         alt={related.title}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       />

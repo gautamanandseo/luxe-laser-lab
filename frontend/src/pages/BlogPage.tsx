@@ -1,8 +1,9 @@
 import { useState, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRight, Clock, Search, Tag } from "lucide-react";
+import { ArrowRight, Clock, Search } from "lucide-react";
 import { blogPosts, blogCategories } from "@/data/blogData";
+import BlogImage from "@/components/blog/BlogImage";
 
 const BlogPage = () => {
   const [activeCategory, setActiveCategory] = useState("All");
@@ -64,9 +65,11 @@ const BlogPage = () => {
               className="grid lg:grid-cols-2 gap-8 bg-card rounded-2xl border border-border overflow-hidden hover:border-primary/40 transition-all"
             >
               <div className="aspect-video lg:aspect-auto overflow-hidden">
-                <img
+                <BlogImage
                   src={featuredPost.image}
+                  category={featuredPost.category}
                   alt={featuredPost.title}
+                  loading="eager"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
@@ -140,8 +143,9 @@ const BlogPage = () => {
                   <Link to={`/blog/${post.slug}`} className="group block h-full">
                     <article className="bg-card rounded-2xl border border-border overflow-hidden hover:border-primary/40 transition-all h-full flex flex-col">
                       <div className="aspect-video overflow-hidden">
-                        <img
+                        <BlogImage
                           src={post.image}
+                          category={post.category}
                           alt={post.title}
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                         />
