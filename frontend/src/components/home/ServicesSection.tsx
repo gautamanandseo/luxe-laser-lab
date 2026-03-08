@@ -78,7 +78,7 @@ const tabs = [
     desc: "Combine Botox, dermal fillers, HIFU, ResurFX™ laser, and advanced facials to restore youthful vitality — without surgery. Natural-looking results that make you look refreshed, not 'done'.",
     features: ["Genuine Allergan Botox", "Premium dermal fillers", "HIFU non-surgical face lift", "ResurFX™ collagen remodeling", "Preventive anti-ageing programs"],
     link: "/anti-ageing",
-    image: serviceBotox,
+    image: serviceAntiageing,
   },
   {
     id: "hifu",
