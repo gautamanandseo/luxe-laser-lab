@@ -44,9 +44,9 @@ const AnimatedCounter = ({ target, suffix }: { target: number; suffix: string })
 };
 
 const StatsBar = () => (
-  <section className="bg-cosmic relative overflow-hidden py-20">
+  <section className="bg-velvet relative overflow-hidden py-24 vignette diamond-dust">
     <AuroraMesh intensity="medium" />
-    <div className="absolute inset-0 grid-bg opacity-20" />
+    <div className="absolute inset-0 grid-bg opacity-10" />
 
     <div className="relative z-10 container mx-auto px-6">
       {/* Google Rating Badge */}
