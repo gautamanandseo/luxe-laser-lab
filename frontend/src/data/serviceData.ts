@@ -1,4 +1,4 @@
-import { Sparkles, Snowflake, Sun, Heart, Flower2, Scissors, Syringe, Diamond, Clock, Shield, Award, Users, CheckCircle, Star, Zap, Target, Droplets, Gem, Scan } from "lucide-react";
+import { Sparkles, Snowflake, Sun, Heart, Flower2, Scissors, Syringe, Diamond, Clock, Shield, Award, Users, CheckCircle, Star, Zap, Target, Droplets, Gem, Scan, Scale } from "lucide-react";
 
 export interface ServiceStep {
   number: string;
