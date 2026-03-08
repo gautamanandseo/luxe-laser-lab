@@ -833,6 +833,40 @@ const ServicePage = ({ service }: ServicePageProps) => {
         </div>
       </section>
 
+      {/* Delhi NCR SEO Content */}
+      <section className="py-20 bg-secondary">
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="font-serif text-3xl md:text-4xl text-foreground mb-6">
+              {data.title} {data.accent} in Delhi NCR
+            </h2>
+            <div className="prose prose-lg text-muted-foreground leading-relaxed space-y-4">
+              <p>
+                Empathy Laser Clinic in Pitampura, Delhi is one of the most trusted clinics for {data.title.toLowerCase()} treatments in Delhi NCR. 
+                With over 15 years of experience and 25,000+ happy clients, we serve patients from across Delhi including Rohini, Shalimar Bagh, 
+                Model Town, Ashok Vihar, Paschim Vihar, Punjabi Bagh, Dwarka, and Janakpuri — as well as Noida, Gurugram, Ghaziabad, and Faridabad.
+              </p>
+              <p>
+                Our clinic uses only USFDA-cleared, genuine technology and products. Whether you're looking for {data.title.toLowerCase()} cost in Delhi, 
+                the best {data.title.toLowerCase()} clinic near you, or want to compare treatment options, our expert team provides free consultations 
+                with transparent pricing and flexible EMI options.
+              </p>
+              <p>
+                Conveniently located near Pitampura Metro Station, Empathy Laser Clinic is easily accessible from anywhere in North Delhi and Delhi NCR. 
+                We are open Monday to Saturday, 10 AM to 7 PM. Call 9811157787 or WhatsApp us to book your free consultation today.
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-2 mt-8">
+              {["Pitampura", "Rohini", "Shalimar Bagh", "Model Town", "Ashok Vihar", "Noida", "Gurugram", "North Delhi", "Delhi NCR"].map((area, i) => (
+                <span key={i} className="text-xs border border-border rounded-full px-3 py-1.5 text-muted-foreground">
+                  {data.title} in {area}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Final CTA Section */}
       <section className="py-24 relative overflow-hidden">
         {/* Background */}
@@ -851,7 +885,7 @@ const ServicePage = ({ service }: ServicePageProps) => {
               Ready to Begin Your Journey?
             </h2>
             <p className="text-primary-foreground/80 text-lg mb-8 max-w-2xl mx-auto">
-              Book your free consultation today and take the first step towards {data.tagline.toLowerCase()}.
+              Book your free consultation at Delhi NCR's most trusted aesthetic clinic and take the first step towards {data.tagline.toLowerCase()}.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link
