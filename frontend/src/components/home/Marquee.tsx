@@ -1,7 +1,7 @@
 const items = [
-  "Laser Hair Removal", "CoolSculpting®", "Botox & Fillers", "Microdermabrasion",
-  "Bridal Packages", "Salon Services", "Spa Treatments", "Skin Rejuvenation",
-  "Body Contouring", "USFDA Cleared", "Venus Treatments", "Delhi NCR",
+  "Laser Hair Removal Delhi", "CoolSculpting® Delhi", "Weight Loss Clinic Delhi", "Lumenis LightSheer",
+  "Alma Soprano ICE", "Botox & Fillers", "Bridal Packages", "Skin Rejuvenation",
+  "Body Contouring", "USFDA Cleared", "Non-Surgical Fat Reduction", "Delhi NCR",
 ];
 
 const Marquee = () => (
