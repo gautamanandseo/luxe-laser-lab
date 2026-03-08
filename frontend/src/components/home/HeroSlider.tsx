@@ -160,13 +160,39 @@ const HeroSlider = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  const next = useCallback(() => setCurrent(c => (c + 1) % slides.length), []);
+  const reduced = useReducedMotion();
+  const isPlaying = !paused && !manualPause;
 
+  const next = useCallback(() => {
+    setCurrent(c => (c + 1) % slides.length);
+    setProgress(0);
+  }, []);
+
+  const prev = useCallback(() => {
+    setCurrent(c => (c - 1 + slides.length) % slides.length);
+    setProgress(0);
+  }, []);
+
+  const togglePause = useCallback(() => {
+    setManualPause(p => !p);
+  }, []);
+
+  // Progress bar + auto-advance
   useEffect(() => {
-    if (paused) return;
-    const timer = setInterval(next, 5000);
+    if (!isPlaying) return;
+    const interval = 50;
+    const timer = setInterval(() => {
+      setProgress(p => {
+        const next = p + (interval / SLIDE_DURATION) * 100;
+        if (next >= 100) {
+          setCurrent(c => (c + 1) % slides.length);
+          return 0;
+        }
+        return next;
+      });
+    }, interval);
     return () => clearInterval(timer);
-  }, [paused, next]);
+  }, [isPlaying, current]);
 
   const slide = slides[current];
   const currentImage = loadedImages[current] || heroLaser;
