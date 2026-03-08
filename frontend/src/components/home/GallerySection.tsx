@@ -21,7 +21,7 @@ const images = [
 ];
 
 const GallerySection = () => (
-  <section className="py-24 bg-secondary">
+  <section id="gallery" className="py-24 bg-secondary">
     <div className="container mx-auto px-6">
       <div className="text-center mb-12">
         <div className="flex items-center justify-center gap-2 mb-4">
