@@ -185,7 +185,7 @@ const HeroSlider = () => {
               key={current}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              exit={{ opacity: 0, y: -30, filter: "blur(10px)" }}
+              exit={{ opacity: 0, y: -30, ...(reduced ? {} : { filter: "blur(10px)" }) }}
               transition={{ duration: 0.5 }}
               className="max-w-2xl"
             >
