@@ -110,6 +110,10 @@ const App = () => {
           <Footer />
           <WhatsAppButton />
           <StickyMobileCTA />
+          <ExitIntentPopup />
+          <SocialProofToasts />
+          <CountdownTimer />
+          <FloatingConsultation />
         </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>
