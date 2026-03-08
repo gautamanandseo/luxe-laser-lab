@@ -50,6 +50,8 @@ import baMolewart from "@/assets/ba-molewart.jpg";
 import baHairtransplant from "@/assets/ba-hairtransplant.jpg";
 import baFacial from "@/assets/ba-facial.jpg";
 import baBotox2 from "@/assets/ba-botox2.jpg";
+import baCoolsculptingChin from "@/assets/ba-coolsculpting-chin.jpg";
+import baBodycontouring2 from "@/assets/ba-bodycontouring2.jpg";
 
 const heroImages: Record<string, string> = {
   laser: heroLaserNew,
@@ -111,8 +113,8 @@ const beforeAfterImages: Record<string, { image: string; label: string }[]> = {
   ],
   coolsculpting: [
     { image: baCoolsculpting, label: "Abdomen — 2 Sessions" },
-    { image: baCoolsculpting, label: "Love Handles — 3 Sessions" },
-    { image: baCoolsculpting, label: "Double Chin — 2 Sessions" },
+    { image: baCoolsculptingChin, label: "Double Chin — 2 Sessions" },
+    { image: baBodycontouring2, label: "Body Contouring Results" },
   ],
   skin: [
     { image: baSkin, label: "Acne & Blemish Clearance" },
@@ -164,8 +166,8 @@ const beforeAfterImages: Record<string, { image: string; label: string }[]> = {
     { image: baAntiaging, label: "Skin Elasticity Boost" },
   ],
   stretchmarks: [
-    { image: baResurfx, label: "Abdomen Stretch Marks" },
-    { image: baResurfx2, label: "Post-Pregnancy Recovery" },
+    { image: baBodycontouring2, label: "Abdomen Stretch Marks" },
+    { image: baCoolsculpting, label: "Post-Pregnancy Recovery" },
   ],
   tattooremoval: [
     { image: baTattoo, label: "Full Sleeve Removal" },
@@ -184,8 +186,9 @@ const beforeAfterImages: Record<string, { image: string; label: string }[]> = {
     { image: baHairloss, label: "Crown Area Restoration" },
   ],
   bodycontouring: [
+    { image: baBodycontouring2, label: "Full Body Contouring" },
     { image: baCoolsculpting, label: "Abdomen Sculpting" },
-    { image: baCoolsculpting, label: "Flanks Contouring" },
+    { image: baCoolsculptingChin, label: "Chin & Jawline Definition" },
   ],
   facials: [
     { image: baFacial, label: "HydraFacial Glow" },
@@ -198,7 +201,8 @@ const beforeAfterImages: Record<string, { image: string; label: string }[]> = {
   ],
   weightloss: [
     { image: baCoolsculpting, label: "CoolSculpting® Body Contouring" },
-    { image: baCoolsculpting, label: "Post-Treatment Results" },
+    { image: baBodycontouring2, label: "Weight Loss Transformation" },
+    { image: baCoolsculptingChin, label: "Double Chin Reduction" },
   ],
   salon: [],
   spa: [],
