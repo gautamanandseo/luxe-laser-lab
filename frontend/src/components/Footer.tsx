@@ -22,7 +22,7 @@ const services = [
   { name: "Botox & Fillers", path: "/botox-fillers" },
   { name: "Microdermabrasion", path: "/microdermabrasion" },
   { name: "Bridal Packages", path: "/bridal-packages" },
-  { name: "Spa Services", path: "/spa-services" },
+  { name: "Facials & HydraFacial", path: "/facials" },
   { name: "Salon Services", path: "/salon-services" },
 ];
 
