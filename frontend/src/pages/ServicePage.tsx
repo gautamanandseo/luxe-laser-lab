@@ -186,8 +186,9 @@ const beforeAfterImages: Record<string, { image: string; label: string }[]> = {
     { image: baHairloss, label: "Crown Area Restoration" },
   ],
   bodycontouring: [
+    { image: baBodycontouring2, label: "Full Body Contouring" },
     { image: baCoolsculpting, label: "Abdomen Sculpting" },
-    { image: baCoolsculpting, label: "Flanks Contouring" },
+    { image: baCoolsculptingChin, label: "Chin & Jawline Definition" },
   ],
   facials: [
     { image: baFacial, label: "HydraFacial Glow" },
