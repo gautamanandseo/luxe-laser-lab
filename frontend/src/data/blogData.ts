@@ -196,7 +196,7 @@ Since only 20-30% of hair is in the Anagen phase at any time, each session targe
 
 - **Hair color:** Darker hair responds better (more melanin to target)
 - **Hair density:** Denser areas may need more sessions
-- **Skin tone:** Our 808nm laser is calibrated for Indian skin, but very dark skin may need adjusted settings
+- **Skin tone:** Our Lumenis LightSheer and Alma Soprano are calibrated for Indian skin, with adjustable settings for very dark skin
 - **Hormonal factors:** PCOS or hormonal imbalances may require additional sessions
 - **Treatment area:** Face and bikini areas may need more sessions due to hormonal influence
 
