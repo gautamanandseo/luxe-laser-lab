@@ -111,7 +111,7 @@ const tabs = [
     desc: "Sagging skin and loss of elasticity treated effectively without surgery using HIFU, radiofrequency, and ResurFX™ fractional laser technology.",
     features: ["HIFU deep tissue lifting", "Radiofrequency surface tightening", "ResurFX™ collagen remodeling", "Face and body treatment", "Post-weight loss skin firming"],
     link: "/skin-tightening",
-    image: serviceSkin,
+    image: serviceSkintightening,
   },
   {
     id: "hairloss",
