@@ -76,11 +76,11 @@ export const servicesData: Record<string, ServiceData> = {
     icon: Sparkles,
     badge: "USFDA Cleared",
     benefits: [
-      { title: "High Precision", description: "Unlike shaving and waxing, laser technology selectively targets dark, coarse hairs while leaving surrounding skin undamaged. Treats an area the size of a ₹10 coin every second.", icon: Target },
-      { title: "Quick Treatment", description: "Upper lip treated in under a minute. Full legs in 45-60 mins. Our advanced pulsed light delivers hundreds of light colors simultaneously for maximum efficiency.", icon: Clock },
-      { title: "Permanent Results", description: "Expect permanent hair loss after 6-8 sessions. It's a long-term solution that frees you from monthly salon visits, saving lakhs over your lifetime.", icon: CheckCircle },
-      { title: "All Indian Skin Types", description: "Specifically calibrated for the full range of Indian skin tones. Our 808nm wavelength is proven safe and effective for Fitzpatrick types III-VI.", icon: Shield },
-      { title: "Zero Downtime", description: "Walk in during lunch, walk out ready for your evening plans. No redness, no irritation, no waiting period.", icon: Zap },
+      { title: "High Precision", description: "The Lumenis LightSheer Desire's 805nm wavelength selectively targets dark, coarse hairs while leaving surrounding skin undamaged. Patented vacuum-assist pulls skin closer for maximum efficacy.", icon: Target },
+      { title: "Pain-Free Option", description: "The Alma Soprano ICE Platinum's SHR IN-Motion™ technology delivers gradual heating with ICE™ cooling — making treatment virtually painless, even on sensitive areas like bikini and upper lip.", icon: Clock },
+      { title: "Permanent Results", description: "Expect permanent hair loss after 6-8 sessions with either LightSheer or Soprano technology. A long-term solution that frees you from monthly salon visits.", icon: CheckCircle },
+      { title: "All Indian Skin Types", description: "Both Lumenis LightSheer and Alma Soprano are proven safe and effective for Fitzpatrick types III-VI — the full range of Indian skin tones.", icon: Shield },
+      { title: "Dual Technology Advantage", description: "We select the optimal laser (LightSheer or Soprano) based on your specific skin type, hair density, and treatment area — giving you the best possible results.", icon: Zap },
       { title: "Cost Effective", description: "Calculate what you spend on waxing annually (₹2,000-4,000/month × 12 = ₹24,000-48,000/year). Laser pays for itself within the first year.", icon: Award },
     ],
     processSteps: [
