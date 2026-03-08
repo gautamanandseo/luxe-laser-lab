@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ChevronRight, ChevronLeft, ArrowRight, Shield, Pause, Play } from "lucide-react";
 import { Link } from "react-router-dom";
 import ParticleField from "@/components/effects/ParticleField";
+import LiveViewerCounter from "@/components/LiveViewerCounter";
 import AuroraMesh from "@/components/effects/AuroraMesh";
 import { useReducedMotion } from "@/hooks/use-reduced-motion";
 import heroLaser from "@/assets/hero-laser-gen.jpg";
