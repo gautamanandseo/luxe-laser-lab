@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Instagram } from "lucide-react";
+import { Instagram, ArrowRight, Eye } from "lucide-react";
+import { Link } from "react-router-dom";
+import ScrollReveal from "@/components/effects/ScrollReveal";
 import baAcne from "@/assets/ba-acne.jpg";
 import baBotox from "@/assets/ba-botox.jpg";
 import baCoolsculpting from "@/assets/ba-coolsculpting.jpg";
@@ -11,14 +13,14 @@ import baSkin from "@/assets/ba-skin.jpg";
 import baResurfx from "@/assets/ba-resurfx.jpg";
 
 const images = [
-  { src: baAcne, alt: "Acne treatment results" },
-  { src: baBotox, alt: "Botox treatment results" },
-  { src: baCoolsculpting, alt: "CoolSculpting body contouring results" },
-  { src: baFacial, alt: "Facial rejuvenation results" },
-  { src: baHifu, alt: "HIFU face lift results" },
-  { src: baLaserMen, alt: "Laser hair removal for men" },
-  { src: baSkin, alt: "Skin treatment results" },
-  { src: baResurfx, alt: "ResurFX skin resurfacing results" },
+  { src: baAcne, alt: "Acne treatment before and after results", label: "Acne Treatment" },
+  { src: baBotox, alt: "Botox treatment before and after results", label: "Botox & Fillers" },
+  { src: baCoolsculpting, alt: "CoolSculpting body contouring before and after", label: "CoolSculpting®" },
+  { src: baFacial, alt: "Facial rejuvenation before and after results", label: "HydraFacial" },
+  { src: baHifu, alt: "HIFU face lift before and after results", label: "HIFU Lift" },
+  { src: baLaserMen, alt: "Laser hair removal for men before and after", label: "Laser (Men)" },
+  { src: baSkin, alt: "Skin treatment before and after results", label: "Skin Rejuvenation" },
+  { src: baResurfx, alt: "ResurFX skin resurfacing before and after", label: "ResurFX™" },
 ];
 
 const GalleryCard = ({ img, i }: { img: typeof images[0]; i: number }) => {
@@ -42,10 +44,7 @@ const GalleryCard = ({ img, i }: { img: typeof images[0]; i: number }) => {
 
   return (
     <div style={{ perspective: 800 }} className="aspect-square">
-      <motion.a
-        href="https://www.instagram.com/empathylaserclinic/"
-        target="_blank"
-        rel="noopener noreferrer"
+      <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
@@ -68,13 +67,21 @@ const GalleryCard = ({ img, i }: { img: typeof images[0]; i: number }) => {
           decoding="async"
           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
         />
-        {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
-          <span className="text-xs font-sans uppercase tracking-widest text-foreground flex items-center gap-1.5">
-            <Instagram size={14} className="text-primary" />
-            View on Instagram
-          </span>
+
+        {/* "Before & After" label */}
+        <div className="absolute top-3 left-3 bg-primary/90 backdrop-blur-sm text-primary-foreground text-[9px] font-sans uppercase tracking-[0.15em] px-2.5 py-1 rounded-full shadow-lg">
+          Before & After
         </div>
+
+        {/* Treatment label */}
+        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-background/90 via-background/50 to-transparent p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+          <p className="text-xs font-sans uppercase tracking-[0.1em] text-primary mb-1">{img.label}</p>
+          <div className="flex items-center gap-1.5 text-foreground/80 text-[10px]">
+            <Eye size={10} />
+            <span>View Results</span>
+          </div>
+        </div>
+
         {/* Glare effect */}
         <div
           className="absolute inset-0 pointer-events-none rounded-xl z-10"
@@ -83,24 +90,31 @@ const GalleryCard = ({ img, i }: { img: typeof images[0]; i: number }) => {
             transition: "opacity 0.2s",
           }}
         />
-      </motion.a>
+      </motion.div>
     </div>
   );
 };
 
 const GallerySection = () => (
-  <section id="gallery" className="py-24 bg-secondary">
-    <div className="container mx-auto px-6">
-      <div className="text-center mb-12">
-        <div className="flex items-center justify-center gap-2 mb-4">
-          <Instagram size={16} className="text-primary" />
-          <span className="eyebrow">@empathylaserclinic</span>
-        </div>
+  <section id="gallery" className="py-24 bg-secondary relative overflow-hidden">
+    <div className="absolute inset-0 grid-bg opacity-10" />
+    <div className="relative z-10 container mx-auto px-6">
+      <ScrollReveal direction="up" className="text-center mb-4">
+        <p className="eyebrow mb-4">Real Results</p>
         <h2 className="font-serif text-4xl md:text-5xl text-foreground">
-          Follow Our <em className="text-primary">Journey</em>
+          Before & <em className="holographic-text" style={{ fontStyle: "italic" }}>After</em>
         </h2>
-        <p className="text-muted-foreground mt-4">See real results and latest updates from our clinic</p>
-      </div>
+        <p className="text-muted-foreground mt-4 max-w-lg mx-auto text-sm">
+          See real transformations from 25,000+ clients. Results you can trust, backed by 15+ years of clinical excellence.
+        </p>
+      </ScrollReveal>
+
+      {/* Trust strip */}
+      <ScrollReveal direction="up" delay={0.1} className="flex justify-center gap-6 mb-12 text-[10px] font-sans uppercase tracking-[0.15em] text-muted-foreground">
+        <span>✓ Unedited photos</span>
+        <span>✓ Real patients</span>
+        <span>✓ Verified results</span>
+      </ScrollReveal>
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
         {images.map((img, i) => (
@@ -108,15 +122,23 @@ const GallerySection = () => (
         ))}
       </div>
 
-      <div className="text-center mt-8">
+      <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10">
         <a
           href="https://www.instagram.com/empathylaserclinic/"
           target="_blank"
           rel="noopener noreferrer"
           className="border border-border text-foreground px-6 py-3 text-sm font-sans uppercase tracking-[0.1em] rounded-full inline-flex items-center gap-2 hover:border-primary hover:text-primary transition-colors"
         >
-          <Instagram size={16} /> Follow on Instagram
+          <Instagram size={16} /> Follow @empathylaserclinic
         </a>
+        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
+          <Link
+            to="/contact"
+            className="gold-shimmer text-primary-foreground px-6 py-3 text-sm font-sans uppercase tracking-[0.1em] rounded-full inline-flex items-center gap-2 shadow-[0_4px_20px_hsl(38,45%,60%,0.25)]"
+          >
+            Get Similar Results <ArrowRight size={14} />
+          </Link>
+        </motion.div>
       </div>
     </div>
   </section>
