@@ -38,6 +38,24 @@ const BookingSection = () => {
               <a href="tel:+919811157787" className="font-serif text-2xl text-foreground hover:text-primary transition-colors block">9811157787</a>
               <a href="tel:+919811157784" className="font-serif text-2xl text-foreground hover:text-primary transition-colors block">9811157784</a>
             </div>
+
+            {/* Google Maps Embed */}
+            <div className="mt-6 rounded-lg overflow-hidden border border-border">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3499.6!2d77.1349249!3d28.7013527!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d017f3a0a9a4d%3A0x206ceda8ce510bc4!2sEmpathy%20Skin%20%26%20Laser%20Hair%20Removal%20Clinic%20Delhi%20-%20Coolsculpting%20-%20Skin%20Treatments!5e0!3m2!1sen!2sin!4v1709900000000"
+                width="100%"
+                height="200"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Empathy Laser Clinic Location - Pitampura, Delhi"
+              />
+              <div className="p-3 bg-secondary flex items-center gap-2 text-xs text-muted-foreground">
+                <MapPin size={12} className="text-primary" />
+                HD-6, First Floor, Main Road, Opp Metro Pillar 362, Pitampura, Delhi
+              </div>
+            </div>
           </div>
 
           {/* Right - Form */}
