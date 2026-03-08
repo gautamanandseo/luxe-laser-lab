@@ -41,6 +41,15 @@ import baDarkcircles from "@/assets/ba-darkcircles.jpg";
 import baTattoo from "@/assets/ba-tattoo.jpg";
 import baLaserMen from "@/assets/ba-laser-men.jpg";
 import baResurfx2 from "@/assets/ba-resurfx2.jpg";
+import baLaserUnderarm from "@/assets/ba-laser-underarm.jpg";
+import baAcne from "@/assets/ba-acne.jpg";
+import baSkinlightening from "@/assets/ba-skinlightening.jpg";
+import baHifu from "@/assets/ba-hifu.jpg";
+import baSkintightening from "@/assets/ba-skintightening.jpg";
+import baMolewart from "@/assets/ba-molewart.jpg";
+import baHairtransplant from "@/assets/ba-hairtransplant.jpg";
+import baFacial from "@/assets/ba-facial.jpg";
+import baBotox2 from "@/assets/ba-botox2.jpg";
 
 const heroImages: Record<string, string> = {
   laser: heroLaserNew,
@@ -95,28 +104,104 @@ const serviceImages: Record<string, string> = {
 
 // Before/After images per service
 const beforeAfterImages: Record<string, { image: string; label: string }[]> = {
-  laser: [],
+  laser: [
+    { image: baLaserUnderarm, label: "Underarm — 6 Sessions" },
+    { image: baLaserMen, label: "Men's Back — 5 Sessions" },
+    { image: baSkin, label: "Full Face — 8 Sessions" },
+  ],
   coolsculpting: [
-    { image: baCoolsculpting, label: "Abdomen — 2 sessions" },
+    { image: baCoolsculpting, label: "Abdomen — 2 Sessions" },
+    { image: baCoolsculpting, label: "Love Handles — 3 Sessions" },
+    { image: baCoolsculpting, label: "Double Chin — 2 Sessions" },
   ],
   skin: [
     { image: baSkin, label: "Acne & Blemish Clearance" },
+    { image: baFacial, label: "Skin Texture Improvement" },
+    { image: baSkinlightening, label: "Pigmentation Correction" },
   ],
   botox: [
     { image: baBotox, label: "Forehead & Crow's Feet" },
+    { image: baBotox2, label: "Frown Lines & Glabella" },
+    { image: baAntiaging, label: "Full Face Rejuvenation" },
   ],
   resurfx: [
     { image: baResurfx, label: "Acne Scar Resurfacing" },
+    { image: baResurfx2, label: "Fine Lines & Wrinkles" },
+    { image: baSkin, label: "Skin Texture Refinement" },
   ],
   microdermabrasion: [
     { image: baMicroderm, label: "Skin Texture Refinement" },
+    { image: baFacial, label: "Pore Reduction" },
+    { image: baSkin, label: "Dull Skin Revival" },
   ],
-  bridal: [],
-  spa: [],
-  salon: [],
+  acne: [
+    { image: baAcne, label: "Active Acne Clearance" },
+    { image: baResurfx, label: "Acne Scar Treatment" },
+    { image: baSkin, label: "Post-Acne Pigmentation" },
+  ],
+  skinlightening: [
+    { image: baSkinlightening, label: "Full Face Brightening" },
+    { image: baFacial, label: "Uneven Tone Correction" },
+    { image: baSkin, label: "Hyperpigmentation Treatment" },
+  ],
+  antiageing: [
+    { image: baAntiaging, label: "Fine Lines & Wrinkles" },
+    { image: baBotox2, label: "Forehead Lines Reduction" },
+    { image: baHifu, label: "Skin Firmness Improvement" },
+  ],
+  hifu: [
+    { image: baHifu, label: "Face Lift — Non-Surgical" },
+    { image: baSkintightening, label: "Jawline Definition" },
+    { image: baAntiaging, label: "Skin Tightening Results" },
+  ],
+  darkcircles: [
+    { image: baDarkcircles, label: "Under-Eye Rejuvenation" },
+    { image: baAntiaging, label: "Periorbital Brightening" },
+  ],
+  skintightening: [
+    { image: baSkintightening, label: "Jawline Contouring" },
+    { image: baHifu, label: "Face & Neck Tightening" },
+    { image: baAntiaging, label: "Skin Elasticity Boost" },
+  ],
+  stretchmarks: [
+    { image: baResurfx, label: "Abdomen Stretch Marks" },
+    { image: baResurfx2, label: "Post-Pregnancy Recovery" },
+  ],
+  tattooremoval: [
+    { image: baTattoo, label: "Full Sleeve Removal" },
+    { image: baTattoo, label: "Small Tattoo — 4 Sessions" },
+  ],
+  molewart: [
+    { image: baMolewart, label: "Mole Removal — Neck" },
+    { image: baMolewart, label: "Skin Tag Clearance" },
+  ],
+  hairloss: [
+    { image: baHairloss, label: "PRP Hair Regrowth" },
+    { image: baHairtransplant, label: "Hairline Restoration" },
+  ],
+  hairtransplant: [
+    { image: baHairtransplant, label: "FUE Hair Transplant" },
+    { image: baHairloss, label: "Crown Area Restoration" },
+  ],
+  bodycontouring: [
+    { image: baCoolsculpting, label: "Abdomen Sculpting" },
+    { image: baCoolsculpting, label: "Flanks Contouring" },
+  ],
+  facials: [
+    { image: baFacial, label: "HydraFacial Glow" },
+    { image: baSkin, label: "Deep Cleansing Results" },
+    { image: baSkinlightening, label: "Brightening Facial" },
+  ],
+  bridal: [
+    { image: baFacial, label: "Pre-Bridal Glow Package" },
+    { image: baSkinlightening, label: "Bridal Skin Prep" },
+  ],
   weightloss: [
     { image: baCoolsculpting, label: "CoolSculpting® Body Contouring" },
+    { image: baCoolsculpting, label: "Post-Treatment Results" },
   ],
+  salon: [],
+  spa: [],
 };
 
 interface ServicePageProps {
