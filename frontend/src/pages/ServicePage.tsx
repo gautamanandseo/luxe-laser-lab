@@ -166,8 +166,8 @@ const beforeAfterImages: Record<string, { image: string; label: string }[]> = {
     { image: baAntiaging, label: "Skin Elasticity Boost" },
   ],
   stretchmarks: [
-    { image: baResurfx, label: "Abdomen Stretch Marks" },
-    { image: baResurfx2, label: "Post-Pregnancy Recovery" },
+    { image: baBodycontouring2, label: "Abdomen Stretch Marks" },
+    { image: baCoolsculpting, label: "Post-Pregnancy Recovery" },
   ],
   tattooremoval: [
     { image: baTattoo, label: "Full Sleeve Removal" },
