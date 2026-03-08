@@ -38,14 +38,24 @@
     --gold: 38 45% 60%;
     --gold-light: 38 50% 75%;
     --gold-dark: 38 40% 40%;
+    --gold-glow: 38 55% 65%;
     --obsidian: 0 0% 3%;
     --obsidian-light: 0 0% 8%;
     --navy: 220 60% 5%;
     --burgundy: 350 60% 5%;
     --cream: 30 20% 93%;
+    --rose: 350 50% 55%;
+    --rose-light: 350 60% 70%;
+    --sapphire: 220 70% 55%;
 
     --font-serif: 'Cormorant Garamond', Georgia, serif;
     --font-sans: 'Montserrat', system-ui, sans-serif;
+
+    /* Premium gradients */
+    --gradient-luxury: linear-gradient(135deg, hsl(38 45% 60%) 0%, hsl(38 55% 75%) 40%, hsl(350 50% 55%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(0 0% 3%) 0%, hsl(220 60% 5%) 50%, hsl(350 60% 5%) 100%);
+    --shadow-gold: 0 10px 40px -10px hsl(38 45% 60% / 0.3);
+    --shadow-dramatic: 0 25px 60px -15px hsl(0 0% 0% / 0.5), 0 0 40px hsl(38 45% 60% / 0.08);
 
     --sidebar-background: 0 0% 5%;
     --sidebar-foreground: 30 20% 93%;
