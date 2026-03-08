@@ -39,7 +39,7 @@ const BookingSection = () => {
             </span>
           </motion.div>
           <p className="eyebrow mb-4">Get Started</p>
-          <h2 className="font-serif text-4xl md:text-5xl text-foreground">
+          <h2 className="section-heading">
             Book Your Free <em className="holographic-text" style={{ fontStyle: "italic" }}>Consultation</em>
           </h2>
         </ScrollReveal>
