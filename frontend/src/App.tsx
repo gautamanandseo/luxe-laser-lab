@@ -13,6 +13,10 @@ import ScrollProgress from "@/components/ScrollProgress";
 import ScrollToTop from "@/components/ScrollToTop";
 import PageTransition from "@/components/effects/PageTransition";
 import LoadingScreen from "@/components/effects/LoadingScreen";
+import ExitIntentPopup from "@/components/conversion/ExitIntentPopup";
+import SocialProofToasts from "@/components/conversion/SocialProofToasts";
+import CountdownTimer from "@/components/conversion/CountdownTimer";
+import FloatingConsultation from "@/components/conversion/FloatingConsultation";
 import Index from "./pages/Index";
 
 // Lazy-load all non-homepage routes
@@ -106,6 +110,10 @@ const App = () => {
           <Footer />
           <WhatsAppButton />
           <StickyMobileCTA />
+          <ExitIntentPopup />
+          <SocialProofToasts />
+          <CountdownTimer />
+          <FloatingConsultation />
         </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>
