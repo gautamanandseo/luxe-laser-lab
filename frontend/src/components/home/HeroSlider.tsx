@@ -3,17 +3,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ChevronRight, ArrowRight, Shield } from "lucide-react";
 import { Link } from "react-router-dom";
 import ParticleField from "@/components/effects/ParticleField";
+import AuroraMesh from "@/components/effects/AuroraMesh";
 import { useReducedMotion } from "@/hooks/use-reduced-motion";
 import heroLaser from "@/assets/hero-laser-gen.jpg";
 
 // Lazy-load non-first-slide images
-const slideImages = [
-  heroLaser, // eagerly loaded
-  null, // will be set lazily
-  null,
-  null,
-];
-
 const slides = [
   {
     tag: "USFDA Cleared · Lumenis LightSheer · Alma Soprano",
@@ -72,9 +66,7 @@ const letterVariants = {
 };
 
 const AnimatedText = ({ text, className, reduced }: { text: string; className: string; reduced?: boolean }) => {
-  if (reduced) {
-    return <span className={className}>{text}</span>;
-  }
+  if (reduced) return <span className={className}>{text}</span>;
   return (
     <span className={className} style={{ display: "inline-flex", flexWrap: "wrap", perspective: "1000px" }}>
       {text.split("").map((char, i) => (
@@ -99,7 +91,6 @@ const HeroSlider = () => {
   const reduced = useReducedMotion();
   const [loadedImages, setLoadedImages] = useState<Record<number, string>>({ 0: heroLaser });
 
-  // Preload other slide images after first paint
   useEffect(() => {
     const timer = setTimeout(() => {
       Promise.all([
@@ -107,14 +98,9 @@ const HeroSlider = () => {
         import("@/assets/hero-skin-gen.jpg"),
         import("@/assets/hero-bridal-gen.jpg"),
       ]).then(([cool, skin, bridal]) => {
-        setLoadedImages(prev => ({
-          ...prev,
-          1: cool.default,
-          2: skin.default,
-          3: bridal.default,
-        }));
+        setLoadedImages(prev => ({ ...prev, 1: cool.default, 2: skin.default, 3: bridal.default }));
       });
-    }, 1000); // Delay preload by 1s to prioritize initial render
+    }, 1000);
     return () => clearTimeout(timer);
   }, []);
 
@@ -135,14 +121,14 @@ const HeroSlider = () => {
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
-      {/* Background Image */}
+      {/* Background Image with parallax-like zoom */}
       <AnimatePresence mode="wait">
         <motion.div
           key={current}
-          initial={{ opacity: 0, scale: 1.1 }}
+          initial={{ opacity: 0, scale: 1.15 }}
           animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.98 }}
-          transition={{ duration: 1.2, ease: [0.25, 0.46, 0.45, 0.94] }}
+          exit={{ opacity: 0, scale: 0.95 }}
+          transition={{ duration: 1.5, ease: [0.25, 0.46, 0.45, 0.94] }}
           className="absolute inset-0"
         >
           <img
@@ -157,14 +143,55 @@ const HeroSlider = () => {
         </motion.div>
       </AnimatePresence>
 
-      {/* Particle overlay - reduced count */}
-      <ParticleField count={20} className="z-[5]" />
+      {/* Aurora mesh overlay for depth */}
+      <AuroraMesh intensity="subtle" className="z-[3] mix-blend-soft-light" />
 
-      {/* Decorative corner accents */}
-      <div className="absolute top-8 left-8 w-20 h-20 border-t border-l border-primary/20 z-10" />
-      <div className="absolute top-8 right-8 w-20 h-20 border-t border-r border-primary/20 z-10" />
-      <div className="absolute bottom-28 left-8 w-20 h-20 border-b border-l border-primary/20 z-10" />
-      <div className="absolute bottom-28 right-8 w-20 h-20 border-b border-r border-primary/20 z-10" />
+      {/* Particle overlay */}
+      <ParticleField count={25} className="z-[5]" />
+
+      {/* Floating geometric orbs */}
+      <motion.div
+        animate={{ y: [-20, 20, -20], x: [-10, 10, -10] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-1/4 right-[15%] w-32 h-32 rounded-full z-[4] hidden lg:block"
+        style={{
+          background: "radial-gradient(circle, hsl(38 45% 60% / 0.08), transparent 70%)",
+          border: "1px solid hsl(38 45% 60% / 0.1)",
+          backdropFilter: "blur(4px)",
+        }}
+      />
+      <motion.div
+        animate={{ y: [15, -25, 15], x: [5, -15, 5] }}
+        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute bottom-1/3 right-[25%] w-20 h-20 rounded-full z-[4] hidden lg:block"
+        style={{
+          background: "radial-gradient(circle, hsl(350 40% 50% / 0.06), transparent 70%)",
+          border: "1px solid hsl(350 40% 50% / 0.08)",
+          backdropFilter: "blur(2px)",
+        }}
+      />
+
+      {/* Decorative corner accents with glow */}
+      <div className="absolute top-8 left-8 w-24 h-24 z-10 hidden md:block">
+        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-primary/50 to-transparent" />
+        <div className="absolute top-0 left-0 w-px h-full bg-gradient-to-b from-primary/50 to-transparent" />
+        <div className="absolute top-0 left-0 w-2 h-2 bg-primary/60 rounded-full blur-sm" />
+      </div>
+      <div className="absolute top-8 right-8 w-24 h-24 z-10 hidden md:block">
+        <div className="absolute top-0 right-0 w-full h-px bg-gradient-to-l from-primary/50 to-transparent" />
+        <div className="absolute top-0 right-0 w-px h-full bg-gradient-to-b from-primary/50 to-transparent" />
+        <div className="absolute top-0 right-0 w-2 h-2 bg-primary/60 rounded-full blur-sm" />
+      </div>
+      <div className="absolute bottom-28 left-8 w-24 h-24 z-10 hidden md:block">
+        <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-primary/50 to-transparent" />
+        <div className="absolute bottom-0 left-0 w-px h-full bg-gradient-to-t from-primary/50 to-transparent" />
+        <div className="absolute bottom-0 left-0 w-2 h-2 bg-primary/60 rounded-full blur-sm" />
+      </div>
+      <div className="absolute bottom-28 right-8 w-24 h-24 z-10 hidden md:block">
+        <div className="absolute bottom-0 right-0 w-full h-px bg-gradient-to-l from-primary/50 to-transparent" />
+        <div className="absolute bottom-0 right-0 w-px h-full bg-gradient-to-t from-primary/50 to-transparent" />
+        <div className="absolute bottom-0 right-0 w-2 h-2 bg-primary/60 rounded-full blur-sm" />
+      </div>
 
       {/* Side progress line */}
       <div className="absolute left-8 top-1/4 bottom-1/4 w-px bg-white/5 z-10 hidden lg:block">
@@ -174,6 +201,13 @@ const HeroSlider = () => {
           animate={{ height: "100%" }}
           transition={{ duration: 5, ease: "linear" }}
           key={current}
+        />
+        <motion.div
+          className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3 h-3 bg-primary rounded-full"
+          animate={{ boxShadow: ["0 0 10px hsl(38 45% 60% / 0.5)", "0 0 25px hsl(38 45% 60% / 0.8)", "0 0 10px hsl(38 45% 60% / 0.5)"] }}
+          transition={{ duration: 2, repeat: Infinity }}
+          style={{ bottom: 0 }}
+          key={`dot-${current}`}
         />
       </div>
 
@@ -200,7 +234,7 @@ const HeroSlider = () => {
                 <span className="text-xs font-sans uppercase tracking-[0.25em] text-primary">{slide.tag}</span>
               </motion.div>
 
-              {/* Headline with letter animation */}
+              {/* Headline */}
               <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl font-light text-foreground leading-[0.95] mb-2">
                 <AnimatedText text={slide.headline} className="" reduced={reduced} />
               </h1>
@@ -235,7 +269,7 @@ const HeroSlider = () => {
                 transition={{ delay: 0.8, duration: 0.5 }}
                 className="flex flex-wrap gap-4"
               >
-                <Link to={slide.cta1.link} className="gold-shimmer text-primary-foreground px-8 py-3.5 text-sm font-sans uppercase tracking-[0.15em] rounded-full inline-flex items-center gap-2 hover:scale-105 transition-transform hover:shadow-lg hover:shadow-primary/30">
+                <Link to={slide.cta1.link} className="gold-shimmer text-primary-foreground px-8 py-3.5 text-sm font-sans uppercase tracking-[0.15em] rounded-full inline-flex items-center gap-2 hover:scale-105 transition-transform hover:shadow-[0_0_30px_hsl(38,45%,60%,0.4)]">
                   {slide.cta1.text} <ChevronRight size={16} />
                 </Link>
                 <Link to={slide.cta2.link} className="btn-neon text-foreground px-8 py-3.5 text-sm font-sans uppercase tracking-[0.15em] rounded-full inline-flex items-center gap-2 hover:text-primary transition-colors">
@@ -247,8 +281,8 @@ const HeroSlider = () => {
         </div>
       </div>
 
-      {/* Slide Controls */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex items-center gap-8 bg-background/20 backdrop-blur-2xl border border-white/10 rounded-full px-8 py-4 border-futuristic">
+      {/* Slide Controls - glassmorphism enhanced */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex items-center gap-8 bg-background/10 backdrop-blur-2xl border border-white/10 rounded-full px-8 py-4 shadow-[0_8px_32px_hsl(0,0%,0%,0.4),inset_0_1px_0_hsl(255,255%,255%,0.05)]">
         <span className="text-sm font-sans text-primary font-medium tabular-nums">
           {String(current + 1).padStart(2, "0")} <span className="text-foreground/40">/ {String(slides.length).padStart(2, "0")}</span>
         </span>
@@ -261,7 +295,7 @@ const HeroSlider = () => {
               whileTap={{ scale: 0.95 }}
               className={`rounded-full transition-all duration-500 ${
                 i === current
-                  ? "w-10 h-2 bg-primary shadow-[0_0_12px_hsl(38,45%,60%,0.5)]"
+                  ? "w-10 h-2 bg-primary shadow-[0_0_15px_hsl(38,45%,60%,0.6)]"
                   : "w-2 h-2 bg-foreground/20 hover:bg-foreground/40"
               }`}
             />
