@@ -4,13 +4,17 @@ import { ChevronRight, ArrowRight, Shield } from "lucide-react";
 import { Link } from "react-router-dom";
 import ParticleField from "@/components/effects/ParticleField";
 import heroLaser from "@/assets/hero-laser-gen.jpg";
-import heroCool from "@/assets/hero-coolsculpting-gen.jpg";
-import heroSkin from "@/assets/hero-skin-gen.jpg";
-import heroBridal from "@/assets/hero-bridal-gen.jpg";
+
+// Lazy-load non-first-slide images
+const slideImages = [
+  heroLaser, // eagerly loaded
+  null, // will be set lazily
+  null,
+  null,
+];
 
 const slides = [
   {
-    image: heroLaser,
     tag: "USFDA Cleared · Lumenis LightSheer · Alma Soprano",
     headline: "Permanent Laser",
     accent: "Hair Removal",
@@ -21,7 +25,6 @@ const slides = [
     overlay: "from-background/90 via-background/60 to-transparent",
   },
   {
-    image: heroCool,
     tag: "FDA-Cleared · #1 Weight Loss Solution",
     headline: "CoolSculpting®",
     accent: "Fat Freezing",
@@ -32,7 +35,6 @@ const slides = [
     overlay: "from-[hsl(210,60%,5%)/90] via-[hsl(210,60%,5%)/60] to-transparent",
   },
   {
-    image: heroSkin,
     tag: "Advanced Skin Science",
     headline: "Radiant Skin",
     accent: "Rejuvenation",
@@ -43,7 +45,6 @@ const slides = [
     overlay: "from-[hsl(150,40%,4%)/90] via-[hsl(150,40%,4%)/60] to-transparent",
   },
   {
-    image: heroBridal,
     tag: "Complete Bridal Beauty",
     headline: "Your Most",
     accent: "Beautiful Day",
@@ -89,6 +90,26 @@ const AnimatedText = ({ text, className }: { text: string; className: string }) 
 const HeroSlider = () => {
   const [current, setCurrent] = useState(0);
   const [paused, setPaused] = useState(false);
+  const [loadedImages, setLoadedImages] = useState<Record<number, string>>({ 0: heroLaser });
+
+  // Preload other slide images after first paint
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      Promise.all([
+        import("@/assets/hero-coolsculpting-gen.jpg"),
+        import("@/assets/hero-skin-gen.jpg"),
+        import("@/assets/hero-bridal-gen.jpg"),
+      ]).then(([cool, skin, bridal]) => {
+        setLoadedImages(prev => ({
+          ...prev,
+          1: cool.default,
+          2: skin.default,
+          3: bridal.default,
+        }));
+      });
+    }, 1000); // Delay preload by 1s to prioritize initial render
+    return () => clearTimeout(timer);
+  }, []);
 
   const next = useCallback(() => setCurrent(c => (c + 1) % slides.length), []);
 
@@ -99,6 +120,7 @@ const HeroSlider = () => {
   }, [paused, next]);
 
   const slide = slides[current];
+  const currentImage = loadedImages[current] || heroLaser;
 
   return (
     <section
@@ -117,18 +139,19 @@ const HeroSlider = () => {
           className="absolute inset-0"
         >
           <img
-            src={slide.image}
+            src={currentImage}
             alt={slide.headline + " " + slide.accent}
             className="w-full h-full object-cover animate-ken-burns"
+            fetchPriority={current === 0 ? "high" : "auto"}
+            decoding={current === 0 ? "sync" : "async"}
           />
           <div className={`absolute inset-0 bg-gradient-to-r ${slide.overlay}`} />
-          {/* Bottom gradient fade */}
           <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60" />
         </motion.div>
       </AnimatePresence>
 
-      {/* Particle overlay */}
-      <ParticleField count={40} className="z-[5]" />
+      {/* Particle overlay - reduced count */}
+      <ParticleField count={20} className="z-[5]" />
 
       {/* Decorative corner accents */}
       <div className="absolute top-8 left-8 w-20 h-20 border-t border-l border-primary/20 z-10" />
@@ -217,7 +240,7 @@ const HeroSlider = () => {
         </div>
       </div>
 
-      {/* Slide Controls - futuristic */}
+      {/* Slide Controls */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex items-center gap-8 bg-background/20 backdrop-blur-2xl border border-white/10 rounded-full px-8 py-4 border-futuristic">
         <span className="text-sm font-sans text-primary font-medium tabular-nums">
           {String(current + 1).padStart(2, "0")} <span className="text-foreground/40">/ {String(slides.length).padStart(2, "0")}</span>
