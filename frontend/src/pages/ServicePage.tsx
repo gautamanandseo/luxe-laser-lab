@@ -1,12 +1,14 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Check, Phone, ChevronDown, Star, Quote, Info, Eye } from "lucide-react";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, lazy, Suspense } from "react";
 import { servicesData } from "@/data/serviceData";
 import AuroraMesh from "@/components/effects/AuroraMesh";
 import Tilt3DCard from "@/components/effects/Tilt3DCard";
 import GlowDivider from "@/components/effects/GlowDivider";
 import ParticleField from "@/components/effects/ParticleField";
+
+const BodyMap3D = lazy(() => import("@/components/coolsculpting/BodyMap3D"));
 
 // New high-quality hero images
 import heroLaserNew from "@/assets/hero-laser-new.jpg";
