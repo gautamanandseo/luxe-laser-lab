@@ -1,4 +1,4 @@
-import { Phone, Mail, MapPin, Instagram, Facebook, Youtube, ArrowRight, Twitter, Sparkles, Clock, ExternalLink } from "lucide-react";
+import { Phone, Mail, MapPin, Instagram, Facebook, Youtube, ArrowRight, Twitter, Sparkles, Clock, ExternalLink, Heart, Shield, Award, Star, ChevronRight, MessageCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import EmpathyLogo from "./EmpathyLogo";
@@ -52,10 +52,17 @@ const clinicLinks = [
 ];
 
 const socialLinks = [
-  { icon: Instagram, href: "https://www.instagram.com/empathylaserclinic/", label: "Instagram", color: "hover:shadow-[0_0_20px_hsl(330,80%,60%,0.3)]" },
-  { icon: Facebook, href: "https://www.facebook.com/empathylaserclinic", label: "Facebook", color: "hover:shadow-[0_0_20px_hsl(220,80%,60%,0.3)]" },
-  { icon: Youtube, href: "https://www.youtube.com/user/tourismdentalindia", label: "YouTube", color: "hover:shadow-[0_0_20px_hsl(0,80%,50%,0.3)]" },
-  { icon: Twitter, href: "https://twitter.com/delhilaser", label: "Twitter", color: "hover:shadow-[0_0_20px_hsl(200,80%,60%,0.3)]" },
+  { icon: Instagram, href: "https://www.instagram.com/empathylaserclinic/", label: "Instagram" },
+  { icon: Facebook, href: "https://www.facebook.com/empathylaserclinic", label: "Facebook" },
+  { icon: Youtube, href: "https://www.youtube.com/user/tourismdentalindia", label: "YouTube" },
+  { icon: Twitter, href: "https://twitter.com/delhilaser", label: "Twitter" },
+];
+
+const trustBadges = [
+  { icon: Shield, label: "USFDA Cleared" },
+  { icon: Award, label: "Allergan Certified" },
+  { icon: Star, label: "4.9★ Google" },
+  { icon: Heart, label: "25,000+ Clients" },
 ];
 
 const Footer = () => {
@@ -63,71 +70,126 @@ const Footer = () => {
     <footer className="relative overflow-hidden">
       {/* === TOP CTA BAND === */}
       <div className="relative">
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-primary/5 to-primary/10" />
-        <div className="absolute inset-0 grid-bg opacity-20" />
-        <div className="relative z-10 container mx-auto px-6 py-12">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6 p-8 rounded-2xl border border-primary/15 bg-background/40 backdrop-blur-xl depth-shadow">
-            <div className="flex items-center gap-4">
-              <motion.div
-                animate={{ rotate: [0, 10, -10, 0] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center"
-              >
-                <Sparkles className="text-primary" size={20} />
-              </motion.div>
-              <div>
-                <h3 className="font-serif text-xl md:text-2xl text-foreground">Ready to Transform?</h3>
-                <p className="text-sm text-muted-foreground mt-1">Book a free consultation with our experts today</p>
+        <div className="absolute inset-0 bg-gradient-to-b from-background via-card to-card" />
+        <div className="absolute inset-0 noise opacity-30" />
+        <div className="relative z-10 container mx-auto px-6 pt-16 pb-12">
+          {/* CTA Card */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="relative rounded-3xl overflow-hidden"
+          >
+            {/* Multi-layer CTA background */}
+            <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary to-[hsl(var(--gold-dark))]" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_50%,hsl(0,0%,100%,0.1),transparent_50%)]" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_50%,hsl(0,0%,0%,0.15),transparent_50%)]" />
+            <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent" />
+            <div className="absolute inset-0 noise opacity-10" />
+
+            <div className="relative z-10 p-10 md:p-14 flex flex-col lg:flex-row items-center justify-between gap-8">
+              <div className="flex-1 text-center lg:text-left">
+                <div className="flex items-center gap-3 justify-center lg:justify-start mb-4">
+                  <motion.div
+                    animate={{ rotate: [0, 10, -10, 0] }}
+                    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                  >
+                    <Sparkles className="text-primary-foreground/80" size={24} />
+                  </motion.div>
+                  <span className="text-xs font-sans uppercase tracking-[0.25em] text-primary-foreground/60">Begin Your Journey</span>
+                </div>
+                <h3 className="font-serif text-3xl md:text-4xl text-primary-foreground mb-3 leading-tight">
+                  Ready to Rediscover Yourself?
+                </h3>
+                <p className="text-primary-foreground/70 max-w-lg text-base leading-relaxed">
+                  Book a complimentary consultation worth ₹500 and receive a personalized treatment plan from our expert team.
+                </p>
+              </div>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <motion.div whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.97 }}>
+                  <Link
+                    to="/contact"
+                    className="relative inline-flex items-center gap-2 px-8 py-4 rounded-2xl text-sm font-semibold overflow-hidden group"
+                    style={{
+                      background: 'linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(0 0% 92%) 100%)',
+                      boxShadow: '0 4px 20px -4px hsl(0 0% 0% / 0.4), 0 1px 0 0 hsl(0 0% 100% / 0.3) inset',
+                      color: 'hsl(var(--primary))',
+                    }}
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/50 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
+                    <span className="relative z-10">Book Free Consultation</span>
+                    <ArrowRight size={16} className="relative z-10 group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                </motion.div>
+                <motion.div whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.97 }}>
+                  <a
+                    href="https://wa.me/919811157787"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl text-sm font-semibold border-2 border-primary-foreground/30 text-primary-foreground hover:border-primary-foreground/60 hover:bg-primary-foreground/10 transition-all"
+                  >
+                    <MessageCircle size={16} />
+                    WhatsApp Us
+                  </a>
+                </motion.div>
               </div>
             </div>
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
-              <Link
-                to="/contact"
-                className="relative inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-sm font-medium overflow-hidden group"
+          </motion.div>
+
+          {/* Trust Badges */}
+          <div className="flex flex-wrap justify-center gap-6 mt-10">
+            {trustBadges.map((badge, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.08 }}
+                className="flex items-center gap-2.5 text-muted-foreground"
               >
-                <div className="absolute inset-0 bg-primary rounded-full" />
-                <div className="absolute inset-[1px] bg-gradient-to-b from-primary via-primary to-primary/80 rounded-full" />
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 rounded-full" />
-                <div className="absolute -inset-1 bg-primary/30 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <span className="relative z-10 text-primary-foreground">Book Free Consultation</span>
-                <ArrowRight size={16} className="relative z-10 text-primary-foreground/70 group-hover:translate-x-1 transition-transform" />
-              </Link>
-            </motion.div>
+                <badge.icon size={16} className="text-primary" />
+                <span className="text-sm">{badge.label}</span>
+              </motion.div>
+            ))}
           </div>
         </div>
       </div>
 
-      {/* === Divider === */}
-      <div className="h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
+      {/* === Ornamental Divider === */}
+      <div className="relative h-px">
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
+        <div className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-primary shadow-[0_0_12px_hsl(var(--primary))]" />
+      </div>
 
       {/* === MAIN FOOTER === */}
       <div className="relative">
-        {/* Multi-layered background */}
         <div className="absolute inset-0 bg-[hsl(0,0%,2%)]" />
-        <div className="absolute inset-0 grid-bg opacity-10" />
-        <div className="absolute inset-0 noise" />
+        <div className="absolute inset-0 grid-bg opacity-8" />
+        <div className="absolute inset-0 noise opacity-20" />
         {/* Ambient glows */}
-        <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-primary/[0.03] rounded-full blur-[100px]" />
-        <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-primary/[0.04] rounded-full blur-[80px]" />
+        <div className="absolute top-0 left-1/4 w-[600px] h-[400px] bg-primary/[0.02] rounded-full blur-[120px]" />
+        <div className="absolute bottom-0 right-1/4 w-[500px] h-[350px] bg-primary/[0.03] rounded-full blur-[100px]" />
 
-        <div className="relative z-10 container mx-auto px-6 py-16">
+        <div className="relative z-10 container mx-auto px-6 py-20">
           {/* === Grid: Brand + Services + Links + Contact === */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-10">
             {/* Brand Column */}
             <div className="lg:col-span-3">
               <motion.div
-                whileHover={{ scale: 1.03, rotateY: 3 }}
+                whileHover={{ scale: 1.03 }}
                 transition={{ type: "spring", stiffness: 300 }}
-                style={{ perspective: 800 }}
               >
-                <EmpathyLogo size="default" className="mb-5" />
+                <EmpathyLogo size="large" className="mb-6" />
               </motion.div>
-              <p className="text-muted-foreground text-sm leading-relaxed mb-6">
-                Where Clinical Precision Meets Luxury Experience. Delhi NCR's most trusted aesthetic clinic since 2009.
+              <p className="font-serif text-lg italic text-foreground/50 mb-4">
+                "Where Clinical Precision Meets Luxury Experience"
+              </p>
+              <p className="text-muted-foreground text-sm leading-relaxed mb-8">
+                Delhi NCR's most trusted aesthetic clinic since 2009. Over 25,000 clients served with world-class laser, skin, body contouring, and anti-ageing treatments.
               </p>
 
-              {/* Social links - 3D hover cards */}
-              <div className="flex gap-2">
+              {/* Social links — refined */}
+              <div className="flex gap-3 mb-8">
                 {socialLinks.map((social, i) => (
                   <motion.a
                     key={i}
@@ -135,50 +197,70 @@ const Footer = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={social.label}
-                    whileHover={{ scale: 1.15, y: -3, rotateY: 10 }}
+                    whileHover={{ scale: 1.15, y: -3 }}
                     whileTap={{ scale: 0.95 }}
                     transition={{ type: "spring", stiffness: 400 }}
-                    className={`w-10 h-10 rounded-xl border border-primary/15 bg-muted/20 flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/40 transition-all duration-300 ${social.color}`}
-                    style={{ perspective: 600 }}
+                    className="w-11 h-11 rounded-xl flex items-center justify-center text-muted-foreground hover:text-primary transition-all duration-300 group relative overflow-hidden"
+                    style={{
+                      background: 'linear-gradient(180deg, hsl(var(--card)) 0%, hsl(var(--background)) 100%)',
+                      boxShadow: '0 1px 0 0 hsl(0 0% 100% / 0.04) inset, 0 -1px 0 0 hsl(0 0% 0% / 0.2) inset, 0 2px 6px -2px hsl(0 0% 0% / 0.3), 0 0 0 1px hsl(var(--primary) / 0.08)',
+                    }}
                   >
-                    <social.icon size={16} />
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-500" />
+                    <social.icon size={16} className="relative z-10" />
                   </motion.a>
                 ))}
               </div>
 
-              {/* Clinic hours card */}
-              <div className="mt-6 p-4 rounded-xl border border-primary/10 bg-muted/10 backdrop-blur-sm relative overflow-hidden group">
+              {/* Clinic hours card — refined */}
+              <div className="p-5 rounded-2xl relative overflow-hidden group" style={{
+                background: 'linear-gradient(180deg, hsl(var(--card)) 0%, hsl(var(--background)) 100%)',
+                boxShadow: '0 1px 0 0 hsl(0 0% 100% / 0.03) inset, 0 2px 12px -4px hsl(0 0% 0% / 0.3), 0 0 0 1px hsl(var(--primary) / 0.08)',
+              }}>
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
                 <div className="relative z-10">
-                  <div className="flex items-center gap-2 mb-2">
-                    <Clock size={12} className="text-primary" />
-                    <p className="text-xs font-sans uppercase tracking-[0.2em] text-primary">Clinic Hours</p>
+                  <div className="flex items-center gap-2.5 mb-3">
+                    <Clock size={14} className="text-primary" />
+                    <p className="text-[11px] font-sans uppercase tracking-[0.25em] text-primary">Clinic Hours</p>
                   </div>
-                  <p className="text-sm text-muted-foreground">Mon: Closed | Tue–Sun: 10:00 AM – 7:00 PM</p>
-                  <p className="text-sm text-muted-foreground">Sunday: By Appointment</p>
+                  <div className="space-y-2">
+                    <div className="flex justify-between text-sm">
+                      <span className="text-muted-foreground">Monday</span>
+                      <span className="text-red-400/80 font-medium">Closed</span>
+                    </div>
+                    <div className="h-px bg-gradient-to-r from-primary/10 to-transparent" />
+                    <div className="flex justify-between text-sm">
+                      <span className="text-muted-foreground">Tue – Sun</span>
+                      <span className="text-foreground/80 font-medium">10 AM – 7 PM</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
 
             {/* Services - 3 sub-columns */}
-            <div className="lg:col-span-6">
-              <h4 className="font-sans text-[11px] uppercase tracking-[0.25em] text-primary mb-6 flex items-center gap-2">
-                <span className="w-6 h-px bg-primary/40" />
-                Our Services
+            <div className="lg:col-span-5">
+              <h4 className="font-sans text-[11px] uppercase tracking-[0.25em] text-primary mb-8 flex items-center gap-3">
+                <span className="w-8 h-px bg-gradient-to-r from-primary/60 to-primary/0" />
+                Our Treatments
               </h4>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-x-8 gap-y-1">
                 {serviceColumns.map((col) => (
-                  <div key={col.label}>
-                    <p className="text-[10px] font-sans uppercase tracking-[0.2em] text-primary/50 mb-3">{col.label}</p>
-                    <ul className="space-y-1.5">
+                  <div key={col.label} className="mb-6">
+                    <p className="text-[10px] font-sans uppercase tracking-[0.25em] text-primary/40 mb-3 pb-2 border-b border-primary/8">{col.label}</p>
+                    <ul className="space-y-0.5">
                       {col.items.map(s => (
                         <li key={s.path}>
                           <Link
                             to={s.path}
-                            className="group flex items-center gap-1.5 text-[13px] text-muted-foreground hover:text-foreground transition-all duration-200"
+                            className="group flex items-center gap-1.5 text-[13px] text-muted-foreground/70 hover:text-foreground py-1 transition-all duration-200"
                           >
-                            <span className="w-0 group-hover:w-3 h-px bg-primary transition-all duration-300" />
-                            <span>{s.name}</span>
+                            <ChevronRight size={10} className="text-primary/0 group-hover:text-primary/60 -ml-3 group-hover:ml-0 transition-all duration-300" />
+                            <span className="relative">
+                              {s.name}
+                              <span className="absolute bottom-0 left-0 w-0 group-hover:w-full h-px bg-primary/30 transition-all duration-300" />
+                            </span>
                           </Link>
                         </li>
                       ))}
@@ -189,60 +271,82 @@ const Footer = () => {
             </div>
 
             {/* Links + Contact */}
-            <div className="lg:col-span-3 space-y-8">
+            <div className="lg:col-span-4 space-y-10">
               {/* Quick Links */}
               <div>
-                <h4 className="font-sans text-[11px] uppercase tracking-[0.25em] text-primary mb-5 flex items-center gap-2">
-                  <span className="w-6 h-px bg-primary/40" />
-                  Clinic
+                <h4 className="font-sans text-[11px] uppercase tracking-[0.25em] text-primary mb-6 flex items-center gap-3">
+                  <span className="w-8 h-px bg-gradient-to-r from-primary/60 to-primary/0" />
+                  Quick Links
                 </h4>
-                <ul className="space-y-2">
+                <div className="grid grid-cols-2 gap-x-6 gap-y-1">
                   {clinicLinks.map(l => (
-                    <li key={l.path}>
-                      <Link
-                        to={l.path}
-                        className="group flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-all duration-200"
-                      >
-                        <ArrowRight size={11} className="text-primary/40 group-hover:text-primary group-hover:translate-x-0.5 transition-all" />
+                    <Link
+                      key={l.path}
+                      to={l.path}
+                      className="group flex items-center gap-2 text-sm text-muted-foreground/70 hover:text-foreground py-1.5 transition-all duration-200"
+                    >
+                      <ArrowRight size={11} className="text-primary/30 group-hover:text-primary group-hover:translate-x-0.5 transition-all" />
+                      <span className="relative">
                         {l.name}
-                      </Link>
-                    </li>
+                        <span className="absolute bottom-0 left-0 w-0 group-hover:w-full h-px bg-primary/30 transition-all duration-300" />
+                      </span>
+                    </Link>
                   ))}
-                </ul>
+                </div>
               </div>
 
-              {/* Contact info - cards */}
+              {/* Contact info — elevated cards */}
               <div>
-                <h4 className="font-sans text-[11px] uppercase tracking-[0.25em] text-primary mb-5 flex items-center gap-2">
-                  <span className="w-6 h-px bg-primary/40" />
+                <h4 className="font-sans text-[11px] uppercase tracking-[0.25em] text-primary mb-6 flex items-center gap-3">
+                  <span className="w-8 h-px bg-gradient-to-r from-primary/60 to-primary/0" />
                   Get in Touch
                 </h4>
                 <div className="space-y-3">
-                  <a href="tel:+919811157787" className="flex items-center gap-3 p-3 rounded-xl border border-primary/8 bg-muted/5 hover:bg-primary/5 hover:border-primary/20 transition-all duration-300 group">
-                    <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                      <Phone size={13} className="text-primary" />
+                  {/* Phone */}
+                  <a href="tel:+919811157787" className="flex items-center gap-4 p-4 rounded-2xl transition-all duration-300 group relative overflow-hidden" style={{
+                    background: 'linear-gradient(180deg, hsl(var(--card)) 0%, hsl(var(--background)) 100%)',
+                    boxShadow: '0 1px 0 0 hsl(0 0% 100% / 0.03) inset, 0 2px 10px -4px hsl(0 0% 0% / 0.3), 0 0 0 1px hsl(var(--primary) / 0.06)',
+                  }}>
+                    <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 group-hover:shadow-[0_0_15px_hsl(var(--primary)/0.3)] transition-all relative z-10">
+                      <Phone size={16} className="text-primary" />
                     </div>
-                    <div>
-                      <p className="text-xs text-muted-foreground/60">Call Us</p>
-                      <p className="text-sm text-foreground/80">9811157787</p>
-                    </div>
-                  </a>
-                  <a href="mailto:info@empathylaserclinic.com" className="flex items-center gap-3 p-3 rounded-xl border border-primary/8 bg-muted/5 hover:bg-primary/5 hover:border-primary/20 transition-all duration-300 group">
-                    <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                      <Mail size={13} className="text-primary" />
-                    </div>
-                    <div>
-                      <p className="text-xs text-muted-foreground/60">Email</p>
-                      <p className="text-sm text-foreground/80 truncate">info@empathylaserclinic.com</p>
+                    <div className="relative z-10">
+                      <p className="text-xs text-muted-foreground/50 uppercase tracking-wider">Call Us</p>
+                      <p className="text-foreground font-medium">9811157787 / 9811157784</p>
                     </div>
                   </a>
-                  <a href="https://share.google/SClHKya8GwuCKc0hp" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 p-3 rounded-xl border border-primary/8 bg-muted/5 hover:bg-primary/5 hover:border-primary/20 transition-all duration-300 group">
-                    <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                      <MapPin size={13} className="text-primary" />
+
+                  {/* Email */}
+                  <a href="mailto:info@empathylaserclinic.com" className="flex items-center gap-4 p-4 rounded-2xl transition-all duration-300 group relative overflow-hidden" style={{
+                    background: 'linear-gradient(180deg, hsl(var(--card)) 0%, hsl(var(--background)) 100%)',
+                    boxShadow: '0 1px 0 0 hsl(0 0% 100% / 0.03) inset, 0 2px 10px -4px hsl(0 0% 0% / 0.3), 0 0 0 1px hsl(var(--primary) / 0.06)',
+                  }}>
+                    <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 group-hover:shadow-[0_0_15px_hsl(var(--primary)/0.3)] transition-all relative z-10">
+                      <Mail size={16} className="text-primary" />
                     </div>
-                    <div>
-                      <p className="text-xs text-muted-foreground/60">Location</p>
-                      <p className="text-sm text-foreground/80 flex items-center gap-1">Delhi NCR <ExternalLink size={10} className="opacity-40" /></p>
+                    <div className="relative z-10">
+                      <p className="text-xs text-muted-foreground/50 uppercase tracking-wider">Email</p>
+                      <p className="text-foreground/80 text-sm">info@empathylaserclinic.com</p>
+                    </div>
+                  </a>
+
+                  {/* Location */}
+                  <a href="https://share.google/SClHKya8GwuCKc0hp" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 p-4 rounded-2xl transition-all duration-300 group relative overflow-hidden" style={{
+                    background: 'linear-gradient(180deg, hsl(var(--card)) 0%, hsl(var(--background)) 100%)',
+                    boxShadow: '0 1px 0 0 hsl(0 0% 100% / 0.03) inset, 0 2px 10px -4px hsl(0 0% 0% / 0.3), 0 0 0 1px hsl(var(--primary) / 0.06)',
+                  }}>
+                    <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 group-hover:shadow-[0_0_15px_hsl(var(--primary)/0.3)] transition-all relative z-10">
+                      <MapPin size={16} className="text-primary" />
+                    </div>
+                    <div className="relative z-10 flex-1">
+                      <p className="text-xs text-muted-foreground/50 uppercase tracking-wider">Visit Us</p>
+                      <p className="text-foreground/80 text-sm flex items-center gap-1">
+                        Pitampura, Delhi NCR
+                        <ExternalLink size={10} className="opacity-30 group-hover:opacity-60 transition-opacity" />
+                      </p>
                     </div>
                   </a>
                 </div>
@@ -253,20 +357,31 @@ const Footer = () => {
 
         {/* === BOTTOM BAR === */}
         <div className="relative z-10">
-          {/* Multi-line divider */}
-          <div className="h-px bg-gradient-to-r from-transparent via-primary/15 to-transparent" />
-          <div className="h-px mt-px bg-gradient-to-r from-transparent via-white/[0.03] to-transparent" />
+          {/* Ornamental divider */}
+          <div className="relative h-px">
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/15 to-transparent" />
+          </div>
 
-          <div className="container mx-auto px-6 py-6 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-xs text-muted-foreground/50">
-              © {new Date().getFullYear()} Empathy Laser Clinic. All rights reserved.
-            </p>
-            <div className="flex items-center gap-6">
-              <a href="#" className="text-xs text-muted-foreground/50 hover:text-primary/70 transition-colors">Privacy Policy</a>
-              <span className="w-1 h-1 rounded-full bg-muted-foreground/20" />
-              <a href="#" className="text-xs text-muted-foreground/50 hover:text-primary/70 transition-colors">Terms of Service</a>
-              <span className="w-1 h-1 rounded-full bg-muted-foreground/20" />
-              <a href="#" className="text-xs text-muted-foreground/50 hover:text-primary/70 transition-colors">Sitemap</a>
+          <div className="container mx-auto px-6 py-8">
+            <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+              {/* Left - Copyright */}
+              <p className="text-xs text-muted-foreground/40 order-2 md:order-1">
+                © {new Date().getFullYear()} Empathy Laser Clinic. All rights reserved.
+              </p>
+
+              {/* Center - Trust line */}
+              <p className="text-xs text-muted-foreground/30 font-serif italic order-1 md:order-2">
+                Trusted by 25,000+ Delhi NCR Clients Since 2009
+              </p>
+
+              {/* Right - Legal */}
+              <div className="flex items-center gap-4 order-3">
+                <a href="#" className="text-xs text-muted-foreground/40 hover:text-primary/60 transition-colors">Privacy Policy</a>
+                <span className="w-px h-3 bg-muted-foreground/15" />
+                <a href="#" className="text-xs text-muted-foreground/40 hover:text-primary/60 transition-colors">Terms</a>
+                <span className="w-px h-3 bg-muted-foreground/15" />
+                <a href="/sitemap.xml" className="text-xs text-muted-foreground/40 hover:text-primary/60 transition-colors">Sitemap</a>
+              </div>
             </div>
           </div>
         </div>
