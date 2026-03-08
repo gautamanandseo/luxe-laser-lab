@@ -135,14 +135,14 @@ export const servicesData: Record<string, ServiceData> = {
       { name: "Rahul T.", rating: 5, text: "As a man, I was hesitant. But the back and chest treatment was quick, professional, and the results speak for themselves.", treatment: "Back & Chest" },
     ],
     whyChooseUs: [
+      "Lumenis LightSheer Desire™ — world's gold standard in laser hair removal",
+      "Alma Soprano ICE Platinum™ — most advanced pain-free laser technology",
       "USFDA cleared equipment with proven safety record",
       "Certified technicians with 5+ years experience",
-      "Advanced cooling system for comfortable treatment",
-      "Personalized treatment plans for every client",
+      "Dual technology advantage — we select the best laser for your skin",
       "Free consultation and patch test",
       "Premium aftercare products included",
-      "15,000+ successful treatments completed",
-      "Specifically calibrated for Indian skin tones",
+      "15,000+ successful treatments in Delhi NCR",
     ],
     comparison: [
       { method: "Laser Hair Removal", duration: "15-60 mins", pain: "Minimal (rubber band snap)", results: "Permanent after 6-8 sessions", cost: "One-time investment", recommended: true },
