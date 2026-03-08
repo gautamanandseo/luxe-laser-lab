@@ -97,8 +97,8 @@ const Navbar = () => {
                             transition={{ duration: 0.2 }}
                             className="absolute top-full left-0 pt-4"
                           >
-                            <div className="bg-background/80 backdrop-blur-2xl border border-white/10 rounded-2xl shadow-2xl p-2 min-w-[320px]">
-                              <div className="space-y-1">
+                            <div className="bg-background/80 backdrop-blur-2xl border border-white/10 rounded-2xl shadow-2xl p-2 min-w-[640px]">
+                              <div className="grid grid-cols-2 gap-x-2">
                                 {services.map((s, i) => (
                                   <motion.div
                                     key={s.path}
