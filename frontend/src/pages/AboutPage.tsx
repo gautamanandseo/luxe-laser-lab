@@ -66,10 +66,10 @@ const AboutPage = () => (
             <span className="holographic-text">Empathy Difference</span>
           </h1>
           <p className="text-lg text-foreground/80 leading-relaxed max-w-2xl mb-8">
-            Founded over 15 years ago, Empathy Laser Clinic was born from a simple belief: aesthetic treatments should be delivered with genuine care, clinical precision, and unwavering transparency.
+            Founded over 15 years ago in Pitampura, Delhi, Empathy Laser Clinic was born from a simple belief: aesthetic treatments should be delivered with genuine care, clinical precision, and unwavering transparency. Today, we are Delhi NCR's most trusted name in laser hair removal, CoolSculpting, weight loss, and advanced skin treatments.
           </p>
           <p className="text-foreground/60 leading-relaxed max-w-2xl">
-            We are Delhi NCR's most trusted name in advanced aesthetics — a sanctuary where science meets luxury, and every client is treated like family.
+            Serving over 25,000 clients from across Delhi NCR — including Rohini, Shalimar Bagh, Model Town, Noida, and Gurugram — we are the region's leading aesthetic clinic where USFDA-cleared science meets luxury experience.
           </p>
         </motion.div>
       </div>
