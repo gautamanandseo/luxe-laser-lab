@@ -1,4 +1,4 @@
-import { Sparkles, Snowflake, Sun, Heart, Flower2, Scissors, Syringe, Diamond, Clock, Shield, Award, Users, CheckCircle, Star, Zap, Target, Droplets, Gem, Scan, Scale } from "lucide-react";
+import { Sparkles, Snowflake, Sun, Heart, Flower2, Scissors, Syringe, Diamond, Clock, Shield, Award, Users, CheckCircle, Star, Zap, Target, Droplets, Gem, Scan, Scale, CircleDot, Palette, Hourglass, Radio, EyeOff, Lock, Eraser, Trash2, CircleX, Pill, Microscope, Dumbbell } from "lucide-react";
 
 export interface ServiceStep {
   number: string;
