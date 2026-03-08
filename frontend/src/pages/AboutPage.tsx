@@ -48,7 +48,7 @@ const AboutPage = () => (
       {/* Background */}
       <div className="absolute inset-0">
         <img
-          src="https://images.unsplash.com/photo-1629380106682-6736d2c327ed?w=1920&q=80"
+          src={galleryClinic2}
           alt="Empathy Laser Clinic"
           className="w-full h-full object-cover"
         />
