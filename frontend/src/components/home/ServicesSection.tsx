@@ -155,7 +155,7 @@ const tabs = [
     desc: "Q-switched Nd:YAG laser technology safely breaks down tattoo pigments for effective removal. Works on all ink colors, safe for Indian skin types.",
     features: ["Q-switched Nd:YAG laser", "Multi-color ink treatment", "Safe for Indian skin", "Cover-up preparation available", "Gradual fading per session"],
     link: "/tattoo-removal",
-    image: serviceResurfx,
+    image: serviceTattoo,
   },
   {
     id: "molewart",
