@@ -126,16 +126,12 @@ const ContactPage = () => {
                 </div>
                 <div className="space-y-3">
                   <div className="flex justify-between items-center py-2 border-b border-primary/10">
-                    <span className="text-foreground">Monday - Friday</span>
-                    <span className="text-primary font-medium">10:00 AM - 7:00 PM</span>
+                    <span className="text-foreground">Monday</span>
+                    <span className="text-red-400 font-medium">Closed</span>
                   </div>
                   <div className="flex justify-between items-center py-2 border-b border-primary/10">
-                    <span className="text-foreground">Saturday</span>
+                    <span className="text-foreground">Tuesday - Sunday</span>
                     <span className="text-primary font-medium">10:00 AM - 7:00 PM</span>
-                  </div>
-                  <div className="flex justify-between items-center py-2">
-                    <span className="text-foreground">Sunday</span>
-                    <span className="text-muted-foreground">By Appointment</span>
                   </div>
                 </div>
               </motion.div>
