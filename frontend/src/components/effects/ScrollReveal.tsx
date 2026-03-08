@@ -1,5 +1,6 @@
 import { motion, type Variants } from "framer-motion";
 import { forwardRef, type ReactNode } from "react";
+import { useReducedMotion } from "@/hooks/use-reduced-motion";
 
 type Direction = "up" | "down" | "left" | "right" | "scale" | "none";
 
@@ -13,7 +14,14 @@ interface ScrollRevealProps {
   distance?: number;
 }
 
-const getVariants = (direction: Direction, distance: number): Variants => {
+const getVariants = (direction: Direction, distance: number, reduced: boolean): Variants => {
+  if (reduced) {
+    return {
+      hidden: { opacity: 0 },
+      visible: { opacity: 1 },
+    };
+  }
+
   const hidden: Record<string, unknown> = { opacity: 0 };
   const visible: Record<string, unknown> = { opacity: 1 };
 
@@ -36,6 +44,7 @@ const getVariants = (direction: Direction, distance: number): Variants => {
       break;
     case "scale":
       hidden.scale = 0.85;
+      // No blur on reduced motion - handled by the reduced check above
       hidden.filter = "blur(10px)";
       visible.scale = 1;
       visible.filter = "blur(0px)";
@@ -56,7 +65,8 @@ const ScrollReveal = forwardRef<HTMLDivElement, ScrollRevealProps>(({
   once = true,
   distance = 40,
 }, ref) => {
-  const variants = getVariants(direction, distance);
+  const reduced = useReducedMotion();
+  const variants = getVariants(direction, distance, reduced);
 
   return (
     <motion.div
@@ -66,8 +76,8 @@ const ScrollReveal = forwardRef<HTMLDivElement, ScrollRevealProps>(({
       whileInView="visible"
       viewport={{ once, margin: "-50px" }}
       transition={{
-        duration,
-        delay,
+        duration: reduced ? 0.3 : duration,
+        delay: reduced ? 0 : delay,
         ease: [0.25, 0.46, 0.45, 0.94],
       }}
       className={className}

@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { isLowEndDevice } from "@/hooks/use-reduced-motion";
 
 interface Particle {
   x: number;
@@ -16,6 +17,15 @@ const ParticleField = ({ count = 60, className = "" }: { count?: number; classNa
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
+
+    const lowEnd = isLowEndDevice();
+
+    // On low-end devices, skip particle rendering entirely
+    if (lowEnd) {
+      canvas.style.display = "none";
+      return;
+    }
+
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
@@ -23,7 +33,6 @@ const ParticleField = ({ count = 60, className = "" }: { count?: number; classNa
     let particles: Particle[] = [];
     let isVisible = true;
 
-    // Intersection Observer to pause when off-screen
     const observer = new IntersectionObserver(
       ([entry]) => {
         isVisible = entry.isIntersecting;
@@ -36,7 +45,7 @@ const ParticleField = ({ count = 60, className = "" }: { count?: number; classNa
     observer.observe(canvas);
 
     const resize = () => {
-      const dpr = Math.min(window.devicePixelRatio, 2); // Cap DPR for performance
+      const dpr = Math.min(window.devicePixelRatio, 2);
       canvas.width = canvas.offsetWidth * dpr;
       canvas.height = canvas.offsetHeight * dpr;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
@@ -47,7 +56,6 @@ const ParticleField = ({ count = 60, className = "" }: { count?: number; classNa
     const w = () => canvas.offsetWidth;
     const h = () => canvas.offsetHeight;
 
-    // Use reduced count for performance
     const actualCount = Math.min(count, 30);
 
     particles = Array.from({ length: actualCount }, () => ({
@@ -80,7 +88,6 @@ const ParticleField = ({ count = 60, className = "" }: { count?: number; classNa
 
         const pulsedOpacity = p.opacity * (0.5 + 0.5 * Math.sin(p.pulse));
 
-        // Simplified: just draw core dot with glow, skip radial gradient for perf
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size * 2, 0, Math.PI * 2);
         ctx.fillStyle = `hsla(38, 45%, 60%, ${pulsedOpacity * 0.4})`;
@@ -92,13 +99,11 @@ const ParticleField = ({ count = 60, className = "" }: { count?: number; classNa
         ctx.fill();
       });
 
-      // Only check connections for nearby particles using simplified distance
       const connectionDist = 100;
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
           const dx = particles[i].x - particles[j].x;
           const dy = particles[i].y - particles[j].y;
-          // Use squared distance to avoid sqrt
           const distSq = dx * dx + dy * dy;
           if (distSq < connectionDist * connectionDist) {
             const lineOpacity = (1 - Math.sqrt(distSq) / connectionDist) * 0.06;

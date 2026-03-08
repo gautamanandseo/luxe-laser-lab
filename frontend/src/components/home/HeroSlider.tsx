@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ChevronRight, ArrowRight, Shield } from "lucide-react";
 import { Link } from "react-router-dom";
 import ParticleField from "@/components/effects/ParticleField";
+import { useReducedMotion } from "@/hooks/use-reduced-motion";
 import heroLaser from "@/assets/hero-laser-gen.jpg";
 
 // Lazy-load non-first-slide images
@@ -70,26 +71,32 @@ const letterVariants = {
   }),
 };
 
-const AnimatedText = ({ text, className }: { text: string; className: string }) => (
-  <span className={className} style={{ display: "inline-flex", flexWrap: "wrap", perspective: "1000px" }}>
-    {text.split("").map((char, i) => (
-      <motion.span
-        key={i}
-        custom={i}
-        variants={letterVariants}
-        initial="hidden"
-        animate="visible"
-        style={{ display: "inline-block", whiteSpace: char === " " ? "pre" : "normal" }}
-      >
-        {char}
-      </motion.span>
-    ))}
-  </span>
-);
+const AnimatedText = ({ text, className, reduced }: { text: string; className: string; reduced?: boolean }) => {
+  if (reduced) {
+    return <span className={className}>{text}</span>;
+  }
+  return (
+    <span className={className} style={{ display: "inline-flex", flexWrap: "wrap", perspective: "1000px" }}>
+      {text.split("").map((char, i) => (
+        <motion.span
+          key={i}
+          custom={i}
+          variants={letterVariants}
+          initial="hidden"
+          animate="visible"
+          style={{ display: "inline-block", whiteSpace: char === " " ? "pre" : "normal" }}
+        >
+          {char}
+        </motion.span>
+      ))}
+    </span>
+  );
+};
 
 const HeroSlider = () => {
   const [current, setCurrent] = useState(0);
   const [paused, setPaused] = useState(false);
+  const reduced = useReducedMotion();
   const [loadedImages, setLoadedImages] = useState<Record<number, string>>({ 0: heroLaser });
 
   // Preload other slide images after first paint
@@ -178,7 +185,7 @@ const HeroSlider = () => {
               key={current}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              exit={{ opacity: 0, y: -30, filter: "blur(10px)" }}
+              exit={{ opacity: 0, y: -30, ...(reduced ? {} : { filter: "blur(10px)" }) }}
               transition={{ duration: 0.5 }}
               className="max-w-2xl"
             >
@@ -195,10 +202,10 @@ const HeroSlider = () => {
 
               {/* Headline with letter animation */}
               <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl font-light text-foreground leading-[0.95] mb-2">
-                <AnimatedText text={slide.headline} className="" />
+                <AnimatedText text={slide.headline} className="" reduced={reduced} />
               </h1>
               <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl font-light italic leading-[0.95] mb-6">
-                <AnimatedText text={slide.accent} className="holographic-text" />
+                <AnimatedText text={slide.accent} className="holographic-text" reduced={reduced} />
               </h1>
 
               {/* Subtitle */}
