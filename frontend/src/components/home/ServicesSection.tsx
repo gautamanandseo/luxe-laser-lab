@@ -172,7 +172,7 @@ const ServicesSection = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 }}
-                className="font-serif text-3xl md:text-4xl text-foreground mb-4"
+                className="card-heading mb-4"
               >
                 {tab.title}
               </motion.h3>
