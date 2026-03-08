@@ -133,8 +133,9 @@ const Navbar = () => {
                       onMouseLeave={() => setServicesOpen(false)}
                     >
                       <motion.button
-                        whileHover={{ y: -1 }}
-                        className={`flex items-center gap-1.5 px-4 py-2 text-sm font-medium rounded-xl transition-all duration-300 relative group ${
+                        whileHover={{ y: -2, scale: 1.04 }}
+                        whileTap={{ scale: 0.97 }}
+                        className={`flex items-center gap-1.5 px-4 py-2 text-sm font-medium rounded-2xl transition-all duration-300 relative group ${
                           location.pathname.includes("service") || servicesOpen
                             ? "text-primary"
                             : "text-foreground/70 hover:text-foreground"
@@ -142,10 +143,14 @@ const Navbar = () => {
                       >
                         <span className="relative z-10">{link.name}</span>
                         <ChevronDown size={13} className={`relative z-10 transition-transform duration-300 ${servicesOpen ? "rotate-180" : ""}`} />
-                        {/* Hover bg pill */}
+                        {/* Apple 3D hover pill */}
                         <motion.div
-                          className="absolute inset-0 rounded-xl bg-primary/5 border border-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                          layoutId="nav-hover"
+                          className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-300"
+                          style={{
+                            background: 'linear-gradient(180deg, hsl(var(--primary) / 0.12) 0%, hsl(var(--primary) / 0.04) 100%)',
+                            boxShadow: '0 2px 8px hsl(var(--primary) / 0.1), inset 0 1px 0 hsl(0 0% 100% / 0.06)',
+                            border: '1px solid hsl(var(--primary) / 0.15)',
+                          }}
                         />
                       </motion.button>
 
@@ -239,8 +244,9 @@ const Navbar = () => {
                       className="relative group"
                     >
                       <motion.span
-                        whileHover={{ y: -1 }}
-                        className={`block px-4 py-2 text-sm font-medium rounded-xl transition-all duration-300 ${
+                        whileHover={{ y: -2, scale: 1.04 }}
+                        whileTap={{ scale: 0.97 }}
+                        className={`block px-4 py-2 text-sm font-medium rounded-2xl transition-all duration-300 ${
                           location.pathname === link.path ? "text-primary" : "text-foreground/70 hover:text-foreground"
                         }`}
                       >
@@ -267,25 +273,32 @@ const Navbar = () => {
             >
               <Link
                 to="/contact"
-                className="relative inline-flex items-center gap-2 text-sm font-medium px-6 py-2.5 rounded-full overflow-hidden group"
+                className="relative inline-flex items-center gap-2 text-sm font-medium px-6 py-2.5 rounded-2xl overflow-hidden group"
+                style={{
+                  background: 'linear-gradient(180deg, hsl(var(--primary)) 0%, hsl(var(--gold-dark)) 100%)',
+                  boxShadow: '0 1px 0 0 hsl(var(--gold-light) / 0.4) inset, 0 -1px 0 0 hsl(0 0% 0% / 0.2) inset, 0 4px 16px -4px hsl(var(--primary) / 0.4), 0 1px 3px hsl(0 0% 0% / 0.3)',
+                }}
               >
-                {/* Multi-layer button bg */}
-                <div className="absolute inset-0 bg-primary rounded-full" />
-                <div className="absolute inset-0 bg-gradient-to-b from-white/20 to-transparent rounded-full" />
-                <div className="absolute inset-[1px] bg-gradient-to-b from-primary via-primary to-primary/80 rounded-full" />
+                {/* Top highlight for 3D depth */}
+                <div className="absolute inset-x-0 top-0 h-[45%] bg-gradient-to-b from-white/20 to-transparent rounded-t-2xl" />
                 {/* Shine sweep */}
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 rounded-full" />
-                {/* Glow */}
-                <div className="absolute -inset-1 bg-primary/30 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <span className="relative z-10 text-primary-foreground">Book Consultation</span>
-                <Sparkles size={14} className="relative z-10 text-primary-foreground/70" />
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
+                {/* Glow on hover */}
+                <div className="absolute -inset-1 bg-primary/30 rounded-2xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <span className="relative z-10 text-primary-foreground font-semibold">Book Consultation</span>
+                <Sparkles size={14} className="relative z-10 text-primary-foreground/80" />
               </Link>
             </motion.div>
 
             {/* Mobile Menu Toggle */}
             <motion.button
-              whileTap={{ scale: 0.9 }}
-              className="lg:hidden relative w-10 h-10 flex items-center justify-center rounded-xl border border-primary/20 text-foreground hover:text-primary hover:border-primary/40 transition-colors"
+              whileTap={{ scale: 0.92 }}
+              whileHover={{ scale: 1.05 }}
+              className="lg:hidden relative w-10 h-10 flex items-center justify-center rounded-2xl text-foreground hover:text-primary transition-all duration-300"
+              style={{
+                background: 'linear-gradient(180deg, hsl(var(--card)) 0%, hsl(var(--background)) 100%)',
+                boxShadow: '0 1px 0 0 hsl(0 0% 100% / 0.06) inset, 0 -1px 0 0 hsl(0 0% 0% / 0.3) inset, 0 2px 8px -2px hsl(0 0% 0% / 0.4), 0 0 0 1px hsl(var(--primary) / 0.12)',
+              }}
               onClick={() => setMobileOpen(!mobileOpen)}
             >
               <AnimatePresence mode="wait">
