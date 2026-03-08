@@ -16,6 +16,7 @@ import SEOContentSection from "@/components/home/SEOContentSection";
 import ParallaxStorySection from "@/components/home/ParallaxStorySection";
 import TreatmentCalculator from "@/components/home/TreatmentCalculator";
 import LoyaltyTeaser from "@/components/home/LoyaltyTeaser";
+import SkinAnalysisWidget from "@/components/home/SkinAnalysisWidget";
 import GlowDivider from "@/components/effects/GlowDivider";
 
 const Index = () => {
@@ -46,6 +47,8 @@ const Index = () => {
       <GallerySection />
       <GlowDivider variant="multi" />
       <LoyaltyTeaser />
+      <GlowDivider variant="gold" />
+      <SkinAnalysisWidget />
       <GlowDivider variant="subtle" />
       <CertificationsStrip />
       <GlowDivider variant="gold" />
