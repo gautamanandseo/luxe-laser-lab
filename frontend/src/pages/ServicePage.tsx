@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, Check, Phone, ChevronDown, Star, Quote } from "lucide-react";
+import { ArrowRight, Check, Phone, ChevronDown, Star, Quote, Info } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { servicesData } from "@/data/serviceData";
