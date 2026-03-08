@@ -394,6 +394,14 @@ const ServicePage = ({ service }: ServicePageProps) => {
 
       <GlowDivider variant="multi" />
 
+      {/* 3D Body Map - CoolSculpting only */}
+      {(service === "coolsculpting" || service === "bodycontouring") && (
+        <Suspense fallback={<div className="py-28 flex items-center justify-center"><div className="w-8 h-8 border-2 border-primary/30 border-t-primary rounded-full animate-spin" /></div>}>
+          <BodyMap3D />
+          <GlowDivider variant="gold" />
+        </Suspense>
+      )}
+
       {/* Benefits Section */}
       <section className="py-24 bg-background relative overflow-hidden">
         <div className="absolute inset-0 grid-bg opacity-15" />
