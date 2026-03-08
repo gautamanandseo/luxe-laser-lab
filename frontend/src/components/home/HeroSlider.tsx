@@ -364,26 +364,76 @@ const HeroSlider = () => {
         </div>
       </div>
 
+      {/* Progress Bar - full width */}
+      <div className="absolute bottom-[72px] left-0 right-0 z-20 h-[2px] bg-foreground/5">
+        <motion.div
+          className="h-full bg-primary shadow-[0_0_8px_hsl(38,45%,60%,0.5)]"
+          style={{ width: `${progress}%` }}
+          transition={{ duration: 0.05, ease: "linear" }}
+        />
+      </div>
+
       {/* Slide Controls - glassmorphism enhanced */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex items-center gap-8 bg-background/10 backdrop-blur-2xl border border-white/10 rounded-full px-8 py-4 shadow-[0_8px_32px_hsl(0,0%,0%,0.4),inset_0_1px_0_hsl(255,255%,255%,0.05)]">
-        <span className="text-sm font-sans text-primary font-medium tabular-nums">
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex items-center gap-4 md:gap-6 bg-background/10 backdrop-blur-2xl border border-white/10 rounded-full px-4 md:px-6 py-3 shadow-[0_8px_32px_hsl(0,0%,0%,0.4),inset_0_1px_0_hsl(255,255%,255%,0.05)]">
+        {/* Prev button */}
+        <motion.button
+          onClick={prev}
+          whileHover={{ scale: 1.15 }}
+          whileTap={{ scale: 0.9 }}
+          className="w-8 h-8 rounded-full border border-foreground/10 flex items-center justify-center text-foreground/60 hover:text-primary hover:border-primary/40 transition-colors"
+          aria-label="Previous slide"
+        >
+          <ChevronLeft size={16} />
+        </motion.button>
+
+        {/* Counter */}
+        <span className="text-sm font-sans text-primary font-medium tabular-nums min-w-[50px] text-center">
           {String(current + 1).padStart(2, "0")} <span className="text-foreground/40">/ {String(slides.length).padStart(2, "0")}</span>
         </span>
-        <div className="flex gap-3">
+
+        {/* Dot indicators */}
+        <div className="hidden md:flex gap-2">
           {slides.map((_, i) => (
             <motion.button
               key={i}
-              onClick={() => setCurrent(i)}
+              onClick={() => { setCurrent(i); setProgress(0); }}
               whileHover={{ scale: 1.3 }}
               whileTap={{ scale: 0.95 }}
               className={`rounded-full transition-all duration-500 ${
                 i === current
-                  ? "w-10 h-2 bg-primary shadow-[0_0_15px_hsl(38,45%,60%,0.6)]"
+                  ? "w-8 h-2 bg-primary shadow-[0_0_15px_hsl(38,45%,60%,0.6)]"
                   : "w-2 h-2 bg-foreground/20 hover:bg-foreground/40"
               }`}
+              aria-label={`Go to slide ${i + 1}`}
             />
           ))}
         </div>
+
+        {/* Play/Pause button */}
+        <motion.button
+          onClick={togglePause}
+          whileHover={{ scale: 1.15 }}
+          whileTap={{ scale: 0.9 }}
+          className={`w-8 h-8 rounded-full border flex items-center justify-center transition-all ${
+            manualPause
+              ? "border-primary/40 text-primary bg-primary/10"
+              : "border-foreground/10 text-foreground/60 hover:text-primary hover:border-primary/40"
+          }`}
+          aria-label={manualPause ? "Resume slideshow" : "Pause slideshow"}
+        >
+          {manualPause ? <Play size={14} /> : <Pause size={14} />}
+        </motion.button>
+
+        {/* Next button */}
+        <motion.button
+          onClick={next}
+          whileHover={{ scale: 1.15 }}
+          whileTap={{ scale: 0.9 }}
+          className="w-8 h-8 rounded-full border border-foreground/10 flex items-center justify-center text-foreground/60 hover:text-primary hover:border-primary/40 transition-colors"
+          aria-label="Next slide"
+        >
+          <ChevronRight size={16} />
+        </motion.button>
       </div>
     </section>
   );
