@@ -152,12 +152,16 @@ export const servicesData: Record<string, ServiceData> = {
     ],
     detailedSections: [
       {
-        title: "What Our Laser Actually Does",
-        content: "We use the highly effective 808nm Diode Laser system — the gold standard for hair removal. Unlike older technologies, our diode laser delivers concentrated light energy that is absorbed by melanin in the hair follicle. This energy converts to heat, destroying the follicle's ability to produce new hair growth. The surrounding skin remains completely unaffected thanks to our integrated sapphire cooling tip that maintains skin surface temperature. Each pulse treats hundreds of hairs simultaneously, making treatments fast and efficient."
+        title: "Lumenis LightSheer Desire™ — The Gold Standard",
+        content: "The Lumenis LightSheer Desire is widely regarded as the world's #1 laser hair removal system. Its 805nm diode laser delivers concentrated energy directly to the hair follicle. What sets it apart is its patented vacuum-assist technology: a gentle suction pulls the skin closer to the laser handpiece, stretching the skin and bringing hair follicles closer to the surface. This increases efficacy by up to 3x while reducing pain by up to 90%. The large spot size (22x35mm) allows rapid treatment of large areas — full legs in under 45 minutes."
+      },
+      {
+        title: "Alma Soprano ICE Platinum™ — Pain-Free Revolution",
+        content: "The Alma Soprano ICE Platinum represents the latest evolution in pain-free laser hair removal. It combines three laser wavelengths (755nm Alexandrite, 810nm Diode, and 1064nm Nd:YAG) in a single handpiece, targeting different tissue depths and structures simultaneously. Its revolutionary SHR (Super Hair Removal) IN-Motion™ technique delivers gradual heating with rapid pulses while the ICE™ cooling system keeps the skin surface comfortable throughout. This makes it the most comfortable laser experience available — even for bikini, underarms, and upper lip."
       },
       {
         title: "Why Multiple Sessions Are Needed",
-        content: "Hair grows in three phases: Anagen (active growth), Catagen (transition), and Telogen (resting). Laser is only effective during the Anagen phase when the hair is connected to the follicle. Since only 20-30% of your hair is in the Anagen phase at any given time, multiple sessions are needed to catch all hairs during their growth cycle. This is why we space sessions 4-6 weeks apart — to target a new batch of actively growing hairs each time."
+        content: "Hair grows in three phases: Anagen (active growth), Catagen (transition), and Telogen (resting). Both LightSheer and Soprano lasers are most effective during the Anagen phase when the hair is connected to the follicle. Since only 20-30% of your hair is in the Anagen phase at any given time, multiple sessions are needed to catch all hairs during their growth cycle. This is why we space sessions 4-6 weeks apart — to target a new batch of actively growing hairs each time."
       },
     ],
   },
