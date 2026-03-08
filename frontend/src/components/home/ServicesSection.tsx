@@ -177,7 +177,7 @@ const tabs = [
     desc: "Complete non-surgical body sculpting with CoolSculpting®, radiofrequency tightening, ultrasound cavitation, and targeted inch loss programs.",
     features: ["CoolSculpting® fat freezing", "RF body tightening", "Ultrasound cavitation", "Cellulite reduction", "Measurable inch loss"],
     link: "/body-contouring",
-    image: serviceCoolsculpting,
+    image: serviceBodycontouring,
   },
   {
     id: "weightloss",
