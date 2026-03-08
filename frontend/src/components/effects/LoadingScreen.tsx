@@ -7,22 +7,25 @@ const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
   const [phase, setPhase] = useState<"loading" | "exit">("loading");
 
   useEffect(() => {
+    // Fast progress: ~1.2s total
     const interval = setInterval(() => {
       setProgress((p) => {
         if (p >= 100) {
           clearInterval(interval);
           return 100;
         }
-        return p + Math.random() * 6 + 2;
+        // Accelerating curve
+        const speed = p < 60 ? 8 : p < 85 ? 6 : 4;
+        return Math.min(p + speed + Math.random() * 4, 100);
       });
-    }, 50);
+    }, 30);
     return () => clearInterval(interval);
   }, []);
 
   useEffect(() => {
     if (progress >= 100) {
-      setTimeout(() => setPhase("exit"), 500);
-      setTimeout(onComplete, 1400);
+      setTimeout(() => setPhase("exit"), 200);
+      setTimeout(onComplete, 800);
     }
   }, [progress, onComplete]);
 
@@ -34,113 +37,52 @@ const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
         <motion.div
           key="loading-screen"
           className="fixed inset-0 z-[9999] flex flex-col items-center justify-center overflow-hidden"
-          exit={{ opacity: 0, scale: 1.1, filter: "blur(20px)" }}
-          transition={{ duration: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
+          exit={{ opacity: 0, scale: 1.05, filter: "blur(12px)" }}
+          transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
         >
           {/* Deep background */}
           <div className="absolute inset-0 bg-[hsl(0,0%,2%)]" />
 
-          {/* Radial gold burst */}
-          <motion.div
-            className="absolute inset-0"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1 }}
-          >
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-primary/[0.04] blur-[150px]" />
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full bg-primary/[0.08] blur-[80px]" />
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200px] h-[200px] rounded-full bg-primary/[0.12] blur-[40px]" />
-          </motion.div>
+          {/* Radial gold burst — pure CSS */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-primary/[0.04] blur-[120px]" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] rounded-full bg-primary/[0.08] blur-[60px]" />
 
-          {/* Rotating golden ring */}
-          <motion.div
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px]"
-            animate={{ rotate: 360 }}
-            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+          {/* Single rotating ring — CSS animation */}
+          <div
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[260px] h-[260px] animate-spin"
+            style={{ animationDuration: "20s" }}
           >
-            <svg viewBox="0 0 300 300" className="w-full h-full">
-              <circle cx="150" cy="150" r="140" fill="none" stroke="hsl(38 45% 60%)" strokeWidth="0.5" strokeDasharray="6 12" opacity="0.2" />
+            <svg viewBox="0 0 260 260" className="w-full h-full">
+              <circle cx="130" cy="130" r="120" fill="none" stroke="hsl(38 45% 60%)" strokeWidth="0.5" strokeDasharray="6 12" opacity="0.2" />
             </svg>
-          </motion.div>
-          <motion.div
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[220px] h-[220px]"
-            animate={{ rotate: -360 }}
-            transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-          >
-            <svg viewBox="0 0 220 220" className="w-full h-full">
-              <circle cx="110" cy="110" r="100" fill="none" stroke="hsl(38 45% 60%)" strokeWidth="0.3" strokeDasharray="3 9" opacity="0.15" />
-            </svg>
-          </motion.div>
-
-          {/* Scanning line */}
-          <motion.div
-            className="absolute left-0 right-0 h-px"
-            style={{ background: "linear-gradient(90deg, transparent, hsl(38 45% 60% / 0.4), hsl(38 55% 75% / 0.6), hsl(38 45% 60% / 0.4), transparent)" }}
-            animate={{ top: ["0%", "100%"] }}
-            transition={{ duration: 2.5, repeat: Infinity, ease: "linear" }}
-          />
-
-          {/* Corner brackets */}
-          {[
-            "top-6 left-6 border-t-2 border-l-2",
-            "top-6 right-6 border-t-2 border-r-2",
-            "bottom-6 left-6 border-b-2 border-l-2",
-            "bottom-6 right-6 border-b-2 border-r-2",
-          ].map((pos, i) => (
-            <motion.div
-              key={i}
-              className={`absolute w-10 h-10 border-primary/20 ${pos}`}
-              initial={{ opacity: 0, scale: 0 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.1 + i * 0.08, duration: 0.5, type: "spring" }}
-            />
-          ))}
+          </div>
 
           {/* Center content */}
           <motion.div
-            className="relative z-10 flex flex-col items-center gap-10"
-            initial={{ opacity: 0, y: 30, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 1, ease: "easeOut" }}
+            className="relative z-10 flex flex-col items-center gap-8"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
           >
-            {/* Logo with glow */}
-            <motion.div
-              animate={{
-                filter: [
-                  "drop-shadow(0 0 20px hsl(38 45% 60% / 0.2))",
-                  "drop-shadow(0 0 40px hsl(38 45% 60% / 0.4))",
-                  "drop-shadow(0 0 20px hsl(38 45% 60% / 0.2))",
-                ],
-              }}
-              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-            >
+            {/* Logo */}
+            <div className="drop-shadow-[0_0_30px_hsl(38_45%_60%/0.3)]">
               <EmpathyLogo size="large" />
-            </motion.div>
+            </div>
 
             {/* Tagline */}
-            <motion.p
-              className="text-[10px] tracking-[0.5em] uppercase text-primary/50 font-sans"
-              initial={{ opacity: 0, letterSpacing: "0.8em" }}
-              animate={{ opacity: 0.5, letterSpacing: "0.5em" }}
-              transition={{ duration: 1.5, delay: 0.5 }}
-            >
+            <p className="text-[10px] tracking-[0.5em] uppercase text-primary/50 font-sans">
               Where Precision Meets Luxury
-            </motion.p>
+            </p>
 
             {/* Progress */}
-            <div className="w-56 flex flex-col items-center gap-3">
+            <div className="w-48 flex flex-col items-center gap-3">
               <div className="w-full h-[2px] bg-muted/10 relative overflow-hidden rounded-full">
-                <motion.div
-                  className="absolute inset-y-0 left-0"
+                <div
+                  className="absolute inset-y-0 left-0 transition-[width] duration-75"
                   style={{
                     width: `${clampedProgress}%`,
                     background: "linear-gradient(90deg, hsl(38 45% 60% / 0.5), hsl(38 55% 75%), hsl(38 45% 60% / 0.8))",
                   }}
-                  transition={{ duration: 0.1 }}
-                />
-                <motion.div
-                  className="absolute top-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-primary/30 blur-lg"
-                  style={{ left: `${clampedProgress}%` }}
                 />
               </div>
               <span className="text-[10px] text-primary/40 font-mono tabular-nums tracking-widest">
@@ -148,29 +90,6 @@ const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
               </span>
             </div>
           </motion.div>
-
-          {/* Floating particles */}
-          {Array.from({ length: 8 }).map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute w-1 h-1 rounded-full bg-primary/30"
-              style={{
-                top: `${20 + Math.random() * 60}%`,
-                left: `${10 + Math.random() * 80}%`,
-              }}
-              animate={{
-                y: [0, -30, 0],
-                opacity: [0, 0.6, 0],
-                scale: [0.5, 1.5, 0.5],
-              }}
-              transition={{
-                duration: 3 + Math.random() * 2,
-                repeat: Infinity,
-                delay: Math.random() * 3,
-                ease: "easeInOut",
-              }}
-            />
-          ))}
         </motion.div>
       )}
     </AnimatePresence>
