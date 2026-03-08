@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, Check, Sparkles, Snowflake, Sun, Heart, Flower2, Scissors, Syringe, Diamond, Scan } from "lucide-react";
+import { ArrowRight, Check, Sparkles, Snowflake, Sun, Heart, Flower2, Scissors, Syringe, Diamond, Scan, Scale } from "lucide-react";
 import { Link } from "react-router-dom";
 import serviceLaser from "@/assets/service-laser-gen.jpg";
 import serviceCoolsculpting from "@/assets/service-cool-gen.jpg";
@@ -11,6 +11,7 @@ import serviceSpa from "@/assets/service-spa-gen.jpg";
 import serviceSalon from "@/assets/service-salon-gen.jpg";
 import serviceMicroderm from "@/assets/service-microderm-gen.jpg";
 import serviceResurfx from "@/assets/service-resurfx-gen.jpg";
+import serviceCoolsculpting2 from "@/assets/service-cool-gen.jpg";
 
 const tabs = [
   {
