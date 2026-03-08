@@ -13,6 +13,7 @@ const contactMethods = [
 const services = [
   "Laser Hair Removal",
   "CoolSculpting®",
+  "Weight Loss & Body Contouring",
   "Skin Treatments",
   "ResurFX™ Skin Resurfacing",
   "Botox & Fillers",
