@@ -56,8 +56,11 @@ const StickyMobileCTA = () => {
               href="https://wa.me/919811157787?text=Hi%2C%20I%27d%20like%20to%20book%20a%20consultation"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 flex items-center justify-center gap-2 bg-card border border-green-500/30 rounded-full py-2.5 text-foreground text-xs font-sans uppercase tracking-[0.1em] hover:border-green-500/50 transition-colors"
+              className="flex-1 flex items-center justify-center gap-2 bg-card border border-primary/20 rounded-full py-2.5 text-foreground text-xs font-sans uppercase tracking-[0.1em] hover:border-primary/50 transition-colors"
             >
+              <MessageCircle size={14} className="text-primary" />
+              WhatsApp
+            </a>
               <MessageCircle size={14} className="text-green-500" />
               WhatsApp
             </a>
