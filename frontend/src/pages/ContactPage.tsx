@@ -56,7 +56,7 @@ const ContactPage = () => {
               Let's <em className="holographic-text" style={{ fontStyle: "italic" }}>Connect</em>
             </h1>
             <p className="text-lg text-foreground/70 max-w-xl mx-auto">
-              We'd love to hear from you. Reach out for a free consultation or any questions about our treatments.
+              Visit Empathy Laser Clinic in Pitampura, Delhi for a free consultation. We serve clients from across Delhi NCR — Rohini, Shalimar Bagh, Model Town, Noida, and Gurugram.
             </p>
           </motion.div>
         </div>
