@@ -65,9 +65,11 @@ const BlogPage = () => {
               className="grid lg:grid-cols-2 gap-8 bg-card rounded-2xl border border-border overflow-hidden hover:border-primary/40 transition-all"
             >
               <div className="aspect-video lg:aspect-auto overflow-hidden">
-                <img
+                <BlogImage
                   src={featuredPost.image}
+                  category={featuredPost.category}
                   alt={featuredPost.title}
+                  loading="eager"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
