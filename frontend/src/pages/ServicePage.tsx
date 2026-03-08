@@ -283,6 +283,69 @@ const ServicePage = ({ service }: ServicePageProps) => {
         </div>
       </section>
 
+      {/* Before & After Results Gallery */}
+      {beforeAfterImages[service] && beforeAfterImages[service].length > 0 && (
+        <section className="py-24 bg-secondary">
+          <div className="container mx-auto px-6">
+            <div className="text-center mb-16">
+              <p className="eyebrow mb-4">Real Results</p>
+              <h2 className="font-serif text-4xl md:text-5xl text-foreground">
+                Before & <em className="text-primary">After</em>
+              </h2>
+              <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
+                See the transformative results our clients achieve at Empathy Laser Clinic. All results are from actual treatments performed at our clinic.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+              {beforeAfterImages[service].map((ba, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  className="group relative rounded-2xl overflow-hidden border border-border bg-card"
+                >
+                  <div className="relative aspect-square overflow-hidden">
+                    <img
+                      src={ba.image}
+                      alt={`Before and after ${data.title} - ${ba.label}`}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    {/* Before/After labels */}
+                    <div className="absolute top-4 left-4 bg-card/90 backdrop-blur-sm text-foreground text-[10px] font-sans uppercase tracking-[0.2em] px-3 py-1.5 rounded-full border border-border">
+                      Before
+                    </div>
+                    <div className="absolute top-4 right-4 bg-primary/90 backdrop-blur-sm text-primary-foreground text-[10px] font-sans uppercase tracking-[0.2em] px-3 py-1.5 rounded-full">
+                      After
+                    </div>
+                    {/* Divider line */}
+                    <div className="absolute top-0 bottom-0 left-1/2 w-px bg-foreground/30" />
+                  </div>
+                  <div className="p-4">
+                    <div className="flex items-center gap-2">
+                      <Eye size={14} className="text-primary" />
+                      <p className="text-sm font-semibold text-foreground">{ba.label}</p>
+                    </div>
+                    <p className="text-xs text-muted-foreground mt-1">Results may vary. Individual consultation required.</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            <div className="text-center mt-10">
+              <Link
+                to="/contact"
+                className="border border-border text-foreground px-6 py-3 text-sm font-sans uppercase tracking-[0.1em] rounded-full inline-flex items-center gap-2 hover:border-primary hover:text-primary transition-colors"
+              >
+                See Your Potential Results — Book Consultation <ArrowRight size={14} />
+              </Link>
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Process Section */}
       <section className="py-24 bg-secondary">
         <div className="container mx-auto px-6">
