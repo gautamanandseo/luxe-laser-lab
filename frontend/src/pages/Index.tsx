@@ -32,8 +32,6 @@ const Index = () => {
       <GlowDivider variant="subtle" />
       <CoolSculptingSection />
       <GlowDivider variant="gold" />
-      <TreatmentCalculator />
-      <GlowDivider variant="multi" />
       <WeightLossSection />
       <GlowDivider variant="subtle" />
       <TechnologySection />
