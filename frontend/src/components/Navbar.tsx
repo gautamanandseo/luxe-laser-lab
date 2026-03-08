@@ -9,6 +9,18 @@ const services = [
   { name: "CoolSculpting®", path: "/coolsculpting", icon: Zap },
   { name: "Weight Loss Delhi", path: "/weight-loss-delhi", icon: Zap },
   { name: "Skin Treatments", path: "/skin-treatments", icon: Zap },
+  { name: "Acne & Acne Scar", path: "/acne-treatment", icon: Zap },
+  { name: "Skin Lightening & Pigmentation", path: "/skin-lightening", icon: Zap },
+  { name: "Anti-Ageing", path: "/anti-ageing", icon: Zap },
+  { name: "HIFU Face Lift", path: "/hifu-treatment", icon: Zap },
+  { name: "Dark Circles", path: "/dark-circles", icon: Zap },
+  { name: "Skin Tightening", path: "/skin-tightening", icon: Zap },
+  { name: "Stretch Marks Removal", path: "/stretch-marks", icon: Zap },
+  { name: "Tattoo Removal", path: "/tattoo-removal", icon: Zap },
+  { name: "Mole & Wart Removal", path: "/mole-wart-removal", icon: Zap },
+  { name: "Hair Loss & PRP", path: "/hair-loss-treatment", icon: Zap },
+  { name: "Hair Transplant", path: "/hair-transplant", icon: Zap },
+  { name: "Body Contouring & Inch Loss", path: "/body-contouring", icon: Zap },
   { name: "ResurFX™ Skin Resurfacing", path: "/resurfx", icon: Zap },
   { name: "Botox & Fillers", path: "/botox-fillers", icon: Zap },
   { name: "Microdermabrasion", path: "/microdermabrasion", icon: Zap },
@@ -85,8 +97,8 @@ const Navbar = () => {
                             transition={{ duration: 0.2 }}
                             className="absolute top-full left-0 pt-4"
                           >
-                            <div className="bg-background/80 backdrop-blur-2xl border border-white/10 rounded-2xl shadow-2xl p-2 min-w-[320px]">
-                              <div className="space-y-1">
+                            <div className="bg-background/80 backdrop-blur-2xl border border-white/10 rounded-2xl shadow-2xl p-2 min-w-[640px]">
+                              <div className="grid grid-cols-2 gap-x-2">
                                 {services.map((s, i) => (
                                   <motion.div
                                     key={s.path}
