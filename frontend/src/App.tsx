@@ -2,12 +2,14 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import ScrollProgress from "@/components/ScrollProgress";
 import ScrollToTop from "@/components/ScrollToTop";
+import PageTransition from "@/components/effects/PageTransition";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import ServicePage from "./pages/ServicePage";
@@ -17,6 +19,44 @@ import BlogPage from "./pages/BlogPage";
 import BlogPostPage from "./pages/BlogPostPage";
 
 const queryClient = new QueryClient();
+
+const AnimatedRoutes = () => {
+  const location = useLocation();
+  return (
+    <AnimatePresence mode="wait">
+      <Routes location={location} key={location.pathname}>
+        <Route path="/" element={<PageTransition><Index /></PageTransition>} />
+        <Route path="/laser-hair-removal" element={<PageTransition><ServicePage service="laser" /></PageTransition>} />
+        <Route path="/coolsculpting" element={<PageTransition><ServicePage service="coolsculpting" /></PageTransition>} />
+        <Route path="/weight-loss-delhi" element={<PageTransition><ServicePage service="weightloss" /></PageTransition>} />
+        <Route path="/skin-treatments" element={<PageTransition><ServicePage service="skin" /></PageTransition>} />
+        <Route path="/resurfx" element={<PageTransition><ServicePage service="resurfx" /></PageTransition>} />
+        <Route path="/botox-fillers" element={<PageTransition><ServicePage service="botox" /></PageTransition>} />
+        <Route path="/microdermabrasion" element={<PageTransition><ServicePage service="microdermabrasion" /></PageTransition>} />
+        <Route path="/bridal-packages" element={<PageTransition><ServicePage service="bridal" /></PageTransition>} />
+        <Route path="/facials" element={<PageTransition><ServicePage service="facials" /></PageTransition>} />
+        <Route path="/salon-services" element={<PageTransition><ServicePage service="salon" /></PageTransition>} />
+        <Route path="/acne-treatment" element={<PageTransition><ServicePage service="acne" /></PageTransition>} />
+        <Route path="/skin-lightening" element={<PageTransition><ServicePage service="skinlightening" /></PageTransition>} />
+        <Route path="/anti-ageing" element={<PageTransition><ServicePage service="antiageing" /></PageTransition>} />
+        <Route path="/hifu-treatment" element={<PageTransition><ServicePage service="hifu" /></PageTransition>} />
+        <Route path="/dark-circles" element={<PageTransition><ServicePage service="darkcircles" /></PageTransition>} />
+        <Route path="/skin-tightening" element={<PageTransition><ServicePage service="skintightening" /></PageTransition>} />
+        <Route path="/stretch-marks" element={<PageTransition><ServicePage service="stretchmarks" /></PageTransition>} />
+        <Route path="/tattoo-removal" element={<PageTransition><ServicePage service="tattooremoval" /></PageTransition>} />
+        <Route path="/mole-wart-removal" element={<PageTransition><ServicePage service="molewart" /></PageTransition>} />
+        <Route path="/hair-loss-treatment" element={<PageTransition><ServicePage service="hairloss" /></PageTransition>} />
+        <Route path="/hair-transplant" element={<PageTransition><ServicePage service="hairtransplant" /></PageTransition>} />
+        <Route path="/body-contouring" element={<PageTransition><ServicePage service="bodycontouring" /></PageTransition>} />
+        <Route path="/about" element={<PageTransition><AboutPage /></PageTransition>} />
+        <Route path="/contact" element={<PageTransition><ContactPage /></PageTransition>} />
+        <Route path="/blog" element={<PageTransition><BlogPage /></PageTransition>} />
+        <Route path="/blog/:slug" element={<PageTransition><BlogPostPage /></PageTransition>} />
+        <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
+      </Routes>
+    </AnimatePresence>
+  );
+};
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -28,36 +68,7 @@ const App = () => (
         <ScrollProgress />
         <Navbar />
         <main>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/laser-hair-removal" element={<ServicePage service="laser" />} />
-            <Route path="/coolsculpting" element={<ServicePage service="coolsculpting" />} />
-            <Route path="/weight-loss-delhi" element={<ServicePage service="weightloss" />} />
-            <Route path="/skin-treatments" element={<ServicePage service="skin" />} />
-            <Route path="/resurfx" element={<ServicePage service="resurfx" />} />
-            <Route path="/botox-fillers" element={<ServicePage service="botox" />} />
-            <Route path="/microdermabrasion" element={<ServicePage service="microdermabrasion" />} />
-            <Route path="/bridal-packages" element={<ServicePage service="bridal" />} />
-            <Route path="/facials" element={<ServicePage service="facials" />} />
-            <Route path="/salon-services" element={<ServicePage service="salon" />} />
-            <Route path="/acne-treatment" element={<ServicePage service="acne" />} />
-            <Route path="/skin-lightening" element={<ServicePage service="skinlightening" />} />
-            <Route path="/anti-ageing" element={<ServicePage service="antiageing" />} />
-            <Route path="/hifu-treatment" element={<ServicePage service="hifu" />} />
-            <Route path="/dark-circles" element={<ServicePage service="darkcircles" />} />
-            <Route path="/skin-tightening" element={<ServicePage service="skintightening" />} />
-            <Route path="/stretch-marks" element={<ServicePage service="stretchmarks" />} />
-            <Route path="/tattoo-removal" element={<ServicePage service="tattooremoval" />} />
-            <Route path="/mole-wart-removal" element={<ServicePage service="molewart" />} />
-            <Route path="/hair-loss-treatment" element={<ServicePage service="hairloss" />} />
-            <Route path="/hair-transplant" element={<ServicePage service="hairtransplant" />} />
-            <Route path="/body-contouring" element={<ServicePage service="bodycontouring" />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/contact" element={<ContactPage />} />
-            <Route path="/blog" element={<BlogPage />} />
-            <Route path="/blog/:slug" element={<BlogPostPage />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+          <AnimatedRoutes />
         </main>
         <Footer />
         <WhatsAppButton />

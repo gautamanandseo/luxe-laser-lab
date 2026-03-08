@@ -1,7 +1,8 @@
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronRight, ArrowRight, Shield, Zap } from "lucide-react";
+import { ChevronRight, ArrowRight, Shield } from "lucide-react";
 import { Link } from "react-router-dom";
+import ParticleField from "@/components/effects/ParticleField";
 import heroLaser from "@/assets/hero-laser-gen.jpg";
 import heroCool from "@/assets/hero-coolsculpting-gen.jpg";
 import heroSkin from "@/assets/hero-skin-gen.jpg";
@@ -54,6 +55,37 @@ const slides = [
   },
 ];
 
+const letterVariants = {
+  hidden: { opacity: 0, y: 50, rotateX: -90 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    rotateX: 0,
+    transition: {
+      delay: 0.3 + i * 0.03,
+      duration: 0.6,
+      ease: [0.25, 0.46, 0.45, 0.94],
+    },
+  }),
+};
+
+const AnimatedText = ({ text, className }: { text: string; className: string }) => (
+  <span className={className} style={{ display: "inline-flex", flexWrap: "wrap", perspective: "1000px" }}>
+    {text.split("").map((char, i) => (
+      <motion.span
+        key={i}
+        custom={i}
+        variants={letterVariants}
+        initial="hidden"
+        animate="visible"
+        style={{ display: "inline-block", whiteSpace: char === " " ? "pre" : "normal" }}
+      >
+        {char}
+      </motion.span>
+    ))}
+  </span>
+);
+
 const HeroSlider = () => {
   const [current, setCurrent] = useState(0);
   const [paused, setPaused] = useState(false);
@@ -70,7 +102,7 @@ const HeroSlider = () => {
 
   return (
     <section
-      className="relative h-screen overflow-hidden"
+      className="relative h-screen overflow-hidden scanlines"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
@@ -78,10 +110,10 @@ const HeroSlider = () => {
       <AnimatePresence mode="wait">
         <motion.div
           key={current}
-          initial={{ opacity: 0, scale: 1.05 }}
+          initial={{ opacity: 0, scale: 1.1 }}
           animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 1 }}
+          exit={{ opacity: 0, scale: 0.98 }}
+          transition={{ duration: 1.2, ease: [0.25, 0.46, 0.45, 0.94] }}
           className="absolute inset-0"
         >
           <img
@@ -90,8 +122,30 @@ const HeroSlider = () => {
             className="w-full h-full object-cover animate-ken-burns"
           />
           <div className={`absolute inset-0 bg-gradient-to-r ${slide.overlay}`} />
+          {/* Bottom gradient fade */}
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60" />
         </motion.div>
       </AnimatePresence>
+
+      {/* Particle overlay */}
+      <ParticleField count={40} className="z-[5]" />
+
+      {/* Decorative corner accents */}
+      <div className="absolute top-8 left-8 w-20 h-20 border-t border-l border-primary/20 z-10" />
+      <div className="absolute top-8 right-8 w-20 h-20 border-t border-r border-primary/20 z-10" />
+      <div className="absolute bottom-28 left-8 w-20 h-20 border-b border-l border-primary/20 z-10" />
+      <div className="absolute bottom-28 right-8 w-20 h-20 border-b border-r border-primary/20 z-10" />
+
+      {/* Side progress line */}
+      <div className="absolute left-8 top-1/4 bottom-1/4 w-px bg-white/5 z-10 hidden lg:block">
+        <motion.div
+          className="w-full bg-primary"
+          initial={{ height: "0%" }}
+          animate={{ height: "100%" }}
+          transition={{ duration: 5, ease: "linear" }}
+          key={current}
+        />
+      </div>
 
       {/* Content */}
       <div className="relative z-10 h-full flex items-center">
@@ -99,51 +153,73 @@ const HeroSlider = () => {
           <AnimatePresence mode="wait">
             <motion.div
               key={current}
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0, y: -30, filter: "blur(10px)" }}
+              transition={{ duration: 0.5 }}
               className="max-w-2xl"
             >
               {/* Tag */}
-              <div className="flex items-center gap-2 mb-6">
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className="flex items-center gap-2 mb-6"
+              >
                 <Shield size={14} className="text-primary" />
                 <span className="text-xs font-sans uppercase tracking-[0.25em] text-primary">{slide.tag}</span>
-              </div>
+              </motion.div>
 
-              {/* Headline */}
+              {/* Headline with letter animation */}
               <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl font-light text-foreground leading-[0.95] mb-2">
-                {slide.headline}
+                <AnimatedText text={slide.headline} className="" />
               </h1>
-              <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl font-light italic text-primary leading-[0.95] mb-6">
-                {slide.accent}
+              <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl font-light italic leading-[0.95] mb-6">
+                <AnimatedText text={slide.accent} className="holographic-text" />
               </h1>
 
               {/* Subtitle */}
-              <p className="font-sans text-xs uppercase tracking-[0.3em] text-foreground/60 mb-4">{slide.subtitle}</p>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6, duration: 0.5 }}
+                className="font-sans text-xs uppercase tracking-[0.3em] text-foreground/60 mb-4"
+              >
+                {slide.subtitle}
+              </motion.p>
 
               {/* Description */}
-              <p className="text-foreground/70 text-base md:text-lg max-w-lg mb-8 font-light leading-relaxed">
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.7, duration: 0.5 }}
+                className="text-foreground/70 text-base md:text-lg max-w-lg mb-8 font-light leading-relaxed"
+              >
                 {slide.desc}
-              </p>
+              </motion.p>
 
               {/* CTAs */}
-              <div className="flex flex-wrap gap-4">
-                <Link to={slide.cta1.link} className="gold-shimmer text-primary-foreground px-8 py-3.5 text-sm font-sans uppercase tracking-[0.15em] rounded-full inline-flex items-center gap-2 hover:scale-105 transition-transform">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.8, duration: 0.5 }}
+                className="flex flex-wrap gap-4"
+              >
+                <Link to={slide.cta1.link} className="gold-shimmer text-primary-foreground px-8 py-3.5 text-sm font-sans uppercase tracking-[0.15em] rounded-full inline-flex items-center gap-2 hover:scale-105 transition-transform hover:shadow-lg hover:shadow-primary/30">
                   {slide.cta1.text} <ChevronRight size={16} />
                 </Link>
-                <Link to={slide.cta2.link} className="border border-foreground/30 text-foreground px-8 py-3.5 text-sm font-sans uppercase tracking-[0.15em] rounded-full inline-flex items-center gap-2 hover:border-primary hover:text-primary transition-colors">
+                <Link to={slide.cta2.link} className="btn-neon text-foreground px-8 py-3.5 text-sm font-sans uppercase tracking-[0.15em] rounded-full inline-flex items-center gap-2 hover:text-primary transition-colors">
                   {slide.cta2.text} <ArrowRight size={16} />
                 </Link>
-              </div>
+              </motion.div>
             </motion.div>
           </AnimatePresence>
         </div>
       </div>
 
-      {/* Slide Controls */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex items-center gap-8 bg-background/30 backdrop-blur-xl border border-white/10 rounded-full px-8 py-4">
-        <span className="text-sm font-sans text-primary font-medium">
+      {/* Slide Controls - futuristic */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex items-center gap-8 bg-background/20 backdrop-blur-2xl border border-white/10 rounded-full px-8 py-4 border-futuristic">
+        <span className="text-sm font-sans text-primary font-medium tabular-nums">
           {String(current + 1).padStart(2, "0")} <span className="text-foreground/40">/ {String(slides.length).padStart(2, "0")}</span>
         </span>
         <div className="flex gap-3">
@@ -151,9 +227,13 @@ const HeroSlider = () => {
             <motion.button
               key={i}
               onClick={() => setCurrent(i)}
-              whileHover={{ scale: 1.2 }}
+              whileHover={{ scale: 1.3 }}
               whileTap={{ scale: 0.95 }}
-              className={`rounded-full transition-all duration-500 ${i === current ? "w-10 h-2 bg-primary" : "w-2 h-2 bg-foreground/20 hover:bg-foreground/40"}`}
+              className={`rounded-full transition-all duration-500 ${
+                i === current
+                  ? "w-10 h-2 bg-primary shadow-[0_0_12px_hsl(38,45%,60%,0.5)]"
+                  : "w-2 h-2 bg-foreground/20 hover:bg-foreground/40"
+              }`}
             />
           ))}
         </div>

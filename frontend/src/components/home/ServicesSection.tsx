@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Check, Sparkles, Snowflake, Sun, Heart, Flower2, Scissors, Syringe, Diamond, Scan, Scale, CircleDot, Palette, Hourglass, Radio, EyeOff, Lock, Eraser, Trash2, CircleX, Pill, Microscope, Dumbbell } from "lucide-react";
 import { Link } from "react-router-dom";
+import ScrollReveal from "@/components/effects/ScrollReveal";
 import serviceLaser from "@/assets/service-laser-gen.jpg";
 import serviceCoolsculpting from "@/assets/service-cool-gen.jpg";
 import serviceSkin from "@/assets/service-skin-gen.jpg";
@@ -274,85 +275,140 @@ const ServicesSection = () => {
   const tab = tabs[active];
 
   return (
-    <section className="py-24 bg-background">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-12">
+    <section className="py-24 bg-background relative overflow-hidden">
+      <div className="absolute inset-0 grid-bg opacity-20" />
+
+      <div className="relative z-10 container mx-auto px-6">
+        <ScrollReveal direction="up" className="text-center mb-12">
           <p className="eyebrow mb-4">Our Expertise</p>
           <h2 className="font-serif text-4xl md:text-6xl text-foreground">
-            All <em className="text-primary">Services</em>
+            All <em className="holographic-text" style={{ fontStyle: "italic" }}>Services</em>
           </h2>
-        </div>
+        </ScrollReveal>
 
         {/* Tab Pills */}
-        <div className="flex flex-wrap justify-center gap-2 mb-16">
+        <ScrollReveal direction="up" delay={0.2} className="flex flex-wrap justify-center gap-2 mb-16">
           {tabs.map((t, i) => (
-            <button
+            <motion.button
               key={t.id}
               onClick={() => setActive(i)}
-              className={`px-4 py-2 text-xs font-sans uppercase tracking-[0.1em] rounded-full border transition-all ${
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className={`px-4 py-2 text-xs font-sans uppercase tracking-[0.1em] rounded-full border transition-all duration-300 ${
                 i === active
-                  ? "bg-primary text-primary-foreground border-primary"
-                  : "border-border text-muted-foreground hover:border-primary hover:text-primary"
+                  ? "bg-primary text-primary-foreground border-primary shadow-[0_0_15px_hsl(38,45%,60%,0.3)]"
+                  : "border-primary/10 text-muted-foreground hover:border-primary/40 hover:text-primary"
               }`}
             >
               {t.label}
-            </button>
+            </motion.button>
           ))}
-        </div>
+        </ScrollReveal>
 
         {/* Tab Content */}
         <AnimatePresence mode="wait">
           <motion.div
             key={active}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.4 }}
+            initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
+            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            exit={{ opacity: 0, y: -20, filter: "blur(8px)" }}
+            transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="grid md:grid-cols-2 gap-12 items-center"
           >
             {/* Visual */}
             <div className="relative">
-              <div className="aspect-[4/3] bg-secondary rounded-2xl overflow-hidden relative group">
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.4 }}
+                className="aspect-[4/3] bg-secondary rounded-2xl overflow-hidden relative group border-futuristic"
+              >
                 <img
                   src={tab.image}
                   alt={tab.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
-                {/* Decorative frame corners */}
+                <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-transparent" />
+                {/* Scanline effect */}
+                <div className="absolute inset-0 scanlines opacity-30" />
+                {/* Corner accents */}
                 <div className="absolute top-4 left-4 w-12 h-12 border-t-2 border-l-2 border-primary/40" />
                 <div className="absolute bottom-4 right-4 w-12 h-12 border-b-2 border-r-2 border-primary/40" />
                 {/* Badge */}
-                <div className="absolute top-6 right-6 bg-primary/90 backdrop-blur-sm text-primary-foreground text-xs px-4 py-1.5 rounded-full font-sans uppercase tracking-wider">
+                <motion.div
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.3 }}
+                  className="absolute top-6 right-6 bg-primary/90 backdrop-blur-sm text-primary-foreground text-xs px-4 py-1.5 rounded-full font-sans uppercase tracking-wider shadow-[0_0_15px_hsl(38,45%,60%,0.3)]"
+                >
                   {tab.badge}
-                </div>
+                </motion.div>
                 {/* Floating icon */}
-                <div className="absolute bottom-6 left-6 w-14 h-14 bg-card/80 backdrop-blur-sm rounded-xl flex items-center justify-center border border-border">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4 }}
+                  className="absolute bottom-6 left-6 w-14 h-14 bg-card/80 backdrop-blur-sm rounded-xl flex items-center justify-center border border-primary/20 shadow-[0_0_20px_hsl(38,45%,60%,0.1)]"
+                >
                   <tab.icon size={24} className="text-primary" />
-                </div>
-              </div>
+                </motion.div>
+              </motion.div>
             </div>
 
             {/* Content */}
             <div>
-              <h3 className="font-serif text-3xl md:text-4xl text-foreground mb-4">{tab.title}</h3>
-              <p className="text-muted-foreground leading-relaxed mb-6">{tab.desc}</p>
+              <motion.h3
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 }}
+                className="font-serif text-3xl md:text-4xl text-foreground mb-4"
+              >
+                {tab.title}
+              </motion.h3>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+                className="text-muted-foreground leading-relaxed mb-6"
+              >
+                {tab.desc}
+              </motion.p>
               <ul className="space-y-3 mb-6">
                 {tab.features.map((f, i) => (
-                  <li key={i} className="flex items-center gap-3 text-sm text-foreground/80">
-                    <Check size={14} className="text-primary flex-shrink-0" /> {f}
-                  </li>
+                  <motion.li
+                    key={i}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.3 + i * 0.05 }}
+                    className="flex items-center gap-3 text-sm text-foreground/80"
+                  >
+                    <div className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                      <Check size={12} className="text-primary" />
+                    </div>
+                    {f}
+                  </motion.li>
                 ))}
               </ul>
-              <p className="text-primary font-sans text-sm uppercase tracking-[0.15em] mb-8">Contact us for a personalized quote</p>
-              <div className="flex flex-wrap gap-4">
-                <Link to={tab.link} className="gold-shimmer text-primary-foreground px-6 py-3 text-sm font-sans uppercase tracking-[0.1em] rounded-full inline-flex items-center gap-2 hover:scale-105 transition-transform">
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.5 }}
+                className="text-primary font-sans text-sm uppercase tracking-[0.15em] mb-8"
+              >
+                Contact us for a personalized quote
+              </motion.p>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6 }}
+                className="flex flex-wrap gap-4"
+              >
+                <Link to={tab.link} className="gold-shimmer text-primary-foreground px-6 py-3 text-sm font-sans uppercase tracking-[0.1em] rounded-full inline-flex items-center gap-2 hover:scale-105 transition-transform hover:shadow-[0_0_20px_hsl(38,45%,60%,0.3)]">
                   Learn More <ArrowRight size={16} />
                 </Link>
-                <Link to="/contact" className="border border-border text-foreground px-6 py-3 text-sm font-sans uppercase tracking-[0.1em] rounded-full hover:border-primary hover:text-primary transition-colors">
+                <Link to="/contact" className="btn-neon text-foreground px-6 py-3 text-sm font-sans uppercase tracking-[0.1em] rounded-full hover:text-primary transition-colors">
                   Get Quote
                 </Link>
-              </div>
+              </motion.div>
             </div>
           </motion.div>
         </AnimatePresence>
