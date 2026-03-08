@@ -29,9 +29,9 @@ const TestimonialsSection = () => {
   }, [next, current]);
 
   return (
-    <section id="testimonials" className="py-24 bg-background relative overflow-hidden">
+    <section id="testimonials" className="py-28 bg-aurora-section relative overflow-hidden light-rays">
       <AuroraMesh intensity="medium" />
-      <div className="absolute inset-0 grid-bg opacity-20" />
+      <div className="absolute inset-0 grid-bg opacity-15" />
 
       <div className="relative z-10 container mx-auto px-6">
         <ScrollReveal direction="up" className="text-center mb-16">

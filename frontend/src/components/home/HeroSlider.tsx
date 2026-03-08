@@ -200,19 +200,19 @@ const HeroSlider = () => {
 
   return (
     <section
-      className="relative h-screen overflow-hidden scanlines"
+      className="relative h-screen overflow-hidden"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       aria-label="Hero slideshow"
     >
-      {/* Background Image with parallax-like zoom */}
+      {/* Background Image with dramatic zoom */}
       <AnimatePresence mode="wait">
         <motion.div
           key={current}
-          initial={{ opacity: 0, scale: 1.15 }}
+          initial={{ opacity: 0, scale: 1.2 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.95 }}
-          transition={{ duration: 1.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+          transition={{ duration: 1.8, ease: [0.25, 0.46, 0.45, 0.94] }}
           className="absolute inset-0"
         >
           <img
@@ -223,7 +223,10 @@ const HeroSlider = () => {
             decoding={current === 0 ? "sync" : "async"}
           />
           <div className={`absolute inset-0 bg-gradient-to-r ${slide.overlay}`} />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/30" />
+          {/* Cinematic letterbox bars */}
+          <div className="absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-background/60 to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-background via-background/80 to-transparent" />
         </motion.div>
       </AnimatePresence>
 
@@ -319,11 +322,11 @@ const HeroSlider = () => {
               </motion.div>
 
               {/* Headline */}
-              <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light text-foreground leading-[1.08] mb-1 tracking-tight">
+              <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light text-foreground leading-[1.08] mb-1 tracking-tight text-glow">
                 <AnimatedText text={slide.headline} className="" reduced={reduced} />
               </h1>
               <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light italic leading-[1.08] mb-6 tracking-tight">
-                <AnimatedText text={slide.accent} className="holographic-text" reduced={reduced} />
+                <AnimatedText text={slide.accent} className="holographic-text text-glow-strong" reduced={reduced} />
               </h1>
 
               {/* Subtitle */}

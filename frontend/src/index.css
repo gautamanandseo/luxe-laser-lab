@@ -38,14 +38,24 @@
     --gold: 38 45% 60%;
     --gold-light: 38 50% 75%;
     --gold-dark: 38 40% 40%;
+    --gold-glow: 38 55% 65%;
     --obsidian: 0 0% 3%;
     --obsidian-light: 0 0% 8%;
     --navy: 220 60% 5%;
     --burgundy: 350 60% 5%;
     --cream: 30 20% 93%;
+    --rose: 350 50% 55%;
+    --rose-light: 350 60% 70%;
+    --sapphire: 220 70% 55%;
 
     --font-serif: 'Cormorant Garamond', Georgia, serif;
     --font-sans: 'Montserrat', system-ui, sans-serif;
+
+    /* Premium gradients */
+    --gradient-luxury: linear-gradient(135deg, hsl(38 45% 60%) 0%, hsl(38 55% 75%) 40%, hsl(350 50% 55%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(0 0% 3%) 0%, hsl(220 60% 5%) 50%, hsl(350 60% 5%) 100%);
+    --shadow-gold: 0 10px 40px -10px hsl(38 45% 60% / 0.3);
+    --shadow-dramatic: 0 25px 60px -15px hsl(0 0% 0% / 0.5), 0 0 40px hsl(38 45% 60% / 0.08);
 
     --sidebar-background: 0 0% 5%;
     --sidebar-foreground: 30 20% 93%;
@@ -514,4 +524,205 @@
   .transition-premium {
     @apply transition-all duration-300 ease-out;
   }
+}
+
+/* === STUNNING MEGA EFFECTS === */
+
+/* Cinematic text glow for hero headlines */
+.text-glow {
+  text-shadow:
+    0 0 20px hsl(38 45% 60% / 0.3),
+    0 0 60px hsl(38 45% 60% / 0.15),
+    0 0 100px hsl(38 45% 60% / 0.08);
+}
+
+.text-glow-strong {
+  text-shadow:
+    0 0 10px hsl(38 45% 60% / 0.5),
+    0 0 40px hsl(38 45% 60% / 0.3),
+    0 0 80px hsl(38 45% 60% / 0.15),
+    0 0 120px hsl(38 55% 65% / 0.1);
+}
+
+/* Liquid glass morphism */
+.liquid-glass {
+  background: linear-gradient(
+    135deg,
+    hsl(0 0% 100% / 0.04) 0%,
+    hsl(0 0% 100% / 0.02) 50%,
+    hsl(38 45% 60% / 0.03) 100%
+  );
+  backdrop-filter: blur(40px) saturate(2) brightness(1.1);
+  -webkit-backdrop-filter: blur(40px) saturate(2) brightness(1.1);
+  border: 1px solid hsl(0 0% 100% / 0.06);
+  box-shadow:
+    0 8px 32px hsl(0 0% 0% / 0.3),
+    inset 0 1px 0 hsl(0 0% 100% / 0.05),
+    inset 0 -1px 0 hsl(0 0% 0% / 0.1);
+}
+
+/* Dramatic section backgrounds */
+.bg-cosmic {
+  background:
+    radial-gradient(ellipse at 20% 50%, hsl(220 70% 55% / 0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, hsl(350 50% 55% / 0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 100%, hsl(38 45% 60% / 0.06) 0%, transparent 40%),
+    hsl(var(--background));
+}
+
+.bg-aurora-section {
+  background:
+    radial-gradient(ellipse at 0% 0%, hsl(280 30% 40% / 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 100% 100%, hsl(38 45% 60% / 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, hsl(220 70% 55% / 0.03) 0%, transparent 50%),
+    hsl(var(--background));
+}
+
+/* Golden light rays */
+@keyframes light-rays {
+  0% { transform: rotate(0deg); opacity: 0.03; }
+  50% { opacity: 0.06; }
+  100% { transform: rotate(360deg); opacity: 0.03; }
+}
+
+.light-rays::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  right: -50%;
+  bottom: -50%;
+  background: conic-gradient(
+    from 0deg at 50% 50%,
+    transparent 0deg,
+    hsl(38 45% 60% / 0.04) 30deg,
+    transparent 60deg,
+    hsl(38 45% 60% / 0.03) 120deg,
+    transparent 150deg,
+    hsl(38 45% 60% / 0.04) 210deg,
+    transparent 240deg,
+    hsl(38 45% 60% / 0.03) 300deg,
+    transparent 330deg,
+    hsl(38 45% 60% / 0.04) 360deg
+  );
+  animation: light-rays 40s linear infinite;
+  pointer-events: none;
+}
+
+/* Premium card with refraction */
+.card-refraction {
+  position: relative;
+  overflow: hidden;
+}
+.card-refraction::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(
+    from 180deg,
+    transparent 0%,
+    hsl(38 45% 60% / 0.06) 10%,
+    transparent 20%,
+    hsl(350 50% 55% / 0.04) 30%,
+    transparent 40%
+  );
+  animation: border-spin 12s linear infinite;
+  pointer-events: none;
+}
+
+/* Magnetic gradient follows mouse - enhanced */
+.gradient-spotlight {
+  background: radial-gradient(
+    800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    hsl(38 45% 60% / 0.08) 0%,
+    hsl(350 50% 55% / 0.03) 25%,
+    transparent 50%
+  );
+}
+
+/* Staggered text reveal */
+@keyframes text-reveal {
+  0% { clip-path: inset(0 100% 0 0); }
+  100% { clip-path: inset(0 0% 0 0); }
+}
+
+.text-reveal {
+  animation: text-reveal 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+/* Prismatic border effect */
+@keyframes prismatic {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.border-prismatic {
+  position: relative;
+  border: 1px solid transparent;
+}
+.border-prismatic::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(
+    90deg,
+    hsl(38 45% 60% / 0.3),
+    hsl(350 50% 55% / 0.2),
+    hsl(220 70% 55% / 0.2),
+    hsl(38 55% 75% / 0.3),
+    hsl(38 45% 60% / 0.3)
+  );
+  background-size: 300% 100%;
+  animation: prismatic 6s ease-in-out infinite;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  padding: 1px;
+  pointer-events: none;
+}
+
+/* Ethereal floating particles (pure CSS) */
+@keyframes ethereal-float {
+  0%, 100% { transform: translateY(0) translateX(0) scale(1); opacity: 0; }
+  10% { opacity: 0.6; }
+  90% { opacity: 0.6; }
+  50% { transform: translateY(-100px) translateX(20px) scale(1.5); }
+}
+
+/* Dramatic entrance for sections */
+@keyframes section-reveal {
+  0% { opacity: 0; transform: translateY(40px) scale(0.98); filter: blur(10px); }
+  100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0px); }
+}
+
+/* Super smooth scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--gold) / 0.3);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--gold) / 0.5);
+}
+
+/* Selection color */
+::selection {
+  background: hsl(var(--gold) / 0.3);
+  color: hsl(var(--foreground));
+}
+
+/* Focus visible ring */
+:focus-visible {
+  outline: 2px solid hsl(var(--gold) / 0.5);
+  outline-offset: 2px;
 }

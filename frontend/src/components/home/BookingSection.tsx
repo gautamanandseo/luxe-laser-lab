@@ -18,9 +18,9 @@ const BookingSection = () => {
   const inputClass = "w-full bg-muted/50 border border-primary/10 rounded-lg px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:shadow-[0_0_15px_hsl(38,45%,60%,0.1)] transition-all duration-300";
 
   return (
-    <section id="booking" className="py-24 bg-background relative overflow-hidden">
-      <ParticleField count={15} className="opacity-20" />
-      <div className="absolute inset-0 grid-bg opacity-20" />
+    <section id="booking" className="py-28 bg-cosmic relative overflow-hidden light-rays">
+      <ParticleField count={20} className="opacity-30" />
+      <div className="absolute inset-0 grid-bg opacity-15" />
 
       <div className="relative z-10 container mx-auto px-6">
         {/* Urgency banner */}

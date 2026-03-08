@@ -15,7 +15,6 @@ import BookingSection from "@/components/home/BookingSection";
 import SEOContentSection from "@/components/home/SEOContentSection";
 import ParallaxStorySection from "@/components/home/ParallaxStorySection";
 import LoyaltyTeaser from "@/components/home/LoyaltyTeaser";
-import LoyaltyTeaser from "@/components/home/LoyaltyTeaser";
 import SkinAnalysisWidget from "@/components/home/SkinAnalysisWidget";
 import GlowDivider from "@/components/effects/GlowDivider";
 

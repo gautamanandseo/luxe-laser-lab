@@ -15,10 +15,10 @@ const reasons = [
 ];
 
 const WhyChooseSection = () => (
-  <section className="py-24 bg-background relative overflow-hidden">
-    <AuroraMesh intensity="subtle" />
-    <div className="absolute inset-0 grid-bg opacity-50" />
-    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] radial-glow" />
+  <section className="py-28 bg-aurora-section relative overflow-hidden light-rays">
+    <AuroraMesh intensity="medium" />
+    <div className="absolute inset-0 grid-bg opacity-30" />
+    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] radial-glow" />
 
     <div className="relative z-10 container mx-auto px-6">
       <ScrollReveal direction="up" className="text-center mb-16">
