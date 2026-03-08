@@ -405,19 +405,21 @@ const ServicePage = ({ service }: ServicePageProps) => {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {data.benefits.map((benefit, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="group p-8 bg-card rounded-2xl border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5"
-              >
-                <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
-                  <benefit.icon size={24} className="text-primary" />
-                </div>
-                <h3 className="font-serif text-xl text-foreground mb-3">{benefit.title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">{benefit.description}</p>
+              <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}>
+                <Tilt3DCard maxTilt={8} className="h-full">
+                  <div className="group p-8 bg-card/50 backdrop-blur-sm rounded-2xl border border-primary/10 hover:border-primary/40 transition-all duration-300 depth-shadow shimmer-sweep overflow-hidden relative h-full">
+                    <div className="absolute top-0 left-0 w-0 h-[2px] bg-gradient-to-r from-primary to-primary/0 group-hover:w-full transition-all duration-700" />
+                    <div className="relative z-10">
+                      <motion.div whileHover={{ rotate: 10, scale: 1.15 }}
+                        className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary/20 group-hover:shadow-[0_0_25px_hsl(38,45%,60%,0.3)] transition-all"
+                      >
+                        <benefit.icon size={24} className="text-primary" />
+                      </motion.div>
+                      <h3 className="font-serif text-xl text-foreground mb-3 group-hover:text-primary transition-colors">{benefit.title}</h3>
+                      <p className="text-muted-foreground text-sm leading-relaxed">{benefit.description}</p>
+                    </div>
+                  </div>
+                </Tilt3DCard>
               </motion.div>
             ))}
           </div>
