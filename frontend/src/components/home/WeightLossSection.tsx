@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Check, Scale, Target, Zap, Shield, TrendingDown, Clock, Heart, Users, Dumbbell, Apple, Activity } from "lucide-react";
+import { ArrowRight, Check, Scale, Target, Zap, Shield, TrendingDown, Clock, Heart, Users, Dumbbell, Apple, Activity, MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const benefits = [
@@ -238,17 +238,133 @@ const WeightLossSection = () => (
         </div>
       </div>
 
-      {/* Serving Areas */}
+      {/* Serving Areas - Advanced 3D Area Map */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="bg-card border border-border rounded-2xl p-8 mb-16 text-center"
+        className="relative mb-16 rounded-2xl border border-primary/15 bg-card/50 backdrop-blur-sm overflow-hidden depth-shadow"
       >
-        <h4 className="font-serif text-2xl text-foreground mb-4">Serving All of Delhi NCR</h4>
-        <p className="text-muted-foreground text-sm leading-relaxed max-w-3xl mx-auto">
-          Located in <strong className="text-foreground">Pitampura, North Delhi</strong>, Empathy Laser Clinic is easily accessible from Rohini, Model Town, Shalimar Bagh, Ashok Vihar, Paschim Vihar, Punjabi Bagh, Dwarka, Gurgaon, Noida, Greater Noida, Faridabad, and Ghaziabad. We welcome patients from across Delhi NCR seeking the best non-surgical weight loss treatment.
-        </p>
+        {/* Background effects */}
+        <div className="absolute inset-0 grid-bg opacity-15" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-primary/[0.04] rounded-full blur-[80px]" />
+        <div className="absolute inset-0 noise" />
+
+        <div className="relative z-10 p-8 md:p-12">
+          {/* Header */}
+          <div className="text-center mb-8">
+            <span className="eyebrow">Coverage Area</span>
+            <h4 className="font-serif text-2xl md:text-3xl text-foreground mt-3 mb-3">Serving All of Delhi NCR</h4>
+            <p className="text-muted-foreground text-sm max-w-2xl mx-auto">
+              Located in <strong className="text-foreground">Pitampura, North Delhi</strong> — easily accessible within 25 km from all major localities across Delhi NCR.
+            </p>
+          </div>
+
+          {/* Area zones */}
+          {(() => {
+            const zones = [
+              {
+                zone: "North Delhi",
+                color: "from-primary/20 to-primary/5",
+                borderColor: "border-primary/25 hover:border-primary/50",
+                glowColor: "group-hover:shadow-[0_0_25px_hsl(38,45%,60%,0.15)]",
+                areas: ["Pitampura", "Rohini", "Model Town", "Shalimar Bagh", "Ashok Vihar", "Civil Lines", "GTB Nagar", "Mukherjee Nagar", "Kingsway Camp", "Adarsh Nagar", "Azadpur", "Wazirpur", "Jahangirpuri"],
+              },
+              {
+                zone: "West Delhi",
+                color: "from-[hsl(280,40%,50%,0.15)] to-[hsl(280,40%,50%,0.03)]",
+                borderColor: "border-[hsl(280,40%,50%,0.2)] hover:border-[hsl(280,40%,50%,0.4)]",
+                glowColor: "group-hover:shadow-[0_0_25px_hsl(280,40%,50%,0.12)]",
+                areas: ["Paschim Vihar", "Punjabi Bagh", "Rajouri Garden", "Janakpuri", "Dwarka", "Vikaspuri", "Tilak Nagar", "Moti Nagar", "Kirti Nagar", "Patel Nagar", "Karol Bagh", "Hari Nagar"],
+              },
+              {
+                zone: "South Delhi",
+                color: "from-[hsl(170,50%,40%,0.15)] to-[hsl(170,50%,40%,0.03)]",
+                borderColor: "border-[hsl(170,50%,40%,0.2)] hover:border-[hsl(170,50%,40%,0.4)]",
+                glowColor: "group-hover:shadow-[0_0_25px_hsl(170,50%,40%,0.12)]",
+                areas: ["Vasant Kunj", "Vasant Vihar", "Saket", "Greater Kailash", "Defence Colony", "Hauz Khas", "Green Park", "Lajpat Nagar", "Chanakyapuri", "Mehrauli", "Malviya Nagar", "Safdarjung Enclave"],
+              },
+              {
+                zone: "Central & East Delhi",
+                color: "from-[hsl(35,70%,50%,0.15)] to-[hsl(35,70%,50%,0.03)]",
+                borderColor: "border-[hsl(35,70%,50%,0.2)] hover:border-[hsl(35,70%,50%,0.4)]",
+                glowColor: "group-hover:shadow-[0_0_25px_hsl(35,70%,50%,0.12)]",
+                areas: ["Connaught Place", "Chandni Chowk", "Preet Vihar", "Laxmi Nagar", "Mayur Vihar", "IP Extension", "Shahdara", "Vivek Vihar", "Anand Vihar", "Karkardooma"],
+              },
+              {
+                zone: "NCR – Gurgaon & Beyond",
+                color: "from-[hsl(210,50%,50%,0.15)] to-[hsl(210,50%,50%,0.03)]",
+                borderColor: "border-[hsl(210,50%,50%,0.2)] hover:border-[hsl(210,50%,50%,0.4)]",
+                glowColor: "group-hover:shadow-[0_0_25px_hsl(210,50%,50%,0.12)]",
+                areas: ["Gurgaon", "DLF Phase 1-5", "Sohna Road", "Golf Course Road", "MG Road Gurgaon", "Noida", "Greater Noida", "Faridabad", "Ghaziabad", "Indirapuram"],
+              },
+            ];
+
+            return (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {zones.map((z, zi) => (
+                  <motion.div
+                    key={z.zone}
+                    initial={{ opacity: 0, y: 15, rotateX: -5 }}
+                    whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: zi * 0.08 }}
+                    whileHover={{ y: -4, scale: 1.02 }}
+                    className={`group relative rounded-xl border ${z.borderColor} bg-gradient-to-br ${z.color} p-5 transition-all duration-500 cursor-default ${z.glowColor}`}
+                    style={{ perspective: 800, transformStyle: "preserve-3d" }}
+                  >
+                    {/* Shimmer sweep on hover */}
+                    <div className="absolute inset-0 rounded-xl overflow-hidden pointer-events-none">
+                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.04] to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+                    </div>
+
+                    <div className="relative z-10">
+                      <div className="flex items-center gap-2 mb-3">
+                        <div className="w-2 h-2 rounded-full bg-primary animate-gold-pulse" />
+                        <h5 className="text-sm font-sans font-semibold text-foreground tracking-wide">{z.zone}</h5>
+                      </div>
+                      <div className="flex flex-wrap gap-1.5">
+                        {z.areas.map((area) => (
+                          <span
+                            key={area}
+                            className="inline-block px-2.5 py-1 text-[11px] rounded-full bg-background/40 border border-white/[0.06] text-muted-foreground hover:text-foreground hover:border-primary/30 hover:bg-primary/5 transition-all duration-200 cursor-default"
+                          >
+                            {area}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+
+                {/* Center highlight card */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.4 }}
+                  className="relative rounded-xl border border-primary/20 bg-gradient-to-br from-primary/10 to-primary/[0.02] p-5 flex flex-col items-center justify-center text-center group hover:border-primary/40 transition-all duration-500 hover:shadow-[0_0_30px_hsl(38,45%,60%,0.15)]"
+                >
+                  <div className="absolute inset-0 rounded-xl overflow-hidden pointer-events-none">
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/[0.06] to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+                  </div>
+                  <div className="relative z-10">
+                    <motion.div
+                      animate={{ scale: [1, 1.1, 1] }}
+                      transition={{ duration: 3, repeat: Infinity }}
+                      className="w-14 h-14 rounded-full border-2 border-primary/30 flex items-center justify-center mb-3 mx-auto bg-primary/5"
+                    >
+                      <MapPin className="text-primary" size={22} />
+                    </motion.div>
+                    <p className="text-2xl font-serif text-foreground mb-1">60+</p>
+                    <p className="text-xs text-muted-foreground uppercase tracking-wider">Areas Covered</p>
+                    <p className="text-[11px] text-muted-foreground mt-2">Within 25 km of Pitampura</p>
+                  </div>
+                </motion.div>
+              </div>
+            );
+          })()}
+        </div>
       </motion.div>
 
       {/* CTA */}
