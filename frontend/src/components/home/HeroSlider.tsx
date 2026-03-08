@@ -30,6 +30,16 @@ const slides = [
     overlay: "from-[hsl(210,60%,5%)/90] via-[hsl(210,60%,5%)/60] to-transparent",
   },
   {
+    tag: "Allergan Certified · Natural Results",
+    headline: "Botox &",
+    accent: "Dermal Fillers",
+    subtitle: "GENUINE ALLERGAN PRODUCTS · CERTIFIED PHYSICIANS",
+    desc: "Natural-looking Botox & premium dermal fillers administered by certified aesthetic physicians in Delhi. Forehead lines, crow's feet, lip enhancement & jawline contouring.",
+    cta1: { text: "Book Consultation", link: "/contact" },
+    cta2: { text: "View Treatments", link: "/botox-fillers" },
+    overlay: "from-[hsl(280,30%,5%)/90] via-[hsl(280,30%,5%)/60] to-transparent",
+  },
+  {
     tag: "Advanced Skin Science",
     headline: "Radiant Skin",
     accent: "Rejuvenation",
@@ -40,6 +50,26 @@ const slides = [
     overlay: "from-[hsl(150,40%,4%)/90] via-[hsl(150,40%,4%)/60] to-transparent",
   },
   {
+    tag: "Non-Surgical · Zero Downtime",
+    headline: "Weight Loss &",
+    accent: "Body Contouring",
+    subtitle: "DELHI NCR'S #1 FAT REDUCTION CLINIC",
+    desc: "Transform your body without surgery. CoolSculpting® Elite, RF tightening, and targeted inch-loss programs — permanent fat cell elimination with zero downtime.",
+    cta1: { text: "Free Body Assessment", link: "/contact" },
+    cta2: { text: "Weight Loss Delhi", link: "/weight-loss-delhi" },
+    overlay: "from-[hsl(220,40%,5%)/90] via-[hsl(220,40%,5%)/60] to-transparent",
+  },
+  {
+    tag: "PRP Therapy · FUE Transplant",
+    headline: "Hair Restoration",
+    accent: "& Regrowth",
+    subtitle: "ADVANCED TRICHOLOGY · MEN & WOMEN",
+    desc: "Stop hair loss and regrow thicker hair with PRP therapy, mesotherapy, and FUE hair transplant in Delhi. Effective solutions for men and women.",
+    cta1: { text: "Book Hair Analysis", link: "/contact" },
+    cta2: { text: "Hair Treatments", link: "/hair-loss-treatment" },
+    overlay: "from-[hsl(30,50%,5%)/90] via-[hsl(30,50%,5%)/60] to-transparent",
+  },
+  {
     tag: "Complete Bridal Beauty",
     headline: "Your Most",
     accent: "Beautiful Day",
@@ -48,6 +78,16 @@ const slides = [
     cta1: { text: "Bridal Consultation", link: "/contact" },
     cta2: { text: "View Packages", link: "/bridal-packages" },
     overlay: "from-[hsl(350,40%,4%)/90] via-[hsl(350,40%,4%)/60] to-transparent",
+  },
+  {
+    tag: "HydraFacial · LED Therapy · Oxygen Infusion",
+    headline: "Luxury",
+    accent: "Facials",
+    subtitle: "CLINICAL-GRADE SKINCARE EXPERIENCE",
+    desc: "Signature HydraFacials, LED light therapy, oxygen infusion, and medical-grade peels — clinical facial treatments that deliver visible, lasting glow from session one.",
+    cta1: { text: "Book Facial", link: "/contact" },
+    cta2: { text: "Facial Treatments", link: "/facials" },
+    overlay: "from-[hsl(15,40%,5%)/90] via-[hsl(15,40%,5%)/60] to-transparent",
   },
 ];
 
@@ -95,10 +135,23 @@ const HeroSlider = () => {
     const timer = setTimeout(() => {
       Promise.all([
         import("@/assets/hero-coolsculpting-gen.jpg"),
+        import("@/assets/hero-botox-gen.jpg"),
         import("@/assets/hero-skin-gen.jpg"),
+        import("@/assets/hero-weightloss-gen.jpg"),
+        import("@/assets/hero-hairloss-gen.jpg"),
         import("@/assets/hero-bridal-gen.jpg"),
-      ]).then(([cool, skin, bridal]) => {
-        setLoadedImages(prev => ({ ...prev, 1: cool.default, 2: skin.default, 3: bridal.default }));
+        import("@/assets/hero-facial-gen.jpg"),
+      ]).then(([cool, botox, skin, weightloss, hairloss, bridal, facial]) => {
+        setLoadedImages(prev => ({
+          ...prev,
+          1: cool.default,
+          2: botox.default,
+          3: skin.default,
+          4: weightloss.default,
+          5: hairloss.default,
+          6: bridal.default,
+          7: facial.default,
+        }));
       });
     }, 1000);
     return () => clearTimeout(timer);
