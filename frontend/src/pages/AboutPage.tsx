@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import { Award, Heart, Users, Shield, Star, CheckCircle, Sparkles, Target, Clock, TrendingUp } from "lucide-react";
 import { Link } from "react-router-dom";
+import galleryClinic2 from "@/assets/gallery-clinic-2.jpg";
+import galleryClinic1 from "@/assets/gallery-clinic-1.jpg";
 
 const values = [
   { icon: Heart, title: "Empathy First", desc: "The 'Empathy' in our name reflects our commitment to understanding every client's unique needs and concerns." },
@@ -45,7 +47,7 @@ const AboutPage = () => (
       {/* Background */}
       <div className="absolute inset-0">
         <img
-          src="https://images.unsplash.com/photo-1629380106682-6736d2c327ed?w=1920&q=80"
+          src={galleryClinic2}
           alt="Empathy Laser Clinic"
           className="w-full h-full object-cover"
         />
@@ -233,7 +235,7 @@ const AboutPage = () => (
           >
             <div className="aspect-square rounded-2xl overflow-hidden relative">
               <img
-                src="https://images.unsplash.com/photo-1683408640631-2c99fff964d7?w=800&q=80"
+                src={galleryClinic1}
                 alt="Our Mission"
                 className="w-full h-full object-cover"
               />

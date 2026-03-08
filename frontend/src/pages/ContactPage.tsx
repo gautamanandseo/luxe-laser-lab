@@ -42,7 +42,7 @@ const ContactPage = () => {
       <section className="relative min-h-[50vh] flex items-center overflow-hidden">
         {/* Background */}
         <div className="absolute inset-0">
-          <img
+        <img
             src="https://images.unsplash.com/photo-1595871151608-bc7abd1caca3?w=1920&q=80"
             alt="Contact Empathy Laser Clinic"
             className="w-full h-full object-cover"
@@ -150,28 +150,24 @@ const ContactPage = () => {
               </motion.div>
 
               {/* Map */}
-              <motion.a
-                href="https://maps.app.goo.gl/DQ6ALz6CcUeS557f9"
-                target="_blank"
-                rel="noopener noreferrer"
+              <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="block relative aspect-video rounded-xl overflow-hidden group"
+                className="relative aspect-video rounded-xl overflow-hidden border border-border"
               >
-                <img
-                  src="https://images.unsplash.com/photo-1762625570087-6d98fca29531?w=800&q=80"
-                  alt="Clinic Location"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.123!2d77.1!3d28.6!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sEmpathy+Laser+Clinic!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Empathy Laser Clinic Location"
+                  className="absolute inset-0"
                 />
-                <div className="absolute inset-0 bg-background/60 flex items-center justify-center">
-                  <div className="text-center">
-                    <MapPin size={40} className="text-primary mx-auto mb-3" />
-                    <p className="text-foreground font-medium">View on Google Maps</p>
-                    <p className="text-sm text-muted-foreground">Click to get directions</p>
-                  </div>
-                </div>
-              </motion.a>
+              </motion.div>
 
               {/* Social Links */}
               <motion.div
