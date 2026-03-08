@@ -41,6 +41,15 @@ import baDarkcircles from "@/assets/ba-darkcircles.jpg";
 import baTattoo from "@/assets/ba-tattoo.jpg";
 import baLaserMen from "@/assets/ba-laser-men.jpg";
 import baResurfx2 from "@/assets/ba-resurfx2.jpg";
+import baLaserUnderarm from "@/assets/ba-laser-underarm.jpg";
+import baAcne from "@/assets/ba-acne.jpg";
+import baSkinlightening from "@/assets/ba-skinlightening.jpg";
+import baHifu from "@/assets/ba-hifu.jpg";
+import baSkintightening from "@/assets/ba-skintightening.jpg";
+import baMolewart from "@/assets/ba-molewart.jpg";
+import baHairtransplant from "@/assets/ba-hairtransplant.jpg";
+import baFacial from "@/assets/ba-facial.jpg";
+import baBotox2 from "@/assets/ba-botox2.jpg";
 
 const heroImages: Record<string, string> = {
   laser: heroLaserNew,
