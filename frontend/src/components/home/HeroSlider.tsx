@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ChevronRight, ChevronLeft, ArrowRight, Shield, Pause, Play } from "lucide-react";
 import { Link } from "react-router-dom";
 import ParticleField from "@/components/effects/ParticleField";
+import LiveViewerCounter from "@/components/LiveViewerCounter";
 import AuroraMesh from "@/components/effects/AuroraMesh";
 import { useReducedMotion } from "@/hooks/use-reduced-motion";
 import heroLaser from "@/assets/hero-laser-gen.jpg";
@@ -358,6 +359,16 @@ const HeroSlider = () => {
                 <Link to={slide.cta2.link} className="btn-neon text-foreground px-8 py-3.5 text-sm font-sans uppercase tracking-[0.15em] rounded-full inline-flex items-center gap-2 hover:text-primary transition-colors">
                   {slide.cta2.text} <ArrowRight size={16} />
                 </Link>
+              </motion.div>
+
+              {/* Live viewer counter */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1.2, duration: 0.5 }}
+                className="mt-6"
+              >
+                <LiveViewerCounter pageName="this treatment" />
               </motion.div>
             </motion.div>
           </AnimatePresence>

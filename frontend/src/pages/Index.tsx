@@ -13,6 +13,9 @@ import CertificationsStrip from "@/components/home/CertificationsStrip";
 import FAQSection from "@/components/home/FAQSection";
 import BookingSection from "@/components/home/BookingSection";
 import SEOContentSection from "@/components/home/SEOContentSection";
+import ParallaxStorySection from "@/components/home/ParallaxStorySection";
+import TreatmentCalculator from "@/components/home/TreatmentCalculator";
+import LoyaltyTeaser from "@/components/home/LoyaltyTeaser";
 import GlowDivider from "@/components/effects/GlowDivider";
 
 const Index = () => {
@@ -28,15 +31,21 @@ const Index = () => {
       <GlowDivider variant="subtle" />
       <CoolSculptingSection />
       <GlowDivider variant="gold" />
+      <TreatmentCalculator />
+      <GlowDivider variant="multi" />
       <WeightLossSection />
-      <GlowDivider variant="multi" />
-      <TechnologySection />
       <GlowDivider variant="subtle" />
-      <ProcessSection />
+      <TechnologySection />
       <GlowDivider variant="gold" />
-      <TestimonialsSection />
+      <ParallaxStorySection />
       <GlowDivider variant="multi" />
+      <ProcessSection />
+      <GlowDivider variant="subtle" />
+      <TestimonialsSection />
+      <GlowDivider variant="gold" />
       <GallerySection />
+      <GlowDivider variant="multi" />
+      <LoyaltyTeaser />
       <GlowDivider variant="subtle" />
       <CertificationsStrip />
       <GlowDivider variant="gold" />
