@@ -100,7 +100,7 @@ const tabs = [
     desc: "Specialized under-eye treatments targeting pigmentation, hollowness, and puffiness. We use fillers, PRP, peels, and laser toning for brighter, rejuvenated eyes.",
     features: ["Under-eye HA fillers", "PRP therapy for natural brightening", "Eye-safe chemical peels", "Root cause diagnosis", "Visible results from first session"],
     link: "/dark-circles",
-    image: serviceSkin,
+    image: serviceDarkcircles,
   },
   {
     id: "skintightening",
