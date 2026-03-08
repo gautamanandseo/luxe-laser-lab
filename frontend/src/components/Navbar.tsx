@@ -244,8 +244,9 @@ const Navbar = () => {
                       className="relative group"
                     >
                       <motion.span
-                        whileHover={{ y: -1 }}
-                        className={`block px-4 py-2 text-sm font-medium rounded-xl transition-all duration-300 ${
+                        whileHover={{ y: -2, scale: 1.04 }}
+                        whileTap={{ scale: 0.97 }}
+                        className={`block px-4 py-2 text-sm font-medium rounded-2xl transition-all duration-300 ${
                           location.pathname === link.path ? "text-primary" : "text-foreground/70 hover:text-foreground"
                         }`}
                       >
