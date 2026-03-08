@@ -133,7 +133,7 @@ const tabs = [
     desc: "Advanced FUE hair transplant for permanent, natural-looking hair restoration. No linear scar, minimally invasive, with PRP-enhanced graft survival.",
     features: ["Advanced FUE technique", "Natural hairline design", "No linear scar", "95%+ graft survival rate", "PRP-enhanced recovery"],
     link: "/hair-transplant",
-    image: serviceSalon,
+    image: serviceHairtransplant,
   },
   {
     id: "stretchmarks",
