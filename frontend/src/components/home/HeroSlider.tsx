@@ -135,10 +135,23 @@ const HeroSlider = () => {
     const timer = setTimeout(() => {
       Promise.all([
         import("@/assets/hero-coolsculpting-gen.jpg"),
+        import("@/assets/hero-botox-gen.jpg"),
         import("@/assets/hero-skin-gen.jpg"),
+        import("@/assets/hero-weightloss-gen.jpg"),
+        import("@/assets/hero-hairloss-gen.jpg"),
         import("@/assets/hero-bridal-gen.jpg"),
-      ]).then(([cool, skin, bridal]) => {
-        setLoadedImages(prev => ({ ...prev, 1: cool.default, 2: skin.default, 3: bridal.default }));
+        import("@/assets/hero-facial-gen.jpg"),
+      ]).then(([cool, botox, skin, weightloss, hairloss, bridal, facial]) => {
+        setLoadedImages(prev => ({
+          ...prev,
+          1: cool.default,
+          2: botox.default,
+          3: skin.default,
+          4: weightloss.default,
+          5: hairloss.default,
+          6: bridal.default,
+          7: facial.default,
+        }));
       });
     }, 1000);
     return () => clearTimeout(timer);
