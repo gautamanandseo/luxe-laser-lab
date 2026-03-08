@@ -1,45 +1,37 @@
 import { motion } from "framer-motion";
 
 const items = [
-  "Laser Hair Removal", "CoolSculpting®", "Botox & Fillers", "Lumenis LightSheer",
-  "Alma Soprano ICE", "Bridal Packages", "Skin Rejuvenation", "Body Contouring",
-  "HIFU Face Lift", "Hair Transplant", "Acne Treatment", "HydraFacial",
-  "Anti-Ageing", "Skin Lightening", "Dark Circles", "Microdermabrasion",
+  "Laser Hair Removal Delhi", "CoolSculpting® Delhi", "Weight Loss Clinic Delhi NCR", "Lumenis LightSheer",
+  "Alma Soprano ICE", "Botox & Fillers Delhi", "Bridal Packages Delhi", "Skin Rejuvenation Delhi",
+  "Body Contouring Delhi", "USFDA Cleared", "Non-Surgical Fat Reduction Delhi", "Hair Transplant Delhi",
+  "Acne Treatment Delhi", "Skin Lightening Delhi", "HIFU Face Lift Delhi", "Pitampura",
 ];
 
-const MarqueeRow = ({ reverse = false }: { reverse?: boolean }) => (
-  <div className="flex overflow-hidden">
-    <motion.div
-      className="flex shrink-0 gap-0"
-      animate={{ x: reverse ? ["0%", "-50%"] : ["-50%", "0%"] }}
-      transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-    >
-      {[...items, ...items].map((item, i) => (
-        <span
-          key={i}
-          className="flex items-center gap-6 px-6 text-[11px] font-sans uppercase tracking-[0.3em] text-foreground/40 whitespace-nowrap hover:text-primary/70 transition-colors duration-500"
-        >
-          {item}
-          <span className="w-1 h-1 rounded-full bg-primary/30" />
-        </span>
-      ))}
-    </motion.div>
-  </div>
-);
-
 const Marquee = () => (
-  <div className="relative overflow-hidden border-y border-foreground/[0.04]">
-    {/* Subtle gradient bg */}
-    <div className="absolute inset-0 bg-gradient-to-r from-background via-primary/[0.03] to-background" />
+  <div className="relative overflow-hidden">
+    {/* Multi-layer gradient background */}
+    <div className="absolute inset-0 bg-gradient-to-r from-[hsl(0,0%,2%)] via-primary/10 to-[hsl(0,0%,2%)]" />
+    <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent" />
 
-    <div className="relative py-5 space-y-3">
-      <MarqueeRow />
-      <MarqueeRow reverse />
+    {/* Top prismatic line */}
+    <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
+    {/* Bottom prismatic line */}
+    <div className="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[hsl(350,50%,55%,0.3)] via-primary/40 to-transparent" />
+
+    <div className="relative py-4">
+      <div className="flex animate-marquee whitespace-nowrap">
+        {[...items, ...items].map((item, i) => (
+          <span key={i} className="mx-6 text-xs font-sans uppercase tracking-[0.25em] text-foreground/60 font-medium">
+            {item}
+            <span className="mx-4 inline-block w-1 h-1 rounded-full bg-primary/50 align-middle" />
+          </span>
+        ))}
+      </div>
     </div>
 
     {/* Fade edges */}
-    <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-background to-transparent z-10" />
-    <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-background to-transparent z-10" />
+    <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-[hsl(0,0%,2%)] to-transparent z-10" />
+    <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-[hsl(0,0%,2%)] to-transparent z-10" />
   </div>
 );
 
