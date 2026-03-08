@@ -23,11 +23,11 @@ const stats = [
 ];
 
 const milestones = [
-  { year: "2009", title: "Foundation", desc: "Empathy Laser Clinic was established with a vision to bring world-class aesthetic treatments to Delhi NCR." },
-  { year: "2012", title: "Technology Upgrade", desc: "Became one of the first clinics in North India to invest in Lumenis LightSheer Desire — the world's gold standard laser." },
-  { year: "2016", title: "Excellence Award", desc: "Recognized as the Best Aesthetic Clinic in Delhi NCR. Added Alma Soprano ICE Platinum for pain-free laser treatments." },
-  { year: "2020", title: "CoolSculpting Elite", desc: "Introduced CoolSculpting® Elite for non-surgical weight loss and body contouring. Became Delhi's premier fat reduction clinic." },
-  { year: "2024", title: "25K Milestone", desc: "Celebrated 25,000+ successful treatments and expanded our team to 50+ trained professionals." },
+  { year: "2009", title: "Foundation in Delhi", desc: "Empathy Laser Clinic was established in Pitampura, Delhi with a vision to bring world-class aesthetic treatments to Delhi NCR. From day one, we committed to USFDA-cleared technology and genuine products." },
+  { year: "2012", title: "Technology Leader", desc: "Became one of the first clinics in North Delhi and Delhi NCR to invest in Lumenis LightSheer Desire — the world's gold standard for laser hair removal. Patients from Rohini, Shalimar Bagh, and across North Delhi began choosing us for painless, permanent hair reduction." },
+  { year: "2016", title: "Best Clinic in Delhi NCR", desc: "Recognized as the Best Aesthetic Clinic in Delhi NCR. Added Alma Soprano ICE Platinum for pain-free laser treatments. Expanded services to include Botox, fillers, and advanced dermatology." },
+  { year: "2020", title: "CoolSculpting Elite Delhi", desc: "Introduced CoolSculpting® Elite for non-surgical weight loss and body contouring, making Empathy the premier fat reduction and weight loss clinic in Delhi NCR." },
+  { year: "2024", title: "25K Milestone", desc: "Celebrated 25,000+ successful treatments. Expanded our team to 50+ trained professionals. Patients from Delhi, Noida, Gurugram, Ghaziabad, and Faridabad trust us for their aesthetic needs." },
 ];
 
 const team = [
