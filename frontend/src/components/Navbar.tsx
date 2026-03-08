@@ -291,8 +291,13 @@ const Navbar = () => {
 
             {/* Mobile Menu Toggle */}
             <motion.button
-              whileTap={{ scale: 0.9 }}
-              className="lg:hidden relative w-10 h-10 flex items-center justify-center rounded-xl border border-primary/20 text-foreground hover:text-primary hover:border-primary/40 transition-colors"
+              whileTap={{ scale: 0.92 }}
+              whileHover={{ scale: 1.05 }}
+              className="lg:hidden relative w-10 h-10 flex items-center justify-center rounded-2xl text-foreground hover:text-primary transition-all duration-300"
+              style={{
+                background: 'linear-gradient(180deg, hsl(var(--card)) 0%, hsl(var(--background)) 100%)',
+                boxShadow: '0 1px 0 0 hsl(0 0% 100% / 0.06) inset, 0 -1px 0 0 hsl(0 0% 0% / 0.3) inset, 0 2px 8px -2px hsl(0 0% 0% / 0.4), 0 0 0 1px hsl(var(--primary) / 0.12)',
+              }}
               onClick={() => setMobileOpen(!mobileOpen)}
             >
               <AnimatePresence mode="wait">
