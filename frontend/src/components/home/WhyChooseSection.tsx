@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import { Shield, Award, Users, Heart, Sparkles, Clock } from "lucide-react";
+import { Shield, Award, Users, Heart, Sparkles, Clock, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import ScrollReveal from "@/components/effects/ScrollReveal";
 import Tilt3DCard from "@/components/effects/Tilt3DCard";
 import AuroraMesh from "@/components/effects/AuroraMesh";
@@ -32,11 +33,8 @@ const WhyChooseSection = () => (
           <ScrollReveal key={i} direction="up" delay={i * 0.1}>
             <Tilt3DCard className="h-full" maxTilt={8}>
               <div className="group relative p-8 bg-card/50 backdrop-blur-sm border border-primary/10 rounded-2xl overflow-hidden hover:border-primary/40 transition-all duration-500 h-full depth-shadow shimmer-sweep">
-                {/* Hover glow */}
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 radial-glow" />
-                {/* Top border sweep */}
                 <div className="absolute top-0 left-0 w-0 h-[2px] bg-gradient-to-r from-primary to-primary/0 group-hover:w-full transition-all duration-700" />
-                {/* Bottom border sweep */}
                 <div className="absolute bottom-0 right-0 w-0 h-[2px] bg-gradient-to-l from-primary to-primary/0 group-hover:w-full transition-all duration-700 delay-200" />
 
                 <div className="relative z-10">
@@ -57,6 +55,18 @@ const WhyChooseSection = () => (
           </ScrollReveal>
         ))}
       </div>
+
+      {/* CTA */}
+      <ScrollReveal direction="up" delay={0.4} className="text-center mt-14">
+        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
+          <Link
+            to="/contact"
+            className="gold-shimmer text-primary-foreground px-8 py-4 text-sm font-sans uppercase tracking-[0.15em] rounded-full inline-flex items-center gap-2 shadow-[0_8px_30px_hsl(38,45%,60%,0.25)] hover:shadow-[0_12px_40px_hsl(38,45%,60%,0.4)] transition-shadow"
+          >
+            Experience the Difference <ArrowRight size={16} />
+          </Link>
+        </motion.div>
+      </ScrollReveal>
     </div>
   </section>
 );

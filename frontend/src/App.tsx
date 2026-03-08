@@ -8,6 +8,7 @@ import { AnimatePresence } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import StickyMobileCTA from "@/components/StickyMobileCTA";
 import ScrollProgress from "@/components/ScrollProgress";
 import ScrollToTop from "@/components/ScrollToTop";
 import PageTransition from "@/components/effects/PageTransition";
@@ -104,6 +105,7 @@ const App = () => {
           </main>
           <Footer />
           <WhatsAppButton />
+          <StickyMobileCTA />
         </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>

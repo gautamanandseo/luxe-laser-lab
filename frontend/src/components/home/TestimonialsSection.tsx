@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Star, ChevronLeft, ChevronRight, Quote } from "lucide-react";
+import { Star, ChevronLeft, ChevronRight, Quote, MapPin, Shield } from "lucide-react";
+import { Link } from "react-router-dom";
 import ScrollReveal from "@/components/effects/ScrollReveal";
 import AuroraMesh from "@/components/effects/AuroraMesh";
 
@@ -18,8 +19,14 @@ const testimonials = [
 const TestimonialsSection = () => {
   const [current, setCurrent] = useState(0);
 
-  const prev = () => setCurrent(c => (c - 1 + testimonials.length) % testimonials.length);
-  const next = () => setCurrent(c => (c + 1) % testimonials.length);
+  const next = useCallback(() => setCurrent(c => (c + 1) % testimonials.length), []);
+  const prev = useCallback(() => setCurrent(c => (c - 1 + testimonials.length) % testimonials.length), []);
+
+  // Auto-rotate
+  useEffect(() => {
+    const timer = setInterval(next, 5000);
+    return () => clearInterval(timer);
+  }, [next, current]);
 
   return (
     <section id="testimonials" className="py-24 bg-background relative overflow-hidden">
@@ -34,6 +41,32 @@ const TestimonialsSection = () => {
           </h2>
         </ScrollReveal>
 
+        {/* Google Rating Hero Badge */}
+        <ScrollReveal direction="scale" className="flex justify-center mb-12">
+          <a
+            href="https://www.google.com/maps/place/Empathy+Skin+%26+Laser+Hair+Removal+Clinic+Delhi"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center gap-4 bg-card/60 backdrop-blur-xl border border-primary/15 hover:border-primary/40 rounded-2xl px-6 py-4 transition-all depth-shadow"
+          >
+            <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center group-hover:shadow-[0_0_25px_hsl(38,45%,60%,0.3)] transition-all">
+              <MapPin size={24} className="text-primary" />
+            </div>
+            <div>
+              <div className="flex items-center gap-2 mb-0.5">
+                <span className="font-serif text-3xl text-foreground font-semibold">4.9</span>
+                <div className="flex gap-0.5">
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <Star key={i} size={16} className="fill-primary text-primary drop-shadow-[0_0_4px_hsl(38,45%,60%,0.5)]" />
+                  ))}
+                </div>
+              </div>
+              <p className="text-xs text-muted-foreground">860+ verified reviews on Google</p>
+            </div>
+            <Shield size={18} className="text-primary/40 group-hover:text-primary transition-colors ml-2" />
+          </a>
+        </ScrollReveal>
+
         <div className="max-w-3xl mx-auto relative">
           {/* Decorative quote with glow */}
           <motion.div
@@ -45,7 +78,6 @@ const TestimonialsSection = () => {
 
           {/* Glassmorphism card */}
           <div className="relative bg-card/30 backdrop-blur-xl border border-primary/10 rounded-3xl p-10 md:p-14 depth-shadow overflow-hidden">
-            {/* Shimmer sweep */}
             <div className="shimmer-sweep absolute inset-0 rounded-3xl" />
 
             <AnimatePresence mode="wait">
@@ -69,7 +101,7 @@ const TestimonialsSection = () => {
                     </motion.div>
                   ))}
                 </div>
-                <blockquote className="font-serif text-2xl md:text-3xl text-foreground/90 italic leading-relaxed mb-8">
+                <blockquote className="font-serif text-xl md:text-2xl text-foreground/90 italic leading-relaxed mb-8">
                   "{testimonials[current].text}"
                 </blockquote>
                 <p className="font-sans text-sm font-semibold text-foreground">{testimonials[current].author}</p>
@@ -79,7 +111,7 @@ const TestimonialsSection = () => {
           </div>
 
           {/* Controls */}
-          <div className="flex justify-center items-center gap-6 mt-12">
+          <div className="flex justify-center items-center gap-6 mt-10">
             <motion.button
               whileHover={{ scale: 1.15, boxShadow: "0 0 20px hsl(38 45% 60% / 0.3)" }}
               whileTap={{ scale: 0.95 }}
@@ -103,6 +135,19 @@ const TestimonialsSection = () => {
             </motion.button>
           </div>
         </div>
+
+        {/* CTA after testimonials */}
+        <ScrollReveal direction="up" delay={0.3} className="text-center mt-14">
+          <p className="text-muted-foreground text-sm mb-4">Join 25,000+ happy clients</p>
+          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
+            <Link
+              to="/contact"
+              className="gold-shimmer text-primary-foreground px-8 py-4 text-sm font-sans uppercase tracking-[0.15em] rounded-full inline-flex items-center gap-2 shadow-[0_8px_30px_hsl(38,45%,60%,0.25)] hover:shadow-[0_12px_40px_hsl(38,45%,60%,0.4)] transition-shadow"
+            >
+              Book Your Free Consultation
+            </Link>
+          </motion.div>
+        </ScrollReveal>
       </div>
     </section>
   );
