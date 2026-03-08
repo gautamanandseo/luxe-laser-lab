@@ -93,6 +93,24 @@ const AnimatedRoutes = () => {
   );
 };
 
+// Deferred conversion widgets — load 3s after app mounts
+const DeferredWidgets = () => {
+  const [ready, setReady] = useState(false);
+  useEffect(() => {
+    const timer = setTimeout(() => setReady(true), 3000);
+    return () => clearTimeout(timer);
+  }, []);
+  if (!ready) return null;
+  return (
+    <Suspense fallback={null}>
+      <ExitIntentPopup />
+      <SocialProofToasts />
+      <CountdownTimer />
+      <FloatingConsultation />
+    </Suspense>
+  );
+};
+
 const App = () => {
   const [loading, setLoading] = useState(true);
 
@@ -112,10 +130,7 @@ const App = () => {
           <Footer />
           <WhatsAppButton />
           <StickyMobileCTA />
-          <ExitIntentPopup />
-          <SocialProofToasts />
-          <CountdownTimer />
-          <FloatingConsultation />
+          <DeferredWidgets />
         </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>
