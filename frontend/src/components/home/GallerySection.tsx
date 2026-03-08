@@ -1,23 +1,23 @@
 import { motion } from "framer-motion";
 import { Instagram } from "lucide-react";
-import galleryClinic1 from "@/assets/gallery-clinic-1.jpg";
-import galleryClinic2 from "@/assets/gallery-clinic-2.jpg";
-import galleryCool1 from "@/assets/gallery-cool-1.jpg";
-import galleryBridal1 from "@/assets/gallery-bridal-1.jpg";
-import gallerySpa1 from "@/assets/gallery-spa-1.jpg";
-import gallerySkincare1 from "@/assets/gallery-skincare-1.jpg";
-import galleryLaser1 from "@/assets/gallery-laser-1.jpg";
-import gallerySalon1 from "@/assets/gallery-salon-1.jpg";
+import baAcne from "@/assets/ba-acne.jpg";
+import baBotox from "@/assets/ba-botox.jpg";
+import baCoolsculpting from "@/assets/ba-coolsculpting.jpg";
+import baFacial from "@/assets/ba-facial.jpg";
+import baHifu from "@/assets/ba-hifu.jpg";
+import baLaserMen from "@/assets/ba-laser-men.jpg";
+import baSkin from "@/assets/ba-skin.jpg";
+import baResurfx from "@/assets/ba-resurfx.jpg";
 
 const images = [
-  { src: galleryClinic1, alt: "Luxury treatment room" },
-  { src: galleryLaser1, alt: "Advanced laser technology" },
-  { src: galleryCool1, alt: "CoolSculpting treatment" },
-  { src: gallerySkincare1, alt: "Premium skincare products" },
-  { src: galleryBridal1, alt: "Bridal beauty preparation" },
-  { src: gallerySpa1, alt: "Hot stone spa therapy" },
-  { src: gallerySalon1, alt: "Premium salon styling" },
-  { src: galleryClinic2, alt: "Clinic reception lounge" },
+  { src: baAcne, alt: "Acne treatment results" },
+  { src: baBotox, alt: "Botox treatment results" },
+  { src: baCoolsculpting, alt: "CoolSculpting body contouring results" },
+  { src: baFacial, alt: "Facial rejuvenation results" },
+  { src: baHifu, alt: "HIFU face lift results" },
+  { src: baLaserMen, alt: "Laser hair removal for men" },
+  { src: baSkin, alt: "Skin treatment results" },
+  { src: baResurfx, alt: "ResurFX skin resurfacing results" },
 ];
 
 const GallerySection = () => (
@@ -45,7 +45,14 @@ const GallerySection = () => (
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.05 }}
-            className="group relative aspect-square rounded-xl overflow-hidden"
+            whileHover={{
+              scale: 1.05,
+              rotateX: 4,
+              rotateY: -4,
+              boxShadow: "0 20px 40px -10px hsl(38, 45%, 60%, 0.35)",
+            }}
+            style={{ perspective: 800, transformStyle: "preserve-3d" }}
+            className="group relative aspect-square rounded-xl overflow-hidden border border-primary/10 cursor-pointer"
           >
             <img
               src={img.src}
@@ -54,8 +61,11 @@ const GallerySection = () => (
               decoding="async"
               className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
             />
-            <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/20 transition-colors duration-300 flex items-center justify-center">
-              <Instagram size={24} className="text-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
+            <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
+              <span className="text-xs font-sans uppercase tracking-widest text-foreground flex items-center gap-1.5">
+                <Instagram size={14} className="text-primary" />
+                View on Instagram
+              </span>
             </div>
           </motion.a>
         ))}
