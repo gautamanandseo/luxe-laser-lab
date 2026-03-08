@@ -390,8 +390,11 @@ const ServicePage = ({ service }: ServicePageProps) => {
         </div>
       </section>
 
+      <GlowDivider variant="multi" />
+
       {/* Benefits Section */}
-      <section className="py-24 bg-background">
+      <section className="py-24 bg-background relative overflow-hidden">
+        <div className="absolute inset-0 grid-bg opacity-15" />
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <p className="eyebrow mb-4">Benefits</p>
