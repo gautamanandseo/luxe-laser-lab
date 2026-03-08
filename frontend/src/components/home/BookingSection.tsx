@@ -116,7 +116,7 @@ const BookingSection = () => {
 
           {/* Right - Form */}
           <ScrollReveal direction="left">
-            <div className="bg-card/50 backdrop-blur-sm border border-primary/10 rounded-2xl p-8 border-futuristic sticky top-24">
+            <div className="obsidian-panel rounded-2xl p-8 border-liquid-gold sticky top-24">
               {/* Social proof mini-bar */}
               <div className="flex items-center justify-center gap-3 mb-6 pb-6 border-b border-border">
                 <div className="flex -space-x-2">
