@@ -39,8 +39,8 @@ const FAQSection = () => {
   }, []);
 
   return (
-    <section id="faq" className="py-24 bg-secondary relative overflow-hidden">
-      <div className="absolute inset-0 grid-bg opacity-10" />
+    <section id="faq" className="py-28 bg-velvet relative overflow-hidden vignette">
+      <div className="absolute inset-0 grid-bg opacity-8" />
       <div className="relative z-10 container mx-auto px-6">
         <ScrollReveal direction="up" className="text-center mb-16">
           <p className="eyebrow mb-4">Common Questions</p>
@@ -52,7 +52,7 @@ const FAQSection = () => {
         <div className="max-w-3xl mx-auto space-y-3">
           {faqs.map((faq, i) => (
             <ScrollReveal key={i} direction="up" delay={i * 0.03}>
-              <div className={`border rounded-xl overflow-hidden transition-all duration-300 ${open === i ? "border-primary/30 bg-card/50 backdrop-blur-sm depth-shadow" : "border-border bg-card/20 hover:border-primary/15"}`}>
+              <div className={`border rounded-xl overflow-hidden transition-all duration-500 ${open === i ? "border-primary/30 obsidian-panel" : "border-border/30 bg-card/10 hover:border-primary/15 hover:bg-card/20"}`}>
                 <button
                   onClick={() => setOpen(open === i ? null : i)}
                   className="w-full flex items-center justify-between p-5 text-left group"
@@ -89,7 +89,7 @@ const FAQSection = () => {
 
         {/* CTA */}
         <ScrollReveal direction="up" delay={0.2} className="text-center mt-14">
-          <div className="bg-card/40 backdrop-blur-sm border border-primary/10 rounded-2xl p-8 max-w-lg mx-auto">
+          <div className="obsidian-panel rounded-2xl p-8 max-w-lg mx-auto border-liquid-gold">
             <MessageCircle size={28} className="text-primary mx-auto mb-3" />
             <h4 className="font-serif text-xl text-foreground mb-2">Still have questions?</h4>
             <p className="text-sm text-muted-foreground mb-5">Our specialists are happy to answer any questions about treatments, costs, or your specific concerns.</p>

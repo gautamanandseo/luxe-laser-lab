@@ -15,10 +15,10 @@ const BookingSection = () => {
 
   const update = (field: string, value: string) => setForm(f => ({ ...f, [field]: value }));
 
-  const inputClass = "w-full bg-muted/50 border border-primary/10 rounded-lg px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:shadow-[0_0_15px_hsl(38,45%,60%,0.1)] transition-all duration-300";
+  const inputClass = "w-full bg-muted/30 border border-primary/10 rounded-lg px-4 py-3.5 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary/50 focus:outline-none focus:shadow-[0_0_20px_hsl(38,45%,60%,0.15),0_0_0_3px_hsl(38,45%,60%,0.08)] transition-all duration-300 input-luxury";
 
   return (
-    <section id="booking" className="py-28 bg-cosmic relative overflow-hidden light-rays">
+    <section id="booking" className="py-28 bg-velvet relative overflow-hidden light-rays vignette diamond-dust">
       <ParticleField count={20} className="opacity-30" />
       <div className="absolute inset-0 grid-bg opacity-15" />
 
@@ -116,7 +116,7 @@ const BookingSection = () => {
 
           {/* Right - Form */}
           <ScrollReveal direction="left">
-            <div className="bg-card/50 backdrop-blur-sm border border-primary/10 rounded-2xl p-8 border-futuristic sticky top-24">
+            <div className="obsidian-panel rounded-2xl p-8 border-liquid-gold sticky top-24">
               {/* Social proof mini-bar */}
               <div className="flex items-center justify-center gap-3 mb-6 pb-6 border-b border-border">
                 <div className="flex -space-x-2">

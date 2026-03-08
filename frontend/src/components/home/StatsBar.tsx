@@ -37,16 +37,16 @@ const AnimatedCounter = ({ target, suffix }: { target: number; suffix: string })
   }, [target]);
 
   return (
-    <div ref={ref} className="font-serif text-4xl md:text-5xl holographic-text inline-block drop-shadow-[0_0_20px_hsl(38,45%,60%,0.3)]">
+    <div ref={ref} className="font-serif text-5xl md:text-6xl holographic-text inline-block drop-shadow-[0_0_30px_hsl(38,45%,60%,0.4)] text-emboss">
       {count.toLocaleString()}{suffix}
     </div>
   );
 };
 
 const StatsBar = () => (
-  <section className="bg-cosmic relative overflow-hidden py-20">
+  <section className="bg-velvet relative overflow-hidden py-24 vignette diamond-dust">
     <AuroraMesh intensity="medium" />
-    <div className="absolute inset-0 grid-bg opacity-20" />
+    <div className="absolute inset-0 grid-bg opacity-10" />
 
     <div className="relative z-10 container mx-auto px-6">
       {/* Google Rating Badge */}

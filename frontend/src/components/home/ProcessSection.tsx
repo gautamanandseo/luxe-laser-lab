@@ -14,7 +14,7 @@ const steps = [
 
 const ProcessSection = () => {
   return (
-    <section className="py-28 bg-cosmic relative overflow-hidden light-rays">
+    <section className="py-28 bg-velvet relative overflow-hidden light-rays vignette diamond-dust">
       <AuroraMesh intensity="medium" />
       <ParticleField count={25} className="opacity-40" />
       <div className="absolute inset-0 grid-bg opacity-20" />
@@ -60,7 +60,7 @@ const ProcessSection = () => {
                       scale: 1.15,
                       boxShadow: "0 0 40px hsl(38 45% 60% / 0.4), 0 0 80px hsl(38 45% 60% / 0.15)",
                     }}
-                    className="absolute inset-2 rounded-full border-2 border-primary/40 flex items-center justify-center bg-background relative z-10 group-hover:bg-primary group-hover:border-primary transition-all duration-500 depth-shadow"
+                    className="absolute inset-2 rounded-full border-2 border-primary/40 flex items-center justify-center bg-background relative z-10 group-hover:bg-primary group-hover:border-primary transition-all duration-500 depth-shadow group-hover:shadow-[0_0_50px_hsl(38,45%,60%,0.5)]"
                   >
                     <span className="text-2xl group-hover:scale-125 transition-transform">{step.emoji}</span>
                     <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />

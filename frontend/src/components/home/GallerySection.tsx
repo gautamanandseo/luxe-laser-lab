@@ -28,8 +28,8 @@ const GallerySection = () => {
   const [activeSlider, setActiveSlider] = useState(0);
 
   return (
-    <section id="gallery" className="py-24 bg-secondary relative overflow-hidden">
-      <div className="absolute inset-0 grid-bg opacity-10" />
+    <section id="gallery" className="py-28 bg-velvet relative overflow-hidden vignette">
+      <div className="absolute inset-0 grid-bg opacity-8" />
       <div className="relative z-10 container mx-auto px-6">
         <ScrollReveal direction="up" className="text-center mb-4">
           <p className="eyebrow mb-4">Real Results</p>
