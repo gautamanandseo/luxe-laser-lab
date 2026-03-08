@@ -23,7 +23,7 @@ const services = [
 const faqs = [
   { q: "How do I book an appointment?", a: "You can book through our contact form, call us directly, or message us on WhatsApp. We'll confirm your appointment within 2 hours." },
   { q: "Is the consultation free?", a: "Yes! Your first consultation is completely free. We'll assess your needs and create a personalized treatment plan with no obligation." },
-  { q: "What are your clinic hours?", a: "Monday to Saturday: 10:00 AM - 7:00 PM. Sundays are by appointment only for special requests." },
+  { q: "What are your clinic hours?", a: "Tuesday to Sunday: 10:00 AM - 7:00 PM. Monday is closed." },
   { q: "Where are you located?", a: "We're conveniently located in Delhi NCR. Click on 'Get Directions' above for the exact location and navigation." },
 ];
 
