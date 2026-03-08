@@ -29,13 +29,13 @@ const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
 
   return (
     <AnimatePresence>
-      {phase !== "exit" ? null : null}
-      <motion.div
-        className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-background overflow-hidden"
-        exit={{ opacity: 0, scale: 1.05 }}
-        transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-        animate={phase === "exit" ? { opacity: 0, scale: 1.05 } : { opacity: 1, scale: 1 }}
-      >
+      {phase !== "exit" && (
+        <motion.div
+          key="loading-screen"
+          className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-background overflow-hidden"
+          exit={{ opacity: 0, scale: 1.05 }}
+          transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+        >
         {/* Grid background */}
         <div className="absolute inset-0 grid-bg opacity-30" />
 
@@ -200,6 +200,7 @@ const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
           </motion.div>
         ))}
       </motion.div>
+      )}
     </AnimatePresence>
   );
 };
