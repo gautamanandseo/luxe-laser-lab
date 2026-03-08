@@ -23,7 +23,7 @@ const WhyChooseSection = () => (
     <div className="relative z-10 container mx-auto px-6">
       <ScrollReveal direction="up" className="text-center mb-16">
         <p className="eyebrow mb-4">The Empathy Difference</p>
-        <h2 className="font-serif text-4xl md:text-6xl text-foreground">
+        <h2 className="section-heading">
           Why Choose <em className="holographic-text" style={{ fontStyle: "italic" }}>Empathy</em>
         </h2>
       </ScrollReveal>
