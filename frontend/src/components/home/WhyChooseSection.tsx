@@ -7,7 +7,7 @@ const reasons = [
   { num: "03", title: "All Skin Types", desc: "Treatments specifically calibrated for the full range of Indian skin tones (Fitzpatrick I-VI).", icon: Users },
   { num: "04", title: "Zero Downtime", desc: "Walk in during lunch, walk out ready for your evening plans. Most treatments need no recovery time.", icon: Clock },
   { num: "05", title: "Compassionate Care", desc: "The 'Empathy' in our name is our promise — we treat every client with genuine care and understanding.", icon: Heart },
-  { num: "06", title: "Transparent Pricing", desc: "No hidden costs, no surprises. Clear pricing for every treatment, always.", icon: Sparkles },
+  { num: "06", title: "Personalized Quotes", desc: "Every treatment plan is customized. Book a free consultation for a personalized quote.", icon: Sparkles },
 ];
 
 const WhyChooseSection = () => (
