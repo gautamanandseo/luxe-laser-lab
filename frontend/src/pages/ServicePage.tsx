@@ -35,6 +35,12 @@ import baSkin from "@/assets/ba-skin.jpg";
 import baBotox from "@/assets/ba-botox.jpg";
 import baResurfx from "@/assets/ba-resurfx.jpg";
 import baMicroderm from "@/assets/ba-microderm.jpg";
+import baAntiaging from "@/assets/ba-antiaging-face.jpg";
+import baHairloss from "@/assets/ba-hairloss.jpg";
+import baDarkcircles from "@/assets/ba-darkcircles.jpg";
+import baTattoo from "@/assets/ba-tattoo.jpg";
+import baLaserMen from "@/assets/ba-laser-men.jpg";
+import baResurfx2 from "@/assets/ba-resurfx2.jpg";
 
 const heroImages: Record<string, string> = {
   laser: heroLaserNew,
