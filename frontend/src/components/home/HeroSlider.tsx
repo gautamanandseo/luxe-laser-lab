@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ChevronRight, ArrowRight, Shield } from "lucide-react";
 import { Link } from "react-router-dom";
 import ParticleField from "@/components/effects/ParticleField";
+import { useReducedMotion } from "@/hooks/use-reduced-motion";
 import heroLaser from "@/assets/hero-laser-gen.jpg";
 
 // Lazy-load non-first-slide images
