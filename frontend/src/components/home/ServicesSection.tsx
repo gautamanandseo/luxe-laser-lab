@@ -166,7 +166,7 @@ const tabs = [
     desc: "Safe, quick removal of moles, warts, skin tags, and DPNs using CO2 laser, radiofrequency, and electrocautery — with minimal scarring.",
     features: ["CO2 laser & RF removal", "5-20 minute procedures", "Minimal scarring", "Multiple growths per session", "Clinical assessment included"],
     link: "/mole-wart-removal",
-    image: serviceMicroderm,
+    image: serviceMolewart,
   },
   {
     id: "bodycontouring",
