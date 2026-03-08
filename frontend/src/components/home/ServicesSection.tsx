@@ -122,7 +122,7 @@ const tabs = [
     desc: "Stop hair loss and regrow thicker hair with PRP therapy, mesotherapy, low-level laser therapy, and advanced medical treatments. Effective for men and women.",
     features: ["PRP (Platelet-Rich Plasma) therapy", "Scalp mesotherapy", "Low-level laser therapy (LLLT)", "Trichoscopy diagnosis", "Effective for men & women"],
     link: "/hair-loss-treatment",
-    image: serviceSalon,
+    image: serviceHairloss,
   },
   {
     id: "hairtransplant",
