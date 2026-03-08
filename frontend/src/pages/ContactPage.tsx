@@ -23,7 +23,7 @@ const services = [
 const faqs = [
   { q: "How do I book an appointment?", a: "You can book through our contact form, call us directly, or message us on WhatsApp. We'll confirm your appointment within 2 hours." },
   { q: "Is the consultation free?", a: "Yes! Your first consultation is completely free. We'll assess your needs and create a personalized treatment plan with no obligation." },
-  { q: "What are your clinic hours?", a: "Monday to Saturday: 10:00 AM - 7:00 PM. Sundays are by appointment only for special requests." },
+  { q: "What are your clinic hours?", a: "Tuesday to Sunday: 10:00 AM - 7:00 PM. Monday is closed." },
   { q: "Where are you located?", a: "We're conveniently located in Delhi NCR. Click on 'Get Directions' above for the exact location and navigation." },
 ];
 
@@ -126,16 +126,12 @@ const ContactPage = () => {
                 </div>
                 <div className="space-y-3">
                   <div className="flex justify-between items-center py-2 border-b border-primary/10">
-                    <span className="text-foreground">Monday - Friday</span>
-                    <span className="text-primary font-medium">10:00 AM - 7:00 PM</span>
+                    <span className="text-foreground">Monday</span>
+                    <span className="text-red-400 font-medium">Closed</span>
                   </div>
                   <div className="flex justify-between items-center py-2 border-b border-primary/10">
-                    <span className="text-foreground">Saturday</span>
+                    <span className="text-foreground">Tuesday - Sunday</span>
                     <span className="text-primary font-medium">10:00 AM - 7:00 PM</span>
-                  </div>
-                  <div className="flex justify-between items-center py-2">
-                    <span className="text-foreground">Sunday</span>
-                    <span className="text-muted-foreground">By Appointment</span>
                   </div>
                 </div>
               </motion.div>
@@ -292,7 +288,7 @@ const ContactPage = () => {
           <div className="flex flex-col md:flex-row items-center justify-between gap-8">
             <div>
               <h3 className="font-serif text-3xl text-primary-foreground mb-2">Prefer to call directly?</h3>
-              <p className="text-primary-foreground/70">Our team is available Mon-Sat, 10AM-7PM</p>
+              <p className="text-primary-foreground/70">Our team is available Tue-Sun, 10AM-7PM</p>
             </div>
             <div className="flex flex-wrap gap-4">
               <motion.a whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }} href="tel:+919811157787"

@@ -863,7 +863,7 @@ const ServicePage = ({ service }: ServicePageProps) => {
               </p>
               <p>
                 Conveniently located near Pitampura Metro Station, Empathy Laser Clinic is easily accessible from anywhere in North Delhi and Delhi NCR. 
-                We are open Monday to Saturday, 10 AM to 7 PM. Call 9811157787 or WhatsApp us to book your free consultation today.
+                We are open Tuesday to Sunday, 10 AM to 7 PM (Monday closed). Call 9811157787 or WhatsApp us to book your free consultation today.
               </p>
             </div>
             <div className="flex flex-wrap gap-2 mt-8">
