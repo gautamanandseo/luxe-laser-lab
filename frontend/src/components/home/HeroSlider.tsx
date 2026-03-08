@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronRight, ArrowRight, Shield } from "lucide-react";
+import { ChevronRight, ChevronLeft, ArrowRight, Shield, Pause, Play } from "lucide-react";
 import { Link } from "react-router-dom";
 import ParticleField from "@/components/effects/ParticleField";
 import AuroraMesh from "@/components/effects/AuroraMesh";
