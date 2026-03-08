@@ -43,10 +43,10 @@ const WeightLossSection = () => (
       {/* Header */}
       <div className="text-center mb-16">
         <p className="eyebrow mb-4">Weight Loss & Body Contouring Delhi</p>
-        <h2 className="font-serif text-4xl md:text-6xl text-foreground">
-          Delhi NCR's Premier <em className="text-primary">Weight Loss</em> Clinic
+        <h2 className="section-heading">
+          Delhi NCR's Premier <em className="text-primary" style={{ fontStyle: "italic" }}>Weight Loss</em> Clinic
         </h2>
-        <p className="text-muted-foreground mt-6 max-w-3xl mx-auto text-lg leading-relaxed">
+        <p className="body-text mt-6 max-w-3xl mx-auto text-base md:text-lg">
           Struggling with stubborn fat that won't budge despite diet and exercise? At Empathy Laser Clinic, Pitampura, Delhi, we offer clinically proven, non-surgical fat reduction using FDA-cleared CoolSculpting® Elite technology. Permanently eliminate fat cells — no surgery, no downtime, no compromises.
         </p>
       </div>
@@ -79,10 +79,10 @@ const WeightLossSection = () => (
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h3 className="font-serif text-3xl md:text-4xl text-foreground mb-4">
-            Why Diets Fail — The <em className="text-primary">Science</em> Behind Stubborn Fat
+          <h3 className="card-heading text-3xl md:text-4xl mb-4">
+            Why Diets Fail — The <em className="text-primary" style={{ fontStyle: "italic" }}>Science</em> Behind Stubborn Fat
           </h3>
-          <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+          <p className="body-text max-w-2xl mx-auto">
             It's not a willpower problem — it's biology. Certain fat deposits are evolutionarily designed to resist diet and exercise.
           </p>
         </motion.div>

@@ -39,7 +39,7 @@ const BookingSection = () => {
             </span>
           </motion.div>
           <p className="eyebrow mb-4">Get Started</p>
-          <h2 className="font-serif text-4xl md:text-5xl text-foreground">
+          <h2 className="section-heading">
             Book Your Free <em className="holographic-text" style={{ fontStyle: "italic" }}>Consultation</em>
           </h2>
         </ScrollReveal>
@@ -48,7 +48,7 @@ const BookingSection = () => {
           {/* Left - Trust info */}
           <ScrollReveal direction="right">
             <div>
-              <p className="text-muted-foreground leading-relaxed mb-8">
+              <p className="body-text mb-8">
                 Take the first step toward your transformation. Our specialists will assess your needs and create a personalized treatment plan — completely free of charge.
               </p>
               <div className="space-y-4 mb-8">

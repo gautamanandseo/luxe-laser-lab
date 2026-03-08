@@ -23,7 +23,7 @@ const WhyChooseSection = () => (
     <div className="relative z-10 container mx-auto px-6">
       <ScrollReveal direction="up" className="text-center mb-16">
         <p className="eyebrow mb-4">The Empathy Difference</p>
-        <h2 className="font-serif text-4xl md:text-6xl text-foreground">
+        <h2 className="section-heading">
           Why Choose <em className="holographic-text" style={{ fontStyle: "italic" }}>Empathy</em>
         </h2>
       </ScrollReveal>
@@ -47,7 +47,7 @@ const WhyChooseSection = () => (
                       <r.icon size={24} className="text-primary" />
                     </motion.div>
                   </div>
-                  <h3 className="font-serif text-xl text-foreground mb-3 group-hover:text-primary transition-colors">{r.title}</h3>
+                  <h3 className="card-heading mb-3 group-hover:text-primary transition-colors">{r.title}</h3>
                   <p className="text-sm text-muted-foreground leading-relaxed">{r.desc}</p>
                 </div>
               </div>

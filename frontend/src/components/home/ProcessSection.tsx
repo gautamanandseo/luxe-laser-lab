@@ -22,10 +22,10 @@ const ProcessSection = () => {
       <div className="relative z-10 container mx-auto px-6">
         <ScrollReveal direction="up" className="text-center mb-16">
           <p className="eyebrow mb-4">How It Works</p>
-          <h2 className="font-serif text-4xl md:text-6xl text-foreground">
+          <h2 className="section-heading">
             Your Journey in <em className="holographic-text" style={{ fontStyle: "italic" }}>4 Steps</em>
           </h2>
-          <p className="text-muted-foreground mt-4 max-w-lg mx-auto text-sm">
+          <p className="body-text mt-4 max-w-lg mx-auto">
             From your first call to visible results — here's what to expect at Empathy Laser Clinic.
           </p>
         </ScrollReveal>

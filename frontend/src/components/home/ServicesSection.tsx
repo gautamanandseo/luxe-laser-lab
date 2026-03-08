@@ -95,7 +95,7 @@ const ServicesSection = () => {
       <div className="relative z-10 container mx-auto px-6">
         <ScrollReveal direction="up" className="text-center mb-12">
           <p className="eyebrow mb-4">Our Expertise</p>
-          <h2 className="font-serif text-4xl md:text-6xl text-foreground">
+          <h2 className="section-heading">
             All <em className="holographic-text" style={{ fontStyle: "italic" }}>Services</em>
           </h2>
         </ScrollReveal>
@@ -172,7 +172,7 @@ const ServicesSection = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 }}
-                className="font-serif text-3xl md:text-4xl text-foreground mb-4"
+                className="card-heading mb-4"
               >
                 {tab.title}
               </motion.h3>
@@ -180,7 +180,7 @@ const ServicesSection = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
-                className="text-muted-foreground leading-relaxed mb-6"
+                className="body-text mb-6"
               >
                 {tab.desc}
               </motion.p>
