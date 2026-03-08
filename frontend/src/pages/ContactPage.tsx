@@ -56,7 +56,7 @@ const ContactPage = () => {
               Let's <em className="holographic-text" style={{ fontStyle: "italic" }}>Connect</em>
             </h1>
             <p className="text-lg text-foreground/70 max-w-xl mx-auto">
-              We'd love to hear from you. Reach out for a free consultation or any questions about our treatments.
+              Visit Empathy Laser Clinic in Pitampura, Delhi for a free consultation. We serve clients from across Delhi NCR — Rohini, Shalimar Bagh, Model Town, Noida, and Gurugram.
             </p>
           </motion.div>
         </div>
@@ -111,7 +111,7 @@ const ContactPage = () => {
                   Experience the <em className="holographic-text" style={{ fontStyle: "italic" }}>Empathy</em> Difference
                 </h2>
                 <p className="text-muted-foreground leading-relaxed mb-8">
-                  Step into our state-of-the-art facility where luxury meets clinical excellence. Our friendly team is ready to welcome you and guide you through your transformation journey.
+                  Step into our state-of-the-art facility in Pitampura, Delhi where luxury meets clinical excellence. Conveniently located near Pitampura Metro Station, we serve clients from Rohini, Shalimar Bagh, Model Town, Ashok Vihar, Paschim Vihar, Noida, Gurugram, and the entire Delhi NCR region. Our friendly team is ready to guide you through your transformation journey.
                 </p>
               </motion.div>
 

@@ -1,7 +1,8 @@
 const items = [
-  "Laser Hair Removal Delhi", "CoolSculpting® Delhi", "Weight Loss Clinic Delhi", "Lumenis LightSheer",
-  "Alma Soprano ICE", "Botox & Fillers", "Bridal Packages", "Skin Rejuvenation",
-  "Body Contouring", "USFDA Cleared", "Non-Surgical Fat Reduction", "Delhi NCR",
+  "Laser Hair Removal Delhi", "CoolSculpting® Delhi", "Weight Loss Clinic Delhi NCR", "Lumenis LightSheer",
+  "Alma Soprano ICE", "Botox & Fillers Delhi", "Bridal Packages Delhi", "Skin Rejuvenation Delhi",
+  "Body Contouring Delhi", "USFDA Cleared", "Non-Surgical Fat Reduction Delhi", "Hair Transplant Delhi",
+  "Acne Treatment Delhi", "Skin Lightening Delhi", "HIFU Face Lift Delhi", "Pitampura",
 ];
 
 const Marquee = () => (

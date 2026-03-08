@@ -12,6 +12,7 @@ import GallerySection from "@/components/home/GallerySection";
 import CertificationsStrip from "@/components/home/CertificationsStrip";
 import FAQSection from "@/components/home/FAQSection";
 import BookingSection from "@/components/home/BookingSection";
+import SEOContentSection from "@/components/home/SEOContentSection";
 import GlowDivider from "@/components/effects/GlowDivider";
 
 const Index = () => {
@@ -41,6 +42,8 @@ const Index = () => {
       <GlowDivider variant="gold" />
       <FAQSection />
       <GlowDivider variant="multi" />
+      <SEOContentSection />
+      <GlowDivider variant="gold" />
       <BookingSection />
     </>
   );

@@ -23,11 +23,11 @@ const stats = [
 ];
 
 const milestones = [
-  { year: "2009", title: "Foundation", desc: "Empathy Laser Clinic was established with a vision to bring world-class aesthetic treatments to Delhi NCR." },
-  { year: "2012", title: "Technology Upgrade", desc: "Became one of the first clinics in North India to invest in Lumenis LightSheer Desire — the world's gold standard laser." },
-  { year: "2016", title: "Excellence Award", desc: "Recognized as the Best Aesthetic Clinic in Delhi NCR. Added Alma Soprano ICE Platinum for pain-free laser treatments." },
-  { year: "2020", title: "CoolSculpting Elite", desc: "Introduced CoolSculpting® Elite for non-surgical weight loss and body contouring. Became Delhi's premier fat reduction clinic." },
-  { year: "2024", title: "25K Milestone", desc: "Celebrated 25,000+ successful treatments and expanded our team to 50+ trained professionals." },
+  { year: "2009", title: "Foundation in Delhi", desc: "Empathy Laser Clinic was established in Pitampura, Delhi with a vision to bring world-class aesthetic treatments to Delhi NCR. From day one, we committed to USFDA-cleared technology and genuine products." },
+  { year: "2012", title: "Technology Leader", desc: "Became one of the first clinics in North Delhi and Delhi NCR to invest in Lumenis LightSheer Desire — the world's gold standard for laser hair removal. Patients from Rohini, Shalimar Bagh, and across North Delhi began choosing us for painless, permanent hair reduction." },
+  { year: "2016", title: "Best Clinic in Delhi NCR", desc: "Recognized as the Best Aesthetic Clinic in Delhi NCR. Added Alma Soprano ICE Platinum for pain-free laser treatments. Expanded services to include Botox, fillers, and advanced dermatology." },
+  { year: "2020", title: "CoolSculpting Elite Delhi", desc: "Introduced CoolSculpting® Elite for non-surgical weight loss and body contouring, making Empathy the premier fat reduction and weight loss clinic in Delhi NCR." },
+  { year: "2024", title: "25K Milestone", desc: "Celebrated 25,000+ successful treatments. Expanded our team to 50+ trained professionals. Patients from Delhi, Noida, Gurugram, Ghaziabad, and Faridabad trust us for their aesthetic needs." },
 ];
 
 const team = [
@@ -66,10 +66,10 @@ const AboutPage = () => (
             <span className="holographic-text">Empathy Difference</span>
           </h1>
           <p className="text-lg text-foreground/80 leading-relaxed max-w-2xl mb-8">
-            Founded over 15 years ago, Empathy Laser Clinic was born from a simple belief: aesthetic treatments should be delivered with genuine care, clinical precision, and unwavering transparency.
+            Founded over 15 years ago in Pitampura, Delhi, Empathy Laser Clinic was born from a simple belief: aesthetic treatments should be delivered with genuine care, clinical precision, and unwavering transparency. Today, we are Delhi NCR's most trusted name in laser hair removal, CoolSculpting, weight loss, and advanced skin treatments.
           </p>
           <p className="text-foreground/60 leading-relaxed max-w-2xl">
-            We are Delhi NCR's most trusted name in advanced aesthetics — a sanctuary where science meets luxury, and every client is treated like family.
+            Serving over 25,000 clients from across Delhi NCR — including Rohini, Shalimar Bagh, Model Town, Noida, and Gurugram — we are the region's leading aesthetic clinic where USFDA-cleared science meets luxury experience.
           </p>
         </motion.div>
       </div>
@@ -267,10 +267,10 @@ const AboutPage = () => (
               Where Clinical Precision Meets <em className="holographic-text" style={{ fontStyle: "italic" }}>Luxury Experience</em>
             </h2>
             <p className="text-muted-foreground leading-relaxed mb-6">
-              We believe that everyone deserves access to world-class aesthetic treatments in an environment that feels safe, luxurious, and genuinely caring.
+              We believe that everyone in Delhi NCR deserves access to world-class aesthetic treatments — from laser hair removal and CoolSculpting to Botox, skin treatments, and hair restoration — in an environment that feels safe, luxurious, and genuinely caring.
             </p>
             <p className="text-muted-foreground leading-relaxed mb-8">
-              Our mission is to deliver transformative results using only the most advanced, clinically proven technologies — while treating every client with the empathy and respect they deserve.
+              Our mission is to deliver transformative results using only the most advanced, clinically proven technologies — while treating every client from Pitampura, Rohini, Noida, Gurugram, and beyond with the empathy and respect they deserve.
             </p>
             <ul className="space-y-3">
               {["Personalized treatment plans for every client", "Only genuine, USFDA-cleared products", "Transparent pricing with no hidden costs", "Continuous investment in latest technology"].map((item, i) => (
