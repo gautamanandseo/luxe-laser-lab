@@ -20,9 +20,9 @@ const stats = [
 
 const milestones = [
   { year: "2009", title: "Foundation", desc: "Empathy Laser Clinic was established with a vision to bring world-class aesthetic treatments to Delhi NCR." },
-  { year: "2012", title: "Expansion", desc: "Introduced CoolSculpting® and became one of the first clinics in North India to offer FDA-cleared fat freezing." },
-  { year: "2016", title: "Excellence Award", desc: "Recognized as the Best Aesthetic Clinic in Delhi NCR for outstanding client satisfaction and results." },
-  { year: "2020", title: "Advanced Tech", desc: "Upgraded to the latest generation of Diode Laser and added comprehensive bridal packages." },
+  { year: "2012", title: "Technology Upgrade", desc: "Became one of the first clinics in North India to invest in Lumenis LightSheer Desire — the world's gold standard laser." },
+  { year: "2016", title: "Excellence Award", desc: "Recognized as the Best Aesthetic Clinic in Delhi NCR. Added Alma Soprano ICE Platinum for pain-free laser treatments." },
+  { year: "2020", title: "CoolSculpting Elite", desc: "Introduced CoolSculpting® Elite for non-surgical weight loss and body contouring. Became Delhi's premier fat reduction clinic." },
   { year: "2024", title: "25K Milestone", desc: "Celebrated 25,000+ successful treatments and expanded our team to 50+ trained professionals." },
 ];
 

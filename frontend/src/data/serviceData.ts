@@ -67,20 +67,20 @@ export const servicesData: Record<string, ServiceData> = {
     id: "laser",
     title: "Permanent Laser",
     accent: "Hair Removal",
-    subtitle: "USFDA CLEARED · SAFE FOR ALL SKIN TYPES",
+    subtitle: "USFDA CLEARED · LUMENIS LIGHTSHEER · ALMA SOPRANO",
     tagline: "Experience Delhi NCR's most trusted laser hair removal",
     heroImage: "https://yspstvqinawnszuxdjhy.supabase.co/storage/v1/object/public/gallery-images/1770572844445-54z2sxh.jpg",
     heroOverlay: "from-background/95 via-background/70 to-background/30",
-    description: "Our advanced Diode Laser technology is specifically calibrated for Indian skin tones, delivering permanent hair reduction with zero downtime. Say goodbye to the endless cycle of waxing, shaving, and threading — forever.",
-    longDescription: "We've all been there: body hair maintenance can be a serious hassle. Whether you want smooth legs for the beach, perfectly groomed brows for a big event, or simply the confidence of silky skin every single day — laser hair removal is the ultimate solution. At Empathy Laser Clinic, our providers have years of experience performing laser hair removal treatments specifically calibrated for Indian skin tones (Fitzpatrick III-VI). We emphasize customized treatment plans and employ a multidisciplinary approach that targets hair follicles at their root using our advanced 808nm Diode Laser technology, disabling their ability to regrow permanently.",
+    description: "Powered by the world's two most advanced laser systems — Lumenis LightSheer Desire™ and Alma Soprano ICE Platinum™ — our treatments are specifically calibrated for Indian skin tones, delivering permanent hair reduction with virtually zero pain and zero downtime.",
+    longDescription: "At Empathy Laser Clinic in Delhi NCR, we use the world's gold-standard laser hair removal systems: the Lumenis LightSheer Desire™ (805nm diode with patented vacuum-assist technology) and the Alma Soprano ICE Platinum™ (triple-wavelength 755+810+1064nm with SHR and ICE™ cooling). The LightSheer Desire's vacuum-assist technology gently pulls skin closer to the laser, reducing pain by up to 90% while increasing efficacy. The Soprano ICE Platinum's revolutionary SHR (Super Hair Removal) mode delivers gradual heating with its IN-Motion™ technique — making it virtually painless, even on sensitive areas. Both systems are USFDA cleared and specifically calibrated for Indian skin tones (Fitzpatrick III-VI). We emphasize customized treatment plans and employ a multidisciplinary approach that targets hair follicles at their root, disabling their ability to regrow permanently.",
     icon: Sparkles,
     badge: "USFDA Cleared",
     benefits: [
-      { title: "High Precision", description: "Unlike shaving and waxing, laser technology selectively targets dark, coarse hairs while leaving surrounding skin undamaged. Treats an area the size of a ₹10 coin every second.", icon: Target },
-      { title: "Quick Treatment", description: "Upper lip treated in under a minute. Full legs in 45-60 mins. Our advanced pulsed light delivers hundreds of light colors simultaneously for maximum efficiency.", icon: Clock },
-      { title: "Permanent Results", description: "Expect permanent hair loss after 6-8 sessions. It's a long-term solution that frees you from monthly salon visits, saving lakhs over your lifetime.", icon: CheckCircle },
-      { title: "All Indian Skin Types", description: "Specifically calibrated for the full range of Indian skin tones. Our 808nm wavelength is proven safe and effective for Fitzpatrick types III-VI.", icon: Shield },
-      { title: "Zero Downtime", description: "Walk in during lunch, walk out ready for your evening plans. No redness, no irritation, no waiting period.", icon: Zap },
+      { title: "High Precision", description: "The Lumenis LightSheer Desire's 805nm wavelength selectively targets dark, coarse hairs while leaving surrounding skin undamaged. Patented vacuum-assist pulls skin closer for maximum efficacy.", icon: Target },
+      { title: "Pain-Free Option", description: "The Alma Soprano ICE Platinum's SHR IN-Motion™ technology delivers gradual heating with ICE™ cooling — making treatment virtually painless, even on sensitive areas like bikini and upper lip.", icon: Clock },
+      { title: "Permanent Results", description: "Expect permanent hair loss after 6-8 sessions with either LightSheer or Soprano technology. A long-term solution that frees you from monthly salon visits.", icon: CheckCircle },
+      { title: "All Indian Skin Types", description: "Both Lumenis LightSheer and Alma Soprano are proven safe and effective for Fitzpatrick types III-VI — the full range of Indian skin tones.", icon: Shield },
+      { title: "Dual Technology Advantage", description: "We select the optimal laser (LightSheer or Soprano) based on your specific skin type, hair density, and treatment area — giving you the best possible results.", icon: Zap },
       { title: "Cost Effective", description: "Calculate what you spend on waxing annually (₹2,000-4,000/month × 12 = ₹24,000-48,000/year). Laser pays for itself within the first year.", icon: Award },
     ],
     processSteps: [
@@ -107,9 +107,9 @@ export const servicesData: Record<string, ServiceData> = {
     faqs: [
       { question: "Is laser hair removal painful?", answer: "Most clients describe it as a mild snapping sensation, like a rubber band. Our advanced cooling system minimizes discomfort significantly. Many clients say it's far less painful than waxing!" },
       { question: "How many sessions will I need?", answer: "Typically 6-8 sessions spaced 4-6 weeks apart for permanent results. This varies based on hair type, color, density, and hormonal factors. Multiple sessions are needed because hair grows in cycles, and the laser is most effective during the anagen (active growth) phase." },
-      { question: "Is it safe for Indian skin?", answer: "Absolutely! Our 808nm Diode Laser is specifically calibrated for Indian skin tones (Fitzpatrick III-VI) and is USFDA cleared for all skin types. We've successfully treated 15,000+ Indian clients." },
+      { question: "Is it safe for Indian skin?", answer: "Absolutely! Both our Lumenis LightSheer Desire (805nm) and Alma Soprano ICE Platinum (triple-wavelength) are specifically calibrated for Indian skin tones (Fitzpatrick III-VI) and are USFDA cleared for all skin types. We've successfully treated 15,000+ Indian clients." },
       { question: "What's the downtime?", answer: "Zero downtime! You can resume normal activities immediately. We recommend avoiding sun exposure and hot showers for 24-48 hours post-treatment." },
-      { question: "Laser Hair Removal vs. Shaving — What's the difference?", answer: "Shaving cuts hair at the surface without affecting the follicle, so hair regrows stubbly within days. Laser targets the follicle itself to inhibit future growth permanently. After 6-8 sessions, most people are hair-free for life." },
+      { question: "What laser technology do you use?", answer: "We use two world-leading systems: the Lumenis LightSheer Desire™ with patented vacuum-assist technology for maximum efficacy, and the Alma Soprano ICE Platinum™ with triple-wavelength SHR and ICE™ cooling for the most pain-free experience. Your specialist selects the optimal laser based on your skin type and treatment area." },
       { question: "Laser Hair Removal vs. Waxing — Which is better?", answer: "Waxing removes hair from the root but it regrows in 3-6 weeks. Laser hair removal can significantly reduce hair growth permanently over time, resulting in much longer-lasting results. Plus, no more ingrown hairs or skin darkening from waxing." },
       { question: "Does laser hair removal last forever?", answer: "After completing a full treatment series (6-8 sessions), most people remain hair-free for years to permanently. If hair returns due to hormonal changes, it's typically finer and lighter, requiring only occasional maintenance." },
       { question: "What should I do before getting laser hair removal?", answer: "Stop plucking and waxing at least 4 weeks before. Shave the area 24-48 hours before treatment. Avoid tanning and sun exposure. Inform us about any medications you're taking." },
@@ -135,14 +135,14 @@ export const servicesData: Record<string, ServiceData> = {
       { name: "Rahul T.", rating: 5, text: "As a man, I was hesitant. But the back and chest treatment was quick, professional, and the results speak for themselves.", treatment: "Back & Chest" },
     ],
     whyChooseUs: [
+      "Lumenis LightSheer Desire™ — world's gold standard in laser hair removal",
+      "Alma Soprano ICE Platinum™ — most advanced pain-free laser technology",
       "USFDA cleared equipment with proven safety record",
       "Certified technicians with 5+ years experience",
-      "Advanced cooling system for comfortable treatment",
-      "Personalized treatment plans for every client",
+      "Dual technology advantage — we select the best laser for your skin",
       "Free consultation and patch test",
       "Premium aftercare products included",
-      "15,000+ successful treatments completed",
-      "Specifically calibrated for Indian skin tones",
+      "15,000+ successful treatments in Delhi NCR",
     ],
     comparison: [
       { method: "Laser Hair Removal", duration: "15-60 mins", pain: "Minimal (rubber band snap)", results: "Permanent after 6-8 sessions", cost: "One-time investment", recommended: true },
@@ -152,12 +152,16 @@ export const servicesData: Record<string, ServiceData> = {
     ],
     detailedSections: [
       {
-        title: "What Our Laser Actually Does",
-        content: "We use the highly effective 808nm Diode Laser system — the gold standard for hair removal. Unlike older technologies, our diode laser delivers concentrated light energy that is absorbed by melanin in the hair follicle. This energy converts to heat, destroying the follicle's ability to produce new hair growth. The surrounding skin remains completely unaffected thanks to our integrated sapphire cooling tip that maintains skin surface temperature. Each pulse treats hundreds of hairs simultaneously, making treatments fast and efficient."
+        title: "Lumenis LightSheer Desire™ — The Gold Standard",
+        content: "The Lumenis LightSheer Desire is widely regarded as the world's #1 laser hair removal system. Its 805nm diode laser delivers concentrated energy directly to the hair follicle. What sets it apart is its patented vacuum-assist technology: a gentle suction pulls the skin closer to the laser handpiece, stretching the skin and bringing hair follicles closer to the surface. This increases efficacy by up to 3x while reducing pain by up to 90%. The large spot size (22x35mm) allows rapid treatment of large areas — full legs in under 45 minutes."
+      },
+      {
+        title: "Alma Soprano ICE Platinum™ — Pain-Free Revolution",
+        content: "The Alma Soprano ICE Platinum represents the latest evolution in pain-free laser hair removal. It combines three laser wavelengths (755nm Alexandrite, 810nm Diode, and 1064nm Nd:YAG) in a single handpiece, targeting different tissue depths and structures simultaneously. Its revolutionary SHR (Super Hair Removal) IN-Motion™ technique delivers gradual heating with rapid pulses while the ICE™ cooling system keeps the skin surface comfortable throughout. This makes it the most comfortable laser experience available — even for bikini, underarms, and upper lip."
       },
       {
         title: "Why Multiple Sessions Are Needed",
-        content: "Hair grows in three phases: Anagen (active growth), Catagen (transition), and Telogen (resting). Laser is only effective during the Anagen phase when the hair is connected to the follicle. Since only 20-30% of your hair is in the Anagen phase at any given time, multiple sessions are needed to catch all hairs during their growth cycle. This is why we space sessions 4-6 weeks apart — to target a new batch of actively growing hairs each time."
+        content: "Hair grows in three phases: Anagen (active growth), Catagen (transition), and Telogen (resting). Both LightSheer and Soprano lasers are most effective during the Anagen phase when the hair is connected to the follicle. Since only 20-30% of your hair is in the Anagen phase at any given time, multiple sessions are needed to catch all hairs during their growth cycle. This is why we space sessions 4-6 weeks apart — to target a new batch of actively growing hairs each time."
       },
     ],
   },
@@ -166,12 +170,12 @@ export const servicesData: Record<string, ServiceData> = {
     id: "coolsculpting",
     title: "CoolSculpting® Elite",
     accent: "Fat Freezing",
-    subtitle: "FDA-CLEARED · ADVANCED NON-SURGICAL BODY CONTOURING",
-    tagline: "Freeze away stubborn fat — permanently, without surgery",
+    subtitle: "FDA-CLEARED · #1 NON-SURGICAL WEIGHT LOSS SOLUTION IN DELHI",
+    tagline: "Delhi NCR's premier weight loss and body contouring clinic",
     heroImage: "https://yspstvqinawnszuxdjhy.supabase.co/storage/v1/object/public/gallery-images/1769536099287-1ztzqc4.png",
     heroOverlay: "from-[hsl(210,60%,5%)]/95 via-[hsl(210,60%,5%)]/70 to-transparent",
-    description: "Tired of diet and exercise not giving you the sculpted look you deserve? CoolSculpting Elite is the next generation of fat-freezing technology — clinically proven to target, freeze, and permanently eliminate stubborn fat cells without surgery, needles, or downtime.",
-    longDescription: "CoolSculpting Elite is the latest advancement in non-surgical fat reduction, offering enhanced results over the original CoolSculpting. Using advanced cryolipolysis technology, it precisely cools fat cells to -11°C, triggering their natural death while surrounding tissues remain completely unharmed. The Elite system features redesigned applicators that cover up to 18% more surface area, allowing for faster and more effective sessions. With dual applicators, two areas can be treated simultaneously — significantly reducing overall treatment time. Your body then naturally eliminates these dead fat cells over 2-3 months. The result? A sculpted, contoured body that looks natural because the fat reduction happens gradually.",
+    description: "Tired of diet and exercise not giving you the sculpted look you deserve? CoolSculpting Elite at Empathy Laser Clinic Delhi is the next generation of fat-freezing technology — clinically proven to target, freeze, and permanently eliminate stubborn fat cells without surgery, needles, or downtime.",
+    longDescription: "CoolSculpting Elite is the latest advancement in non-surgical fat reduction and Delhi NCR's most trusted weight loss solution. Using advanced cryolipolysis technology, it precisely cools fat cells to -11°C, triggering their natural death while surrounding tissues remain completely unharmed. The Elite system features redesigned applicators that cover up to 18% more surface area, allowing for faster and more effective sessions. With dual applicators, two areas can be treated simultaneously — significantly reducing overall treatment time. Your body then naturally eliminates these dead fat cells over 2-3 months. At Empathy Laser Clinic, we use only authentic CoolSculpting® Elite machines (by Allergan/AbbVie) — never imitations or off-brand alternatives.",
     icon: Snowflake,
     badge: "FDA-Cleared Elite",
     benefits: [

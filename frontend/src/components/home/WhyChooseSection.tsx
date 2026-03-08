@@ -3,7 +3,7 @@ import { Shield, Award, Users, Heart, Sparkles, Clock } from "lucide-react";
 
 const reasons = [
   { num: "01", title: "Certified Specialists", desc: "Board-certified physicians and trained aestheticians with decades of combined experience.", icon: Award },
-  { num: "02", title: "Genuine Technology", desc: "Only USFDA-cleared, genuinely sourced equipment. LightSheer, Soprano, CoolSculpting Elite.", icon: Shield },
+  { num: "02", title: "Genuine Technology", desc: "Only USFDA-cleared equipment — Lumenis LightSheer Desire™, Alma Soprano ICE Platinum™, CoolSculpting® Elite.", icon: Shield },
   { num: "03", title: "All Skin Types", desc: "Treatments specifically calibrated for the full range of Indian skin tones (Fitzpatrick I-VI).", icon: Users },
   { num: "04", title: "Zero Downtime", desc: "Walk in during lunch, walk out ready for your evening plans. Most treatments need no recovery time.", icon: Clock },
   { num: "05", title: "Compassionate Care", desc: "The 'Empathy' in our name is our promise — we treat every client with genuine care and understanding.", icon: Heart },

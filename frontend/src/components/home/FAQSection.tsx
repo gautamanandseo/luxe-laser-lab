@@ -5,7 +5,7 @@ import { ChevronDown } from "lucide-react";
 const faqs = [
   {
     q: "Is laser hair removal safe for Indian skin types?",
-    a: "Absolutely. Our advanced Diode Laser technology is specifically calibrated for Indian skin tones (Fitzpatrick types III-VI). We customize settings for each client's skin type and hair colour to ensure safe, effective treatment with minimal risk of side effects."
+    a: "Absolutely. We use the Lumenis LightSheer Desire™ and Alma Soprano ICE Platinum™ — both USFDA cleared and specifically calibrated for Indian skin tones (Fitzpatrick types III-VI). These are the world's most advanced laser systems, proven safe for darker skin types."
   },
   {
     q: "How many laser sessions will I need?",

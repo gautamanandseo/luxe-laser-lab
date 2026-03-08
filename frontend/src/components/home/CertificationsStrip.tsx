@@ -1,7 +1,7 @@
 import { Shield } from "lucide-react";
 
 const certs = [
-  "USFDA Cleared", "ISO Certified", "CE Marked", "Allergan Partner", "Venus Concept Partner", "15+ Years", "25K+ Clients"
+  "USFDA Cleared", "ISO Certified", "CE Marked", "Allergan Partner", "Lumenis Partner", "Alma Lasers Partner", "CoolSculpting Certified", "15+ Years", "25K+ Clients"
 ];
 
 const CertificationsStrip = () => (
