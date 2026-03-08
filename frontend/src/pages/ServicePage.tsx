@@ -356,6 +356,81 @@ const ServicePage = ({ service }: ServicePageProps) => {
         </div>
       </section>
 
+      {/* Comparison Section */}
+      {data.comparison && data.comparison.length > 0 && (
+        <section className="py-24 bg-secondary">
+          <div className="container mx-auto px-6">
+            <div className="text-center mb-16">
+              <p className="eyebrow mb-4">Compare Methods</p>
+              <h2 className="font-serif text-4xl md:text-5xl text-foreground">
+                How It <em className="text-primary">Compares</em>
+              </h2>
+            </div>
+            <div className="overflow-x-auto">
+              <table className="w-full min-w-[700px]">
+                <thead>
+                  <tr className="border-b border-border">
+                    <th className="text-left py-4 px-4 text-sm uppercase tracking-wider text-muted-foreground font-sans">Method</th>
+                    <th className="text-left py-4 px-4 text-sm uppercase tracking-wider text-muted-foreground font-sans">Duration</th>
+                    <th className="text-left py-4 px-4 text-sm uppercase tracking-wider text-muted-foreground font-sans">Pain Level</th>
+                    <th className="text-left py-4 px-4 text-sm uppercase tracking-wider text-muted-foreground font-sans">Results</th>
+                    <th className="text-left py-4 px-4 text-sm uppercase tracking-wider text-muted-foreground font-sans">Cost</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {data.comparison.map((item, i) => (
+                    <motion.tr
+                      key={i}
+                      initial={{ opacity: 0, x: -10 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: i * 0.1 }}
+                      className={`border-b border-border ${item.recommended ? 'bg-primary/5' : ''}`}
+                    >
+                      <td className="py-4 px-4">
+                        <div className="flex items-center gap-2">
+                          {item.recommended && <div className="w-2 h-2 rounded-full bg-primary" />}
+                          <span className={`font-semibold ${item.recommended ? 'text-primary' : 'text-foreground'}`}>{item.method}</span>
+                          {item.recommended && <span className="text-[10px] bg-primary text-primary-foreground px-2 py-0.5 rounded-full uppercase">Recommended</span>}
+                        </div>
+                      </td>
+                      <td className="py-4 px-4 text-sm text-muted-foreground">{item.duration}</td>
+                      <td className="py-4 px-4 text-sm text-muted-foreground">{item.pain}</td>
+                      <td className="py-4 px-4 text-sm text-muted-foreground">{item.results}</td>
+                      <td className="py-4 px-4 text-sm text-muted-foreground">{item.cost}</td>
+                    </motion.tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Detailed Sections */}
+      {data.detailedSections && data.detailedSections.length > 0 && (
+        <section className={`py-24 ${data.comparison ? 'bg-background' : 'bg-secondary'}`}>
+          <div className="container mx-auto px-6">
+            <div className="max-w-4xl mx-auto space-y-16">
+              {data.detailedSections.map((section, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                >
+                  <div className="flex items-start gap-4 mb-4">
+                    <Info size={24} className="text-primary flex-shrink-0 mt-1" />
+                    <h3 className="font-serif text-2xl md:text-3xl text-foreground">{section.title}</h3>
+                  </div>
+                  <p className="text-muted-foreground leading-relaxed pl-10">{section.content}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Packages Section */}
       <section className="py-24 bg-secondary">
         <div className="container mx-auto px-6">
