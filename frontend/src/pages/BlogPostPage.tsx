@@ -155,7 +155,7 @@ const BlogPostPage = () => {
       {/* Hero */}
       <section className="relative">
         <div className="aspect-[21/9] md:aspect-[3/1] overflow-hidden">
-          <img src={post.image} alt={post.title} className="w-full h-full object-cover" />
+          <BlogImage src={post.image} category={post.category} alt={post.title} loading="eager" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
         </div>
         <div className="absolute bottom-0 left-0 right-0">
