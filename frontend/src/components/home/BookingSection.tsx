@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Send, CheckCircle } from "lucide-react";
+import { Send, CheckCircle, MapPin } from "lucide-react";
 
 const BookingSection = () => {
   const [submitted, setSubmitted] = useState(false);
