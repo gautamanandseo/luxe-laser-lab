@@ -19,7 +19,7 @@ const BookingSection = lazy(() => import("@/components/home/BookingSection"));
 const SEOContentSection = lazy(() => import("@/components/home/SEOContentSection"));
 const ParallaxStorySection = lazy(() => import("@/components/home/ParallaxStorySection"));
 const LoyaltyTeaser = lazy(() => import("@/components/home/LoyaltyTeaser"));
-const SkinAnalysisWidget = lazy(() => import("@/components/home/SkinAnalysisWidget"));
+
 
 const SectionFallback = () => (
   <div className="py-20 flex items-center justify-center">
