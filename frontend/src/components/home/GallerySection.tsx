@@ -1,15 +1,23 @@
 import { motion } from "framer-motion";
 import { Instagram } from "lucide-react";
+import galleryClinic1 from "@/assets/gallery-clinic-1.jpg";
+import galleryClinic2 from "@/assets/gallery-clinic-2.jpg";
+import galleryCool1 from "@/assets/gallery-cool-1.jpg";
+import galleryBridal1 from "@/assets/gallery-bridal-1.jpg";
+import gallerySpa1 from "@/assets/gallery-spa-1.jpg";
+import gallerySkincare1 from "@/assets/gallery-skincare-1.jpg";
+import galleryLaser1 from "@/assets/gallery-laser-1.jpg";
+import gallerySalon1 from "@/assets/gallery-salon-1.jpg";
 
 const images = [
-  "https://yspstvqinawnszuxdjhy.supabase.co/storage/v1/object/public/gallery-images/1769501526250_eb5ry_Untitleddesign2.png",
-  "https://yspstvqinawnszuxdjhy.supabase.co/storage/v1/object/public/gallery-images/1769501584462_moxs2_Untitleddesign2.png",
-  "https://yspstvqinawnszuxdjhy.supabase.co/storage/v1/object/public/gallery-images/1769501696015_bq0po_20250404155222j.jpg",
-  "https://yspstvqinawnszuxdjhy.supabase.co/storage/v1/object/public/gallery-images/1769501775088_le2ot_Untitleddesign2.png",
-  "https://yspstvqinawnszuxdjhy.supabase.co/storage/v1/object/public/gallery-images/1769501965674_cd19k_Untitleddesign2.png",
-  "https://yspstvqinawnszuxdjhy.supabase.co/storage/v1/object/public/gallery-images/1769602368337-5iwrorz.png",
-  "https://yspstvqinawnszuxdjhy.supabase.co/storage/v1/object/public/gallery-images/1769602450968-o0map1w.png",
-  "https://yspstvqinawnszuxdjhy.supabase.co/storage/v1/object/public/gallery-images/1769602486195-br2vkgw.jpeg",
+  { src: galleryClinic1, alt: "Luxury treatment room" },
+  { src: galleryLaser1, alt: "Advanced laser technology" },
+  { src: galleryCool1, alt: "CoolSculpting treatment" },
+  { src: gallerySkincare1, alt: "Premium skincare products" },
+  { src: galleryBridal1, alt: "Bridal beauty preparation" },
+  { src: gallerySpa1, alt: "Hot stone spa therapy" },
+  { src: gallerySalon1, alt: "Premium salon styling" },
+  { src: galleryClinic2, alt: "Clinic reception lounge" },
 ];
 
 const GallerySection = () => (
@@ -23,7 +31,7 @@ const GallerySection = () => (
         <h2 className="font-serif text-4xl md:text-5xl text-foreground">
           Follow Our <em className="text-primary">Journey</em>
         </h2>
-        <p className="text-muted-foreground mt-4">See real results and latest updates</p>
+        <p className="text-muted-foreground mt-4">See real results and latest updates from our clinic</p>
       </div>
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
@@ -40,8 +48,8 @@ const GallerySection = () => (
             className="group relative aspect-square rounded-xl overflow-hidden"
           >
             <img
-              src={img}
-              alt={`Clinic result ${i + 1}`}
+              src={img.src}
+              alt={img.alt}
               loading="lazy"
               className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
             />
