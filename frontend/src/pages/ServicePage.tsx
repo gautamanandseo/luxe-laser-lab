@@ -229,19 +229,14 @@ const ServicePage = ({ service }: ServicePageProps) => {
   return (
     <div className="pt-20">
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center overflow-hidden">
+      <section className="relative min-h-[90vh] flex items-center overflow-hidden scanlines">
         {/* Background Image */}
         <div className="absolute inset-0">
-          <img
-            src={heroImg}
-            alt={data.title + " " + data.accent}
-            className="w-full h-full object-cover"
-          />
+          <img src={heroImg} alt={data.title + " " + data.accent} className="w-full h-full object-cover" />
           <div className={`absolute inset-0 bg-gradient-to-r ${data.heroOverlay}`} />
-          {/* Decorative elements */}
-          <div className="absolute top-20 right-20 w-72 h-72 bg-primary/10 rounded-full blur-3xl" />
-          <div className="absolute bottom-20 left-20 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
         </div>
+        <AuroraMesh intensity="subtle" className="z-[2]" />
+        <ParticleField count={15} className="z-[3] opacity-25" />
 
         {/* Content */}
         <div className="relative z-10 container mx-auto px-6 py-24">
