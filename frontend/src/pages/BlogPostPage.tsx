@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight, Clock, Calendar, Tag, User } from "lucide-react";
 import { blogPosts } from "@/data/blogData";
 import { servicesData } from "@/data/serviceData";
+import BlogImage from "@/components/blog/BlogImage";
 
 const BlogPostPage = () => {
   const { slug } = useParams();

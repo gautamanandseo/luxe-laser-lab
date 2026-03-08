@@ -1,8 +1,9 @@
 import { useState, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRight, Clock, Search, Tag } from "lucide-react";
+import { ArrowRight, Clock, Search } from "lucide-react";
 import { blogPosts, blogCategories } from "@/data/blogData";
+import BlogImage from "@/components/blog/BlogImage";
 
 const BlogPage = () => {
   const [activeCategory, setActiveCategory] = useState("All");
