@@ -47,6 +47,8 @@ const Index = () => {
       <GallerySection />
       <GlowDivider variant="multi" />
       <LoyaltyTeaser />
+      <GlowDivider variant="gold" />
+      <SkinAnalysisWidget />
       <GlowDivider variant="subtle" />
       <CertificationsStrip />
       <GlowDivider variant="gold" />
