@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Shield, Award, Users, Heart, Sparkles, Clock, ArrowRight, CheckCircle, Stethoscope, Leaf, Target, TrendingUp } from "lucide-react";
+import { Shield, Award, Users, Heart, Sparkles, Clock, ArrowRight, CheckCircle, Leaf, Target, TrendingUp } from "lucide-react";
 import { Link } from "react-router-dom";
 import ScrollReveal from "@/components/effects/ScrollReveal";
 import Tilt3DCard from "@/components/effects/Tilt3DCard";
