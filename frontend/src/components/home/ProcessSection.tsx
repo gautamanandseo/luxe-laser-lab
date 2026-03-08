@@ -14,7 +14,7 @@ const steps = [
 
 const ProcessSection = () => {
   return (
-    <section className="py-28 bg-cosmic relative overflow-hidden light-rays">
+    <section className="py-28 bg-velvet relative overflow-hidden light-rays vignette diamond-dust">
       <AuroraMesh intensity="medium" />
       <ParticleField count={25} className="opacity-40" />
       <div className="absolute inset-0 grid-bg opacity-20" />
