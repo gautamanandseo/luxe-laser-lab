@@ -331,8 +331,12 @@ const ServicePage = ({ service }: ServicePageProps) => {
         </div>
       </section>
 
+      <GlowDivider variant="gold" />
+
       {/* About Section */}
-      <section className="py-24 bg-secondary">
+      <section className="py-24 bg-secondary relative overflow-hidden">
+        <AuroraMesh intensity="subtle" />
+        <div className="absolute inset-0 grid-bg opacity-20" />
         <div className="container mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <motion.div
