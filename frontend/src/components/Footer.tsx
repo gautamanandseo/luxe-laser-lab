@@ -1,6 +1,8 @@
 import { Phone, Mail, MapPin, Instagram, Facebook, Youtube, ArrowRight, Twitter } from "lucide-react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import EmpathyLogo from "./EmpathyLogo";
+import ParticleField from "./effects/ParticleField";
 
 const services = [
   { name: "Laser Hair Removal", path: "/laser-hair-removal" },
@@ -44,12 +46,14 @@ const socialLinks = [
 
 const Footer = () => {
   return (
-    <footer className="bg-background/50 backdrop-blur-xl border-t border-white/10 relative overflow-hidden">
-      {/* Gradient Background Elements */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 right-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
-      </div>
+    <footer className="bg-background/50 backdrop-blur-xl border-t border-primary/10 relative overflow-hidden">
+      {/* Particle background */}
+      <ParticleField count={15} className="opacity-20" />
+      {/* Grid background */}
+      <div className="absolute inset-0 grid-bg opacity-20" />
+      {/* Gradient glow */}
+      <div className="absolute top-0 right-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
 
       <div className="relative z-10 container mx-auto px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
@@ -61,9 +65,17 @@ const Footer = () => {
             </p>
             <div className="flex gap-3">
               {socialLinks.map((social, i) => (
-                <a key={i} href={social.href} target="_blank" rel="noopener noreferrer" aria-label={social.label} className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary transition-colors">
+                <motion.a
+                  key={i}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={social.label}
+                  whileHover={{ scale: 1.1, boxShadow: "0 0 15px hsl(38, 45%, 60%, 0.3)" }}
+                  className="w-10 h-10 rounded-full border border-primary/20 flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary transition-colors"
+                >
                   <social.icon size={16} />
-                </a>
+                </motion.a>
               ))}
             </div>
           </div>
@@ -75,7 +87,7 @@ const Footer = () => {
               {services.map(s => (
                 <li key={s.path}>
                   <Link to={s.path} className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-2 group">
-                    <ArrowRight size={12} className="opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <ArrowRight size={12} className="opacity-0 group-hover:opacity-100 transition-opacity text-primary" />
                     {s.name}
                   </Link>
                 </li>
@@ -90,7 +102,7 @@ const Footer = () => {
               {clinicLinks.map(l => (
                 <li key={l.path}>
                   <Link to={l.path} className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-2 group">
-                    <ArrowRight size={12} className="opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <ArrowRight size={12} className="opacity-0 group-hover:opacity-100 transition-opacity text-primary" />
                     {l.name}
                   </Link>
                 </li>
@@ -115,7 +127,7 @@ const Footer = () => {
                 <MapPin size={14} className="text-primary mt-0.5" /> Delhi NCR, India
               </a>
             </div>
-            <div className="mt-6 p-4 bg-muted rounded text-xs text-muted-foreground">
+            <div className="mt-6 p-4 bg-muted/30 rounded-lg border border-primary/10 text-xs text-muted-foreground">
               <p className="font-semibold text-foreground mb-1">Clinic Hours</p>
               <p>Mon – Sat: 10:00 AM – 7:00 PM</p>
               <p>Sunday: By Appointment</p>
@@ -125,7 +137,7 @@ const Footer = () => {
       </div>
 
       {/* Bottom Bar */}
-      <div className="relative z-10 border-t border-white/10">
+      <div className="relative z-10 border-t border-primary/10">
         <div className="container mx-auto px-6 py-6 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-xs text-muted-foreground">© {new Date().getFullYear()} Empathy Laser Clinic. All rights reserved.</p>
           <div className="flex gap-6">
