@@ -2,7 +2,7 @@ import { useState, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight, Clock, Search } from "lucide-react";
-import { blogPosts, blogCategories } from "@/data/blogData";
+import { allBlogPosts as blogPosts, blogCategories } from "@/data/blogData";
 import BlogImage from "@/components/blog/BlogImage";
 import AuroraMesh from "@/components/effects/AuroraMesh";
 import Tilt3DCard from "@/components/effects/Tilt3DCard";

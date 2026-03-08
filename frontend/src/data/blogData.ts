@@ -3415,3 +3415,7 @@ At Empathy Laser Clinic Delhi, we bridge the gap:
     relatedServices: ["salon", "skin", "laser"],
   },
 ];
+
+// Re-export combined posts
+import { extraBlogPosts } from "./blogDataExtra";
+export const allBlogPosts: BlogPost[] = [...blogPosts, ...extraBlogPosts];

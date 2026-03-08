@@ -1,7 +1,7 @@
 import { useParams, Link, Navigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight, Clock, Calendar, Tag, User } from "lucide-react";
-import { blogPosts } from "@/data/blogData";
+import { allBlogPosts as blogPosts } from "@/data/blogData";
 import { servicesData } from "@/data/serviceData";
 import BlogImage from "@/components/blog/BlogImage";
 
