@@ -1,4 +1,4 @@
-import { useState, lazy, Suspense } from "react";
+import { useState, lazy, Suspense, useEffect } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -13,11 +13,13 @@ import ScrollProgress from "@/components/ScrollProgress";
 import ScrollToTop from "@/components/ScrollToTop";
 import PageTransition from "@/components/effects/PageTransition";
 import LoadingScreen from "@/components/effects/LoadingScreen";
-import ExitIntentPopup from "@/components/conversion/ExitIntentPopup";
-import SocialProofToasts from "@/components/conversion/SocialProofToasts";
-import CountdownTimer from "@/components/conversion/CountdownTimer";
-import FloatingConsultation from "@/components/conversion/FloatingConsultation";
 import Index from "./pages/Index";
+
+// Lazy-load conversion widgets — not needed for initial render
+const ExitIntentPopup = lazy(() => import("@/components/conversion/ExitIntentPopup"));
+const SocialProofToasts = lazy(() => import("@/components/conversion/SocialProofToasts"));
+const CountdownTimer = lazy(() => import("@/components/conversion/CountdownTimer"));
+const FloatingConsultation = lazy(() => import("@/components/conversion/FloatingConsultation"));
 
 // Lazy-load all non-homepage routes
 const NotFound = lazy(() => import("./pages/NotFound"));
@@ -91,6 +93,24 @@ const AnimatedRoutes = () => {
   );
 };
 
+// Deferred conversion widgets — load 3s after app mounts
+const DeferredWidgets = () => {
+  const [ready, setReady] = useState(false);
+  useEffect(() => {
+    const timer = setTimeout(() => setReady(true), 3000);
+    return () => clearTimeout(timer);
+  }, []);
+  if (!ready) return null;
+  return (
+    <Suspense fallback={null}>
+      <ExitIntentPopup />
+      <SocialProofToasts />
+      <CountdownTimer />
+      <FloatingConsultation />
+    </Suspense>
+  );
+};
+
 const App = () => {
   const [loading, setLoading] = useState(true);
 
@@ -110,10 +130,7 @@ const App = () => {
           <Footer />
           <WhatsAppButton />
           <StickyMobileCTA />
-          <ExitIntentPopup />
-          <SocialProofToasts />
-          <CountdownTimer />
-          <FloatingConsultation />
+          <DeferredWidgets />
         </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>
