@@ -71,10 +71,10 @@ const SEOContentSection = () => (
     <div className="relative z-10 container mx-auto px-6">
       <ScrollReveal direction="up" className="text-center mb-16">
         <p className="eyebrow mb-4">Delhi NCR's Premier Aesthetic Clinic</p>
-        <h2 className="font-serif text-4xl md:text-5xl text-foreground">
-          Trusted by <em className="text-primary">25,000+</em> Clients Across Delhi
+        <h2 className="section-heading">
+          Trusted by <em className="text-primary" style={{ fontStyle: "italic" }}>25,000+</em> Clients Across Delhi
         </h2>
-        <p className="text-muted-foreground mt-4 max-w-3xl mx-auto">
+        <p className="body-text mt-4 max-w-3xl mx-auto">
           Empathy Laser Clinic in Pitampura, Delhi has been delivering world-class aesthetic treatments since 2009. We serve clients from across Delhi NCR with USFDA-cleared technology and genuine products.
         </p>
       </ScrollReveal>
