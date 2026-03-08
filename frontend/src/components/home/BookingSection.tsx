@@ -48,7 +48,7 @@ const BookingSection = () => {
           {/* Left - Trust info */}
           <ScrollReveal direction="right">
             <div>
-              <p className="text-muted-foreground leading-relaxed mb-8">
+              <p className="body-text mb-8">
                 Take the first step toward your transformation. Our specialists will assess your needs and create a personalized treatment plan — completely free of charge.
               </p>
               <div className="space-y-4 mb-8">

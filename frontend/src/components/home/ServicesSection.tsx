@@ -180,7 +180,7 @@ const ServicesSection = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
-                className="text-muted-foreground leading-relaxed mb-6"
+                className="body-text mb-6"
               >
                 {tab.desc}
               </motion.p>

@@ -20,7 +20,7 @@ const CertificationsStrip = () => (
     <div className="relative z-10 container mx-auto px-6">
       <ScrollReveal direction="up" className="text-center mb-10">
         <p className="eyebrow mb-2">Trusted & Certified</p>
-        <h3 className="font-serif text-2xl text-foreground">
+        <h3 className="section-heading text-2xl md:text-3xl">
           Backed by the World's <em className="text-primary" style={{ fontStyle: "normal" }}>Best</em>
         </h3>
       </ScrollReveal>
