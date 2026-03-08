@@ -25,7 +25,7 @@ const services = [
   { name: "Botox & Fillers", path: "/botox-fillers", icon: Zap },
   { name: "Microdermabrasion", path: "/microdermabrasion", icon: Zap },
   { name: "Bridal Packages", path: "/bridal-packages", icon: Zap },
-  { name: "Spa Services", path: "/spa-services", icon: Zap },
+  { name: "Facials & HydraFacial", path: "/facials", icon: Zap },
   { name: "Salon Services", path: "/salon-services", icon: Zap },
 ];
 

@@ -7,10 +7,22 @@ import serviceCoolsculpting from "@/assets/service-cool-gen.jpg";
 import serviceSkin from "@/assets/service-skin-gen.jpg";
 import serviceBotox from "@/assets/service-botox-gen.jpg";
 import serviceBridal from "@/assets/service-bridal-gen.jpg";
-import serviceSpa from "@/assets/service-spa-gen.jpg";
+import serviceFacial from "@/assets/service-facial-gen.jpg";
 import serviceSalon from "@/assets/service-salon-gen.jpg";
 import serviceMicroderm from "@/assets/service-microderm-gen.jpg";
 import serviceResurfx from "@/assets/service-resurfx-gen.jpg";
+import serviceAcne from "@/assets/service-acne-gen.jpg";
+import serviceSkinlightening from "@/assets/service-skinlightening-gen.jpg";
+import serviceAntiageing from "@/assets/service-antiageing-gen.jpg";
+import serviceHifu from "@/assets/service-hifu-gen.jpg";
+import serviceDarkcircles from "@/assets/service-darkcircles-gen.jpg";
+import serviceSkintightening from "@/assets/service-skintightening-gen.jpg";
+import serviceStretchmarks from "@/assets/service-stretchmarks-gen.jpg";
+import serviceTattoo from "@/assets/service-tattoo-gen.jpg";
+import serviceMolewart from "@/assets/service-molewart-gen.jpg";
+import serviceHairloss from "@/assets/service-hairloss-gen.jpg";
+import serviceHairtransplant from "@/assets/service-hairtransplant-gen.jpg";
+import serviceBodycontouring from "@/assets/service-bodycontouring-gen.jpg";
 
 const tabs = [
   {
@@ -44,7 +56,7 @@ const tabs = [
     desc: "Advanced dermatological treatments that target acne at its root and restore smooth, scar-free skin with clinical-grade technology including chemical peels, LED therapy, ResurFX™ laser, and microneedling with PRP.",
     features: ["Chemical peels & LED blue light therapy", "ResurFX™ fractional laser for scars", "Microneedling with PRP", "Calibrated for Indian skin types", "Long-term prevention protocols"],
     link: "/acne-treatment",
-    image: serviceSkin,
+    image: serviceAcne,
   },
   {
     id: "skinlightening",
@@ -55,7 +67,7 @@ const tabs = [
     desc: "Advanced clinical treatments to restore even-toned, luminous skin. We target melasma, dark patches, sun damage, and uneven skin tone safely for all Indian skin types.",
     features: ["Chemical peels & laser toning", "Melasma specialist protocol", "Glutathione & vitamin C infusions", "Professional de-tan treatments", "Indian skin-safe formulations"],
     link: "/skin-lightening",
-    image: serviceSkin,
+    image: serviceSkinlightening,
   },
   {
     id: "antiageing",
@@ -66,7 +78,7 @@ const tabs = [
     desc: "Combine Botox, dermal fillers, HIFU, ResurFX™ laser, and advanced facials to restore youthful vitality — without surgery. Natural-looking results that make you look refreshed, not 'done'.",
     features: ["Genuine Allergan Botox", "Premium dermal fillers", "HIFU non-surgical face lift", "ResurFX™ collagen remodeling", "Preventive anti-ageing programs"],
     link: "/anti-ageing",
-    image: serviceBotox,
+    image: serviceAntiageing,
   },
   {
     id: "hifu",
@@ -77,7 +89,7 @@ const tabs = [
     desc: "High-Intensity Focused Ultrasound delivers focused energy deep into the SMAS layer to lift, tighten, and contour — all without surgery, needles, or downtime.",
     features: ["Targets SMAS layer (same as surgical facelift)", "Natural collagen regeneration", "Zero downtime", "Results last 12-18 months", "Face, neck, jawline & body"],
     link: "/hifu-treatment",
-    image: serviceSkin,
+    image: serviceHifu,
   },
   {
     id: "darkcircles",
@@ -88,7 +100,7 @@ const tabs = [
     desc: "Specialized under-eye treatments targeting pigmentation, hollowness, and puffiness. We use fillers, PRP, peels, and laser toning for brighter, rejuvenated eyes.",
     features: ["Under-eye HA fillers", "PRP therapy for natural brightening", "Eye-safe chemical peels", "Root cause diagnosis", "Visible results from first session"],
     link: "/dark-circles",
-    image: serviceSkin,
+    image: serviceDarkcircles,
   },
   {
     id: "skintightening",
@@ -99,7 +111,7 @@ const tabs = [
     desc: "Sagging skin and loss of elasticity treated effectively without surgery using HIFU, radiofrequency, and ResurFX™ fractional laser technology.",
     features: ["HIFU deep tissue lifting", "Radiofrequency surface tightening", "ResurFX™ collagen remodeling", "Face and body treatment", "Post-weight loss skin firming"],
     link: "/skin-tightening",
-    image: serviceSkin,
+    image: serviceSkintightening,
   },
   {
     id: "hairloss",
@@ -110,7 +122,7 @@ const tabs = [
     desc: "Stop hair loss and regrow thicker hair with PRP therapy, mesotherapy, low-level laser therapy, and advanced medical treatments. Effective for men and women.",
     features: ["PRP (Platelet-Rich Plasma) therapy", "Scalp mesotherapy", "Low-level laser therapy (LLLT)", "Trichoscopy diagnosis", "Effective for men & women"],
     link: "/hair-loss-treatment",
-    image: serviceSalon,
+    image: serviceHairloss,
   },
   {
     id: "hairtransplant",
@@ -121,7 +133,7 @@ const tabs = [
     desc: "Advanced FUE hair transplant for permanent, natural-looking hair restoration. No linear scar, minimally invasive, with PRP-enhanced graft survival.",
     features: ["Advanced FUE technique", "Natural hairline design", "No linear scar", "95%+ graft survival rate", "PRP-enhanced recovery"],
     link: "/hair-transplant",
-    image: serviceSalon,
+    image: serviceHairtransplant,
   },
   {
     id: "stretchmarks",
@@ -132,7 +144,7 @@ const tabs = [
     desc: "Significantly reduce stretch marks with ResurFX™ fractional laser, microneedling with PRP, and medical-grade treatments. Effective on both new and old stretch marks.",
     features: ["ResurFX™ fractional laser", "Microneedling + PRP", "50-80% improvement", "New & old stretch marks", "Any body area"],
     link: "/stretch-marks",
-    image: serviceResurfx,
+    image: serviceStretchmarks,
   },
   {
     id: "tattooremoval",
@@ -143,7 +155,7 @@ const tabs = [
     desc: "Q-switched Nd:YAG laser technology safely breaks down tattoo pigments for effective removal. Works on all ink colors, safe for Indian skin types.",
     features: ["Q-switched Nd:YAG laser", "Multi-color ink treatment", "Safe for Indian skin", "Cover-up preparation available", "Gradual fading per session"],
     link: "/tattoo-removal",
-    image: serviceResurfx,
+    image: serviceTattoo,
   },
   {
     id: "molewart",
@@ -154,7 +166,7 @@ const tabs = [
     desc: "Safe, quick removal of moles, warts, skin tags, and DPNs using CO2 laser, radiofrequency, and electrocautery — with minimal scarring.",
     features: ["CO2 laser & RF removal", "5-20 minute procedures", "Minimal scarring", "Multiple growths per session", "Clinical assessment included"],
     link: "/mole-wart-removal",
-    image: serviceMicroderm,
+    image: serviceMolewart,
   },
   {
     id: "bodycontouring",
@@ -165,7 +177,7 @@ const tabs = [
     desc: "Complete non-surgical body sculpting with CoolSculpting®, radiofrequency tightening, ultrasound cavitation, and targeted inch loss programs.",
     features: ["CoolSculpting® fat freezing", "RF body tightening", "Ultrasound cavitation", "Cellulite reduction", "Measurable inch loss"],
     link: "/body-contouring",
-    image: serviceCoolsculpting,
+    image: serviceBodycontouring,
   },
   {
     id: "weightloss",
@@ -212,15 +224,15 @@ const tabs = [
     image: serviceBridal,
   },
   {
-    id: "spa",
-    label: "Spa",
+    id: "facials",
+    label: "Facials",
     icon: Flower2,
-    badge: "Wellness",
-    title: "Spa & Wellness Treatments",
-    desc: "Indulge in complete relaxation with our therapeutic spa treatments. From Swedish massage to detox wraps, experience wellness that rejuvenates body and mind.",
-    features: ["Swedish & Deep Tissue Massage", "Aromatherapy", "Body Wraps & Scrubs", "Hot Stone Therapy", "Couple Spa packages"],
-    link: "/spa-services",
-    image: serviceSpa,
+    badge: "Clinical Facials",
+    title: "Advanced Facials & HydraFacial",
+    desc: "From signature HydraFacials to LED light therapy, oxygen facials, and medical-grade chemical peels — clinical facial treatments that deliver visible, lasting results.",
+    features: ["HydraFacial Vortex-Fusion technology", "LED Light Therapy (Blue & Red)", "Oxygen Infusion Facials", "Gold & Platinum Luxury Facials", "Customized for every skin type"],
+    link: "/facials",
+    image: serviceFacial,
   },
   {
     id: "salon",
