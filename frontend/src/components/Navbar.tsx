@@ -7,6 +7,7 @@ import EmpathyLogo from "./EmpathyLogo";
 const services = [
   { name: "Laser Hair Removal", path: "/laser-hair-removal", icon: Zap },
   { name: "CoolSculpting®", path: "/coolsculpting", icon: Zap },
+  { name: "Weight Loss Delhi", path: "/weight-loss-delhi", icon: Zap },
   { name: "Skin Treatments", path: "/skin-treatments", icon: Zap },
   { name: "ResurFX™ Skin Resurfacing", path: "/resurfx", icon: Zap },
   { name: "Botox & Fillers", path: "/botox-fillers", icon: Zap },

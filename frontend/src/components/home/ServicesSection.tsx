@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, Check, Sparkles, Snowflake, Sun, Heart, Flower2, Scissors, Syringe, Diamond, Scan } from "lucide-react";
+import { ArrowRight, Check, Sparkles, Snowflake, Sun, Heart, Flower2, Scissors, Syringe, Diamond, Scan, Scale } from "lucide-react";
 import { Link } from "react-router-dom";
 import serviceLaser from "@/assets/service-laser-gen.jpg";
 import serviceCoolsculpting from "@/assets/service-cool-gen.jpg";
@@ -11,6 +11,7 @@ import serviceSpa from "@/assets/service-spa-gen.jpg";
 import serviceSalon from "@/assets/service-salon-gen.jpg";
 import serviceMicroderm from "@/assets/service-microderm-gen.jpg";
 import serviceResurfx from "@/assets/service-resurfx-gen.jpg";
+import serviceCoolsculpting2 from "@/assets/service-cool-gen.jpg";
 
 const tabs = [
   {
@@ -34,6 +35,17 @@ const tabs = [
     features: ["27% fat reduction per session", "9 treatable body areas", "Non-surgical & non-invasive", "FDA-cleared technology", "Permanent fat cell elimination"],
     link: "/coolsculpting",
     image: serviceCoolsculpting,
+  },
+  {
+    id: "weightloss",
+    label: "Weight Loss",
+    icon: Scale,
+    badge: "Non-Surgical",
+    title: "Weight Loss & Body Contouring Delhi",
+    desc: "Delhi NCR's most trusted non-surgical weight loss clinic. CoolSculpting® Elite permanently eliminates stubborn fat cells from belly, love handles, chin, thighs & more — no surgery, no needles, zero downtime.",
+    features: ["Up to 27% fat reduction per session", "8+ treatable body areas", "Permanent fat cell elimination", "Non-surgical & FDA-cleared", "Free body assessment included"],
+    link: "/weight-loss-delhi",
+    image: serviceCoolsculpting2,
   },
   {
     id: "skin",

@@ -32,6 +32,7 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/laser-hair-removal" element={<ServicePage service="laser" />} />
             <Route path="/coolsculpting" element={<ServicePage service="coolsculpting" />} />
+            <Route path="/weight-loss-delhi" element={<ServicePage service="weightloss" />} />
             <Route path="/skin-treatments" element={<ServicePage service="skin" />} />
             <Route path="/resurfx" element={<ServicePage service="resurfx" />} />
             <Route path="/botox-fillers" element={<ServicePage service="botox" />} />

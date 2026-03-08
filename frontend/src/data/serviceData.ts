@@ -1,4 +1,4 @@
-import { Sparkles, Snowflake, Sun, Heart, Flower2, Scissors, Syringe, Diamond, Clock, Shield, Award, Users, CheckCircle, Star, Zap, Target, Droplets, Gem, Scan } from "lucide-react";
+import { Sparkles, Snowflake, Sun, Heart, Flower2, Scissors, Syringe, Diamond, Clock, Shield, Award, Users, CheckCircle, Star, Zap, Target, Droplets, Gem, Scan, Scale } from "lucide-react";
 
 export interface ServiceStep {
   number: string;
@@ -788,6 +788,120 @@ export const servicesData: Record<string, ServiceData> = {
       "Comfortable, modern salon space",
       "Trend-forward styling techniques",
       "Men's and women's services available",
+    ],
+  },
+
+  weightloss: {
+    id: "weightloss",
+    title: "Weight Loss &",
+    accent: "Body Contouring",
+    subtitle: "NON-SURGICAL · DOCTOR-LED · COOLSCULPTING® ELITE",
+    tagline: "Delhi NCR's most trusted non-surgical weight loss clinic",
+    heroImage: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=1920&q=80",
+    heroOverlay: "from-[hsl(160,50%,4%)]/95 via-[hsl(160,50%,4%)]/70 to-transparent",
+    description: "Struggling with stubborn fat despite diet and exercise? At Empathy Laser Clinic, Pitampura, Delhi, we offer clinically proven, non-surgical weight loss treatments including CoolSculpting® Elite, medical-grade body contouring, and structured fat reduction programs — all under expert supervision.",
+    longDescription: "Weight loss treatment in Delhi has evolved far beyond crash diets and generic gym programs. At Empathy Laser Clinic, we understand that stubborn fat often persists due to biological factors — insulin resistance, hormonal imbalance, metabolic inefficiency, and genetic predisposition. Our non-surgical weight loss programs combine FDA-cleared CoolSculpting® Elite technology with personalised body contouring protocols to permanently eliminate fat cells from targeted areas. Unlike temporary solutions, cryolipolysis destroys fat cells that never return. Our structured approach includes comprehensive body composition analysis, customised treatment mapping, and ongoing progress monitoring. Whether it's belly fat, love handles, double chin, thighs, or back fat — we create a tailored plan to sculpt the body you've always wanted, without surgery, needles, or downtime. Serving patients from Delhi, Pitampura, Rohini, Model Town, Shalimar Bagh, Gurgaon, and across Delhi NCR.",
+    icon: Scale,
+    badge: "Non-Surgical",
+    benefits: [
+      { title: "Up to 27% Fat Reduction", description: "CoolSculpting® Elite delivers clinically proven fat reduction per session — FDA-cleared and backed by 12M+ treatments worldwide.", icon: Target },
+      { title: "No Surgery, No Needles", description: "100% non-invasive. No anesthesia, no incisions, no scars. Walk in, get treated, walk out. It's that simple.", icon: Shield },
+      { title: "Permanent Results", description: "Fat cells destroyed by cryolipolysis are gone forever. Adults don't regenerate fat cells — once eliminated, they never return.", icon: CheckCircle },
+      { title: "Zero Downtime", description: "Resume work, gym, and daily life immediately. Most clients read, nap, or work during their session.", icon: Clock },
+      { title: "Targeted Spot Reduction", description: "Unlike diet and exercise, CoolSculpting® can spot-reduce fat from specific areas — belly, love handles, chin, thighs, arms, and more.", icon: Zap },
+      { title: "Clinically Supervised", description: "Every treatment is supervised by trained specialists using authentic CoolSculpting® Elite equipment — never imitations.", icon: Award },
+    ],
+    processSteps: [
+      { number: "01", title: "Free Body Assessment", description: "Comprehensive body composition analysis, BMI assessment, and identification of target areas. Our specialists map out your customised fat reduction plan." },
+      { number: "02", title: "Treatment Planning", description: "Based on your body goals, we determine the optimal number of sessions, treatment areas, and applicator combinations for maximum results." },
+      { number: "03", title: "CoolSculpting® Session", description: "Relax as our CoolSculpting® Elite dual applicators precisely cool and destroy fat cells at -11°C. Sessions last 35-60 minutes per area." },
+      { number: "04", title: "Results & Follow-Up", description: "Your body naturally processes and eliminates dead fat cells over 2-3 months. We track your progress and plan additional sessions if needed." },
+    ],
+    treatmentAreas: [
+      { name: "Stubborn Belly Fat", description: "Flatten your midsection by targeting upper and lower abdominal fat deposits", duration: "60 mins" },
+      { name: "Love Handles & Flanks", description: "Contour your waistline by eliminating fat from both sides", duration: "35 mins/side" },
+      { name: "Double Chin (Submental)", description: "Achieve a sharp, defined jawline without surgery", duration: "35 mins" },
+      { name: "Inner & Outer Thighs", description: "Reduce thigh fat for proportional, sculpted legs", duration: "35 mins/area" },
+      { name: "Upper Arms", description: "Eliminate 'bat wings' and sculpt toned-looking arms", duration: "35 mins" },
+      { name: "Back & Bra Bulge", description: "Smooth out bulges around the bra line and upper/lower back", duration: "35 mins" },
+      { name: "Under Buttocks (Banana Roll)", description: "Define the crease between buttocks and thighs for a lifted look", duration: "35 mins" },
+      { name: "Male Chest (Pseudogynecomastia)", description: "Reduce chest fat for a flatter, more masculine chest contour", duration: "35 mins" },
+    ],
+    pricing: [
+      { name: "Single Area", price: "Ask for Quote", description: "Target one problem area", features: ["One CoolSculpting® area", "Free body assessment", "Progress tracking", "Aftercare guidance"] },
+      { name: "DualSculpting Package", price: "Ask for Quote", description: "Two areas simultaneously", features: ["Two areas treated at once", "50% time savings", "Comprehensive body mapping", "Dedicated specialist"], popular: true },
+      { name: "Full Body Transformation", price: "Ask for Quote", description: "Complete body contouring", features: ["Up to 6 target areas", "Multiple sessions included", "VIP scheduling", "Ongoing progress monitoring"] },
+    ],
+    faqs: [
+      { question: "What is the best non-surgical weight loss treatment in Delhi?", answer: "CoolSculpting® Elite is considered the gold standard in non-surgical fat reduction worldwide. At Empathy Laser Clinic in Pitampura, Delhi, we use authentic CoolSculpting® Elite machines to permanently eliminate stubborn fat cells through FDA-cleared cryolipolysis technology — no surgery, no needles, no downtime." },
+      { question: "How much weight can I lose with CoolSculpting®?", answer: "CoolSculpting® is a body contouring treatment, not a weight loss solution per se. It reduces fat in targeted areas by up to 27% per session. While the scale may not change dramatically, you'll notice visible reduction in inches and improved body shape. It's ideal for people near their goal weight with stubborn fat pockets." },
+      { question: "Is CoolSculpting® safe?", answer: "Yes! CoolSculpting® is FDA-cleared and has been performed over 12 million times worldwide. It selectively targets fat cells without damaging surrounding skin, nerves, or muscle tissue. At Empathy Laser Clinic, we use only authentic equipment and trained specialists." },
+      { question: "How long do results last?", answer: "Results are permanent! Once fat cells are frozen and eliminated, they're gone forever. Adults don't produce new fat cells. However, remaining fat cells can still expand if you gain significant weight, so maintaining a healthy lifestyle is recommended." },
+      { question: "Who is a good candidate for weight loss treatment?", answer: "Ideal candidates are near their goal weight but have stubborn fat deposits that won't respond to diet and exercise. CoolSculpting® is not suitable for significantly overweight individuals. A free body assessment at our clinic will determine if you're a good candidate." },
+      { question: "What areas of the body can be treated?", answer: "We treat 8+ areas: belly fat, love handles, double chin, thighs (inner & outer), upper arms, back & bra bulge, under buttocks (banana roll), and male chest. Our dual applicators can treat two areas simultaneously." },
+      { question: "How many sessions do I need?", answer: "Most clients see excellent results with 1-3 sessions per area, spaced 6-8 weeks apart. During your free body assessment, we'll recommend the optimal number of sessions based on your specific fat deposits and goals." },
+      { question: "Is there any downtime after treatment?", answer: "Zero downtime! You can return to work, exercise, and daily activities immediately. Some mild redness, swelling, or tenderness in the treated area is normal and resolves within a few days." },
+      { question: "Why choose Empathy Laser Clinic for weight loss in Delhi?", answer: "We use authentic CoolSculpting® Elite machines (by Allergan/AbbVie), certified specialists, offer free body assessments, and have a proven track record in Delhi NCR. We never use imitations or off-brand alternatives." },
+      { question: "What is the cost of weight loss treatment in Delhi?", answer: "Cost varies based on the number of areas treated and sessions needed. We offer competitive pricing and flexible packages. Book a free body assessment to get a personalised quote with no obligation." },
+    ],
+    galleryImages: [
+      "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=800&q=80",
+      "https://images.unsplash.com/photo-1731514721772-329626f84c8b?w=800&q=80",
+      "https://images.unsplash.com/photo-1648775507324-b48dd3791fa5?w=800&q=80",
+      "https://images.unsplash.com/photo-1762625570087-6d98fca29531?w=800&q=80",
+    ],
+    secondaryImage: "https://images.unsplash.com/photo-1648775507324-b48dd3791fa5?w=1200&q=80",
+    processImage: "https://images.unsplash.com/photo-1762625570087-6d98fca29531?w=1200&q=80",
+    stats: [
+      { value: "27%", label: "Fat Reduction/Session" },
+      { value: "12M+", label: "Treatments Worldwide" },
+      { value: "8+", label: "Treatment Areas" },
+      { value: "0", label: "Days Downtime" },
+    ],
+    testimonials: [
+      { name: "Kavita R.", rating: 5, text: "I tried everything — gym, diets, even those slimming belts. Nothing worked on my belly. CoolSculpting® at Empathy finally did it. My abdomen is visibly flatter after just 2 sessions!", treatment: "Abdomen & Love Handles" },
+      { name: "Pradeep S.", rating: 5, text: "As a man in his 40s, I had stubborn chest fat that no amount of push-ups could fix. The male chest treatment was discreet, painless, and the results are incredible.", treatment: "Male Chest" },
+      { name: "Neha P.", rating: 5, text: "My love handles disappeared after 2 sessions. I can finally wear fitted sarees and dresses without feeling self-conscious. Best decision I ever made!", treatment: "Love Handles" },
+      { name: "Ritu M.", rating: 5, text: "I was sceptical about non-surgical weight loss but the before-after photos at the clinic convinced me. Now I'm living proof — 3 inches off my waist without a single surgery!", treatment: "Full Body Contouring" },
+    ],
+    whyChooseUs: [
+      "Authentic CoolSculpting® Elite machines — never imitations",
+      "Certified body contouring specialists",
+      "Free comprehensive body assessment & BMI analysis",
+      "DualSculpting for faster, two-area simultaneous treatment",
+      "Located in Pitampura, Delhi — serving all of Delhi NCR",
+      "Proven track record with documented before/after results",
+      "Personalised treatment plans based on body composition",
+      "Post-treatment progress tracking and follow-up",
+    ],
+    comparison: [
+      { method: "CoolSculpting® Elite", duration: "35-60 mins/area", pain: "Minimal (cold sensation)", results: "27% fat reduction, permanent, visible in 2-3 months", cost: "One-time investment per area", recommended: true },
+      { method: "Liposuction Surgery", duration: "1-3 hours + recovery", pain: "Surgical (general anesthesia)", results: "Immediate but 6-8 weeks recovery, surgical risks", cost: "Higher + hospital/anesthesia costs", recommended: false },
+      { method: "Diet & Exercise", duration: "Daily ongoing effort", pain: "None", results: "Cannot spot-reduce; overall weight loss only", cost: "Gym + trainer recurring costs", recommended: false },
+      { method: "Fat Dissolving Injections", duration: "15-30 mins", pain: "Moderate (multiple needle injections)", results: "Gradual, multiple sessions, less predictable", cost: "Per-session recurring costs", recommended: false },
+      { method: "Crash Diets / Supplements", duration: "Ongoing", pain: "None (health risks)", results: "Temporary; weight regain common; no spot reduction", cost: "Variable, often recurring", recommended: false },
+    ],
+    detailedSections: [
+      {
+        title: "Why Diets Fail — The Science Behind Stubborn Fat",
+        content: "Despite disciplined dieting and regular exercise, many people struggle to lose fat from specific areas like the belly, love handles, and thighs. This isn't a willpower problem — it's biology. Stubborn fat deposits are often resistant to diet due to factors like higher alpha-2 adrenergic receptor density (which inhibits fat breakdown), poor local blood flow, insulin resistance, hormonal imbalances (especially cortisol and estrogen), and genetic predisposition. These areas were evolutionarily designed to store energy reserves. CoolSculpting® bypasses all these biological barriers by physically destroying fat cells through controlled cooling — something no diet or exercise can achieve in targeted areas."
+      },
+      {
+        title: "CoolSculpting® Elite — How Cryolipolysis Works",
+        content: "Fat cells are more sensitive to cold than surrounding tissue. CoolSculpting® exploits this scientific principle through a process called cryolipolysis. The Elite applicator cools fat cells to precisely -11°C, causing them to crystallize and undergo apoptosis (programmed cell death). Over the following 2-3 months, your body's lymphatic system naturally processes and permanently eliminates these dead cells. The result: measurable, visible fat reduction exactly where you want it. The Elite system features redesigned C-shaped applicators with 18% more surface coverage than the original, plus dual-applicator capability to treat two areas simultaneously."
+      },
+      {
+        title: "Weight Loss Treatment for Men in Delhi",
+        content: "Weight loss treatment isn't just for women. At Empathy Laser Clinic, we see a growing number of male patients seeking discreet, effective fat reduction. Common concerns include belly fat ('beer belly'), chest fat (pseudogynecomastia), love handles, and double chin. CoolSculpting® is particularly effective for men because male fat distribution tends to be more localized. Treatment is completely private, requires no downtime, and delivers masculine, defined results. Many of our male patients return to work or the gym immediately after their session."
+      },
+      {
+        title: "Benefits Beyond Body Shape — Why Weight Loss Matters",
+        content: "Losing excess fat isn't just about looking good — it's about health. Reduced body fat is clinically associated with improved cardiovascular health, lower risk of Type 2 diabetes, reduced joint stress, better sleep quality (less sleep apnea), enhanced energy levels, improved mental well-being and confidence, and better hormonal balance. At Empathy Laser Clinic, we believe in holistic wellness — our weight loss treatments help you look better and feel healthier."
+      },
+      {
+        title: "Delhi NCR's Most Trusted Weight Loss Clinic — Why Empathy",
+        content: "Located in Pitampura, North Delhi, Empathy Laser Clinic serves patients from across Delhi NCR including Rohini, Model Town, Shalimar Bagh, Ashok Vihar, Gurgaon, Noida, and Greater Noida. We use only authentic CoolSculpting® Elite machines manufactured by Allergan (AbbVie) — never off-brand alternatives. Our certified specialists have extensive training in body contouring, and every patient receives a free comprehensive body assessment before any treatment. We combine world-class technology with personalised care to deliver results that speak for themselves."
+      },
     ],
   },
 };
