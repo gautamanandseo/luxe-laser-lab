@@ -157,7 +157,7 @@ const ContactPage = () => {
                 className="relative aspect-video rounded-xl overflow-hidden border border-border"
               >
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3507.6844!2d77.0266!3d28.4595!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d18e5a8b35c8b%3A0x9d41e35b5c41bcf8!2sEmpathy%20Laser%20Clinic!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3499.8!2d77.1315!3d28.6969!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d03e742f5a9a1%3A0x6e3b1d3a1c8e9f0a!2sEmpathy+Laser+Clinic%2C+Pitampura%2C+Delhi!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
