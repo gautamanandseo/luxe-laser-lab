@@ -48,6 +48,30 @@ const faqs = [
 const FAQSection = () => {
   const [open, setOpen] = useState<number | null>(0);
 
+  // Inject FAQ JSON-LD schema for Google rich snippets
+  useEffect(() => {
+    const schema = {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(faq => ({
+        "@type": "Question",
+        "name": faq.q,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": faq.a,
+        },
+      })),
+    };
+    const script = document.createElement("script");
+    script.type = "application/ld+json";
+    script.id = "faq-schema";
+    script.textContent = JSON.stringify(schema);
+    document.head.appendChild(script);
+    return () => {
+      const el = document.getElementById("faq-schema");
+      if (el) el.remove();
+    };
+  }, []);
   return (
     <section id="faq" className="py-24 bg-secondary">
       <div className="container mx-auto px-6">
