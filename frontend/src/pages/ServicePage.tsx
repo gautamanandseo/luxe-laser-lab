@@ -1,53 +1,76 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, Check, Phone, ChevronDown, Star, Quote, Info } from "lucide-react";
+import { ArrowRight, Check, Phone, ChevronDown, Star, Quote, Info, Eye } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { servicesData } from "@/data/serviceData";
 
-// AI-generated hero images
-import heroLaserGen from "@/assets/hero-laser-gen.jpg";
-import heroCoolGen from "@/assets/hero-coolsculpting-gen.jpg";
-import heroSkinGen from "@/assets/hero-skin-gen.jpg";
-import heroBotoxGen from "@/assets/hero-botox-gen.jpg";
-import heroBridalGen from "@/assets/hero-bridal-gen.jpg";
-import heroSpaGen from "@/assets/hero-spa-gen.jpg";
-import heroSalonGen from "@/assets/hero-salon-gen.jpg";
-import heroMicrodermGen from "@/assets/hero-microderm-gen.jpg";
-import heroResurfxGen from "@/assets/hero-resurfx-gen.jpg";
+// New high-quality hero images
+import heroLaserNew from "@/assets/hero-laser-new.jpg";
+import heroCoolNew from "@/assets/hero-cool-new.jpg";
+import heroSkinNew from "@/assets/hero-skin-new.jpg";
+import heroBotoxNew from "@/assets/hero-botox-new.jpg";
+import heroBridalNew from "@/assets/hero-bridal-new.jpg";
+import heroSpaNew from "@/assets/hero-spa-new.jpg";
+import heroSalonNew from "@/assets/hero-salon-new.jpg";
+import heroMicrodermNew from "@/assets/hero-microderm-new.jpg";
+import heroResurfxNew from "@/assets/hero-resurfx-new.jpg";
 
-// AI-generated service images
-import serviceLaserGen from "@/assets/service-laser-gen.jpg";
-import serviceCoolGen from "@/assets/service-cool-gen.jpg";
-import serviceSkinGen from "@/assets/service-skin-gen.jpg";
-import serviceBotoxGen from "@/assets/service-botox-gen.jpg";
-import serviceBridalGen from "@/assets/service-bridal-gen.jpg";
-import serviceSpaGen from "@/assets/service-spa-gen.jpg";
-import serviceSalonGen from "@/assets/service-salon-gen.jpg";
-import serviceMicrodermGen from "@/assets/service-microderm-gen.jpg";
-import serviceResurfxGen from "@/assets/service-resurfx-gen.jpg";
+// Before/After result images
+import baCoolsculpting from "@/assets/ba-coolsculpting.jpg";
+import baSkin from "@/assets/ba-skin.jpg";
+import baBotox from "@/assets/ba-botox.jpg";
+import baResurfx from "@/assets/ba-resurfx.jpg";
+import baMicroderm from "@/assets/ba-microderm.jpg";
 
 const heroImages: Record<string, string> = {
-  laser: heroLaserGen,
-  coolsculpting: heroCoolGen,
-  skin: heroSkinGen,
-  botox: heroBotoxGen,
-  bridal: heroBridalGen,
-  spa: heroSpaGen,
-  salon: heroSalonGen,
-  microdermabrasion: heroMicrodermGen,
-  resurfx: heroResurfxGen,
+  laser: heroLaserNew,
+  coolsculpting: heroCoolNew,
+  skin: heroSkinNew,
+  botox: heroBotoxNew,
+  bridal: heroBridalNew,
+  spa: heroSpaNew,
+  salon: heroSalonNew,
+  microdermabrasion: heroMicrodermNew,
+  resurfx: heroResurfxNew,
 };
 
+// Use same high-quality images for secondary/service images
 const serviceImages: Record<string, string> = {
-  laser: serviceLaserGen,
-  coolsculpting: serviceCoolGen,
-  skin: serviceSkinGen,
-  botox: serviceBotoxGen,
-  bridal: serviceBridalGen,
-  spa: serviceSpaGen,
-  salon: serviceSalonGen,
-  microdermabrasion: serviceMicrodermGen,
-  resurfx: serviceResurfxGen,
+  laser: heroLaserNew,
+  coolsculpting: heroCoolNew,
+  skin: heroSkinNew,
+  botox: heroBotoxNew,
+  bridal: heroBridalNew,
+  spa: heroSpaNew,
+  salon: heroSalonNew,
+  microdermabrasion: heroMicrodermNew,
+  resurfx: heroResurfxNew,
+};
+
+// Before/After images per service
+const beforeAfterImages: Record<string, { image: string; label: string }[]> = {
+  laser: [],
+  coolsculpting: [
+    { image: baCoolsculpting, label: "Abdomen — 2 sessions" },
+  ],
+  skin: [
+    { image: baSkin, label: "Acne & Blemish Clearance" },
+  ],
+  botox: [
+    { image: baBotox, label: "Forehead & Crow's Feet" },
+  ],
+  resurfx: [
+    { image: baResurfx, label: "Acne Scar Resurfacing" },
+  ],
+  microdermabrasion: [
+    { image: baMicroderm, label: "Skin Texture Refinement" },
+  ],
+  bridal: [],
+  spa: [],
+  salon: [],
+  weightloss: [
+    { image: baCoolsculpting, label: "CoolSculpting® Body Contouring" },
+  ],
 };
 
 interface ServicePageProps {
@@ -259,6 +282,69 @@ const ServicePage = ({ service }: ServicePageProps) => {
           </div>
         </div>
       </section>
+
+      {/* Before & After Results Gallery */}
+      {beforeAfterImages[service] && beforeAfterImages[service].length > 0 && (
+        <section className="py-24 bg-secondary">
+          <div className="container mx-auto px-6">
+            <div className="text-center mb-16">
+              <p className="eyebrow mb-4">Real Results</p>
+              <h2 className="font-serif text-4xl md:text-5xl text-foreground">
+                Before & <em className="text-primary">After</em>
+              </h2>
+              <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
+                See the transformative results our clients achieve at Empathy Laser Clinic. All results are from actual treatments performed at our clinic.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+              {beforeAfterImages[service].map((ba, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  className="group relative rounded-2xl overflow-hidden border border-border bg-card"
+                >
+                  <div className="relative aspect-square overflow-hidden">
+                    <img
+                      src={ba.image}
+                      alt={`Before and after ${data.title} - ${ba.label}`}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    {/* Before/After labels */}
+                    <div className="absolute top-4 left-4 bg-card/90 backdrop-blur-sm text-foreground text-[10px] font-sans uppercase tracking-[0.2em] px-3 py-1.5 rounded-full border border-border">
+                      Before
+                    </div>
+                    <div className="absolute top-4 right-4 bg-primary/90 backdrop-blur-sm text-primary-foreground text-[10px] font-sans uppercase tracking-[0.2em] px-3 py-1.5 rounded-full">
+                      After
+                    </div>
+                    {/* Divider line */}
+                    <div className="absolute top-0 bottom-0 left-1/2 w-px bg-foreground/30" />
+                  </div>
+                  <div className="p-4">
+                    <div className="flex items-center gap-2">
+                      <Eye size={14} className="text-primary" />
+                      <p className="text-sm font-semibold text-foreground">{ba.label}</p>
+                    </div>
+                    <p className="text-xs text-muted-foreground mt-1">Results may vary. Individual consultation required.</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            <div className="text-center mt-10">
+              <Link
+                to="/contact"
+                className="border border-border text-foreground px-6 py-3 text-sm font-sans uppercase tracking-[0.1em] rounded-full inline-flex items-center gap-2 hover:border-primary hover:text-primary transition-colors"
+              >
+                See Your Potential Results — Book Consultation <ArrowRight size={14} />
+              </Link>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Process Section */}
       <section className="py-24 bg-secondary">
