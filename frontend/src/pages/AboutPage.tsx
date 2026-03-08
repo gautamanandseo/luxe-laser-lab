@@ -3,7 +3,6 @@ import { Award, Heart, Users, Shield, Star, CheckCircle, Sparkles, Target, Clock
 import { Link } from "react-router-dom";
 import galleryClinic2 from "@/assets/gallery-clinic-2.jpg";
 import galleryClinic1 from "@/assets/gallery-clinic-1.jpg";
-import { Link } from "react-router-dom";
 
 const values = [
   { icon: Heart, title: "Empathy First", desc: "The 'Empathy' in our name reflects our commitment to understanding every client's unique needs and concerns." },
