@@ -20,6 +20,7 @@ const navLinks = [
   { name: "Home", path: "/" },
   { name: "Services", path: "#", hasDropdown: true },
   { name: "About", path: "/about" },
+  { name: "Blog", path: "/blog" },
   { name: "Contact", path: "/contact" },
 ];
 

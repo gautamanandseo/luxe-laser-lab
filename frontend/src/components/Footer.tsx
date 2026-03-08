@@ -16,6 +16,7 @@ const services = [
 
 const clinicLinks = [
   { name: "About Us", path: "/about" },
+  { name: "Blog", path: "/blog" },
   { name: "Contact", path: "/contact" },
   { name: "Gallery", path: "/#gallery" },
   { name: "Testimonials", path: "/#testimonials" },
