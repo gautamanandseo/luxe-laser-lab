@@ -87,6 +87,12 @@ const GalleryPage = () => {
   const [activeCategory, setActiveCategory] = useState<Category>("all");
   const [activeSlider, setActiveSlider] = useState(0);
 
+  usePageMeta({
+    title: "Before & After Results Delhi | Treatment Gallery | Empathy Clinic",
+    description: "See real before & after results from Empathy Laser Clinic Delhi — laser hair removal, CoolSculpting, Botox, skin treatments & more. 25,000+ transformations.",
+    canonical: "https://empathylaserclinic.com/gallery",
+  });
+
   const filteredItems = activeCategory === "all"
     ? galleryItems
     : galleryItems.filter((item) => item.category.includes(activeCategory));
