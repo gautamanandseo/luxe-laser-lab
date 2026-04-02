@@ -56,7 +56,7 @@ const ParticleField = ({ count = 60, className = "" }: { count?: number; classNa
     const w = () => canvas.offsetWidth;
     const h = () => canvas.offsetHeight;
 
-    const actualCount = Math.min(count, 30);
+    const actualCount = Math.min(count, 18);
 
     particles = Array.from({ length: actualCount }, () => ({
       x: Math.random() * w(),
