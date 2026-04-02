@@ -3,11 +3,18 @@ import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight, Clock, Calendar, Tag, User } from "lucide-react";
 import { allBlogPosts as blogPosts } from "@/data/blogData";
 import { servicesData } from "@/data/serviceData";
+import usePageMeta from "@/hooks/use-page-meta";
 import BlogImage from "@/components/blog/BlogImage";
 
 const BlogPostPage = () => {
   const { slug } = useParams();
   const post = blogPosts.find((p) => p.slug === slug);
+
+  usePageMeta({
+    title: post ? `${post.title} | Empathy Laser Clinic Delhi` : "Blog | Empathy Laser Clinic",
+    description: post ? post.excerpt.slice(0, 155) : "Read expert articles on laser, skin & beauty treatments in Delhi NCR.",
+    canonical: post ? `https://empathylaserclinic.com/blog/${post.slug}` : "https://empathylaserclinic.com/blog",
+  });
 
   if (!post) return <Navigate to="/blog" replace />;
 

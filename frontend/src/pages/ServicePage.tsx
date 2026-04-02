@@ -3,6 +3,8 @@ import { ArrowRight, Check, Phone, ChevronDown, Star, Quote, Info, Eye } from "l
 import { Link } from "react-router-dom";
 import { useState, lazy, Suspense } from "react";
 import { servicesData } from "@/data/serviceData";
+import { serviceSeoData } from "@/data/seoData";
+import usePageMeta from "@/hooks/use-page-meta";
 import AuroraMesh from "@/components/effects/AuroraMesh";
 import Tilt3DCard from "@/components/effects/Tilt3DCard";
 import GlowDivider from "@/components/effects/GlowDivider";
@@ -220,7 +222,14 @@ interface ServicePageProps {
 
 const ServicePage = ({ service }: ServicePageProps) => {
   const data = servicesData[service];
+  const seo = serviceSeoData[service];
   const [openFaq, setOpenFaq] = useState<number | null>(0);
+
+  usePageMeta({
+    title: seo?.title || `${data.title} ${data.accent} Delhi | Empathy Laser Clinic`,
+    description: seo?.description || data.description.slice(0, 155),
+    canonical: seo?.canonical,
+  });
 
   if (!data) return null;
 

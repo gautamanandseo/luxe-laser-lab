@@ -3,6 +3,7 @@ import { Award, Heart, Users, Shield, Star, CheckCircle, Sparkles, Target, Clock
 import { Link } from "react-router-dom";
 import galleryClinic2 from "@/assets/gallery-clinic-2.jpg";
 import galleryClinic1 from "@/assets/gallery-clinic-1.jpg";
+import usePageMeta from "@/hooks/use-page-meta";
 import AuroraMesh from "@/components/effects/AuroraMesh";
 import Tilt3DCard from "@/components/effects/Tilt3DCard";
 import GlowDivider from "@/components/effects/GlowDivider";
@@ -57,7 +58,14 @@ const certifications = [
   "Premium Dermal Filler Partner",
 ];
 
-const AboutPage = () => (
+const AboutPage = () => {
+  usePageMeta({
+    title: "About Empathy Laser Clinic Delhi | Best Aesthetic Clinic Delhi NCR",
+    description: "Learn about Empathy Laser Clinic — Delhi NCR's most trusted aesthetic clinic since 2009. 25,000+ happy clients, 50+ experts, USFDA cleared equipment. Pitampura, Delhi.",
+    canonical: "https://empathylaserclinic.com/about",
+  });
+
+  return (
   <div className="pt-20">
     {/* Hero Section */}
     <section className="relative min-h-[75vh] flex items-center overflow-hidden scanlines">
@@ -374,6 +382,7 @@ const AboutPage = () => (
       </div>
     </section>
   </div>
-);
+  );
+};
 
 export default AboutPage;

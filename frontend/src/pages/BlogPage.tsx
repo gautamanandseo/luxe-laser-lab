@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Clock, Search } from "lucide-react";
 import { allBlogPosts as blogPosts, blogCategories } from "@/data/blogData";
 import BlogImage from "@/components/blog/BlogImage";
+import usePageMeta from "@/hooks/use-page-meta";
 import AuroraMesh from "@/components/effects/AuroraMesh";
 import Tilt3DCard from "@/components/effects/Tilt3DCard";
 import GlowDivider from "@/components/effects/GlowDivider";
@@ -12,6 +13,12 @@ import ParticleField from "@/components/effects/ParticleField";
 const BlogPage = () => {
   const [activeCategory, setActiveCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
+
+  usePageMeta({
+    title: "Skin & Laser Blog Delhi | Expert Tips & Guides | Empathy Clinic",
+    description: "Expert blog on laser hair removal, CoolSculpting, skin care, hair loss & beauty tips for Delhi NCR. Trusted advice from Empathy Laser Clinic's dermatology team.",
+    canonical: "https://empathylaserclinic.com/blog",
+  });
 
   const filteredPosts = useMemo(() => {
     return blogPosts.filter((post) => {
