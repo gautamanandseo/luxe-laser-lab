@@ -3,8 +3,9 @@ import HeroSlider from "@/components/home/HeroSlider";
 import Marquee from "@/components/home/Marquee";
 import StatsBar from "@/components/home/StatsBar";
 import GlowDivider from "@/components/effects/GlowDivider";
+import LazySection from "@/components/effects/LazySection";
 
-// Lazy-load all below-fold sections for faster initial paint
+// Lazy-load all below-fold sections
 const ServicesSection = lazy(() => import("@/components/home/ServicesSection"));
 const CoolSculptingSection = lazy(() => import("@/components/home/CoolSculptingSection"));
 const TechnologySection = lazy(() => import("@/components/home/TechnologySection"));
@@ -20,13 +21,6 @@ const SEOContentSection = lazy(() => import("@/components/home/SEOContentSection
 const ParallaxStorySection = lazy(() => import("@/components/home/ParallaxStorySection"));
 const LoyaltyTeaser = lazy(() => import("@/components/home/LoyaltyTeaser"));
 
-
-const SectionFallback = () => (
-  <div className="py-20 flex items-center justify-center">
-    <div className="w-6 h-6 border-2 border-primary/20 border-t-primary rounded-full animate-spin" />
-  </div>
-);
-
 const Index = () => {
   return (
     <>
@@ -36,36 +30,116 @@ const Index = () => {
       <StatsBar />
       <GlowDivider variant="gold" />
 
-      {/* Below-fold — lazy loaded */}
-      <Suspense fallback={<SectionFallback />}>
-        <ServicesSection />
-        <GlowDivider variant="multi" />
-        <WhyChooseSection />
-        <GlowDivider variant="subtle" />
-        <CoolSculptingSection />
-        <GlowDivider variant="gold" />
-        <WeightLossSection />
-        <GlowDivider variant="subtle" />
-        <TechnologySection />
-        <GlowDivider variant="gold" />
-        <ParallaxStorySection />
-        <GlowDivider variant="multi" />
-        <ProcessSection />
-        <GlowDivider variant="subtle" />
-        <TestimonialsSection />
-        <GlowDivider variant="gold" />
-        <GallerySection />
-        <GlowDivider variant="multi" />
-        <LoyaltyTeaser />
-        <GlowDivider variant="gold" />
-        <CertificationsStrip />
-        <GlowDivider variant="gold" />
-        <FAQSection />
-        <GlowDivider variant="multi" />
-        <SEOContentSection />
-        <GlowDivider variant="gold" />
-        <BookingSection />
-      </Suspense>
+      {/* Each section mounts only when scrolled near — keeps DOM small */}
+      <LazySection>
+        <Suspense fallback={null}>
+          <ServicesSection />
+        </Suspense>
+      </LazySection>
+
+      <GlowDivider variant="multi" />
+
+      <LazySection>
+        <Suspense fallback={null}>
+          <WhyChooseSection />
+        </Suspense>
+      </LazySection>
+
+      <GlowDivider variant="subtle" />
+
+      <LazySection>
+        <Suspense fallback={null}>
+          <CoolSculptingSection />
+        </Suspense>
+      </LazySection>
+
+      <GlowDivider variant="gold" />
+
+      <LazySection>
+        <Suspense fallback={null}>
+          <WeightLossSection />
+        </Suspense>
+      </LazySection>
+
+      <GlowDivider variant="subtle" />
+
+      <LazySection>
+        <Suspense fallback={null}>
+          <TechnologySection />
+        </Suspense>
+      </LazySection>
+
+      <GlowDivider variant="gold" />
+
+      <LazySection>
+        <Suspense fallback={null}>
+          <ParallaxStorySection />
+        </Suspense>
+      </LazySection>
+
+      <GlowDivider variant="multi" />
+
+      <LazySection>
+        <Suspense fallback={null}>
+          <ProcessSection />
+        </Suspense>
+      </LazySection>
+
+      <GlowDivider variant="subtle" />
+
+      <LazySection>
+        <Suspense fallback={null}>
+          <TestimonialsSection />
+        </Suspense>
+      </LazySection>
+
+      <GlowDivider variant="gold" />
+
+      <LazySection>
+        <Suspense fallback={null}>
+          <GallerySection />
+        </Suspense>
+      </LazySection>
+
+      <GlowDivider variant="multi" />
+
+      <LazySection>
+        <Suspense fallback={null}>
+          <LoyaltyTeaser />
+        </Suspense>
+      </LazySection>
+
+      <GlowDivider variant="gold" />
+
+      <LazySection>
+        <Suspense fallback={null}>
+          <CertificationsStrip />
+        </Suspense>
+      </LazySection>
+
+      <GlowDivider variant="gold" />
+
+      <LazySection>
+        <Suspense fallback={null}>
+          <FAQSection />
+        </Suspense>
+      </LazySection>
+
+      <GlowDivider variant="multi" />
+
+      <LazySection>
+        <Suspense fallback={null}>
+          <SEOContentSection />
+        </Suspense>
+      </LazySection>
+
+      <GlowDivider variant="gold" />
+
+      <LazySection>
+        <Suspense fallback={null}>
+          <BookingSection />
+        </Suspense>
+      </LazySection>
     </>
   );
 };
