@@ -68,15 +68,24 @@ const ParticleField = ({ count = 60, className = "" }: { count?: number; classNa
       pulse: Math.random() * Math.PI * 2,
     }));
 
+    let frameSkip = 0;
     const draw = () => {
       if (!isVisible) {
         animId = 0;
         return;
       }
 
+      // Throttle to ~30fps instead of 60fps
+      frameSkip++;
+      if (frameSkip % 2 !== 0) {
+        animId = requestAnimationFrame(draw);
+        return;
+      }
+
       ctx.clearRect(0, 0, w(), h());
 
-      particles.forEach((p) => {
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
         p.x += p.vx;
         p.y += p.vy;
         p.pulse += 0.02;
@@ -89,24 +98,22 @@ const ParticleField = ({ count = 60, className = "" }: { count?: number; classNa
         const pulsedOpacity = p.opacity * (0.5 + 0.5 * Math.sin(p.pulse));
 
         ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size * 2, 0, Math.PI * 2);
-        ctx.fillStyle = `hsla(38, 45%, 60%, ${pulsedOpacity * 0.4})`;
-        ctx.fill();
-
-        ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
         ctx.fillStyle = `hsla(38, 50%, 75%, ${pulsedOpacity})`;
         ctx.fill();
-      });
+      }
 
-      const connectionDist = 100;
+      // Sparse connection lines — only check neighbours
+      const connectionDist = 80;
+      const connDistSq = connectionDist * connectionDist;
       for (let i = 0; i < particles.length; i++) {
-        for (let j = i + 1; j < particles.length; j++) {
+        // Only check a few neighbours to cut O(n²) cost
+        for (let j = i + 1; j < Math.min(i + 4, particles.length); j++) {
           const dx = particles[i].x - particles[j].x;
           const dy = particles[i].y - particles[j].y;
           const distSq = dx * dx + dy * dy;
-          if (distSq < connectionDist * connectionDist) {
-            const lineOpacity = (1 - Math.sqrt(distSq) / connectionDist) * 0.06;
+          if (distSq < connDistSq) {
+            const lineOpacity = (1 - Math.sqrt(distSq) / connectionDist) * 0.05;
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
