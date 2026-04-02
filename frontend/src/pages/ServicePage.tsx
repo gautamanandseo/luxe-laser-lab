@@ -3,6 +3,8 @@ import { ArrowRight, Check, Phone, ChevronDown, Star, Quote, Info, Eye } from "l
 import { Link } from "react-router-dom";
 import { useState, lazy, Suspense } from "react";
 import { servicesData } from "@/data/serviceData";
+import { serviceSeoData } from "@/data/seoData";
+import usePageMeta from "@/hooks/use-page-meta";
 import AuroraMesh from "@/components/effects/AuroraMesh";
 import Tilt3DCard from "@/components/effects/Tilt3DCard";
 import GlowDivider from "@/components/effects/GlowDivider";
