@@ -382,6 +382,7 @@ const AboutPage = () => {
       </div>
     </section>
   </div>
-);
+  );
+};
 
 export default AboutPage;
