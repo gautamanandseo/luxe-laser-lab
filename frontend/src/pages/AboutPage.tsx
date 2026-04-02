@@ -3,6 +3,7 @@ import { Award, Heart, Users, Shield, Star, CheckCircle, Sparkles, Target, Clock
 import { Link } from "react-router-dom";
 import galleryClinic2 from "@/assets/gallery-clinic-2.jpg";
 import galleryClinic1 from "@/assets/gallery-clinic-1.jpg";
+import usePageMeta from "@/hooks/use-page-meta";
 import AuroraMesh from "@/components/effects/AuroraMesh";
 import Tilt3DCard from "@/components/effects/Tilt3DCard";
 import GlowDivider from "@/components/effects/GlowDivider";

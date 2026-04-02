@@ -222,7 +222,14 @@ interface ServicePageProps {
 
 const ServicePage = ({ service }: ServicePageProps) => {
   const data = servicesData[service];
+  const seo = serviceSeoData[service];
   const [openFaq, setOpenFaq] = useState<number | null>(0);
+
+  usePageMeta({
+    title: seo?.title || `${data.title} ${data.accent} Delhi | Empathy Laser Clinic`,
+    description: seo?.description || data.description.slice(0, 155),
+    canonical: seo?.canonical,
+  });
 
   if (!data) return null;
 
