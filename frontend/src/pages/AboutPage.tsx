@@ -58,7 +58,14 @@ const certifications = [
   "Premium Dermal Filler Partner",
 ];
 
-const AboutPage = () => (
+const AboutPage = () => {
+  usePageMeta({
+    title: "About Empathy Laser Clinic Delhi | Best Aesthetic Clinic Delhi NCR",
+    description: "Learn about Empathy Laser Clinic — Delhi NCR's most trusted aesthetic clinic since 2009. 25,000+ happy clients, 50+ experts, USFDA cleared equipment. Pitampura, Delhi.",
+    canonical: "https://empathylaserclinic.com/about",
+  });
+
+  return (
   <div className="pt-20">
     {/* Hero Section */}
     <section className="relative min-h-[75vh] flex items-center overflow-hidden scanlines">

@@ -46,6 +46,12 @@ const trustPoints = [
 const ContactPage = () => {
   const [submitted, setSubmitted] = useState(false);
   const [form, setForm] = useState({ name: "", phone: "", email: "", service: "", message: "", preferredTime: "", preferredDate: "" });
+
+  usePageMeta({
+    title: "Contact Empathy Laser Clinic Delhi | Book Free Consultation",
+    description: "Book a free consultation at Empathy Laser Clinic, Pitampura, Delhi. Call 9811157787. Laser hair removal, CoolSculpting, skin treatments & more. Walk-ins welcome.",
+    canonical: "https://empathylaserclinic.com/contact",
+  });
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const update = (f: string, v: string) => setForm(p => ({ ...p, [f]: v }));
 
