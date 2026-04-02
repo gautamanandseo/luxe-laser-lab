@@ -45,10 +45,6 @@ const whyChoose = [
   { icon: TrendingUp, title: "Results-Driven Approach", desc: "We measure success by your results, not our revenue. Before-and-after documentation, progress tracking, and honest assessments at every stage of your journey." },
 ];
 
-const team = [
-  { name: "Dr. Jyoti Anand", role: "Director & Chief Dermatologist", desc: "With over 15 years of experience in aesthetic medicine, Dr. Jyoti leads our clinical team with expertise in laser treatments, skin rejuvenation, and anti-ageing protocols." },
-  { name: "Dr. Rajnish Anand", role: "Director & Expert Hair Transplant Surgeon", desc: "An MDS in Dental Surgery and expert hair transplant surgeon, Dr. Rajnish brings surgical precision and deep anatomical expertise to hair restoration, CoolSculpting, and body contouring programs at Empathy." },
-];
 
 const certifications = [
   "USFDA Cleared Equipment",
