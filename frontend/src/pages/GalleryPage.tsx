@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Instagram, Filter, Eye, Award, CheckCircle, Star } from "lucide-react";
 import { Link } from "react-router-dom";
+import usePageMeta from "@/hooks/use-page-meta";
 import ScrollReveal from "@/components/effects/ScrollReveal";
 import BeforeAfterSlider from "@/components/effects/BeforeAfterSlider";
 import AuroraMesh from "@/components/effects/AuroraMesh";
