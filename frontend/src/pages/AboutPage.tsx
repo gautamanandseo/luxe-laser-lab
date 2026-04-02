@@ -249,40 +249,6 @@ const AboutPage = () => (
       </div>
     </section>
 
-    <GlowDivider variant="subtle" />
-
-    {/* Meet Our Team */}
-    <section className="py-28 bg-secondary relative overflow-hidden">
-      <AuroraMesh intensity="subtle" />
-      <div className="relative z-10 container mx-auto px-6">
-        <div className="text-center mb-16">
-          <p className="eyebrow mb-4">Leadership</p>
-          <h2 className="font-serif text-4xl md:text-5xl text-foreground mb-4">
-            Meet Our <em className="holographic-text" style={{ fontStyle: "italic" }}>Directors</em>
-          </h2>
-          <p className="text-muted-foreground mt-4 max-w-2xl mx-auto leading-relaxed">
-            Under the leadership of our directors, Empathy Laser Clinic has grown from a single clinic to Delhi NCR's most trusted aesthetic brand — built on clinical excellence and genuine care.
-          </p>
-        </div>
-        <div className="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
-          {team.map((member, i) => (
-            <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}>
-              <Tilt3DCard maxTilt={6}>
-                <div className="p-8 bg-card/50 backdrop-blur-sm border border-primary/10 rounded-2xl hover:border-primary/30 transition-all relative overflow-hidden group">
-                  <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
-                  <div className="relative z-10">
-                    <h3 className="font-serif text-2xl text-foreground mb-1">{member.name}</h3>
-                    <p className="text-primary text-sm font-medium uppercase tracking-wider mb-4">{member.role}</p>
-                    <p className="text-muted-foreground text-sm leading-relaxed">{member.desc}</p>
-                  </div>
-                </div>
-              </Tilt3DCard>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
-
     <GlowDivider variant="gold" />
 
     {/* Certifications */}
