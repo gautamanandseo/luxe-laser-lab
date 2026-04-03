@@ -34,7 +34,7 @@ export const serviceSeoData: Record<string, ServiceSEO> = {
   resurfx: {
     title: "ResurFX Laser Skin Resurfacing Delhi | Empathy Laser Clinic",
     description: "ResurFX™ non-ablative fractional laser for acne scars, wrinkles & skin texture in Delhi. Minimal downtime, visible results. Book at Empathy Clinic Pitampura.",
-    canonical: `${BASE}/resurfx`,
+    canonical: `${BASE}/resurfx-delhi`,
   },
   botox: {
     title: "Botox & Fillers Delhi | Anti-Wrinkle Injections | Empathy Laser Clinic",
