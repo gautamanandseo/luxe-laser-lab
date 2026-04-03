@@ -104,7 +104,7 @@ export const serviceSeoData: Record<string, ServiceSEO> = {
   molewart: {
     title: "Mole & Wart Removal Delhi | Safe Removal | Empathy Clinic",
     description: "Safe mole & wart removal in Delhi NCR with RF cautery & laser. Scarless, painless procedure. Book at Empathy Laser Clinic Pitampura Delhi.",
-    canonical: `${BASE}/mole-wart-removal`,
+    canonical: `${BASE}/mole-wart-removal-delhi`,
   },
   hairloss: {
     title: "Hair Loss Treatment Delhi | PRP & Hair Therapy | Empathy Clinic",
