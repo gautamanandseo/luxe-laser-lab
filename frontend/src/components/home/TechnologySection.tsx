@@ -154,7 +154,7 @@ const TechnologySection = () => {
               </div>
 
               <Link
-                to="/laser-hair-removal"
+                to="/laser-hair-removal-delhi"
                 className="mt-8 inline-flex items-center gap-2 text-primary text-sm font-sans uppercase tracking-[0.1em] hover:gap-3 transition-all"
               >
                 View Laser Hair Removal Services <ArrowRight size={14} />
