@@ -221,7 +221,7 @@ const CoolSculptingSection = () => {
                   </div>
 
                   <Link
-                    to="/coolsculpting"
+                    to="/coolsculpting-delhi"
                     className="inline-flex items-center gap-2 text-primary text-sm font-sans uppercase tracking-[0.1em] hover:gap-3 transition-all group"
                   >
                     Learn more about {active.label} treatment
@@ -255,7 +255,7 @@ const CoolSculptingSection = () => {
         <div className="text-center mt-12">
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
             <Link
-              to="/coolsculpting"
+              to="/coolsculpting-delhi"
               className="gold-shimmer text-primary-foreground px-8 py-4 text-sm font-sans uppercase tracking-[0.15em] rounded-full inline-flex items-center gap-2 shadow-[0_8px_30px_hsl(38,45%,60%,0.25)] hover:shadow-[0_12px_40px_hsl(38,45%,60%,0.4)] transition-shadow"
             >
               Explore CoolSculpting® <ArrowRight size={16} />

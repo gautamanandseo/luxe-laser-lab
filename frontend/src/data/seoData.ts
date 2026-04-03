@@ -34,7 +34,7 @@ export const serviceSeoData: Record<string, ServiceSEO> = {
   resurfx: {
     title: "ResurFX Laser Skin Resurfacing Delhi | Empathy Laser Clinic",
     description: "ResurFX™ non-ablative fractional laser for acne scars, wrinkles & skin texture in Delhi. Minimal downtime, visible results. Book at Empathy Clinic Pitampura.",
-    canonical: `${BASE}/resurfx`,
+    canonical: `${BASE}/resurfx-delhi`,
   },
   botox: {
     title: "Botox & Fillers Delhi | Anti-Wrinkle Injections | Empathy Laser Clinic",
@@ -44,7 +44,7 @@ export const serviceSeoData: Record<string, ServiceSEO> = {
   microdermabrasion: {
     title: "Microdermabrasion Delhi | Skin Polishing Treatment | Empathy Clinic",
     description: "Crystal-free microdermabrasion in Delhi for glowing, smooth skin. Reduce fine lines, pigmentation & dullness. Best skin polishing at Empathy Laser Clinic Pitampura.",
-    canonical: `${BASE}/microdermabrasion`,
+    canonical: `${BASE}/microdermabrasion-delhi`,
   },
   bridal: {
     title: "Bridal Packages Delhi | Pre-Wedding Skin & Beauty | Empathy Clinic",
@@ -54,12 +54,12 @@ export const serviceSeoData: Record<string, ServiceSEO> = {
   facials: {
     title: "HydraFacial & Premium Facials Delhi | Empathy Laser Clinic",
     description: "HydraFacial, gold facials & premium facial treatments in Delhi NCR. Deep cleansing, hydration & glow. Best facial clinic in Pitampura Delhi. Book appointment.",
-    canonical: `${BASE}/facials`,
+    canonical: `${BASE}/facials-delhi`,
   },
   salon: {
     title: "Salon Services Delhi | Hair & Beauty | Empathy Laser Clinic",
     description: "Premium salon services in Delhi NCR — hair styling, waxing, threading & beauty treatments at Empathy Laser Clinic Pitampura. Book appointment.",
-    canonical: `${BASE}/salon-services`,
+    canonical: `${BASE}/salon-services-delhi`,
   },
   acne: {
     title: "Acne Treatment Delhi | Acne Scar Removal | Empathy Laser Clinic",
@@ -94,7 +94,7 @@ export const serviceSeoData: Record<string, ServiceSEO> = {
   stretchmarks: {
     title: "Stretch Marks Treatment Delhi | Laser Removal | Empathy Clinic",
     description: "Effective stretch mark removal in Delhi NCR with fractional laser, microneedling & PRP. Reduce stretch marks by 70-90%. Empathy Clinic Pitampura.",
-    canonical: `${BASE}/stretch-marks`,
+    canonical: `${BASE}/stretch-marks-delhi`,
   },
   tattooremoval: {
     title: "Tattoo Removal Delhi | Laser Tattoo Removal | Empathy Clinic",
@@ -104,7 +104,7 @@ export const serviceSeoData: Record<string, ServiceSEO> = {
   molewart: {
     title: "Mole & Wart Removal Delhi | Safe Removal | Empathy Clinic",
     description: "Safe mole & wart removal in Delhi NCR with RF cautery & laser. Scarless, painless procedure. Book at Empathy Laser Clinic Pitampura Delhi.",
-    canonical: `${BASE}/mole-wart-removal`,
+    canonical: `${BASE}/mole-wart-removal-delhi`,
   },
   hairloss: {
     title: "Hair Loss Treatment Delhi | PRP & Hair Therapy | Empathy Clinic",

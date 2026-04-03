@@ -371,7 +371,7 @@ const WeightLossSection = () => (
       <div className="text-center">
         <div className="inline-flex flex-wrap justify-center gap-4">
           <Link
-            to="/weight-loss-delhi"
+            to="/weight-loss-clinic-delhi"
             className="gold-shimmer text-primary-foreground px-8 py-4 text-sm font-sans uppercase tracking-[0.15em] rounded-full inline-flex items-center gap-2 hover:scale-105 transition-transform"
           >
             Explore Weight Loss Treatments <ArrowRight size={16} />

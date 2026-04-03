@@ -154,7 +154,7 @@ const TechnologySection = () => {
               </div>
 
               <Link
-                to="/laser-hair-removal"
+                to="/laser-hair-removal-delhi"
                 className="mt-8 inline-flex items-center gap-2 text-primary text-sm font-sans uppercase tracking-[0.1em] hover:gap-3 transition-all"
               >
                 View Laser Hair Removal Services <ArrowRight size={14} />
@@ -223,7 +223,7 @@ const TechnologySection = () => {
               </div>
 
               <Link
-                to="/laser-hair-removal"
+                to="/laser-hair-removal-delhi"
                 className="mt-8 inline-flex items-center gap-2 text-primary text-sm font-sans uppercase tracking-[0.1em] hover:gap-3 transition-all"
               >
                 View Laser Hair Removal Services <ArrowRight size={14} />
@@ -319,7 +319,7 @@ const TechnologySection = () => {
             <p className="text-sm text-muted-foreground mt-1">The world's #1 non-invasive fat reduction system with dual applicators and 18% more coverage. FDA-cleared cryolipolysis.</p>
           </div>
           <Link
-            to="/coolsculpting"
+            to="/coolsculpting-delhi"
             className="gold-shimmer text-primary-foreground px-6 py-3 text-xs font-sans uppercase tracking-[0.15em] rounded-full inline-flex items-center gap-2 hover:scale-105 transition-transform shrink-0"
           >
             Explore CoolSculpting® <ArrowRight size={14} />
