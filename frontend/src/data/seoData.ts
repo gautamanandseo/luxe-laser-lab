@@ -59,7 +59,7 @@ export const serviceSeoData: Record<string, ServiceSEO> = {
   salon: {
     title: "Salon Services Delhi | Hair & Beauty | Empathy Laser Clinic",
     description: "Premium salon services in Delhi NCR — hair styling, waxing, threading & beauty treatments at Empathy Laser Clinic Pitampura. Book appointment.",
-    canonical: `${BASE}/salon-services`,
+    canonical: `${BASE}/salon-services-delhi`,
   },
   acne: {
     title: "Acne Treatment Delhi | Acne Scar Removal | Empathy Laser Clinic",
