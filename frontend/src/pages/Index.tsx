@@ -23,6 +23,21 @@ const ParallaxStorySection = lazy(() => import("@/components/home/ParallaxStoryS
 const LoyaltyTeaser = lazy(() => import("@/components/home/LoyaltyTeaser"));
 
 const Index = () => {
+  usePageMeta({
+    title: "Empathy Laser Clinic Delhi | Laser Hair Removal, CoolSculpting & Skin Treatments",
+    description: "Delhi's #1 aesthetic clinic for laser hair removal, CoolSculpting fat reduction, Botox, dermal fillers, skin treatments & hair restoration. 25,000+ clients. Book free consultation.",
+    canonical: "https://empathylaserclinic.com/",
+    jsonLd: {
+      "@context": "https://schema.org",
+      "@type": "MedicalBusiness",
+      "name": "Empathy Laser Clinic",
+      "url": "https://empathylaserclinic.com",
+      "address": { "@type": "PostalAddress", "addressLocality": "Pitampura, Delhi", "addressCountry": "IN" },
+      "description": "Delhi NCR's premier aesthetic clinic offering laser hair removal, CoolSculpting, Botox, skin treatments & more.",
+      "areaServed": "Delhi NCR"
+    }
+  });
+
   return (
     <>
       {/* Critical above-fold — eagerly loaded */}
