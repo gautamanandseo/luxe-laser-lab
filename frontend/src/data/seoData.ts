@@ -94,7 +94,7 @@ export const serviceSeoData: Record<string, ServiceSEO> = {
   stretchmarks: {
     title: "Stretch Marks Treatment Delhi | Laser Removal | Empathy Clinic",
     description: "Effective stretch mark removal in Delhi NCR with fractional laser, microneedling & PRP. Reduce stretch marks by 70-90%. Empathy Clinic Pitampura.",
-    canonical: `${BASE}/stretch-marks`,
+    canonical: `${BASE}/stretch-marks-delhi`,
   },
   tattooremoval: {
     title: "Tattoo Removal Delhi | Laser Tattoo Removal | Empathy Clinic",
