@@ -44,7 +44,7 @@ export const serviceSeoData: Record<string, ServiceSEO> = {
   microdermabrasion: {
     title: "Microdermabrasion Delhi | Skin Polishing Treatment | Empathy Clinic",
     description: "Crystal-free microdermabrasion in Delhi for glowing, smooth skin. Reduce fine lines, pigmentation & dullness. Best skin polishing at Empathy Laser Clinic Pitampura.",
-    canonical: `${BASE}/microdermabrasion`,
+    canonical: `${BASE}/microdermabrasion-delhi`,
   },
   bridal: {
     title: "Bridal Packages Delhi | Pre-Wedding Skin & Beauty | Empathy Clinic",
