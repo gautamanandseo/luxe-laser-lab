@@ -54,7 +54,7 @@ export const serviceSeoData: Record<string, ServiceSEO> = {
   facials: {
     title: "HydraFacial & Premium Facials Delhi | Empathy Laser Clinic",
     description: "HydraFacial, gold facials & premium facial treatments in Delhi NCR. Deep cleansing, hydration & glow. Best facial clinic in Pitampura Delhi. Book appointment.",
-    canonical: `${BASE}/facials`,
+    canonical: `${BASE}/facials-delhi`,
   },
   salon: {
     title: "Salon Services Delhi | Hair & Beauty | Empathy Laser Clinic",
