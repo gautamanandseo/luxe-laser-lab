@@ -1,4 +1,5 @@
 import { lazy, Suspense } from "react";
+import usePageMeta from "@/hooks/use-page-meta";
 import HeroSlider from "@/components/home/HeroSlider";
 import Marquee from "@/components/home/Marquee";
 import StatsBar from "@/components/home/StatsBar";
