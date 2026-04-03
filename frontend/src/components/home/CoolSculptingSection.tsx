@@ -221,7 +221,7 @@ const CoolSculptingSection = () => {
                   </div>
 
                   <Link
-                    to="/coolsculpting"
+                    to="/coolsculpting-delhi"
                     className="inline-flex items-center gap-2 text-primary text-sm font-sans uppercase tracking-[0.1em] hover:gap-3 transition-all group"
                   >
                     Learn more about {active.label} treatment
