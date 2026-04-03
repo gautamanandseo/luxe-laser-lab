@@ -264,11 +264,9 @@ const ServicePage = ({ service }: ServicePageProps) => {
               </div>
 
               {/* Headline */}
-              <h1 className="font-serif text-5xl md:text-7xl text-foreground leading-[0.95] mb-2">
+              <h1 className="font-serif text-5xl md:text-7xl text-foreground leading-[0.95] mb-6">
                 {data.title}
-              </h1>
-              <h1 className="font-serif text-5xl md:text-7xl italic leading-[0.95] mb-6">
-                <span className="holographic-text">{data.accent}</span>
+                <span className="block italic"><span className="holographic-text">{data.accent}</span></span>
               </h1>
 
               {/* Subtitle */}
