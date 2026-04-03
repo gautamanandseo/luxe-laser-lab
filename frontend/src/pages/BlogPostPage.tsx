@@ -23,15 +23,15 @@ const BlogPostPage = () => {
     .slice(0, 3);
 
   const serviceRoutes: Record<string, string> = {
-    laser: "/laser-hair-removal",
-    coolsculpting: "/coolsculpting",
-    skin: "/skin-treatments",
-    resurfx: "/resurfx",
-    botox: "/botox-fillers",
-    microdermabrasion: "/microdermabrasion",
-    bridal: "/bridal-packages",
-    spa: "/spa-services",
-    salon: "/salon-services",
+    laser: "/laser-hair-removal-delhi",
+    coolsculpting: "/coolsculpting-delhi",
+    skin: "/skin-clinic-delhi",
+    resurfx: "/resurfx-delhi",
+    botox: "/botox-fillers-delhi",
+    microdermabrasion: "/microdermabrasion-delhi",
+    bridal: "/bridal-packages-delhi",
+    spa: "/salon-services-delhi",
+    salon: "/salon-services-delhi",
   };
 
   // Simple markdown-like renderer

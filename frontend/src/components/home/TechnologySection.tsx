@@ -319,7 +319,7 @@ const TechnologySection = () => {
             <p className="text-sm text-muted-foreground mt-1">The world's #1 non-invasive fat reduction system with dual applicators and 18% more coverage. FDA-cleared cryolipolysis.</p>
           </div>
           <Link
-            to="/coolsculpting"
+            to="/coolsculpting-delhi"
             className="gold-shimmer text-primary-foreground px-6 py-3 text-xs font-sans uppercase tracking-[0.15em] rounded-full inline-flex items-center gap-2 hover:scale-105 transition-transform shrink-0"
           >
             Explore CoolSculpting® <ArrowRight size={14} />
