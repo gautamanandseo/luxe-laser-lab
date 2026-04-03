@@ -82,9 +82,8 @@ const AboutPage = () => {
             <Sparkles size={14} className="text-primary" />
             <span className="text-xs font-sans uppercase tracking-[0.2em] text-primary">Est. 2009 · Pitampura, Delhi</span>
           </div>
-          <h1 className="font-serif text-5xl md:text-7xl text-foreground leading-[0.95] mb-2">The</h1>
-          <h1 className="font-serif text-5xl md:text-7xl italic leading-[0.95] mb-8">
-            <span className="holographic-text">Empathy Difference</span>
+          <h1 className="font-serif text-5xl md:text-7xl text-foreground leading-[0.95] mb-8">
+            The <span className="block italic"><span className="holographic-text">Empathy Difference</span></span>
           </h1>
           <p className="text-lg text-foreground/80 leading-relaxed max-w-2xl mb-6">
             Founded over 15 years ago in Pitampura, Delhi, Empathy Laser Clinic was born from a simple belief: <em className="text-primary">aesthetic treatments should be delivered with genuine care, clinical precision, and unwavering transparency.</em>
