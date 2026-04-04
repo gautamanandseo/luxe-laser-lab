@@ -12,7 +12,9 @@
     "start": "cd frontend && npm install && npx vite --host 0.0.0.0 --port 8080"
   },
   "dependencies": {
-    "@react-three/drei": "^9.122.0",
-    "@supabase/supabase-js": "^2.98.0"
+    "@react-three/drei": "^9.117.0",
+    "@react-three/fiber": "^8.17.10",
+    "@supabase/supabase-js": "^2.98.0",
+    "three": "^0.170.0"
   }
 }
