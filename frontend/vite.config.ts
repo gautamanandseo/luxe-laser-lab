@@ -32,7 +32,11 @@ export default defineConfig(({ mode }) => ({
       },
     },
     cssMinify: true,
+    cssCodeSplit: true,
     target: 'es2020',
+    sourcemap: false,
+    minify: 'esbuild',
+    chunkSizeWarningLimit: 600,
   },
   resolve: {
     alias: {
