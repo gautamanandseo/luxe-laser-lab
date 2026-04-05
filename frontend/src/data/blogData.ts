@@ -3418,4 +3418,5 @@ At Empathy Laser Clinic Delhi, we bridge the gap:
 
 // Re-export combined posts
 import { extraBlogPosts } from "./blogDataExtra";
-export const allBlogPosts: BlogPost[] = [...blogPosts, ...extraBlogPosts];
+import { blogPostsBatch2 } from "./blogDataBatch2";
+export const allBlogPosts: BlogPost[] = [...blogPosts, ...extraBlogPosts, ...blogPostsBatch2];
