@@ -1,10 +1,3 @@
-import heroLaser from "@/assets/hero-laser-new.jpg";
-import heroCool from "@/assets/hero-cool-new.jpg";
-import heroSkin from "@/assets/hero-skin-new.jpg";
-import heroBotox from "@/assets/hero-botox-new.jpg";
-import heroBridal from "@/assets/hero-bridal-new.jpg";
-import heroSalon from "@/assets/hero-salon-new.jpg";
-
 import type { ImgHTMLAttributes } from "react";
 
 interface BlogImageProps extends Omit<ImgHTMLAttributes<HTMLImageElement>, "src" | "alt"> {
@@ -14,36 +7,38 @@ interface BlogImageProps extends Omit<ImgHTMLAttributes<HTMLImageElement>, "src"
 }
 
 const categoryFallbacks: Record<string, string> = {
-  "Laser Hair Removal": heroLaser,
-  CoolSculpting: heroCool,
-  "Weight Loss": heroCool,
-  Skincare: heroSkin,
-  "Botox & Fillers": heroBotox,
-  Bridal: heroBridal,
-  "Anti-Aging": heroBotox,
-  "Hair Treatments": heroSalon,
-  Acne: heroSkin,
-  "Body Contouring": heroCool,
-  Guides: heroSkin,
+  "Laser Hair Removal": "/images/blog-fallback-laser.jpg",
+  CoolSculpting: "/images/blog-fallback-cool.jpg",
+  "Weight Loss": "/images/blog-fallback-cool.jpg",
+  Skincare: "/images/blog-fallback-skin.jpg",
+  "Botox & Fillers": "/images/blog-fallback-botox.jpg",
+  Bridal: "/images/blog-fallback-bridal.jpg",
+  "Anti-Aging": "/images/blog-fallback-botox.jpg",
+  "Hair Treatments": "/images/blog-fallback-salon.jpg",
+  Acne: "/images/blog-fallback-skin.jpg",
+  "Body Contouring": "/images/blog-fallback-cool.jpg",
+  Guides: "/images/blog-fallback-skin.jpg",
 };
 
+const DEFAULT_FALLBACK = "/images/blog-fallback-skin.jpg";
+
 const BlogImage = ({ src, alt, category, loading = "lazy", ...props }: BlogImageProps) => {
-  const fallback = categoryFallbacks[category || ""] || heroSkin;
+  const fallback = category ? categoryFallbacks[category] || DEFAULT_FALLBACK : DEFAULT_FALLBACK;
+  const imgSrc = src || fallback;
 
   return (
     <img
-      {...props}
-      src={src || fallback}
+      src={imgSrc}
       alt={alt}
       loading={loading}
-      onError={(event) => {
-        const target = event.currentTarget;
-
-        if (target.dataset.fallbackApplied === "true") return;
-
-        target.dataset.fallbackApplied = "true";
-        target.src = fallback;
+      decoding="async"
+      onError={(e) => {
+        const target = e.currentTarget;
+        if (target.src !== fallback) {
+          target.src = fallback;
+        }
       }}
+      {...props}
     />
   );
 };
