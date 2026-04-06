@@ -38,7 +38,11 @@ const LazySection = ({ children, rootMargin = "200px", fallback = defaultFallbac
     return () => observer.disconnect();
   }, [rootMargin]);
 
-  return <div ref={ref}>{mounted ? children : fallback}</div>;
+  return (
+    <div ref={ref} style={mounted ? undefined : { contentVisibility: "auto", containIntrinsicSize: "0 500px" }}>
+      {mounted ? children : fallback}
+    </div>
+  );
 };
 
 export default LazySection;

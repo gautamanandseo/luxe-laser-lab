@@ -1,14 +1,16 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronRight, ChevronLeft, ArrowRight, Shield, Pause, Play } from "lucide-react";
 import { Link } from "react-router-dom";
-import ParticleField from "@/components/effects/ParticleField";
 import LiveViewerCounter from "@/components/LiveViewerCounter";
-import AuroraMesh from "@/components/effects/AuroraMesh";
 import { useReducedMotion } from "@/hooks/use-reduced-motion";
 import heroLaser from "@/assets/hero-laser-gen.jpg";
 
-// Lazy-load non-first-slide images
+// Lazy-load heavy effects only on capable devices
+import { lazy, Suspense } from "react";
+const ParticleField = lazy(() => import("@/components/effects/ParticleField"));
+const AuroraMesh = lazy(() => import("@/components/effects/AuroraMesh"));
+
 const slides = [
   {
     tag: "USFDA Cleared · Lumenis LightSheer · Alma Soprano",
@@ -92,49 +94,18 @@ const slides = [
   },
 ];
 
-const letterVariants = {
-  hidden: { opacity: 0, y: 50, rotateX: -90 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    rotateX: 0,
-    transition: {
-      delay: 0.3 + i * 0.03,
-      duration: 0.6,
-      ease: [0.25, 0.46, 0.45, 0.94],
-    },
-  }),
-};
-
-const AnimatedText = ({ text, className, reduced }: { text: string; className: string; reduced?: boolean }) => {
-  if (reduced) return <span className={className}>{text}</span>;
-  return (
-    <span className={className} style={{ display: "inline-flex", flexWrap: "wrap", perspective: "1000px" }}>
-      {text.split("").map((char, i) => (
-        <motion.span
-          key={i}
-          custom={i}
-          variants={letterVariants}
-          initial="hidden"
-          animate="visible"
-          style={{ display: "inline-block", whiteSpace: char === " " ? "pre" : "normal" }}
-        >
-          {char}
-        </motion.span>
-      ))}
-    </span>
-  );
-};
-
 const SLIDE_DURATION = 6000;
 
 const HeroSlider = () => {
   const [current, setCurrent] = useState(0);
   const [paused, setPaused] = useState(false);
   const [manualPause, setManualPause] = useState(false);
-  const [progress, setProgress] = useState(0);
+  const progressRef = useRef(0);
+  const progressBarRef = useRef<HTMLDivElement>(null);
   const [loadedImages, setLoadedImages] = useState<Record<number, string>>({ 0: heroLaser });
+  const [showEffects, setShowEffects] = useState(false);
 
+  // Preload other slide images after first paint
   useEffect(() => {
     const timer = setTimeout(() => {
       Promise.all([
@@ -157,7 +128,13 @@ const HeroSlider = () => {
           7: facial.default,
         }));
       });
-    }, 1000);
+    }, 2000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Defer heavy effects until after first meaningful paint
+  useEffect(() => {
+    const timer = setTimeout(() => setShowEffects(true), 3000);
     return () => clearTimeout(timer);
   }, []);
 
@@ -166,33 +143,46 @@ const HeroSlider = () => {
 
   const next = useCallback(() => {
     setCurrent(c => (c + 1) % slides.length);
-    setProgress(0);
+    progressRef.current = 0;
+    if (progressBarRef.current) progressBarRef.current.style.width = "0%";
   }, []);
 
   const prev = useCallback(() => {
     setCurrent(c => (c - 1 + slides.length) % slides.length);
-    setProgress(0);
+    progressRef.current = 0;
+    if (progressBarRef.current) progressBarRef.current.style.width = "0%";
   }, []);
 
   const togglePause = useCallback(() => {
     setManualPause(p => !p);
   }, []);
 
-  // Progress bar + auto-advance
+  // Progress bar via rAF — zero re-renders
   useEffect(() => {
     if (!isPlaying) return;
-    const interval = 50;
-    const timer = setInterval(() => {
-      setProgress(p => {
-        const next = p + (interval / SLIDE_DURATION) * 100;
-        if (next >= 100) {
-          setCurrent(c => (c + 1) % slides.length);
-          return 0;
-        }
-        return next;
-      });
-    }, interval);
-    return () => clearInterval(timer);
+    let animId: number;
+    let lastTime = performance.now();
+    progressRef.current = 0;
+
+    const tick = (now: number) => {
+      const delta = now - lastTime;
+      lastTime = now;
+      progressRef.current += (delta / SLIDE_DURATION) * 100;
+
+      if (progressRef.current >= 100) {
+        progressRef.current = 0;
+        setCurrent(c => (c + 1) % slides.length);
+      }
+
+      if (progressBarRef.current) {
+        progressBarRef.current.style.width = `${progressRef.current}%`;
+      }
+
+      animId = requestAnimationFrame(tick);
+    };
+
+    animId = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(animId);
   }, [isPlaying, current]);
 
   const slide = slides[current];
@@ -205,62 +195,37 @@ const HeroSlider = () => {
       onMouseLeave={() => setPaused(false)}
       aria-label="Hero slideshow"
     >
-      {/* Background Image with dramatic zoom */}
-      <AnimatePresence mode="wait">
-        <motion.div
+      {/* Background Image — CSS transition for smoothness on slow connections */}
+      <div className="absolute inset-0">
+        <div
+          className="absolute inset-0 transition-opacity duration-1000 ease-out"
           key={current}
-          initial={{ opacity: 0, scale: 1.25 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.92 }}
-          transition={{ duration: 2, ease: [0.25, 0.46, 0.45, 0.94] }}
-          className="absolute inset-0"
         >
           <img
             src={currentImage}
             alt={slide.headline + " " + slide.accent}
-            className="w-full h-full object-cover animate-ken-burns"
+            className="w-full h-full object-cover"
+            style={{ willChange: "transform" }}
             fetchPriority={current === 0 ? "high" : "auto"}
             decoding={current === 0 ? "sync" : "async"}
           />
-          <div className={`absolute inset-0 bg-gradient-to-r ${slide.overlay}`} />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/40" />
-          {/* Cinematic letterbox bars — deeper */}
-          <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-background/70 to-transparent" />
-          <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-background via-background/85 to-transparent" />
-          {/* Extra cinematic depth overlay */}
-          <div className="absolute inset-0 bg-gradient-to-br from-background/30 via-transparent to-background/20" />
-        </motion.div>
-      </AnimatePresence>
+        </div>
+        <div className={`absolute inset-0 bg-gradient-to-r ${slide.overlay}`} />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/40" />
+        <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-background/70 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-background via-background/85 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-br from-background/30 via-transparent to-background/20" />
+      </div>
 
-      {/* Aurora mesh overlay for depth */}
-      <AuroraMesh intensity="subtle" className="z-[3] mix-blend-soft-light" />
+      {/* Deferred heavy effects */}
+      {showEffects && !reduced && (
+        <Suspense fallback={null}>
+          <AuroraMesh intensity="subtle" className="z-[3] mix-blend-soft-light" />
+          <ParticleField count={25} className="z-[5]" />
+        </Suspense>
+      )}
 
-      {/* Particle overlay */}
-      <ParticleField count={25} className="z-[5]" />
-
-      {/* Floating geometric orbs */}
-      <motion.div
-        animate={{ y: [-20, 20, -20], x: [-10, 10, -10] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-1/4 right-[15%] w-32 h-32 rounded-full z-[4] hidden lg:block"
-        style={{
-          background: "radial-gradient(circle, hsl(38 45% 60% / 0.08), transparent 70%)",
-          border: "1px solid hsl(38 45% 60% / 0.1)",
-          backdropFilter: "blur(4px)",
-        }}
-      />
-      <motion.div
-        animate={{ y: [15, -25, 15], x: [5, -15, 5] }}
-        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute bottom-1/3 right-[25%] w-20 h-20 rounded-full z-[4] hidden lg:block"
-        style={{
-          background: "radial-gradient(circle, hsl(350 40% 50% / 0.06), transparent 70%)",
-          border: "1px solid hsl(350 40% 50% / 0.08)",
-          backdropFilter: "blur(2px)",
-        }}
-      />
-
-      {/* Decorative corner accents with glow */}
+      {/* Decorative corner accents */}
       <div className="absolute top-8 left-8 w-24 h-24 z-10 hidden md:block">
         <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-primary/50 to-transparent" />
         <div className="absolute top-0 left-0 w-px h-full bg-gradient-to-b from-primary/50 to-transparent" />
@@ -282,95 +247,57 @@ const HeroSlider = () => {
         <div className="absolute bottom-0 right-0 w-2 h-2 bg-primary/60 rounded-full blur-sm" />
       </div>
 
-      {/* Side progress line */}
-      <div className="absolute left-8 top-1/4 bottom-1/4 w-px bg-white/5 z-10 hidden lg:block">
-        <motion.div
-          className="w-full bg-primary"
-          initial={{ height: "0%" }}
-          animate={{ height: "100%" }}
-          transition={{ duration: 5, ease: "linear" }}
-          key={current}
-        />
-        <motion.div
-          className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3 h-3 bg-primary rounded-full"
-          animate={{ boxShadow: ["0 0 10px hsl(38 45% 60% / 0.5)", "0 0 25px hsl(38 45% 60% / 0.8)", "0 0 10px hsl(38 45% 60% / 0.5)"] }}
-          transition={{ duration: 2, repeat: Infinity }}
-          style={{ bottom: 0 }}
-          key={`dot-${current}`}
-        />
-      </div>
-
       {/* Content */}
       <div className="relative z-10 h-full flex items-center">
         <div className="container mx-auto px-6">
           <AnimatePresence mode="wait">
             <motion.div
               key={current}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0, y: -30, ...(reduced ? {} : { filter: "blur(10px)" }) }}
-              transition={{ duration: 0.5 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.4 }}
               className="max-w-2xl"
             >
               {/* Tag */}
-              <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-                className="flex items-center gap-2 mb-6"
-              >
+              <div className="flex items-center gap-2 mb-6">
                 <Shield size={14} className="text-primary" />
                 <span className="text-xs font-sans uppercase tracking-[0.25em] text-primary">{slide.tag}</span>
-              </motion.div>
+              </div>
 
               {/* Headline */}
               <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light text-foreground leading-[1.08] tracking-tight text-emboss">
-                <AnimatedText text={slide.headline} className="" reduced={reduced} />
+                <span>{slide.headline}</span>
                 <span className="block italic mt-1 mb-6">
-                  <AnimatedText text={slide.accent} className="holographic-text text-glow-strong" reduced={reduced} />
+                  <span className="holographic-text text-glow-strong">{slide.accent}</span>
                 </span>
               </h1>
 
               {/* Subtitle */}
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6, duration: 0.5 }}
-                className="font-sans text-xs uppercase tracking-[0.3em] text-foreground/60 mb-4"
-              >
+              <p className="font-sans text-xs uppercase tracking-[0.3em] text-foreground/60 mb-4">
                 {slide.subtitle}
-              </motion.p>
+              </p>
 
               {/* Description */}
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.7, duration: 0.5 }}
-                className="body-text text-foreground/70 text-base md:text-lg max-w-lg mb-8"
-              >
+              <p className="body-text text-foreground/70 text-base md:text-lg max-w-lg mb-8">
                 {slide.desc}
-              </motion.p>
+              </p>
 
               {/* CTAs */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.8, duration: 0.5 }}
-                className="flex flex-wrap gap-4"
-              >
+              <div className="flex flex-wrap gap-4">
                 <Link to={slide.cta1.link} className="gold-shimmer text-primary-foreground px-8 py-3.5 text-sm font-sans uppercase tracking-[0.15em] rounded-full inline-flex items-center gap-2 hover:scale-105 transition-transform hover:shadow-[0_0_30px_hsl(38,45%,60%,0.4)]">
                   {slide.cta1.text} <ChevronRight size={16} />
                 </Link>
                 <Link to={slide.cta2.link} className="btn-neon text-foreground px-8 py-3.5 text-sm font-sans uppercase tracking-[0.15em] rounded-full inline-flex items-center gap-2 hover:text-primary transition-colors">
                   {slide.cta2.text} <ArrowRight size={16} />
                 </Link>
-              </motion.div>
+              </div>
 
               {/* Live viewer counter */}
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 1.2, duration: 0.5 }}
+                transition={{ delay: 1, duration: 0.5 }}
                 className="mt-6"
               >
                 <LiveViewerCounter pageName="this treatment" />
@@ -380,41 +307,34 @@ const HeroSlider = () => {
         </div>
       </div>
 
-      {/* Progress Bar - full width */}
+      {/* Progress Bar — DOM-driven, no re-renders */}
       <div className="absolute bottom-[72px] left-0 right-0 z-20 h-[2px] bg-foreground/5">
-        <motion.div
+        <div
+          ref={progressBarRef}
           className="h-full bg-primary shadow-[0_0_8px_hsl(38,45%,60%,0.5)]"
-          style={{ width: `${progress}%` }}
-          transition={{ duration: 0.05, ease: "linear" }}
+          style={{ width: "0%", willChange: "width" }}
         />
       </div>
 
-      {/* Slide Controls - glassmorphism enhanced */}
+      {/* Slide Controls */}
       <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex items-center gap-4 md:gap-6 bg-background/10 backdrop-blur-2xl border border-white/10 rounded-full px-4 md:px-6 py-3 shadow-[0_8px_32px_hsl(0,0%,0%,0.4),inset_0_1px_0_hsl(255,255%,255%,0.05)]">
-        {/* Prev button */}
-        <motion.button
+        <button
           onClick={prev}
-          whileHover={{ scale: 1.15 }}
-          whileTap={{ scale: 0.9 }}
           className="w-8 h-8 rounded-full border border-foreground/10 flex items-center justify-center text-foreground/60 hover:text-primary hover:border-primary/40 transition-colors"
           aria-label="Previous slide"
         >
           <ChevronLeft size={16} />
-        </motion.button>
+        </button>
 
-        {/* Counter */}
         <span className="text-sm font-sans text-primary font-medium tabular-nums min-w-[50px] text-center">
           {String(current + 1).padStart(2, "0")} <span className="text-foreground/40">/ {String(slides.length).padStart(2, "0")}</span>
         </span>
 
-        {/* Dot indicators */}
         <div className="hidden md:flex gap-2">
           {slides.map((_, i) => (
-            <motion.button
+            <button
               key={i}
-              onClick={() => { setCurrent(i); setProgress(0); }}
-              whileHover={{ scale: 1.3 }}
-              whileTap={{ scale: 0.95 }}
+              onClick={() => { setCurrent(i); progressRef.current = 0; if (progressBarRef.current) progressBarRef.current.style.width = "0%"; }}
               className={`rounded-full transition-all duration-500 ${
                 i === current
                   ? "w-8 h-2 bg-primary shadow-[0_0_15px_hsl(38,45%,60%,0.6)]"
@@ -425,11 +345,8 @@ const HeroSlider = () => {
           ))}
         </div>
 
-        {/* Play/Pause button */}
-        <motion.button
+        <button
           onClick={togglePause}
-          whileHover={{ scale: 1.15 }}
-          whileTap={{ scale: 0.9 }}
           className={`w-8 h-8 rounded-full border flex items-center justify-center transition-all ${
             manualPause
               ? "border-primary/40 text-primary bg-primary/10"
@@ -438,18 +355,15 @@ const HeroSlider = () => {
           aria-label={manualPause ? "Resume slideshow" : "Pause slideshow"}
         >
           {manualPause ? <Play size={14} /> : <Pause size={14} />}
-        </motion.button>
+        </button>
 
-        {/* Next button */}
-        <motion.button
+        <button
           onClick={next}
-          whileHover={{ scale: 1.15 }}
-          whileTap={{ scale: 0.9 }}
           className="w-8 h-8 rounded-full border border-foreground/10 flex items-center justify-center text-foreground/60 hover:text-primary hover:border-primary/40 transition-colors"
           aria-label="Next slide"
         >
           <ChevronRight size={16} />
-        </motion.button>
+        </button>
       </div>
     </section>
   );
