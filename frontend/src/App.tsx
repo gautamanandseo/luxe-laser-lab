@@ -12,7 +12,6 @@ import StickyMobileCTA from "@/components/StickyMobileCTA";
 import ScrollProgress from "@/components/ScrollProgress";
 import ScrollToTop from "@/components/ScrollToTop";
 import PageTransition from "@/components/effects/PageTransition";
-import LoadingScreen from "@/components/effects/LoadingScreen";
 import Index from "./pages/Index";
 
 // Lazy-load conversion widgets — not needed for initial render
@@ -133,14 +132,11 @@ const DeferredWidgets = () => {
 };
 
 const App = () => {
-  const [loading, setLoading] = useState(true);
-
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <Toaster />
         <Sonner />
-        {loading && <LoadingScreen onComplete={() => setLoading(false)} />}
         <BrowserRouter>
           <ScrollToTop />
           <ScrollProgress />
