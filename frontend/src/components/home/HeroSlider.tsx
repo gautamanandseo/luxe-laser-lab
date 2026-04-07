@@ -19,7 +19,7 @@ const slides = [
     subtitle: "LIGHTSHEER DESIRE™ & SOPRANO ICE PLATINUM™",
     desc: "Delhi NCR's most advanced laser hair removal with Lumenis LightSheer Desire & Alma Soprano ICE Platinum. Safe for all Indian skin types. Painless, permanent results.",
     cta1: { text: "Book Free Consultation", link: "/contact" },
-    cta2: { text: "Explore Treatment", link: "/laser-hair-removal" },
+    cta2: { text: "Explore Treatment", link: "/laser-hair-removal-delhi" },
     overlay: "from-background/90 via-background/60 to-transparent",
   },
   {
@@ -29,7 +29,7 @@ const slides = [
     subtitle: "DELHI'S PREMIER WEIGHT LOSS CLINIC",
     desc: "Freeze away stubborn fat with CoolSculpting® Elite — Delhi NCR's top non-surgical weight loss and body contouring solution. 27% fat reduction per session.",
     cta1: { text: "Book Body Assessment", link: "/contact" },
-    cta2: { text: "Learn More", link: "/coolsculpting" },
+    cta2: { text: "Learn More", link: "/coolsculpting-delhi" },
     overlay: "from-[hsl(210,60%,5%)/90] via-[hsl(210,60%,5%)/60] to-transparent",
   },
   {
@@ -39,7 +39,7 @@ const slides = [
     subtitle: "GENUINE ALLERGAN PRODUCTS · CERTIFIED PHYSICIANS",
     desc: "Natural-looking Botox & premium dermal fillers administered by certified aesthetic physicians in Delhi. Forehead lines, crow's feet, lip enhancement & jawline contouring.",
     cta1: { text: "Book Consultation", link: "/contact" },
-    cta2: { text: "View Treatments", link: "/botox-fillers" },
+    cta2: { text: "View Treatments", link: "/botox-fillers-delhi" },
     overlay: "from-[hsl(280,30%,5%)/90] via-[hsl(280,30%,5%)/60] to-transparent",
   },
   {
@@ -49,7 +49,7 @@ const slides = [
     subtitle: "CLINICAL SKINCARE EXCELLENCE",
     desc: "From HydraFacials to chemical peels, discover treatments crafted for your unique skin. Visible results from session one.",
     cta1: { text: "Book Skin Analysis", link: "/contact" },
-    cta2: { text: "View Treatments", link: "/skin-treatments" },
+    cta2: { text: "View Treatments", link: "/skin-clinic-delhi" },
     overlay: "from-[hsl(150,40%,4%)/90] via-[hsl(150,40%,4%)/60] to-transparent",
   },
   {
@@ -59,7 +59,7 @@ const slides = [
     subtitle: "DELHI NCR'S #1 FAT REDUCTION CLINIC",
     desc: "Transform your body without surgery. CoolSculpting® Elite, RF tightening, and targeted inch-loss programs — permanent fat cell elimination with zero downtime.",
     cta1: { text: "Free Body Assessment", link: "/contact" },
-    cta2: { text: "Weight Loss Delhi", link: "/weight-loss-delhi" },
+    cta2: { text: "Weight Loss Delhi", link: "/weight-loss-clinic-delhi" },
     overlay: "from-[hsl(220,40%,5%)/90] via-[hsl(220,40%,5%)/60] to-transparent",
   },
   {
@@ -69,7 +69,7 @@ const slides = [
     subtitle: "ADVANCED TRICHOLOGY · MEN & WOMEN",
     desc: "Stop hair loss and regrow thicker hair with PRP therapy, mesotherapy, and FUE hair transplant in Delhi. Effective solutions for men and women.",
     cta1: { text: "Book Hair Analysis", link: "/contact" },
-    cta2: { text: "Hair Treatments", link: "/hair-loss-treatment" },
+    cta2: { text: "Hair Treatments", link: "/hair-loss-treatment-delhi" },
     overlay: "from-[hsl(30,50%,5%)/90] via-[hsl(30,50%,5%)/60] to-transparent",
   },
   {
@@ -79,7 +79,7 @@ const slides = [
     subtitle: "LUXURY BRIDAL PACKAGES",
     desc: "Comprehensive pre-bridal treatments from skincare to hair removal. Start your journey 6 months before your special day.",
     cta1: { text: "Bridal Consultation", link: "/contact" },
-    cta2: { text: "View Packages", link: "/bridal-packages" },
+    cta2: { text: "View Packages", link: "/bridal-packages-delhi" },
     overlay: "from-[hsl(350,40%,4%)/90] via-[hsl(350,40%,4%)/60] to-transparent",
   },
   {
@@ -89,7 +89,7 @@ const slides = [
     subtitle: "CLINICAL-GRADE SKINCARE EXPERIENCE",
     desc: "Signature HydraFacials, LED light therapy, oxygen infusion, and medical-grade peels — clinical facial treatments that deliver visible, lasting glow from session one.",
     cta1: { text: "Book Facial", link: "/contact" },
-    cta2: { text: "Facial Treatments", link: "/facials" },
+    cta2: { text: "Facial Treatments", link: "/facials-delhi" },
     overlay: "from-[hsl(15,40%,5%)/90] via-[hsl(15,40%,5%)/60] to-transparent",
   },
 ];
