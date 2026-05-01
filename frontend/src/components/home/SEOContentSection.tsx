@@ -120,6 +120,55 @@ const SEOContentSection = () => (
           ))}
         </div>
       </div>
+
+      {/* Popular Treatments — keyword-rich internal link cloud */}
+      <div className="mt-16 max-w-5xl mx-auto">
+        <h3 className="font-serif text-2xl text-foreground text-center mb-6">
+          Popular Treatments at Our <em className="text-primary">Delhi Clinic</em>
+        </h3>
+        <div className="flex flex-wrap justify-center gap-2">
+          {[
+            { t: "Laser Hair Removal Delhi", to: "/laser-hair-removal-delhi" },
+            { t: "Full Body Laser Hair Removal Delhi", to: "/laser-hair-removal-delhi" },
+            { t: "CoolSculpting Delhi", to: "/coolsculpting-delhi" },
+            { t: "Weight Loss Clinic Delhi", to: "/weight-loss-clinic-delhi" },
+            { t: "Body Contouring Delhi", to: "/body-contouring-delhi" },
+            { t: "Skin Clinic Delhi", to: "/skin-clinic-delhi" },
+            { t: "Acne Treatment Delhi", to: "/acne-treatment-delhi" },
+            { t: "Skin Lightening Delhi", to: "/skin-lightening-delhi" },
+            { t: "Anti-Ageing Delhi", to: "/anti-ageing-delhi" },
+            { t: "HIFU Face Lift Delhi", to: "/hifu-treatment-delhi" },
+            { t: "Dark Circles Treatment Delhi", to: "/dark-circles-treatment-delhi" },
+            { t: "Skin Tightening Delhi", to: "/skin-tightening-delhi" },
+            { t: "Hair Loss Treatment Delhi", to: "/hair-loss-treatment-delhi" },
+            { t: "Hair Transplant Delhi", to: "/hair-transplant-delhi" },
+            { t: "Botox & Fillers Delhi", to: "/botox-fillers-delhi" },
+            { t: "ResurFX Skin Resurfacing Delhi", to: "/resurfx-delhi" },
+            { t: "Microdermabrasion Delhi", to: "/microdermabrasion-delhi" },
+            { t: "Bridal Packages Delhi", to: "/bridal-packages-delhi" },
+            { t: "HydraFacial Delhi", to: "/facials-delhi" },
+            { t: "Tattoo Removal Delhi", to: "/tattoo-removal-delhi" },
+            { t: "Stretch Marks Treatment Delhi", to: "/stretch-marks-delhi" },
+            { t: "Mole & Wart Removal Delhi", to: "/mole-wart-removal-delhi" },
+            { t: "Salon Services Delhi", to: "/salon-services-delhi" },
+            { t: "Laser Hair Removal Cost Delhi", to: "/laser-hair-removal-delhi" },
+            { t: "CoolSculpting Cost Delhi", to: "/coolsculpting-delhi" },
+            { t: "Skin Doctor in Pitampura", to: "/skin-clinic-delhi" },
+            { t: "Best Dermatologist Delhi", to: "/about" },
+            { t: "Laser Clinic Rohini", to: "/laser-hair-removal-delhi" },
+            { t: "Laser Clinic Noida", to: "/laser-hair-removal-delhi" },
+            { t: "Aesthetic Clinic Gurugram", to: "/coolsculpting-delhi" },
+          ].map((link, i) => (
+            <Link
+              key={i}
+              to={link.to}
+              className="text-xs border border-border rounded-full px-3 py-1.5 text-muted-foreground hover:text-primary hover:border-primary/40 hover:bg-primary/5 transition-colors"
+            >
+              {link.t}
+            </Link>
+          ))}
+        </div>
+      </div>
     </div>
   </section>
 );
