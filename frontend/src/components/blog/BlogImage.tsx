@@ -1,4 +1,4 @@
-import type { ImgHTMLAttributes } from "react";
+import { useState, type ImgHTMLAttributes } from "react";
 
 interface BlogImageProps extends Omit<ImgHTMLAttributes<HTMLImageElement>, "src" | "alt"> {
   src?: string;
@@ -24,20 +24,22 @@ const DEFAULT_FALLBACK = "/images/blog-fallback-skin.jpg";
 
 const BlogImage = ({ src, alt, category, loading = "lazy", ...props }: BlogImageProps) => {
   const fallback = category ? categoryFallbacks[category] || DEFAULT_FALLBACK : DEFAULT_FALLBACK;
-  const imgSrc = src || fallback;
+  const initialSrc = src && src.trim() !== "" ? src : fallback;
+  const [currentSrc, setCurrentSrc] = useState(initialSrc);
 
   return (
     <img
-      src={imgSrc}
+      src={currentSrc}
       alt={alt}
       loading={loading}
       decoding="async"
-      onError={(e) => {
-        const target = e.currentTarget;
-        if (target.src !== fallback) {
-          target.src = fallback;
+      referrerPolicy="no-referrer"
+      onError={() => {
+        if (currentSrc !== fallback) {
+          setCurrentSrc(fallback);
         }
       }}
+      style={{ backgroundColor: "hsl(var(--secondary))", ...(props.style || {}) }}
       {...props}
     />
   );
