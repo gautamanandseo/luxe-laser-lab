@@ -27,6 +27,7 @@ const BlogImage = ({ src, alt, category, loading = "lazy", ...props }: BlogImage
   const initialSrc = src && src.trim() !== "" ? src : fallback;
   const [currentSrc, setCurrentSrc] = useState(initialSrc);
 
+  const { style, ...rest } = props;
   return (
     <img
       src={currentSrc}
@@ -39,8 +40,8 @@ const BlogImage = ({ src, alt, category, loading = "lazy", ...props }: BlogImage
           setCurrentSrc(fallback);
         }
       }}
-      style={{ backgroundColor: "hsl(var(--secondary))", ...(props.style || {}) }}
-      {...props}
+      style={{ backgroundColor: "hsl(var(--secondary))", ...(style || {}) }}
+      {...rest}
     />
   );
 };
