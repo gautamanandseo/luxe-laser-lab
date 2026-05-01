@@ -225,10 +225,144 @@ const ServicePage = ({ service }: ServicePageProps) => {
   const seo = serviceSeoData[service];
   const [openFaq, setOpenFaq] = useState<number | null>(0);
 
+  const canonicalUrl = seo?.canonical || `https://empathylaserclinic.com/${service}-delhi`;
+  const serviceName = data ? `${data.title} ${data.accent}` : "";
+  const pageTitle = seo?.title || `${serviceName} Delhi | Empathy Laser Clinic`;
+  const pageDescription = seo?.description || (data?.description?.slice(0, 155) ?? "");
+
+  const jsonLd = data
+    ? {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": ["MedicalBusiness", "LocalBusiness"],
+            "@id": "https://empathylaserclinic.com/#clinic",
+            name: "Empathy Skin & Laser Hair Removal Clinic Delhi",
+            alternateName: "Empathy Laser Clinic",
+            url: "https://empathylaserclinic.com/",
+            telephone: ["+919811157787", "+919811157784"],
+            email: "info@empathylaserclinic.com",
+            priceRange: "₹₹",
+            image: "https://empathylaserclinic.com/images/blog-fallback-laser.jpg",
+            address: {
+              "@type": "PostalAddress",
+              streetAddress: "HD-6, First Floor, Main Road, Opp Metro Pillar 362",
+              addressLocality: "Pitampura",
+              addressRegion: "Delhi",
+              postalCode: "110034",
+              addressCountry: "IN",
+            },
+            geo: {
+              "@type": "GeoCoordinates",
+              latitude: 28.7013527,
+              longitude: 77.1349249,
+            },
+            areaServed: [
+              { "@type": "City", name: "Delhi" },
+              { "@type": "City", name: "New Delhi" },
+              { "@type": "City", name: "Noida" },
+              { "@type": "City", name: "Gurugram" },
+              { "@type": "City", name: "Ghaziabad" },
+              { "@type": "City", name: "Faridabad" },
+            ],
+            openingHoursSpecification: [
+              {
+                "@type": "OpeningHoursSpecification",
+                dayOfWeek: ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+                opens: "10:00",
+                closes: "19:00",
+              },
+            ],
+            aggregateRating: {
+              "@type": "AggregateRating",
+              ratingValue: "4.9",
+              bestRating: "5",
+              ratingCount: "860",
+              reviewCount: "860",
+            },
+            sameAs: [
+              "https://www.instagram.com/empathylaserclinic/",
+              "https://www.facebook.com/empathylaserclinic",
+            ],
+          },
+          {
+            "@type": "MedicalProcedure",
+            "@id": `${canonicalUrl}#service`,
+            name: `${serviceName} in Delhi`,
+            alternateName: serviceName,
+            description: data.longDescription || data.description,
+            url: canonicalUrl,
+            procedureType: "https://schema.org/NoninvasiveProcedure",
+            bodyLocation: data.treatmentAreas?.slice(0, 6).map((a) => a.name) || [],
+            howPerformed: data.processSteps?.map((s) => `${s.title}: ${s.description}`).join(" ") || "",
+            provider: { "@id": "https://empathylaserclinic.com/#clinic" },
+            areaServed: { "@type": "City", name: "Delhi NCR" },
+            ...(data.pricing?.length
+              ? {
+                  offers: data.pricing.map((p) => ({
+                    "@type": "Offer",
+                    name: p.name,
+                    description: p.description,
+                    price: p.price.replace(/[^\d]/g, "") || undefined,
+                    priceCurrency: "INR",
+                    availability: "https://schema.org/InStock",
+                    url: canonicalUrl,
+                  })),
+                }
+              : {}),
+          },
+          {
+            "@type": "Service",
+            "@id": `${canonicalUrl}#offering`,
+            serviceType: serviceName,
+            name: `${serviceName} Delhi`,
+            description: data.description,
+            url: canonicalUrl,
+            provider: { "@id": "https://empathylaserclinic.com/#clinic" },
+            areaServed: ["Delhi", "Pitampura", "Rohini", "Noida", "Gurugram", "Delhi NCR"],
+            audience: { "@type": "PeopleAudience", geographicArea: { "@type": "AdministrativeArea", name: "Delhi NCR" } },
+          },
+          ...(data.faqs?.length
+            ? [
+                {
+                  "@type": "FAQPage",
+                  "@id": `${canonicalUrl}#faq`,
+                  mainEntity: data.faqs.map((f) => ({
+                    "@type": "Question",
+                    name: f.question,
+                    acceptedAnswer: { "@type": "Answer", text: f.answer },
+                  })),
+                },
+              ]
+            : []),
+          {
+            "@type": "BreadcrumbList",
+            "@id": `${canonicalUrl}#breadcrumb`,
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "Home", item: "https://empathylaserclinic.com/" },
+              { "@type": "ListItem", position: 2, name: "Treatments", item: "https://empathylaserclinic.com/#services" },
+              { "@type": "ListItem", position: 3, name: serviceName, item: canonicalUrl },
+            ],
+          },
+          {
+            "@type": "WebPage",
+            "@id": canonicalUrl,
+            url: canonicalUrl,
+            name: pageTitle,
+            description: pageDescription,
+            isPartOf: { "@id": "https://empathylaserclinic.com/#clinic" },
+            primaryImageOfPage: heroImages[service] || data.heroImage,
+            breadcrumb: { "@id": `${canonicalUrl}#breadcrumb` },
+          },
+        ],
+      }
+    : undefined;
+
   usePageMeta({
-    title: seo?.title || `${data.title} ${data.accent} Delhi | Empathy Laser Clinic`,
-    description: seo?.description || data.description.slice(0, 155),
-    canonical: seo?.canonical,
+    title: pageTitle,
+    description: pageDescription,
+    canonical: canonicalUrl,
+    jsonLd,
   });
 
   if (!data) return null;
