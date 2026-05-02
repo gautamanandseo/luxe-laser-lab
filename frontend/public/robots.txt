@@ -1,16 +1,16 @@
 User-agent: Googlebot
-Allow: /
+Allow: /laser-treatments/
 
 User-agent: Bingbot
-Allow: /
+Allow: /laser-treatments/
 
 User-agent: Twitterbot
-Allow: /
+Allow: /laser-treatments/
 
 User-agent: facebookexternalhit
-Allow: /
+Allow: /laser-treatments/
 
 User-agent: *
-Allow: /
+Allow: /laser-treatments/
 
-Sitemap: https://empathylaserclinic.com/sitemap.xml
+Sitemap: https://empathylaserclinic.com/laser-treatments/sitemap.xml
