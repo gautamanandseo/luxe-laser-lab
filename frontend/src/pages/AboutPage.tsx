@@ -62,7 +62,7 @@ const AboutPage = () => {
   usePageMeta({
     title: "About Empathy Laser Clinic Delhi | Best Aesthetic Clinic Delhi NCR",
     description: "Learn about Empathy Laser Clinic — Delhi NCR's most trusted aesthetic clinic since 2009. 25,000+ happy clients, 50+ experts, USFDA cleared equipment. Pitampura, Delhi.",
-    canonical: "https://empathylaserclinic.com/about",
+    canonical: "https://empathylaserclinic.com/laser-treatments/about",
   });
 
   return (

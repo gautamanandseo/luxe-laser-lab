@@ -13,7 +13,7 @@ const BlogPostPage = () => {
   usePageMeta({
     title: post ? `${post.title} | Empathy Laser Clinic Delhi` : "Blog | Empathy Laser Clinic",
     description: post ? post.excerpt.slice(0, 155) : "Read expert articles on laser, skin & beauty treatments in Delhi NCR.",
-    canonical: post ? `https://empathylaserclinic.com/blog/${post.slug}` : "https://empathylaserclinic.com/blog",
+    canonical: post ? `https://empathylaserclinic.com/laser-treatments/blog/${post.slug}` : "https://empathylaserclinic.com/laser-treatments/blog",
   });
 
   if (!post) return <Navigate to="/blog" replace />;

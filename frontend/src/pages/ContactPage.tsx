@@ -50,7 +50,7 @@ const ContactPage = () => {
   usePageMeta({
     title: "Contact Empathy Laser Clinic Delhi | Book Free Consultation",
     description: "Book a free consultation at Empathy Laser Clinic, Pitampura, Delhi. Call 9811157787. Laser hair removal, CoolSculpting, skin treatments & more. Walk-ins welcome.",
-    canonical: "https://empathylaserclinic.com/contact",
+    canonical: "https://empathylaserclinic.com/laser-treatments/contact",
   });
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const update = (f: string, v: string) => setForm(p => ({ ...p, [f]: v }));
