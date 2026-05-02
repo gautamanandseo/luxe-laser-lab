@@ -225,7 +225,7 @@ const ServicePage = ({ service }: ServicePageProps) => {
   const seo = serviceSeoData[service];
   const [openFaq, setOpenFaq] = useState<number | null>(0);
 
-  const canonicalUrl = seo?.canonical || `https://empathylaserclinic.com/${service}-delhi`;
+  const canonicalUrl = seo?.canonical || `https://empathylaserclinic.com/laser-treatments/${service}-delhi`;
   const serviceName = data ? `${data.title} ${data.accent}` : "";
   const pageTitle = seo?.title || `${serviceName} Delhi | Empathy Laser Clinic`;
   const pageDescription = seo?.description || (data?.description?.slice(0, 155) ?? "");
@@ -236,14 +236,14 @@ const ServicePage = ({ service }: ServicePageProps) => {
         "@graph": [
           {
             "@type": ["MedicalBusiness", "LocalBusiness"],
-            "@id": "https://empathylaserclinic.com/#clinic",
+            "@id": "https://empathylaserclinic.com/laser-treatments/#clinic",
             name: "Empathy Skin & Laser Hair Removal Clinic Delhi",
             alternateName: "Empathy Laser Clinic",
-            url: "https://empathylaserclinic.com/",
+            url: "https://empathylaserclinic.com/laser-treatments/",
             telephone: ["+919811157787", "+919811157784"],
             email: "info@empathylaserclinic.com",
             priceRange: "₹₹",
-            image: "https://empathylaserclinic.com/images/blog-fallback-laser.jpg",
+            image: "https://empathylaserclinic.com/laser-treatments/images/blog-fallback-laser.jpg",
             address: {
               "@type": "PostalAddress",
               streetAddress: "HD-6, First Floor, Main Road, Opp Metro Pillar 362",
@@ -295,7 +295,7 @@ const ServicePage = ({ service }: ServicePageProps) => {
             procedureType: "https://schema.org/NoninvasiveProcedure",
             bodyLocation: data.treatmentAreas?.slice(0, 6).map((a) => a.name) || [],
             howPerformed: data.processSteps?.map((s) => `${s.title}: ${s.description}`).join(" ") || "",
-            provider: { "@id": "https://empathylaserclinic.com/#clinic" },
+            provider: { "@id": "https://empathylaserclinic.com/laser-treatments/#clinic" },
             areaServed: { "@type": "City", name: "Delhi NCR" },
             ...(data.pricing?.length
               ? {
@@ -318,7 +318,7 @@ const ServicePage = ({ service }: ServicePageProps) => {
             name: `${serviceName} Delhi`,
             description: data.description,
             url: canonicalUrl,
-            provider: { "@id": "https://empathylaserclinic.com/#clinic" },
+            provider: { "@id": "https://empathylaserclinic.com/laser-treatments/#clinic" },
             areaServed: ["Delhi", "Pitampura", "Rohini", "Noida", "Gurugram", "Delhi NCR"],
             audience: { "@type": "PeopleAudience", geographicArea: { "@type": "AdministrativeArea", name: "Delhi NCR" } },
           },
@@ -339,8 +339,8 @@ const ServicePage = ({ service }: ServicePageProps) => {
             "@type": "BreadcrumbList",
             "@id": `${canonicalUrl}#breadcrumb`,
             itemListElement: [
-              { "@type": "ListItem", position: 1, name: "Home", item: "https://empathylaserclinic.com/" },
-              { "@type": "ListItem", position: 2, name: "Treatments", item: "https://empathylaserclinic.com/#services" },
+              { "@type": "ListItem", position: 1, name: "Home", item: "https://empathylaserclinic.com/laser-treatments/" },
+              { "@type": "ListItem", position: 2, name: "Treatments", item: "https://empathylaserclinic.com/laser-treatments/#services" },
               { "@type": "ListItem", position: 3, name: serviceName, item: canonicalUrl },
             ],
           },
@@ -350,7 +350,7 @@ const ServicePage = ({ service }: ServicePageProps) => {
             url: canonicalUrl,
             name: pageTitle,
             description: pageDescription,
-            isPartOf: { "@id": "https://empathylaserclinic.com/#clinic" },
+            isPartOf: { "@id": "https://empathylaserclinic.com/laser-treatments/#clinic" },
             primaryImageOfPage: heroImages[service] || data.heroImage,
             breadcrumb: { "@id": `${canonicalUrl}#breadcrumb` },
           },

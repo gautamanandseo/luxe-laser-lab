@@ -90,7 +90,7 @@ const GalleryPage = () => {
   usePageMeta({
     title: "Before & After Results Delhi | Treatment Gallery | Empathy Clinic",
     description: "See real before & after results from Empathy Laser Clinic Delhi — laser hair removal, CoolSculpting, Botox, skin treatments & more. 25,000+ transformations.",
-    canonical: "https://empathylaserclinic.com/gallery",
+    canonical: "https://empathylaserclinic.com/laser-treatments/gallery",
   });
 
   const filteredItems = activeCategory === "all"

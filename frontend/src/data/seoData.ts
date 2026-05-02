@@ -2,7 +2,7 @@
  * Centralized SEO metadata for every service route.
  * Each key matches the `service` prop passed to ServicePage.
  */
-const BASE = "https://empathylaserclinic.com";
+const BASE = "https://empathylaserclinic.com/laser-treatments";
 
 export interface ServiceSEO {
   title: string;

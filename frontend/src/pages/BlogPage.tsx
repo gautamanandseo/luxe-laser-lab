@@ -17,7 +17,7 @@ const BlogPage = () => {
   usePageMeta({
     title: "Skin & Laser Blog Delhi | Expert Tips & Guides | Empathy Clinic",
     description: "Expert blog on laser hair removal, CoolSculpting, skin care, hair loss & beauty tips for Delhi NCR. Trusted advice from Empathy Laser Clinic's dermatology team.",
-    canonical: "https://empathylaserclinic.com/blog",
+    canonical: "https://empathylaserclinic.com/laser-treatments/blog",
   });
 
   const filteredPosts = useMemo(() => {
