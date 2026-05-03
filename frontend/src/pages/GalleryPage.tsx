@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Instagram, Filter, Eye, Award, CheckCircle, Star } from "lucide-react";
 import { Link } from "react-router-dom";
 import usePageMeta from "@/hooks/use-page-meta";
+import { buildGraph, buildBreadcrumbSchema, buildWebPageSchema } from "@/lib/seo-schema";
 import ScrollReveal from "@/components/effects/ScrollReveal";
 import BeforeAfterSlider from "@/components/effects/BeforeAfterSlider";
 import AuroraMesh from "@/components/effects/AuroraMesh";
@@ -87,10 +88,25 @@ const GalleryPage = () => {
   const [activeCategory, setActiveCategory] = useState<Category>("all");
   const [activeSlider, setActiveSlider] = useState(0);
 
+  const pageUrl = "https://empathylaserclinic.com/laser-treatments/gallery/";
   usePageMeta({
     title: "Before & After Results Delhi | Treatment Gallery | Empathy Clinic",
     description: "See real before & after results from Empathy Laser Clinic Delhi — laser hair removal, CoolSculpting, Botox, skin treatments & more. 25,000+ transformations.",
-    canonical: "https://empathylaserclinic.com/laser-treatments/gallery",
+    canonical: pageUrl,
+    jsonLd: buildGraph([
+      buildBreadcrumbSchema(
+        [
+          { name: "Home", url: "https://empathylaserclinic.com/laser-treatments/" },
+          { name: "Gallery", url: pageUrl },
+        ],
+        pageUrl
+      ),
+      buildWebPageSchema(
+        pageUrl,
+        "Before & After Gallery — Empathy Laser Clinic Delhi",
+        "Real before-and-after transformations from Empathy Laser Clinic Delhi NCR — laser, CoolSculpting, Botox & more."
+      ),
+    ]),
   });
 
   const filteredItems = activeCategory === "all"

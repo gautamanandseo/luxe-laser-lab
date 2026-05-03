@@ -5,6 +5,7 @@ import { ArrowRight, Clock, Search } from "lucide-react";
 import { allBlogPosts as blogPosts, blogCategories } from "@/data/blogData";
 import BlogImage from "@/components/blog/BlogImage";
 import usePageMeta from "@/hooks/use-page-meta";
+import { buildGraph, buildBreadcrumbSchema, buildWebPageSchema } from "@/lib/seo-schema";
 import AuroraMesh from "@/components/effects/AuroraMesh";
 import Tilt3DCard from "@/components/effects/Tilt3DCard";
 import GlowDivider from "@/components/effects/GlowDivider";
@@ -14,10 +15,33 @@ const BlogPage = () => {
   const [activeCategory, setActiveCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
 
+  const pageUrl = "https://empathylaserclinic.com/laser-treatments/blog/";
   usePageMeta({
     title: "Skin & Laser Blog Delhi | Expert Tips & Guides | Empathy Clinic",
     description: "Expert blog on laser hair removal, CoolSculpting, skin care, hair loss & beauty tips for Delhi NCR. Trusted advice from Empathy Laser Clinic's dermatology team.",
-    canonical: "https://empathylaserclinic.com/laser-treatments/blog",
+    canonical: pageUrl,
+    jsonLd: buildGraph([
+      buildBreadcrumbSchema(
+        [
+          { name: "Home", url: "https://empathylaserclinic.com/laser-treatments/" },
+          { name: "Blog", url: pageUrl },
+        ],
+        pageUrl
+      ),
+      {
+        "@type": "Blog",
+        "@id": `${pageUrl}#blog`,
+        url: pageUrl,
+        name: "Empathy Laser Clinic Blog",
+        description: "Expert articles on laser, skin, body & hair treatments in Delhi NCR.",
+        publisher: { "@id": "https://empathylaserclinic.com/laser-treatments/#organization" },
+      },
+      buildWebPageSchema(
+        pageUrl,
+        "Empathy Laser Clinic Blog — Delhi NCR",
+        "Expert articles on laser hair removal, CoolSculpting, skin & hair care for Delhi NCR."
+      ),
+    ]),
   });
 
   const filteredPosts = useMemo(() => {

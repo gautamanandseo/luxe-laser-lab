@@ -5,15 +5,51 @@ import { allBlogPosts as blogPosts } from "@/data/blogData";
 import { servicesData } from "@/data/serviceData";
 import usePageMeta from "@/hooks/use-page-meta";
 import BlogImage from "@/components/blog/BlogImage";
+import { buildGraph, buildBreadcrumbSchema, buildWebPageSchema } from "@/lib/seo-schema";
 
 const BlogPostPage = () => {
   const { slug } = useParams();
   const post = blogPosts.find((p) => p.slug === slug);
 
+  const blogBase = "https://empathylaserclinic.com/laser-treatments/blog/";
+  const pageUrl = post ? `${blogBase}${post.slug}/` : blogBase;
   usePageMeta({
     title: post ? `${post.title} | Empathy Laser Clinic Delhi` : "Blog | Empathy Laser Clinic",
     description: post ? post.excerpt.slice(0, 155) : "Read expert articles on laser, skin & beauty treatments in Delhi NCR.",
-    canonical: post ? `https://empathylaserclinic.com/laser-treatments/blog/${post.slug}` : "https://empathylaserclinic.com/laser-treatments/blog",
+    canonical: pageUrl,
+    jsonLd: post
+      ? buildGraph([
+          buildBreadcrumbSchema(
+            [
+              { name: "Home", url: "https://empathylaserclinic.com/laser-treatments/" },
+              { name: "Blog", url: blogBase },
+              { name: post.title, url: pageUrl },
+            ],
+            pageUrl
+          ),
+          {
+            "@type": "BlogPosting",
+            "@id": `${pageUrl}#article`,
+            mainEntityOfPage: pageUrl,
+            url: pageUrl,
+            headline: post.title,
+            description: post.excerpt,
+            image: post.image,
+            keywords: post.tags?.join(", "),
+            articleSection: post.category,
+            datePublished: post.date,
+            dateModified: post.date,
+            author: {
+              "@type": "Organization",
+              name: "Empathy Laser Clinic",
+              url: "https://empathylaserclinic.com/laser-treatments/",
+            },
+            publisher: { "@id": "https://empathylaserclinic.com/laser-treatments/#organization" },
+            inLanguage: "en-IN",
+          },
+          buildWebPageSchema(pageUrl, post.title, post.excerpt),
+        ])
+      : buildGraph([]),
   });
 
   if (!post) return <Navigate to="/blog" replace />;
