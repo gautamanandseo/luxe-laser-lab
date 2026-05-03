@@ -5,6 +5,7 @@ import { ArrowRight, Clock, Search } from "lucide-react";
 import { allBlogPosts as blogPosts, blogCategories } from "@/data/blogData";
 import BlogImage from "@/components/blog/BlogImage";
 import usePageMeta from "@/hooks/use-page-meta";
+import { buildGraph, buildBreadcrumbSchema, buildWebPageSchema } from "@/lib/seo-schema";
 import AuroraMesh from "@/components/effects/AuroraMesh";
 import Tilt3DCard from "@/components/effects/Tilt3DCard";
 import GlowDivider from "@/components/effects/GlowDivider";
