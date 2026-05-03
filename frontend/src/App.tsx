@@ -132,7 +132,15 @@ const DeferredWidgets = () => {
   );
 };
 
-const App = () => {
+// Sitewide keyword link cloud — rendered on every non-home page so search
+// engines see internal links to all Delhi service keywords from anywhere.
+const SitewideKeywordLinks = () => {
+  const location = useLocation();
+  if (location.pathname === "/") return null;
+  return <KeywordLinkCloud />;
+};
+
+
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
