@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route, useLocation, Navigate } from "react-route
 import { AnimatePresence } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import KeywordLinkCloud from "@/components/seo/KeywordLinkCloud";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import StickyMobileCTA from "@/components/StickyMobileCTA";
 import ScrollProgress from "@/components/ScrollProgress";
@@ -144,6 +145,7 @@ const App = () => {
           <main className="film-grain">
             <AnimatedRoutes />
           </main>
+          <SitewideKeywordLinks />
           <Footer />
           <WhatsAppButton />
           <StickyMobileCTA />
