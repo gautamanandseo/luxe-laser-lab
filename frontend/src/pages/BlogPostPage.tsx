@@ -5,6 +5,7 @@ import { allBlogPosts as blogPosts } from "@/data/blogData";
 import { servicesData } from "@/data/serviceData";
 import usePageMeta from "@/hooks/use-page-meta";
 import BlogImage from "@/components/blog/BlogImage";
+import { buildGraph, buildBreadcrumbSchema, buildWebPageSchema } from "@/lib/seo-schema";
 
 const BlogPostPage = () => {
   const { slug } = useParams();
