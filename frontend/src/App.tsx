@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route, useLocation, Navigate } from "react-route
 import { AnimatePresence } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import KeywordLinkCloud from "@/components/seo/KeywordLinkCloud";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import StickyMobileCTA from "@/components/StickyMobileCTA";
 import ScrollProgress from "@/components/ScrollProgress";
@@ -131,6 +132,13 @@ const DeferredWidgets = () => {
   );
 };
 
+// Sitewide keyword link cloud — rendered on every non-home page so search
+// engines see internal links to all Delhi service keywords from anywhere.
+const SitewideKeywordLinks = () => {
+  const location = useLocation();
+  if (location.pathname === "/") return null;
+  return <KeywordLinkCloud />;
+};
 const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
@@ -144,6 +152,7 @@ const App = () => {
           <main className="film-grain">
             <AnimatedRoutes />
           </main>
+          <SitewideKeywordLinks />
           <Footer />
           <WhatsAppButton />
           <StickyMobileCTA />
