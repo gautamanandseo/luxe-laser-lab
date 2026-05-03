@@ -139,8 +139,7 @@ const SitewideKeywordLinks = () => {
   if (location.pathname === "/") return null;
   return <KeywordLinkCloud />;
 };
-
-
+const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
