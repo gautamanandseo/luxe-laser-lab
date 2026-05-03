@@ -5,6 +5,13 @@ import Marquee from "@/components/home/Marquee";
 import StatsBar from "@/components/home/StatsBar";
 import GlowDivider from "@/components/effects/GlowDivider";
 import LazySection from "@/components/effects/LazySection";
+import {
+  buildGraph,
+  buildBreadcrumbSchema,
+  buildWebPageSchema,
+  buildFAQSchema,
+  SITE_BASE_URL,
+} from "@/lib/seo-schema";
 
 // Lazy-load all below-fold sections
 const ServicesSection = lazy(() => import("@/components/home/ServicesSection"));
@@ -22,20 +29,29 @@ const SEOContentSection = lazy(() => import("@/components/home/SEOContentSection
 const ParallaxStorySection = lazy(() => import("@/components/home/ParallaxStorySection"));
 const LoyaltyTeaser = lazy(() => import("@/components/home/LoyaltyTeaser"));
 
+const homeFaqs = [
+  { q: "Where is the best laser hair removal clinic in Delhi?", a: "Empathy Laser Clinic in Pitampura, Delhi is consistently rated among Delhi NCR's top clinics for laser hair removal, with USFDA-cleared Lumenis LightSheer Desire and Alma Soprano ICE Platinum technology and 25,000+ satisfied clients since 2009." },
+  { q: "How much does CoolSculpting cost in Delhi?", a: "CoolSculpting cost in Delhi varies by treatment area and number of cycles required. Book a free body assessment at Empathy Laser Clinic Pitampura for a personalised, transparent quote." },
+  { q: "Is laser hair removal safe for Indian skin?", a: "Yes. We use Alma Soprano ICE Platinum and Lumenis LightSheer Desire, both clinically proven safe and effective for Fitzpatrick III–VI Indian skin types, with virtually painless sessions." },
+  { q: "Which areas of Delhi NCR do you serve?", a: "We serve clients from Pitampura, Rohini, Shalimar Bagh, Model Town, Paschim Vihar, Ashok Vihar, Dwarka, Noida, Gurugram, Ghaziabad and Faridabad — easily reachable from Pitampura Metro." },
+];
+
 const Index = () => {
+  const url = SITE_BASE_URL;
   usePageMeta({
     title: "Empathy Laser Clinic Delhi | Laser Hair Removal, CoolSculpting & Skin Treatments",
-    description: "Delhi's #1 aesthetic clinic for laser hair removal, CoolSculpting fat reduction, Botox, dermal fillers, skin treatments & hair restoration. 25,000+ clients. Book free consultation.",
-    canonical: "https://empathylaserclinic.com/laser-treatments/",
-    jsonLd: {
-      "@context": "https://schema.org",
-      "@type": "MedicalBusiness",
-      "name": "Empathy Laser Clinic",
-      "url": "https://empathylaserclinic.com/laser-treatments",
-      "address": { "@type": "PostalAddress", "addressLocality": "Pitampura, Delhi", "addressCountry": "IN" },
-      "description": "Delhi NCR's premier aesthetic clinic offering laser hair removal, CoolSculpting, Botox, skin treatments & more.",
-      "areaServed": "Delhi NCR"
-    }
+    description:
+      "Delhi's #1 aesthetic clinic for laser hair removal, CoolSculpting fat reduction, Botox, dermal fillers, skin treatments & hair restoration. 25,000+ clients. Book free consultation.",
+    canonical: url,
+    jsonLd: buildGraph([
+      buildBreadcrumbSchema([{ name: "Home", url }], url),
+      buildWebPageSchema(
+        url,
+        "Empathy Laser Clinic Delhi — Laser Hair Removal, CoolSculpting & Skin Treatments",
+        "Delhi NCR's premier aesthetic clinic for laser hair removal, CoolSculpting, Botox, fillers, skin & hair treatments."
+      ),
+      buildFAQSchema(homeFaqs, url),
+    ]),
   });
 
   return (
