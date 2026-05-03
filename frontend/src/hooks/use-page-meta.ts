@@ -85,7 +85,7 @@ const usePageMeta = ({ title, description, canonical, ogTitle, ogDescription, js
     if (ogDescEl) ogDescEl.setAttribute("content", ogDescription || description);
 
     const ogUrlEl = document.querySelector('meta[property="og:url"]');
-    if (ogUrlEl && canonical) ogUrlEl.setAttribute("content", canonical);
+    if (ogUrlEl && safeCanonical) ogUrlEl.setAttribute("content", safeCanonical);
 
     // Twitter
     const twTitle = document.querySelector('meta[name="twitter:title"]');
