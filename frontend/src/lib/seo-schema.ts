@@ -160,32 +160,51 @@ export const buildWebPageSchema = (
 /**
  * Build a Review node attached to the LocalBusiness so testimonials
  * qualify for richer local result enhancements (rating snippets, etc.).
+ *
+ * NOTE: Google's review-snippet rich result requires `itemReviewed` to be
+ * a complete object with @type and name (not a bare @id reference). We
+ * also omit Schema.org properties Google ignores (about, locationCreated)
+ * to keep the payload clean and avoid validator noise.
  */
 export interface ReviewInput {
   author: string;
   body: string;
   rating: number;
   datePublished: string;
+  /** Optional — appended to reviewBody for context, not exposed as separate field */
   treatment?: string;
+  /** Optional — appended to author description, not exposed as separate field */
   location?: string;
 }
 
 export const buildReviewSchema = (r: ReviewInput, pageUrl: string, idx: number) => ({
   "@type": "Review",
   "@id": `${pageUrl}#review-${idx + 1}`,
-  itemReviewed: { "@id": `${SITE_URL}#localbusiness` },
+  itemReviewed: {
+    "@type": ["MedicalBusiness", "LocalBusiness"],
+    name: "Empathy Laser Clinic Delhi",
+    image: LOGO_URL,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "HD-6, First Floor, Main Road, Opp Metro Pillar 362",
+      addressLocality: "Pitampura",
+      addressRegion: "Delhi",
+      postalCode: "110034",
+      addressCountry: "IN",
+    },
+  },
   reviewRating: {
     "@type": "Rating",
     ratingValue: r.rating,
     bestRating: 5,
     worstRating: 1,
   },
-  author: { "@type": "Person", name: r.author },
-  reviewBody: r.body,
+  author: {
+    "@type": "Person",
+    name: r.author,
+  },
+  reviewBody: r.location ? `${r.body} (${r.location})` : r.body,
   datePublished: r.datePublished,
-  publisher: { "@id": `${SITE_URL}#organization` },
-  ...(r.treatment ? { about: r.treatment } : {}),
-  ...(r.location ? { locationCreated: { "@type": "Place", name: r.location } } : {}),
 });
 
 export const buildReviewsGraph = (reviews: ReviewInput[], pageUrl: string) =>
@@ -201,3 +220,4 @@ export const buildGraph = (extra: Record<string, unknown>[] = []) => ({
 });
 
 export const SITE_BASE_URL = SITE_URL;
+
