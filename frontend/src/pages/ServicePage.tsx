@@ -5,7 +5,8 @@ import { useState, lazy, Suspense } from "react";
 import { servicesData } from "@/data/serviceData";
 import { serviceSeoData } from "@/data/seoData";
 import usePageMeta from "@/hooks/use-page-meta";
-import { organizationSchema } from "@/lib/seo-schema";
+import { organizationSchema, buildReviewsGraph } from "@/lib/seo-schema";
+import { testimonials } from "@/data/testimonialsData";
 import AuroraMesh from "@/components/effects/AuroraMesh";
 import Tilt3DCard from "@/components/effects/Tilt3DCard";
 import GlowDivider from "@/components/effects/GlowDivider";
@@ -356,6 +357,25 @@ const ServicePage = ({ service }: ServicePageProps) => {
             primaryImageOfPage: heroImages[service] || data.heroImage,
             breadcrumb: { "@id": `${canonicalUrl}#breadcrumb` },
           },
+          ...buildReviewsGraph(
+            (() => {
+              const keyword = serviceName.toLowerCase();
+              const matched = testimonials.filter((t) =>
+                keyword.includes(t.treatment.toLowerCase().split(" ")[0]) ||
+                t.treatment.toLowerCase().includes(service.toLowerCase())
+              );
+              const pool = matched.length >= 3 ? matched : testimonials.slice(0, 6);
+              return pool.slice(0, 6).map((t) => ({
+                author: t.author,
+                body: t.text,
+                rating: t.rating,
+                datePublished: t.datePublished,
+                treatment: t.treatment,
+                location: t.location,
+              }));
+            })(),
+            canonicalUrl
+          ),
         ],
       }
     : undefined;
