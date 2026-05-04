@@ -45,15 +45,17 @@ const Index = () => {
     description:
       "Delhi's #1 aesthetic clinic for laser hair removal, CoolSculpting fat reduction, Botox, dermal fillers, skin treatments & hair restoration. 25,000+ clients. Book free consultation.",
     canonical: url,
-    jsonLd: buildGraph([
-      buildBreadcrumbSchema([{ name: "Home", url }], url),
-      buildWebPageSchema(
-        url,
-        "Empathy Laser Clinic Delhi — Laser Hair Removal, CoolSculpting & Skin Treatments",
-        "Delhi NCR's premier aesthetic clinic for laser hair removal, CoolSculpting, Botox, fillers, skin & hair treatments."
-      ),
-      buildFAQSchema(homeFaqs, url),
-      ...buildReviewsGraph(
+    jsonLd: buildGraph(
+      [
+        buildBreadcrumbSchema([{ name: "Home", url }], url),
+        buildWebPageSchema(
+          url,
+          "Empathy Laser Clinic Delhi — Laser Hair Removal, CoolSculpting & Skin Treatments",
+          "Delhi NCR's premier aesthetic clinic for laser hair removal, CoolSculpting, Botox, fillers, skin & hair treatments."
+        ),
+        buildFAQSchema(homeFaqs, url),
+      ],
+      buildReviewsGraph(
         testimonials.map((t) => ({
           author: t.author,
           body: t.text,
@@ -63,8 +65,8 @@ const Index = () => {
           location: t.location,
         })),
         url
-      ),
-    ]),
+      )
+    ),
   });
 
   return (
