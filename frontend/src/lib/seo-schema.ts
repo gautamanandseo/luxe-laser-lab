@@ -213,11 +213,25 @@ export const buildReviewsGraph = (reviews: ReviewInput[], pageUrl: string) =>
 /**
  * Compose a full @graph for a page.
  * Always includes Organization + LocalBusiness; pass page-specific nodes via `extra`.
+ *
+ * If `reviews` is provided, they are ALSO embedded directly inside the
+ * LocalBusiness `review` array — this is the strongest signal for Google's
+ * review-snippet rich result eligibility (per Google Search Central docs).
  */
-export const buildGraph = (extra: Record<string, unknown>[] = []) => ({
-  "@context": "https://schema.org",
-  "@graph": [organizationSchema, localBusinessSchema, ...extra],
-});
+export const buildGraph = (
+  extra: Record<string, unknown>[] = [],
+  reviews?: Record<string, unknown>[]
+) => {
+  const localBiz =
+    reviews && reviews.length
+      ? { ...localBusinessSchema, review: reviews }
+      : localBusinessSchema;
+  return {
+    "@context": "https://schema.org",
+    "@graph": [organizationSchema, localBiz, ...extra],
+  };
+};
 
 export const SITE_BASE_URL = SITE_URL;
+
 
