@@ -10,8 +10,10 @@ import {
   buildBreadcrumbSchema,
   buildWebPageSchema,
   buildFAQSchema,
+  buildReviewsGraph,
   SITE_BASE_URL,
 } from "@/lib/seo-schema";
+import { testimonials } from "@/data/testimonialsData";
 
 // Lazy-load all below-fold sections
 const ServicesSection = lazy(() => import("@/components/home/ServicesSection"));
@@ -51,6 +53,17 @@ const Index = () => {
         "Delhi NCR's premier aesthetic clinic for laser hair removal, CoolSculpting, Botox, fillers, skin & hair treatments."
       ),
       buildFAQSchema(homeFaqs, url),
+      ...buildReviewsGraph(
+        testimonials.map((t) => ({
+          author: t.author,
+          body: t.text,
+          rating: t.rating,
+          datePublished: t.datePublished,
+          treatment: t.treatment,
+          location: t.location,
+        })),
+        url
+      ),
     ]),
   });
 

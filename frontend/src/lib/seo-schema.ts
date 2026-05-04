@@ -158,6 +158,40 @@ export const buildWebPageSchema = (
 });
 
 /**
+ * Build a Review node attached to the LocalBusiness so testimonials
+ * qualify for richer local result enhancements (rating snippets, etc.).
+ */
+export interface ReviewInput {
+  author: string;
+  body: string;
+  rating: number;
+  datePublished: string;
+  treatment?: string;
+  location?: string;
+}
+
+export const buildReviewSchema = (r: ReviewInput, pageUrl: string, idx: number) => ({
+  "@type": "Review",
+  "@id": `${pageUrl}#review-${idx + 1}`,
+  itemReviewed: { "@id": `${SITE_URL}#localbusiness` },
+  reviewRating: {
+    "@type": "Rating",
+    ratingValue: r.rating,
+    bestRating: 5,
+    worstRating: 1,
+  },
+  author: { "@type": "Person", name: r.author },
+  reviewBody: r.body,
+  datePublished: r.datePublished,
+  publisher: { "@id": `${SITE_URL}#organization` },
+  ...(r.treatment ? { about: r.treatment } : {}),
+  ...(r.location ? { locationCreated: { "@type": "Place", name: r.location } } : {}),
+});
+
+export const buildReviewsGraph = (reviews: ReviewInput[], pageUrl: string) =>
+  reviews.map((r, i) => buildReviewSchema(r, pageUrl, i));
+
+/**
  * Compose a full @graph for a page.
  * Always includes Organization + LocalBusiness; pass page-specific nodes via `extra`.
  */
