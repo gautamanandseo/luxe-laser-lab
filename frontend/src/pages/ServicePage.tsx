@@ -232,6 +232,30 @@ const ServicePage = ({ service }: ServicePageProps) => {
   const pageTitle = seo?.title || `${serviceName} Delhi | Empathy Laser Clinic`;
   const pageDescription = seo?.description || (data?.description?.slice(0, 155) ?? "");
 
+  // Build review nodes once: prefer treatment-matched, fallback to top 6 generic
+  const serviceReviewNodes = data
+    ? buildReviewsGraph(
+        (() => {
+          const keyword = serviceName.toLowerCase();
+          const matched = testimonials.filter(
+            (t) =>
+              keyword.includes(t.treatment.toLowerCase().split(" ")[0]) ||
+              t.treatment.toLowerCase().includes(service.toLowerCase())
+          );
+          const pool = matched.length >= 3 ? matched : testimonials.slice(0, 6);
+          return pool.slice(0, 6).map((t) => ({
+            author: t.author,
+            body: t.text,
+            rating: t.rating,
+            datePublished: t.datePublished,
+            treatment: t.treatment,
+            location: t.location,
+          }));
+        })(),
+        canonicalUrl
+      )
+    : [];
+
   const jsonLd = data
     ? {
         "@context": "https://schema.org",
@@ -287,6 +311,8 @@ const ServicePage = ({ service }: ServicePageProps) => {
               "https://www.instagram.com/empathylaserclinic/",
               "https://www.facebook.com/empathylaserclinic",
             ],
+            // Embed reviews directly into the LocalBusiness for review-snippet eligibility
+            ...(serviceReviewNodes.length ? { review: serviceReviewNodes } : {}),
           },
           {
             "@type": "MedicalProcedure",
@@ -357,25 +383,6 @@ const ServicePage = ({ service }: ServicePageProps) => {
             primaryImageOfPage: heroImages[service] || data.heroImage,
             breadcrumb: { "@id": `${canonicalUrl}#breadcrumb` },
           },
-          ...buildReviewsGraph(
-            (() => {
-              const keyword = serviceName.toLowerCase();
-              const matched = testimonials.filter((t) =>
-                keyword.includes(t.treatment.toLowerCase().split(" ")[0]) ||
-                t.treatment.toLowerCase().includes(service.toLowerCase())
-              );
-              const pool = matched.length >= 3 ? matched : testimonials.slice(0, 6);
-              return pool.slice(0, 6).map((t) => ({
-                author: t.author,
-                body: t.text,
-                rating: t.rating,
-                datePublished: t.datePublished,
-                treatment: t.treatment,
-                location: t.location,
-              }));
-            })(),
-            canonicalUrl
-          ),
         ],
       }
     : undefined;
