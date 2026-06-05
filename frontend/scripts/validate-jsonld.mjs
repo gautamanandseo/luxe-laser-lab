@@ -72,7 +72,9 @@ const serviceMod = await importTs("src/data/serviceData.ts").catch(() => ({}));
 const blogMod = await importTs("src/data/blogData.ts").catch(() => ({}));
 const blogExtraMod = await importTs("src/data/blogDataExtra.ts").catch(() => ({}));
 
-const services = serviceMod.services || serviceMod.serviceData || [];
+const services = serviceMod.servicesData
+  ? Object.entries(serviceMod.servicesData).map(([slug, s]) => ({ slug, ...s }))
+  : serviceMod.services || serviceMod.serviceData || [];
 const blogPosts = [
   ...(blogMod.blogPosts || []),
   ...(blogExtraMod.blogPostsExtra || blogExtraMod.blogPosts || []),
