@@ -158,9 +158,14 @@ function validateNode(node, pageUrl, path = "@graph") {
       if (!rc || rc < 1) errors.push(`${path} [AggregateRating] needs ratingCount ≥1 (${pageUrl})`);
     }
   }
-  // Recurse into nested objects/arrays
+  // Recurse into nested objects/arrays.
+  // Skip `itemReviewed` — Google's review-snippet rich result allows a minimal
+  // typed reference (just @type + name + address); it does NOT need to satisfy
+  // the full LocalBusiness requirements. We already validate the shape above.
+  const SKIP_RECURSE = new Set(["itemReviewed", "provider", "publisher", "isPartOf", "about", "breadcrumb", "parentOrganization"]);
   for (const [k, v] of Object.entries(node)) {
     if (k.startsWith("@")) continue;
+    if (SKIP_RECURSE.has(k)) continue;
     if (Array.isArray(v)) {
       v.forEach((child, i) => {
         if (child && typeof child === "object") {
