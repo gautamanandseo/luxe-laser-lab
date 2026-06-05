@@ -11,7 +11,10 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "validate:seo": "tsx scripts/validate-jsonld.mjs",
+    "validate:seo:remote": "tsx scripts/validate-jsonld.mjs --remote",
+    "prebuild": "tsx scripts/validate-jsonld.mjs || (echo '\\n⚠ JSON-LD validation flagged issues — see above. Set SKIP_SEO_VALIDATE=1 to bypass.' && [ \"$SKIP_SEO_VALIDATE\" = \"1\" ])"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
