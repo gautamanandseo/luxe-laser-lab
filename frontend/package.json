@@ -14,7 +14,9 @@
     "test:watch": "vitest",
     "validate:seo": "tsx scripts/validate-jsonld.mjs",
     "validate:seo:remote": "tsx scripts/validate-jsonld.mjs --remote",
-    "prebuild": "tsx scripts/validate-jsonld.mjs || (echo '\\n⚠ JSON-LD validation flagged issues — see above. Set SKIP_SEO_VALIDATE=1 to bypass.' && [ \"$SKIP_SEO_VALIDATE\" = \"1\" ])"
+    "check:assets": "node scripts/check-image-assets.mjs",
+    "prebuild": "tsx scripts/validate-jsonld.mjs || (echo '\\n⚠ JSON-LD validation flagged issues — see above. Set SKIP_SEO_VALIDATE=1 to bypass.' && [ \"$SKIP_SEO_VALIDATE\" = \"1\" ])",
+    "postbuild": "node scripts/check-image-assets.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
