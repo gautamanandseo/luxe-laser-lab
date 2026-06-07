@@ -1,16 +1,100 @@
+# robots.txt — Empathy Laser Clinic
+# Site: https://empathylaserclinic.com/laser-treatments/
+
+# ---------- Classic search crawlers ----------
 User-agent: Googlebot
-Allow: /laser-treatments/
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
 
 User-agent: Bingbot
-Allow: /laser-treatments/
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+User-agent: Slurp
+Allow: /
 
 User-agent: Twitterbot
-Allow: /laser-treatments/
+Allow: /
 
 User-agent: facebookexternalhit
-Allow: /laser-treatments/
+Allow: /
 
+User-agent: LinkedInBot
+Allow: /
+
+# ---------- AI / LLM crawlers (allowed for AI search visibility) ----------
+# OpenAI
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+# Anthropic
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+# Google AI (Gemini / AI Overviews training opt-in)
+User-agent: Google-Extended
+Allow: /
+
+# Apple Intelligence
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# Common Crawl (feeds many LLM training sets)
+User-agent: CCBot
+Allow: /
+
+# Meta AI
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: FacebookBot
+Allow: /
+
+# Bytedance / TikTok
+User-agent: Bytespider
+Allow: /
+
+# Mistral
+User-agent: MistralAI-User
+Allow: /
+
+# DeepSeek
+User-agent: DeepSeekBot
+Allow: /
+
+# ---------- Default ----------
 User-agent: *
-Allow: /laser-treatments/
+Allow: /
+Disallow: /admin
+Disallow: /api/
 
 Sitemap: https://empathylaserclinic.com/laser-treatments/sitemap.xml
