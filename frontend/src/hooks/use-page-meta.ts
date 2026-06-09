@@ -6,6 +6,7 @@ interface PageMetaOptions {
   canonical?: string;
   ogTitle?: string;
   ogDescription?: string;
+  ogImage?: string;
   jsonLd?: Record<string, unknown>;
 }
 
@@ -56,7 +57,7 @@ export const normalizeCanonical = (input?: string): string | undefined => {
  * Sets document title, meta description, canonical, and OG tags per page.
  * Restores defaults on unmount so navigation always has fresh tags.
  */
-const usePageMeta = ({ title, description, canonical, ogTitle, ogDescription, jsonLd }: PageMetaOptions) => {
+const usePageMeta = ({ title, description, canonical, ogTitle, ogDescription, ogImage, jsonLd }: PageMetaOptions) => {
   useEffect(() => {
     // Title
     document.title = title;
@@ -86,6 +87,15 @@ const usePageMeta = ({ title, description, canonical, ogTitle, ogDescription, js
 
     const ogUrlEl = document.querySelector('meta[property="og:url"]');
     if (ogUrlEl && safeCanonical) ogUrlEl.setAttribute("content", safeCanonical);
+
+    if (ogImage) {
+      const ogImgEl = document.querySelector('meta[property="og:image"]');
+      if (ogImgEl) ogImgEl.setAttribute("content", ogImage);
+      const twImgEl = document.querySelector('meta[name="twitter:image"]');
+      if (twImgEl) twImgEl.setAttribute("content", ogImage);
+      const ogImgAlt = document.querySelector('meta[property="og:image:alt"]');
+      if (ogImgAlt) ogImgAlt.setAttribute("content", ogTitle || title);
+    }
 
     // Twitter
     const twTitle = document.querySelector('meta[name="twitter:title"]');

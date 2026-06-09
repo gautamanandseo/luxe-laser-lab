@@ -380,7 +380,7 @@ const ServicePage = ({ service }: ServicePageProps) => {
             name: pageTitle,
             description: pageDescription,
             isPartOf: { "@id": "https://empathylaserclinic.com/laser-treatments/#clinic" },
-            primaryImageOfPage: heroImages[service] || data.heroImage,
+            primaryImageOfPage: seo?.ogImage || heroImages[service] || data.heroImage,
             breadcrumb: { "@id": `${canonicalUrl}#breadcrumb` },
           },
         ],
@@ -391,6 +391,7 @@ const ServicePage = ({ service }: ServicePageProps) => {
     title: pageTitle,
     description: pageDescription,
     canonical: canonicalUrl,
+    ogImage: seo?.ogImage,
     jsonLd,
   });
 
