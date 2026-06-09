@@ -12,11 +12,18 @@ const BlogPostPage = () => {
   const post = blogPosts.find((p) => p.slug === slug);
 
   const blogBase = "https://empathylaserclinic.com/laser-treatments/blog/";
+  const siteBase = "https://empathylaserclinic.com/laser-treatments/";
+  const logoUrl = `${siteBase}images/og-empathy-laser-clinic.jpg`;
   const pageUrl = post ? `${blogBase}${post.slug}/` : blogBase;
+  const ogImageUrl = post
+    ? (post.image?.startsWith("http") ? post.image : `${siteBase}${(post.image || "").replace(/^\/+/, "")}`)
+    : logoUrl;
+  const wordCount = post ? post.content.trim().split(/\s+/).length : 0;
   usePageMeta({
     title: post ? `${post.title} | Empathy Laser Clinic Delhi` : "Blog | Empathy Laser Clinic",
     description: post ? post.excerpt.slice(0, 155) : "Read expert articles on laser, skin & beauty treatments in Delhi NCR.",
     canonical: pageUrl,
+    ogImage: ogImageUrl,
     jsonLd: post
       ? buildGraph([
           buildBreadcrumbSchema(
@@ -30,21 +37,27 @@ const BlogPostPage = () => {
           {
             "@type": "BlogPosting",
             "@id": `${pageUrl}#article`,
-            mainEntityOfPage: pageUrl,
+            mainEntityOfPage: { "@type": "WebPage", "@id": pageUrl },
             url: pageUrl,
-            headline: post.title,
+            headline: post.title.slice(0, 110),
             description: post.excerpt,
-            image: post.image,
+            image: [ogImageUrl],
             keywords: post.tags?.join(", "),
             articleSection: post.category,
+            wordCount,
             datePublished: post.date,
             dateModified: post.date,
             author: {
+              "@type": "Person",
+              name: post.author || "Empathy Laser Clinic",
+              url: "https://empathylaserclinic.com/laser-treatments/about",
+            },
+            publisher: {
               "@type": "Organization",
               name: "Empathy Laser Clinic",
-              url: "https://empathylaserclinic.com/laser-treatments/",
+              url: siteBase,
+              logo: { "@type": "ImageObject", url: logoUrl, width: 1200, height: 630 },
             },
-            publisher: { "@id": "https://empathylaserclinic.com/laser-treatments/#organization" },
             inLanguage: "en-IN",
           },
           buildWebPageSchema(pageUrl, post.title, post.excerpt),
