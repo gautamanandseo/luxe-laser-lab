@@ -8,6 +8,8 @@ export interface ServiceSEO {
   title: string;
   description: string;
   canonical: string;
+  /** Absolute URL to a 1200x630 OG/Twitter share image for this page. */
+  ogImage?: string;
 }
 
 export const serviceSeoData: Record<string, ServiceSEO> = {
@@ -15,11 +17,13 @@ export const serviceSeoData: Record<string, ServiceSEO> = {
     title: "Laser Hair Removal Delhi | Lumenis LightSheer & Alma Soprano | Empathy Clinic",
     description: "Best laser hair removal in Delhi NCR with Lumenis LightSheer Desire & Alma Soprano ICE Platinum. USFDA cleared, painless, permanent. Book free consultation at Empathy Laser Clinic Pitampura.",
     canonical: `${BASE}/laser-hair-removal-delhi`,
+    ogImage: `${BASE}/images/og/og-laser-hair-removal-delhi.jpg`,
   },
   coolsculpting: {
     title: "CoolSculpting Delhi | Fat Freezing Treatment | Empathy Laser Clinic",
     description: "CoolSculpting® Elite in Delhi NCR — #1 FDA-cleared non-surgical fat freezing. 27% fat reduction per session. Best CoolSculpting clinic in Delhi. Book body assessment today.",
     canonical: `${BASE}/coolsculpting-delhi`,
+    ogImage: `${BASE}/images/og/og-coolsculpting-delhi.jpg`,
   },
   weightloss: {
     title: "Weight Loss Clinic Delhi | Non-Surgical Fat Reduction | Empathy Clinic",
@@ -30,6 +34,7 @@ export const serviceSeoData: Record<string, ServiceSEO> = {
     title: "Skin Clinic Delhi | Advanced Skin Treatments | Empathy Laser Clinic",
     description: "Best skin clinic in Delhi NCR for pigmentation, skin lightening, anti-ageing, acne scars & facial rejuvenation. USFDA cleared technology. Visit Empathy Clinic Pitampura.",
     canonical: `${BASE}/skin-clinic-delhi`,
+    ogImage: `${BASE}/images/og/og-skin-clinic-delhi.jpg`,
   },
   resurfx: {
     title: "ResurFX Laser Skin Resurfacing Delhi | Empathy Laser Clinic",
