@@ -486,7 +486,33 @@ for (const p of [
     canonical: `${SITE_BASE}gallery`,
   },
 ]) {
-  written.push(writeRoute({ ...p, ogImage: OG_DEFAULT }));
+  const pageUrl = p.canonical;
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      orgNode,
+      localBusinessNode,
+      breadcrumb(
+        [
+          { name: "Home", url: SITE_BASE },
+          { name: p.title.split(" | ")[0] || p.title, url: pageUrl },
+        ],
+        pageUrl
+      ),
+      {
+        "@type": "WebPage",
+        "@id": pageUrl,
+        url: pageUrl,
+        name: p.title,
+        description: p.description,
+        isPartOf: { "@id": `${SITE_BASE}#organization` },
+        about: { "@id": `${SITE_BASE}#localbusiness` },
+        breadcrumb: { "@id": `${pageUrl}#breadcrumb` },
+        inLanguage: "en-IN",
+      },
+    ],
+  };
+  written.push(writeRoute({ ...p, ogImage: OG_DEFAULT, jsonLd }));
 }
 
 // Blog posts
@@ -500,6 +526,7 @@ for (const post of allBlogPosts || []) {
     "@context": "https://schema.org",
     "@graph": [
       orgNode,
+      localBusinessNode,
       breadcrumb(
         [
           { name: "Home", url: SITE_BASE },
