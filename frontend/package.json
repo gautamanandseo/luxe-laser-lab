@@ -15,7 +15,8 @@
     "validate:seo": "tsx scripts/validate-jsonld.mjs",
     "validate:seo:remote": "tsx scripts/validate-jsonld.mjs --remote",
     "check:assets": "node scripts/check-image-assets.mjs",
-    "prebuild": "tsx scripts/validate-jsonld.mjs || (echo '\\n⚠ JSON-LD validation flagged issues — see above. Set SKIP_SEO_VALIDATE=1 to bypass.' && [ \"$SKIP_SEO_VALIDATE\" = \"1\" ])",
+    "sitemap": "tsx scripts/generate-sitemap.mjs",
+    "prebuild": "tsx scripts/generate-sitemap.mjs && (tsx scripts/validate-jsonld.mjs || (echo '\\n⚠ JSON-LD validation flagged issues — see above. Set SKIP_SEO_VALIDATE=1 to bypass.' && [ \"$SKIP_SEO_VALIDATE\" = \"1\" ]))",
     "prerender": "tsx scripts/prerender.mjs",
     "postbuild": "node scripts/check-image-assets.mjs && tsx scripts/prerender.mjs"
   },
