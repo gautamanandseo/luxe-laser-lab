@@ -372,6 +372,25 @@ written.push(
       "Delhi NCR's #1 aesthetic clinic for laser hair removal (Lumenis LightSheer, Alma Soprano), CoolSculpting fat freezing, Botox, fillers & skin treatments. 25,000+ clients. Book free consultation.",
     canonical: SITE_BASE,
     ogImage: OG_DEFAULT,
+    jsonLd: {
+      "@context": "https://schema.org",
+      "@graph": [
+        orgNode,
+        localBusinessNode,
+        breadcrumb([{ name: "Home", url: SITE_BASE }], SITE_BASE),
+        {
+          "@type": "WebPage",
+          "@id": SITE_BASE,
+          url: SITE_BASE,
+          name: "Empathy Laser Clinic Delhi — Laser Hair Removal, CoolSculpting & Skin Treatments",
+          description: "Delhi NCR's premier aesthetic clinic for laser hair removal, CoolSculpting, Botox, fillers, skin & hair treatments.",
+          isPartOf: { "@id": `${SITE_BASE}#organization` },
+          about: { "@id": `${SITE_BASE}#localbusiness` },
+          breadcrumb: { "@id": `${SITE_BASE}#breadcrumb` },
+          inLanguage: "en-IN",
+        },
+      ],
+    },
     body: bodyForHome(),
   })
 );
