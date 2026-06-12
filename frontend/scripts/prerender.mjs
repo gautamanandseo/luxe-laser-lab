@@ -407,6 +407,7 @@ for (const [key, slug] of Object.entries(serviceRouteMap)) {
     "@context": "https://schema.org",
     "@graph": [
       orgNode,
+      localBusinessNode,
       breadcrumb(
         [
           { name: "Home", url: SITE_BASE },
@@ -423,7 +424,7 @@ for (const [key, slug] of Object.entries(serviceRouteMap)) {
         url,
         procedureType: "https://schema.org/NoninvasiveProcedure",
         image: ogImage,
-        provider: { "@id": `${SITE_BASE}#organization` },
+        provider: { "@id": `${SITE_BASE}#localbusiness` },
         areaServed: { "@type": "City", name: "Delhi NCR" },
       },
       {
@@ -433,6 +434,8 @@ for (const [key, slug] of Object.entries(serviceRouteMap)) {
         name: seo.title,
         description: seo.description,
         primaryImageOfPage: ogImage,
+        isPartOf: { "@id": `${SITE_BASE}#organization` },
+        about: { "@id": `${SITE_BASE}#localbusiness` },
         breadcrumb: { "@id": `${url}#breadcrumb` },
         inLanguage: "en-IN",
       },
