@@ -301,6 +301,9 @@ const Navbar = () => {
                 boxShadow: '0 1px 0 0 hsl(0 0% 100% / 0.06) inset, 0 -1px 0 0 hsl(0 0% 0% / 0.3) inset, 0 2px 8px -2px hsl(0 0% 0% / 0.4), 0 0 0 1px hsl(var(--primary) / 0.12)',
               }}
               onClick={() => setMobileOpen(!mobileOpen)}
+              aria-label={mobileOpen ? "Close navigation menu" : "Open navigation menu"}
+              aria-expanded={mobileOpen}
+              aria-controls="mobile-navigation"
             >
               <AnimatePresence mode="wait">
                 {mobileOpen ? (

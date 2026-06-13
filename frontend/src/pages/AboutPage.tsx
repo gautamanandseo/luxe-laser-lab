@@ -216,7 +216,7 @@ const AboutPage = () => {
                 <item.icon size={20} className="text-primary" />
               </div>
               <div>
-                <h4 className="font-serif text-lg text-foreground mb-2 group-hover:text-primary transition-colors">{item.title}</h4>
+                <h3 className="font-serif text-lg text-foreground mb-2 group-hover:text-primary transition-colors">{item.title}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
               </div>
             </motion.div>

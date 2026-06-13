@@ -29,7 +29,7 @@ const slides = [
     subtitle: "DELHI'S PREMIER WEIGHT LOSS CLINIC",
     desc: "Freeze away stubborn fat with CoolSculpting® Elite — Delhi NCR's top non-surgical weight loss and body contouring solution. 27% fat reduction per session.",
     cta1: { text: "Book Body Assessment", link: "/contact" },
-    cta2: { text: "Learn More", link: "/coolsculpting-delhi" },
+    cta2: { text: "Explore CoolSculpting", link: "/coolsculpting-delhi" },
     overlay: "from-[hsl(210,60%,5%)/90] via-[hsl(210,60%,5%)/60] to-transparent",
   },
   {
