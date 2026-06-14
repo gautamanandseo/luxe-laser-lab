@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Sparkles, X, ArrowRight, Loader2, Wand2 } from "lucide-react";
 import { Link } from "react-router-dom";
-import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 
 type Rec = { title: string; slug: string; why: string; priority?: string };
@@ -66,11 +65,20 @@ const TreatmentRecommender = () => {
   const submit = async (finalAnswers: Record<string, string>) => {
     setLoading(true);
     try {
-      const { data, error } = await supabase.functions.invoke("treatment-recommender", {
-        body: { answers: finalAnswers },
+      const projectId = import.meta.env.VITE_SUPABASE_PROJECT_ID || "qwyywhdadnbacvwrupbl";
+      const anonKey = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY || "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF3eXl3aGRhZG5iYWN2d3J1cGJsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI5ODkwOTQsImV4cCI6MjA4ODU2NTA5NH0.njgz7S7KsJyAN-GzKtUtQfShlBnbWBrocyyb2etS73I";
+      const url = `https://${projectId}.supabase.co/functions/v1/treatment-recommender`;
+      const res = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${anonKey}`,
+          apikey: anonKey,
+        },
+        body: JSON.stringify({ answers: finalAnswers }),
       });
-      if (error) throw error;
-      if (data?.error) throw new Error(data.error);
+      const data = await res.json();
+      if (!res.ok || data?.error) throw new Error(data?.error || `Request failed (${res.status})`);
       setResult(data as Result);
     } catch (e: unknown) {
       const msg = e instanceof Error ? e.message : "Could not generate recommendations";
