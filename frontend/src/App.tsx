@@ -20,6 +20,7 @@ const ExitIntentPopup = lazy(() => import("@/components/conversion/ExitIntentPop
 const SocialProofToasts = lazy(() => import("@/components/conversion/SocialProofToasts"));
 const CountdownTimer = lazy(() => import("@/components/conversion/CountdownTimer"));
 const FloatingConsultation = lazy(() => import("@/components/conversion/FloatingConsultation"));
+const TreatmentRecommender = lazy(() => import("@/components/conversion/TreatmentRecommender"));
 
 // Lazy-load all non-homepage routes
 const NotFound = lazy(() => import("./pages/NotFound"));
@@ -128,6 +129,7 @@ const DeferredWidgets = () => {
       <SocialProofToasts />
       <CountdownTimer />
       <FloatingConsultation />
+      <TreatmentRecommender />
     </Suspense>
   );
 };
