@@ -5,6 +5,9 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
+  // Production build is deployed to https://empathylaserclinic.com/laser-treatments/ on Hostinger.
+  // Override with VITE_BASE=/ when building for the root of a different domain.
+  base: process.env.VITE_BASE ?? (mode === "production" ? "/laser-treatments/" : "/"),
   server: {
     host: "0.0.0.0",
     port: 3000,

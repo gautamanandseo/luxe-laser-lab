@@ -1,0 +1,27 @@
+# SPA fallback for Hostinger Apache deployment at /laser-treatments/
+Options -MultiViews
+RewriteEngine On
+RewriteBase /laser-treatments/
+
+# Don't rewrite real files or directories
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Send everything else to index.html so React Router handles routing
+RewriteRule . /laser-treatments/index.html [L]
+
+# Long-cache hashed assets, revalidate HTML
+<IfModule mod_headers.c>
+  <FilesMatch "\.(?:js|css|woff2?|ttf|otf|jpg|jpeg|png|gif|webp|avif|svg|ico)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  <FilesMatch "\.(?:html|webmanifest|json|xml)$">
+    Header set Cache-Control "public, max-age=0, must-revalidate"
+  </FilesMatch>
+</IfModule>
+
+# gzip/brotli compression
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript application/json image/svg+xml
+</IfModule>

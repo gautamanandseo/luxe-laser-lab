@@ -2,15 +2,15 @@
   "name": "Empathy Laser Clinic — Delhi",
   "short_name": "Empathy Laser",
   "description": "Delhi NCR's premier clinic for laser hair removal, CoolSculpting, Botox, skin & hair treatments.",
-  "start_url": "/",
-  "scope": "/",
+  "start_url": "/laser-treatments/",
+  "scope": "/laser-treatments/",
   "display": "standalone",
   "background_color": "#080808",
   "theme_color": "#080808",
   "lang": "en-IN",
   "orientation": "portrait",
   "icons": [
-    { "src": "/favicon.ico", "sizes": "48x48", "type": "image/x-icon" },
-    { "src": "/images/og-empathy-laser-clinic.jpg", "sizes": "1200x630", "type": "image/jpeg", "purpose": "any" }
+    { "src": "favicon.ico", "sizes": "48x48", "type": "image/x-icon" },
+    { "src": "images/og-empathy-laser-clinic.jpg", "sizes": "1200x630", "type": "image/jpeg", "purpose": "any" }
   ]
 }
