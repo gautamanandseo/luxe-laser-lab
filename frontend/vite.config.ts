@@ -19,7 +19,7 @@ export default defineConfig(({ mode }) => ({
       ".preview.emergentcf.cloud"
     ],
   },
-  plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
+  plugins: [react()],
   build: {
     outDir: "../dist",
     emptyOutDir: true,
