@@ -1,73 +1,49 @@
-# Welcome to your Lovable project
+# Empathy Laser Clinic — Delhi
 
-## Project info
+Marketing website for Empathy Skin & Laser Hair Removal Clinic, Pitampura, Delhi.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+Live site: https://empathylaserclinic.com/laser-treatments/
 
-## How can I edit this code?
+## Tech stack
 
-There are several ways of editing your application.
+- Vite
+- React 18 + TypeScript
+- Tailwind CSS + shadcn/ui
+- React Router
+- Framer Motion
 
-**Use Lovable**
+## Local development
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+Requires Node.js 18+ and npm.
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+npm install
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+## Production build
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+The site is deployed into the `/laser-treatments/` subfolder on Apache (Hostinger),
+so the build base path is set accordingly in `vite.config.ts`.
 
-**Use GitHub Codespaces**
+```sh
+npm run build
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+Build pipeline:
 
-## What technologies are used for this project?
+1. `prebuild` — regenerates `public/sitemap.xml` and validates all JSON-LD structured data.
+2. `build` — Vite production build into `../dist`.
+3. `postbuild` — verifies every referenced image exists, then prerenders 240+ static
+   HTML pages (homepage, service pages, blog posts) for crawlers and non-JS bots.
 
-This project is built with:
+To build for a different base path:
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+```sh
+VITE_BASE=/ npm run build
+```
 
-## How can I deploy this project?
+## Deployment
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+Upload the contents of `dist/` into `public_html/laser-treatments/` on the server,
+including the hidden `.htaccess` file which handles SPA routing and asset caching.
