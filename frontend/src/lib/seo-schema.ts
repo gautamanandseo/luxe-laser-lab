@@ -5,7 +5,8 @@
  */
 
 const SITE_URL = "https://empathylaserclinic.com/laser-treatments/";
-const LOGO_URL = `${SITE_URL}images/og-empathy-laser-clinic.jpg`;
+const LOGO_URL =
+  "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/835a41fb-bc3f-4d27-b81e-d16b90f5a1a8/id-preview-b3a46e2f--cf10e61c-b23a-472f-b7a2-7f02e6b3418f.lovable.app-1772602102059.png";
 
 export const organizationSchema = {
   "@type": "Organization",
