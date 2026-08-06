@@ -3,6 +3,10 @@ Options -MultiViews
 RewriteEngine On
 RewriteBase /laser-treatments/
 
+# Force HTTPS (required before HSTS is meaningful)
+RewriteCond %{HTTPS} !=on
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
 # Don't rewrite real files or directories
 RewriteCond %{REQUEST_FILENAME} -f [OR]
 RewriteCond %{REQUEST_FILENAME} -d
@@ -10,6 +14,34 @@ RewriteRule ^ - [L]
 
 # Send everything else to index.html so React Router handles routing
 RewriteRule . /laser-treatments/index.html [L]
+
+ErrorDocument 404 /laser-treatments/index.html
+
+# ---------------------------------------------------------------
+# Security headers
+# ---------------------------------------------------------------
+<IfModule mod_headers.c>
+  # HSTS - 2 years, subdomains, preload ready
+  Header always set Strict-Transport-Security "max-age=63072000; includeSubDomains; preload"
+
+  # MIME sniffing / framing / referrer / permissions
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "geolocation=(), microphone=(), camera=(self), payment=(), usb=(), interest-cohort=()"
+  Header always set Cross-Origin-Opener-Policy "same-origin"
+  Header always set Cross-Origin-Resource-Policy "same-site"
+  Header always set X-Permitted-Cross-Domain-Policies "none"
+
+  # Content Security Policy
+  # 'unsafe-inline' on style-src is required by Tailwind/framer-motion inline styles.
+  # script-src stays strict: self only (no inline scripts, no eval) apart from the
+  # JSON-LD blocks, which are type="application/ld+json" and not executed as script.
+  Header always set Content-Security-Policy "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; form-action 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https://images.unsplash.com https://*.googleapis.com https://*.gstatic.com https://*.google.com; connect-src 'self' https://*.supabase.co https://images.unsplash.com; frame-src https://www.google.com https://maps.google.com https://www.youtube.com https://www.youtube-nocookie.com; media-src 'self'; worker-src 'self' blob:; manifest-src 'self'; upgrade-insecure-requests"
+
+  # Remove server fingerprinting where allowed
+  Header unset X-Powered-By
+</IfModule>
 
 # Long-cache hashed assets, revalidate HTML
 <IfModule mod_headers.c>
@@ -20,6 +52,25 @@ RewriteRule . /laser-treatments/index.html [L]
     Header set Cache-Control "public, max-age=0, must-revalidate"
   </FilesMatch>
 </IfModule>
+
+# Correct MIME types (avoids nosniff blocking)
+<IfModule mod_mime.c>
+  AddType text/plain .txt
+  AddType application/xml .xml
+  AddType application/manifest+json .webmanifest
+  AddType image/svg+xml .svg
+  AddType image/avif .avif
+  AddType image/webp .webp
+  AddType font/woff2 .woff2
+</IfModule>
+
+# Block access to dotfiles and source maps
+<FilesMatch "(^\.|\.map$)">
+  Require all denied
+</FilesMatch>
+<Files ".htaccess">
+  Require all denied
+</Files>
 
 # gzip/brotli compression
 <IfModule mod_deflate.c>
