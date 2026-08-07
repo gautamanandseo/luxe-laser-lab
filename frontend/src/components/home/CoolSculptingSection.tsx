@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight, Snowflake, Check } from "lucide-react";
-import coolsculptingBody from "@/assets/coolsculpting-body.png";
+import coolsculptingBody from "@/assets/coolsculpting-body.jpg";
 import AuroraMesh from "@/components/effects/AuroraMesh";
 
 const zones = [
