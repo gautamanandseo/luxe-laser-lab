@@ -10,8 +10,7 @@ RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 # Serve WebP automatically when the browser supports it and a .webp twin exists
 RewriteCond %{HTTP_ACCEPT} image/webp
 RewriteCond %{REQUEST_FILENAME} \.(jpe?g|png)$
-RewriteCond %{REQUEST_FILENAME}.webp -f [OR]
-RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -f
+RewriteCond %{REQUEST_FILENAME}.webp -f
 RewriteRule ^(.+)\.(jpe?g|png)$ $1.webp [T=image/webp,E=webp_served:1,L]
 <IfModule mod_headers.c>
   Header append Vary Accept env=REDIRECT_webp_served
