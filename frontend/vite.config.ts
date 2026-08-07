@@ -26,14 +26,20 @@ export default defineConfig(({ mode }) => ({
     emptyOutDir: true,
     rollupOptions: {
       output: {
-        manualChunks: {
-          'vendor-react': ['react', 'react-dom', 'react-router-dom'],
-          'vendor-motion': ['framer-motion'],
-          'vendor-query': ['@tanstack/react-query'],
-          'vendor-three': ['three', '@react-three/fiber', '@react-three/drei'],
+        manualChunks(id) {
+          if (!id.includes("node_modules")) return;
+          if (/[\\/]node_modules[\\/](react|react-dom|react-router|react-router-dom|scheduler)[\\/]/.test(id)) return "vendor-react";
+          if (id.includes("framer-motion")) return "vendor-motion";
+          if (id.includes("@tanstack")) return "vendor-query";
+          if (/three|@react-three/.test(id)) return "vendor-three";
+          if (id.includes("@radix-ui")) return "vendor-ui";
+          if (id.includes("lucide-react")) return "vendor-icons";
+          return "vendor";
         },
       },
     },
+    assetsInlineLimit: 4096,
+    reportCompressedSize: false,
     cssMinify: true,
     cssCodeSplit: true,
     target: 'es2020',
