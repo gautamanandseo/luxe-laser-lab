@@ -16,5 +16,8 @@
     "@react-three/fiber": "^8.17.10",
     "@supabase/supabase-js": "^2.98.0",
     "three": "^0.170.0"
+  },
+  "devDependencies": {
+    "sharp": "^0.35.3"
   }
 }
