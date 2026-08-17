@@ -151,6 +151,8 @@ const App = () => {
           <ScrollToTop />
           <ScrollProgress />
           <Navbar />
+          <MobileTreatmentsNav />
+
           <main className="film-grain">
             <AnimatedRoutes />
           </main>
