@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation, Navigate } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import Navbar from "@/components/Navbar";
+import MobileTreatmentsNav from "@/components/MobileTreatmentsNav";
 import Footer from "@/components/Footer";
 import KeywordLinkCloud from "@/components/seo/KeywordLinkCloud";
 import WhatsAppButton from "@/components/WhatsAppButton";
