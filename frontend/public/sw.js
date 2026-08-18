@@ -1,5 +1,5 @@
 /* Empathy Laser Clinic — offline-first service worker (v2) */
-const VERSION = "elc-v2";
+const VERSION = "elc-v3";
 const BASE = new URL(self.registration.scope).pathname; // e.g. /laser-treatments/
 const OFFLINE_URL = BASE + "index.html";
 const ASSET_RE = /\.(?:js|css|woff2?|ttf|otf|jpg|jpeg|png|gif|webp|avif|svg|ico)$/;
