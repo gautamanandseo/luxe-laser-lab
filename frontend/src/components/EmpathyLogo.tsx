@@ -16,6 +16,7 @@ const EmpathyLogo = ({ className = "", size = "default" }: { className?: string;
       width={width}
       height={height}
       className={className}
+      decoding="async"
       style={{ objectFit: "contain" }}
     />
   );
