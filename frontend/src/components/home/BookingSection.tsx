@@ -207,12 +207,14 @@ const BookingSection = () => {
                   <textarea placeholder="Your Message (optional)" rows={3} value={form.message} onChange={e => update("message", e.target.value)} className={`${inputClass} resize-none`} />
                   <motion.button
                     type="submit"
-                    whileHover={{ scale: 1.02, boxShadow: "0 0 25px hsl(38, 45%, 60%, 0.4)" }}
-                    whileTap={{ scale: 0.98 }}
-                    className="w-full gold-shimmer text-primary-foreground py-3.5 text-sm font-sans uppercase tracking-[0.15em] rounded-full flex items-center justify-center gap-2"
+                    disabled={loading}
+                    whileHover={loading ? undefined : { scale: 1.02, boxShadow: "0 0 25px hsl(38, 45%, 60%, 0.4)" }}
+                    whileTap={loading ? undefined : { scale: 0.98 }}
+                    className="w-full gold-shimmer text-primary-foreground py-3.5 text-sm font-sans uppercase tracking-[0.15em] rounded-full flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
                   >
-                    Book Free Consultation <Send size={16} />
+                    {loading ? (<>Sending <Loader2 size={16} className="animate-spin" /></>) : (<>Book Free Consultation <Send size={16} /></>)}
                   </motion.button>
+
                   <p className="text-center text-[10px] text-muted-foreground">
                     🔒 Your information is 100% secure · No spam, ever
                   </p>
