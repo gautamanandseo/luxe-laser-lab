@@ -1,21 +1,42 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Send, CheckCircle, MapPin, Shield, Star, Phone, Clock } from "lucide-react";
+import { Send, CheckCircle, MapPin, Shield, Star, Phone, Clock, Loader2 } from "lucide-react";
 import ScrollReveal from "@/components/effects/ScrollReveal";
 import ParticleField from "@/components/effects/ParticleField";
+import { submitLead } from "@/lib/submit-lead";
+import { toast } from "@/hooks/use-toast";
 
 const BookingSection = () => {
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({ firstName: "", lastName: "", phone: "", email: "", service: "", date: "", message: "" });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    if (loading) return;
+    if (!/^[+\d][\d\s-]{6,19}$/.test(form.phone.trim())) {
+      toast({ title: "Invalid phone number", description: "Please enter a valid phone / WhatsApp number.", variant: "destructive" });
+      return;
+    }
+    setLoading(true);
+    try {
+      await submitLead({ ...form, source: "booking-section" });
+      setSubmitted(true);
+    } catch {
+      toast({
+        title: "Could not send your request",
+        description: "Please try again, or call us at 9811157787.",
+        variant: "destructive",
+      });
+    } finally {
+      setLoading(false);
+    }
   };
 
   const update = (field: string, value: string) => setForm(f => ({ ...f, [field]: value }));
 
   const inputClass = "w-full bg-muted/30 border border-primary/10 rounded-lg px-4 py-3.5 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary/50 focus:outline-none focus:shadow-[0_0_20px_hsl(38,45%,60%,0.15),0_0_0_3px_hsl(38,45%,60%,0.08)] transition-all duration-300 input-luxury";
+
 
   return (
     <section id="booking" className="py-28 bg-velvet relative overflow-hidden light-rays vignette diamond-dust">
