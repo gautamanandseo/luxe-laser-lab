@@ -1,3 +1,5 @@
+import { submitLead } from "@/lib/submit-lead";
+import { toast } from "@/hooks/use-toast";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Phone, Mail, MapPin, Clock, Send, CheckCircle, MessageCircle, Calendar, ArrowRight, Sparkles, Instagram, Facebook, Shield, Star, Users, Award, Heart, Zap } from "lucide-react";
@@ -46,7 +48,33 @@ const trustPoints = [
 
 const ContactPage = () => {
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({ name: "", phone: "", email: "", service: "", message: "", preferredTime: "", preferredDate: "" });
+
+  const handleLeadSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (loading) return;
+    setLoading(true);
+    try {
+      const [firstName, ...rest] = form.name.trim().split(" ");
+      await submitLead({
+        firstName: firstName || form.name.trim(),
+        lastName: rest.join(" "),
+        phone: form.phone,
+        email: form.email,
+        service: form.service,
+        date: form.preferredDate,
+        message: [form.message, form.preferredTime && `Preferred time: ${form.preferredTime}`].filter(Boolean).join(" | "),
+        source: "contact-page",
+      });
+      setSubmitted(true);
+    } catch {
+      toast({ title: "Could not send your request", description: "Please try again, or call us at 9811157787.", variant: "destructive" });
+    } finally {
+      setLoading(false);
+    }
+  };
+
 
   const pageUrl = "https://empathylaserclinic.com/laser-treatments/contact/";
   usePageMeta({
@@ -254,7 +282,7 @@ const ContactPage = () => {
                       </button>
                     </motion.div>
                   ) : (
-                    <motion.form key="form" onSubmit={e => { e.preventDefault(); setSubmitted(true); }} className="space-y-5">
+                    <motion.form key="form" onSubmit={handleLeadSubmit} className="space-y-5">
                       <div className="grid md:grid-cols-2 gap-5">
                         <div>
                           <label className="text-xs text-muted-foreground/70 uppercase tracking-wider mb-2 block">Full Name *</label>
@@ -296,7 +324,7 @@ const ContactPage = () => {
                         <label className="text-xs text-muted-foreground/70 uppercase tracking-wider mb-2 block">Tell Us About Your Goals</label>
                         <textarea placeholder="Describe your concerns, goals, or questions..." rows={4} value={form.message} onChange={e => update("message", e.target.value)} className={`${inputClass} resize-none`} />
                       </div>
-                      <motion.button type="submit" whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}
+                      <motion.button type="submit" disabled={loading} whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}
                         className="w-full py-4 text-sm font-sans font-semibold uppercase tracking-[0.15em] rounded-2xl flex items-center justify-center gap-2 relative overflow-hidden group"
                         style={{
                           background: 'linear-gradient(180deg, hsl(var(--primary)) 0%, hsl(var(--gold-dark)) 100%)',
@@ -306,7 +334,7 @@ const ContactPage = () => {
                       >
                         <div className="absolute inset-x-0 top-0 h-[45%] bg-gradient-to-b from-white/15 to-transparent" />
                         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
-                        <span className="relative z-10">Book Free Consultation</span>
+                        <span className="relative z-10">{loading ? "Sending…" : "Book Free Consultation"}</span>
                         <Send size={16} className="relative z-10" />
                       </motion.button>
                       <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground/50">
