@@ -46,7 +46,33 @@ const trustPoints = [
 
 const ContactPage = () => {
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({ name: "", phone: "", email: "", service: "", message: "", preferredTime: "", preferredDate: "" });
+
+  const handleLeadSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (loading) return;
+    setLoading(true);
+    try {
+      const [firstName, ...rest] = form.name.trim().split(" ");
+      await submitLead({
+        firstName: firstName || form.name.trim(),
+        lastName: rest.join(" "),
+        phone: form.phone,
+        email: form.email,
+        service: form.service,
+        date: form.preferredDate,
+        message: [form.message, form.preferredTime && `Preferred time: ${form.preferredTime}`].filter(Boolean).join(" | "),
+        source: "contact-page",
+      });
+      setSubmitted(true);
+    } catch {
+      toast({ title: "Could not send your request", description: "Please try again, or call us at 9811157787.", variant: "destructive" });
+    } finally {
+      setLoading(false);
+    }
+  };
+
 
   const pageUrl = "https://empathylaserclinic.com/laser-treatments/contact/";
   usePageMeta({
