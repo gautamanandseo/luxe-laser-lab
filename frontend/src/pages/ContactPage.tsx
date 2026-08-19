@@ -1,3 +1,5 @@
+import { submitLead } from "@/lib/submit-lead";
+import { toast } from "@/hooks/use-toast";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Phone, Mail, MapPin, Clock, Send, CheckCircle, MessageCircle, Calendar, ArrowRight, Sparkles, Instagram, Facebook, Shield, Star, Users, Award, Heart, Zap } from "lucide-react";
