@@ -303,12 +303,15 @@ function bodyForService(svc, data, url, ogImage) {
 
 function bodyForBlogPost(post, url) {
   const summary = esc((post.content || "").replace(/[#*`>|\-]/g, " ").replace(/\s+/g, " ").slice(0, 1200));
+  const imageUrl = post.image?.startsWith("http")
+    ? post.image
+    : `${SITE_BASE}${(post.image || "").replace(/^\/+/, "")}`;
   return `
     <nav aria-label="Breadcrumb"><a href="${SITE_BASE}">Home</a> › <a href="${SITE_BASE}blog/">Blog</a> › <span>${esc(post.title)}</span></nav>
     <article>
       <h1>${esc(post.title)}</h1>
       <p><em>By ${esc(post.author)} · ${esc(post.date)} · ${esc(post.readTime)} · ${esc(post.category)}</em></p>
-      <img src="${esc(post.image || OG_DEFAULT)}" alt="${esc(post.title)}" />
+      <img src="${esc(imageUrl || OG_DEFAULT)}" alt="${esc(post.title)}" />
       <p>${esc(post.excerpt)}</p>
       <p>${summary}…</p>
       <p>Tags: ${(post.tags || []).map(esc).join(", ")}</p>
