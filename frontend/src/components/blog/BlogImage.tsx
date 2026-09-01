@@ -22,6 +22,14 @@ const categoryFallbacks: Record<string, string> = {
 
 const DEFAULT_FALLBACK = "/images/blog-fallback-skin.jpg";
 
+const resolvePublicAsset = (asset: string) => {
+  if (/^(?:https?:|data:|blob:)/i.test(asset)) return asset;
+  const base = import.meta.env.BASE_URL.endsWith("/")
+    ? import.meta.env.BASE_URL
+    : `${import.meta.env.BASE_URL}/`;
+  return `${base}${asset.replace(/^\/+/, "")}`;
+};
+
 const BlogImage = ({ src, alt, category, loading = "lazy", ...props }: BlogImageProps) => {
   const fallback = category ? categoryFallbacks[category] || DEFAULT_FALLBACK : DEFAULT_FALLBACK;
   const initialSrc = src && src.trim() !== "" ? src : fallback;
@@ -30,7 +38,7 @@ const BlogImage = ({ src, alt, category, loading = "lazy", ...props }: BlogImage
   const { style, ...rest } = props;
   return (
     <img
-      src={currentSrc}
+      src={resolvePublicAsset(currentSrc)}
       alt={alt}
       loading={loading}
       decoding="async"
