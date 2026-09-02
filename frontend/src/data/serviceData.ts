@@ -1,4 +1,4 @@
-import { Sparkles, Snowflake, Sun, Heart, Flower2, Scissors, Syringe, Diamond, Clock, Shield, Award, Users, CheckCircle, Star, Zap, Target, Droplets, Gem, Scan, Scale, CircleDot, Palette, Hourglass, Radio, EyeOff, Lock, Eraser, Trash2, CircleX, Pill, Microscope, Dumbbell } from "lucide-react";
+import { Sparkles, Snowflake, Sun, Heart, Flower2, Scissors, Syringe, Diamond, Clock, Shield, Award, Users, CheckCircle, Star, Zap, Target, Droplets, Gem, Scan, Scale, CircleDot, Palette, Hourglass, Radio, EyeOff, Lock, Eraser, Trash2, CircleX, Pill, Microscope, Dumbbell, type LucideIcon } from "lucide-react";
 
 export interface ServiceStep {
   number: string;
@@ -45,9 +45,9 @@ export interface ServiceData {
   heroOverlay: string;
   description: string;
   longDescription: string;
-  icon: any;
+  icon: LucideIcon;
   badge: string;
-  benefits: { title: string; description: string; icon: any }[];
+  benefits: { title: string; description: string; icon: LucideIcon }[];
   processSteps: ServiceStep[];
   treatmentAreas: { name: string; description: string; duration?: string }[];
   pricing: PricingTier[];
