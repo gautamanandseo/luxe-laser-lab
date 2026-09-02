@@ -1,5 +1,4 @@
-import { Navigate, useLocation } from "react-router-dom";
-import { useEffect } from "react";
+import { Navigate } from "react-router-dom";
 
 /**
  * Any unknown route is redirected to the homepage.
@@ -8,13 +7,6 @@ import { useEffect } from "react";
  * ErrorDocument 404) server-side fallbacks.
  */
 const NotFound = () => {
-  const location = useLocation();
-
-  useEffect(() => {
-    // eslint-disable-next-line no-console
-    console.warn("404 redirected to home:", location.pathname);
-  }, [location.pathname]);
-
   return <Navigate to="/" replace />;
 };
 

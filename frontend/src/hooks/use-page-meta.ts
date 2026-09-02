@@ -118,7 +118,7 @@ const usePageMeta = ({ title, description, canonical, ogTitle, ogDescription, og
         script?.remove();
       };
     }
-  }, [title, description, canonical, ogTitle, ogDescription, jsonLd]);
+  }, [title, description, canonical, ogTitle, ogDescription, ogImage, jsonLd]);
 };
 
 export default usePageMeta;
