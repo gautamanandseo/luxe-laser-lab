@@ -21,7 +21,8 @@ import { fileURLToPath } from "node:url";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const FRONTEND_ROOT = resolve(__dirname, "..");
 const PUBLIC_DIR = join(FRONTEND_ROOT, "public");
-const DIST_DIR = join(FRONTEND_ROOT, "dist");
+// vite.config.ts writes the production bundle one level above frontend/.
+const DIST_DIR = resolve(FRONTEND_ROOT, "../dist");
 
 const IMAGE_EXT = /\.(jpe?g|png|webp|avif|gif|svg|ico)$/i;
 // Matches "/images/...jpg", "/uploads/...png", any root-relative image path
