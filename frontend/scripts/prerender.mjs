@@ -338,7 +338,7 @@ function bodyForBlogPost(post, url) {
       <p><em>By ${esc(post.author)} · ${esc(post.date)} · ${esc(post.readTime)} · ${esc(post.category)}</em></p>
       <img src="${esc(imageUrl || OG_DEFAULT)}" alt="${esc(post.title)}" />
       <p>${esc(post.excerpt)}</p>
-      <p>${summary}…</p>
+      ${articleHtml}
       <p>Tags: ${(post.tags || []).map(esc).join(", ")}</p>
     </article>
     <p><a href="${SITE_BASE}contact">Book free consultation</a></p>
