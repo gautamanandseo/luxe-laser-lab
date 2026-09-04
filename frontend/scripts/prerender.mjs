@@ -301,8 +301,33 @@ function bodyForService(svc, data, url, ogImage) {
   `.trim();
 }
 
+function mdToHtml(md) {
+  // Minimal markdown → HTML for full blog article body in prerendered pages.
+  const inline = (t) => esc(t)
+    .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
+    .replace(/\*([^*]+)\*/g, "<em>$1</em>");
+  const blocks = String(md || "").split(/\n{2,}/).map((b) => b.trim()).filter(Boolean);
+  return blocks.map((block) => {
+    if (/^#{1,6}\s/.test(block)) {
+      const level = Math.min(Math.max(block.match(/^#+/)[0].length, 2), 6); // page h1 is the title
+      const text = block.replace(/^#+\s*/, "");
+      return `<h${level}>${inline(text)}</h${level}>`;
+    }
+    if (/^[-*]\s/m.test(block)) {
+      const items = block.split("\n").map((l) => l.replace(/^[-*]\s*/, "").trim()).filter(Boolean);
+      return `<ul>${items.map((i) => `<li>${inline(i)}</li>`).join("")}</ul>`;
+    }
+    if (/^\d+\.\s/m.test(block)) {
+      const items = block.split("\n").map((l) => l.replace(/^\d+\.\s*/, "").trim()).filter(Boolean);
+      return `<ol>${items.map((i) => `<li>${inline(i)}</li>`).join("")}</ol>`;
+    }
+    if (/^>\s?/m.test(block)) return `<blockquote>${inline(block.replace(/^>\s?/gm, ""))}</blockquote>`;
+    return `<p>${inline(block.replace(/\n/g, " "))}</p>`;
+  }).join("\n      ");
+}
+
 function bodyForBlogPost(post, url) {
-  const summary = esc((post.content || "").replace(/[#*`>|\-]/g, " ").replace(/\s+/g, " ").slice(0, 1200));
+  const articleHtml = mdToHtml(post.content || "");
   const imageUrl = post.image?.startsWith("http")
     ? post.image
     : `${SITE_BASE}${(post.image || "").replace(/^\/+/, "")}`;
@@ -313,7 +338,7 @@ function bodyForBlogPost(post, url) {
       <p><em>By ${esc(post.author)} · ${esc(post.date)} · ${esc(post.readTime)} · ${esc(post.category)}</em></p>
       <img src="${esc(imageUrl || OG_DEFAULT)}" alt="${esc(post.title)}" />
       <p>${esc(post.excerpt)}</p>
-      <p>${summary}…</p>
+      ${articleHtml}
       <p>Tags: ${(post.tags || []).map(esc).join(", ")}</p>
     </article>
     <p><a href="${SITE_BASE}contact">Book free consultation</a></p>
