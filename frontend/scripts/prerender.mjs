@@ -309,7 +309,7 @@ function mdToHtml(md) {
   const blocks = String(md || "").split(/\n{2,}/).map((b) => b.trim()).filter(Boolean);
   return blocks.map((block) => {
     if (/^#{1,6}\s/.test(block)) {
-      const level = Math.min(block.match(/^#+/)[0].length + 1, 6); // shift h1→h2 (page h1 is the title)
+      const level = Math.min(Math.max(block.match(/^#+/)[0].length, 2), 6); // page h1 is the title
       const text = block.replace(/^#+\s*/, "");
       return `<h${level}>${inline(text)}</h${level}>`;
     }
